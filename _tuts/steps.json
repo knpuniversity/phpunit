@@ -1,0 +1,70 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "installation",
+            "name": "Installation",
+            "description": null
+        },
+        {
+            "id": "first-test",
+            "name": "First test",
+            "description": null
+        },
+        {
+            "id": "first-test-remove",
+            "name": "First test - remove",
+            "description": null
+        },
+        {
+            "id": "setget-testing-initial-length-test",
+            "name": "SetGet testing: initial length test",
+            "description": null
+        },
+        {
+            "id": "setget-testing-add-entity-with-methods",
+            "name": "SetGet testing: add entity with methods",
+            "description": null
+        },
+        {
+            "id": "setget-testing-add-specification-test",
+            "name": "SetGet testing: add specification test",
+            "description": null
+        },
+        {
+            "id": "setget-testing-add-specification-code",
+            "name": "SetGet testing: add specification code",
+            "description": null
+        },
+        {
+            "id": "setget-testing-indirect-add-factory-test",
+            "name": "SetGet testing: indirect - add factory test",
+            "description": null
+        },
+        {
+            "id": "setget-testing-indirect-add-factory-code",
+            "name": "SetGet testing: indirect - add factory code",
+            "description": null
+        },
+        {
+            "id": "setget-testing-refactoring-add-set-up-method",
+            "name": "SetGet testing: refactoring - add set up method",
+            "description": null
+        },
+        {
+            "id": "marking-a-test-as-incomplete",
+            "name": "Marking a test as incomplete",
+            "description": null
+        },
+        {
+            "id": "marking-a-test-as-skipped",
+            "name": "Marking a test as skipped",
+            "description": null
+        }
+    ],
+    "sha": "0fcbc08aa6c7f8e9b348585e8202c76800fa66e6"
+}

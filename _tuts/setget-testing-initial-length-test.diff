@@ -1,0 +1,19 @@
+diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
+index 9c64356..2cc9c7f 100644
+--- a/tests/AppBundle/Entity/DinosaurTest.php
++++ b/tests/AppBundle/Entity/DinosaurTest.php
+@@ -6,4 +6,14 @@ use PHPUnit\Framework\TestCase;
+ 
+ class DinosaurTest extends TestCase
+ {
++    public function testSettingLength()
++    {
++        $dinosaur = new Dinosaur();
++
++        $this->assertSame(0, $dinosaur->getLength());
++
++        $dinosaur->setLength(9);
++
++        $this->assertGreaterThan(7, $dinosaur->getLength(), 'Did you put it in the washing machine?');
++    }
+ }

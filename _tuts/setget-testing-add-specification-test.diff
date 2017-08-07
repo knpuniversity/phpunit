@@ -1,0 +1,33 @@
+diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
+index ba30da2..aa9005f 100644
+--- a/src/AppBundle/Entity/Dinosaur.php
++++ b/src/AppBundle/Entity/Dinosaur.php
+@@ -24,4 +24,9 @@ class Dinosaur
+     {
+         $this->length = $length;
+     }
++
++    public function getSpecification(): string
++    {
++        return '';
++    }
+ }
+diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
+index 109b4ae..75d6184 100644
+--- a/tests/AppBundle/Entity/DinosaurTest.php
++++ b/tests/AppBundle/Entity/DinosaurTest.php
+@@ -17,4 +17,14 @@ class DinosaurTest extends TestCase
+ 
+         $this->assertGreaterThan(7, $dinosaur->getLength(), 'Did you put it in the washing machine?');
+     }
++
++    public function testReturnsFullSpecificationOfDinosaur()
++    {
++        $dinosaur = new Dinosaur();
++
++        $this->assertSame(
++            'The Unknown non-carnivorous dinosaur is 0 meters long',
++            $dinosaur->getSpecification()
++        );
++    }
+ }
