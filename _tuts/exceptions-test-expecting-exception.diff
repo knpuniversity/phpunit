@@ -1,0 +1,41 @@
+diff --git a/src/AppBundle/Exception/NotABuffetException.php b/src/AppBundle/Exception/NotABuffetException.php
+new file mode 100644
+index 0000000..42bf6fe
+--- /dev/null
++++ b/src/AppBundle/Exception/NotABuffetException.php
+@@ -0,0 +1,7 @@
++<?php
++
++namespace AppBundle\Exception;
++
++class NotABuffetException extends \Exception
++{
++}
+diff --git a/tests/AppBundle/Entity/EnclosureTest.php b/tests/AppBundle/Entity/EnclosureTest.php
+index f585eed..ca35496 100644
+--- a/tests/AppBundle/Entity/EnclosureTest.php
++++ b/tests/AppBundle/Entity/EnclosureTest.php
+@@ -4,6 +4,7 @@ namespace Tests\AppBundle\Entity;
+ 
+ use AppBundle\Entity\Dinosaur;
+ use AppBundle\Entity\Enclosure;
++use AppBundle\Exception\NotABuffetException;
+ use PHPUnit\Framework\TestCase;
+ 
+ class EnclosureTest extends TestCase
+@@ -24,4 +25,15 @@ class EnclosureTest extends TestCase
+ 
+         $this->assertCount(2, $enclosure->getDinosaurs());
+     }
++
++    public function testItDoesNotAllowToAddCarnivorousDinosaursToNonCarnivorousEnclosure()
++    {
++        $enclosure = new Enclosure();
++
++        $enclosure->addDinosaur(new Dinosaur());
++
++        $this->expectException(NotABuffetException::class);
++
++        $enclosure->addDinosaur(new Dinosaur('Velociraptor', true));
++    }
+ }

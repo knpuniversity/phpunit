@@ -1,0 +1,20 @@
+diff --git a/tests/AppBundle/Entity/EnclosureTest.php b/tests/AppBundle/Entity/EnclosureTest.php
+index ca35496..1f7f647 100644
+--- a/tests/AppBundle/Entity/EnclosureTest.php
++++ b/tests/AppBundle/Entity/EnclosureTest.php
+@@ -36,4 +36,15 @@ class EnclosureTest extends TestCase
+ 
+         $enclosure->addDinosaur(new Dinosaur('Velociraptor', true));
+     }
++
++    /**
++     * @expectedException \AppBundle\Exception\NotABuffetException
++     */
++    public function testItDoesNotAllowToAddNonCarnivorousDinosaursToCarnivorousEnclosure()
++    {
++        $enclosure = new Enclosure(true);
++
++        $enclosure->addDinosaur(new Dinosaur('Velociraptor', true));
++        $enclosure->addDinosaur(new Dinosaur());
++    }
+ }

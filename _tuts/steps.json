@@ -64,7 +64,52 @@
             "id": "marking-a-test-as-skipped",
             "name": "Marking a test as skipped",
             "description": null
+        },
+        {
+            "id": "data-provider-test",
+            "name": "Data provider: test",
+            "description": null
+        },
+        {
+            "id": "data-provider-initial-specification-method",
+            "name": "Data provider: initial specification method",
+            "description": null
+        },
+        {
+            "id": "data-provider-pass-large-assertion-in-specification-method",
+            "name": "Data provider: pass large assertion in specification method",
+            "description": null
+        },
+        {
+            "id": "data-provider-pass-carnivorous-assertion-in-specification-method",
+            "name": "Data provider: pass carnivorous assertion in specification method",
+            "description": null
+        },
+        {
+            "id": "enclosure-empty-by-default",
+            "name": "Enclosure: empty by default",
+            "description": null
+        },
+        {
+            "id": "enclosure-testing-with-dependencies-on-other-objects",
+            "name": "Enclosure: testing with dependencies on other objects",
+            "description": null
+        },
+        {
+            "id": "exceptions-test-expecting-exception",
+            "name": "Exceptions: test expecting exception",
+            "description": null
+        },
+        {
+            "id": "exceptions-code-throwing-exception",
+            "name": "Exceptions: code throwing exception",
+            "description": null
+        },
+        {
+            "id": "exceptions-test-with-annotations",
+            "name": "Exceptions: test with annotations",
+            "description": null
         }
     ],
-    "sha": "0fcbc08aa6c7f8e9b348585e8202c76800fa66e6"
+    "sha": "ffefc424700b415ebb41ba0b941dce4fbcee8afc"
 }

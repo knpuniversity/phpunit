@@ -1,0 +1,46 @@
+diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
+index 9147e29..5cca59d 100644
+--- a/src/AppBundle/Entity/Enclosure.php
++++ b/src/AppBundle/Entity/Enclosure.php
+@@ -2,6 +2,7 @@
+ 
+ namespace AppBundle\Entity;
+ 
++use AppBundle\Exception\NotABuffetException;
+ use Doctrine\Common\Collections\ArrayCollection;
+ use Doctrine\ORM\Mapping as ORM;
+ 
+@@ -17,9 +18,16 @@ class Enclosure
+      */
+     private $dinosaurs;
+ 
+-    public function __construct()
++    /**
++     * @var bool
++     * @ORM\Column(type="boolean")
++     */
++    private $isCarnivorous;
++
++    public function __construct(bool $isCarnivorous = false)
+     {
+         $this->dinosaurs = new ArrayCollection();
++        $this->isCarnivorous = $isCarnivorous;
+     }
+ 
+     public function getDinosaurs(): iterable
+@@ -29,6 +37,15 @@ class Enclosure
+ 
+     public function addDinosaur(Dinosaur $dinosaur): void
+     {
++        if ($dinosaur->isCarnivorous() !== $this->isCarnivorous()) {
++            throw new NotABuffetException();
++        }
++
+         $this->dinosaurs[] = $dinosaur;
+     }
++
++    public function isCarnivorous(): bool
++    {
++        return $this->isCarnivorous;
++    }
+ }
