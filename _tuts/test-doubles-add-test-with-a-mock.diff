@@ -1,0 +1,123 @@
+diff --git a/src/AppBundle/Entity/History.php b/src/AppBundle/Entity/History.php
+new file mode 100644
+index 0000000..9c70ac3
+--- /dev/null
++++ b/src/AppBundle/Entity/History.php
+@@ -0,0 +1,42 @@
++<?php
++
++namespace AppBundle\Entity;
++
++use Doctrine\ORM\Mapping as ORM;
++
++/**
++ * @ORM\Entity
++ * @ORM\Table(name="histories")
++ */
++class History
++{
++    /**
++     * @ORM\Id
++     * @ORM\GeneratedValue(strategy="AUTO")
++     * @ORM\Column(type="integer")
++     */
++    private $id;
++
++    /**
++     * @ORM\Column(type="integer")
++     */
++    private $location;
++
++    /**
++     * @var Tracker
++     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Tracker")
++     */
++    private $tracker;
++
++    /**
++     * @ORM\Column(type="datetime")
++     */
++    private $createdAt;
++
++    public function __construct(Tracker $tracker)
++    {
++        $this->tracker = $tracker;
++        $this->location = $tracker->getLocation();
++        $this->createdAt = new \DateTime();
++    }
++}
+diff --git a/src/AppBundle/Service/TrackerService.php b/src/AppBundle/Service/TrackerService.php
+new file mode 100644
+index 0000000..0165de3
+--- /dev/null
++++ b/src/AppBundle/Service/TrackerService.php
+@@ -0,0 +1,33 @@
++<?php
++
++namespace AppBundle\Service;
++
++use AppBundle\Entity\Tracker;
++use Doctrine\Common\Persistence\ObjectManager;
++
++class TrackerService
++{
++    /**
++     * @var ObjectManager
++     */
++    private $objectManager;
++
++    /**
++     * @var Tracker[]
++     */
++    private $trackers = [];
++
++    public function __construct(ObjectManager $objectManager)
++    {
++        $this->objectManager = $objectManager;
++    }
++
++    public function addTracker(Tracker $tracker): void
++    {
++        $this->trackers[] = $tracker;
++    }
++
++    public function takeSnapshot(): void
++    {
++    }
++}
+diff --git a/tests/AppBundle/Service/TrackerServiceTest.php b/tests/AppBundle/Service/TrackerServiceTest.php
+new file mode 100644
+index 0000000..a005df4
+--- /dev/null
++++ b/tests/AppBundle/Service/TrackerServiceTest.php
+@@ -0,0 +1,30 @@
++<?php
++
++namespace Tests\AppBundle\Service;
++
++use AppBundle\Entity\Tracker;
++use AppBundle\Service\TrackerService;
++use Doctrine\Common\Persistence\ObjectManager;
++use PHPUnit\Framework\TestCase;
++
++class TrackerServiceTest extends TestCase
++{
++    public function testItStoresTheLocationOfAllTrackers()
++    {
++        $objectManager = $this->createMock(ObjectManager::class);
++
++        $objectManager->expects($this->exactly(2))
++            ->method('persist')
++            ->with($this->isInstanceOf(History::class));
++
++        $objectManager->expects($this->once())
++            ->method('flush');
++
++        $trackerService = new TrackerService($objectManager);
++
++        $trackerService->addTracker(new Tracker());
++        $trackerService->addTracker(new Tracker());
++
++        $trackerService->takeSnapshot();
++    }
++}

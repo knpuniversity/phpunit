@@ -109,7 +109,52 @@
             "id": "exceptions-test-with-annotations",
             "name": "Exceptions: test with annotations",
             "description": null
+        },
+        {
+            "id": "exceptions-test-with-message",
+            "name": "Exceptions: test with message",
+            "description": null
+        },
+        {
+            "id": "exceptions-throw-exception-with-message",
+            "name": "Exceptions: throw exception with message",
+            "description": null
+        },
+        {
+            "id": "test-doubles-add-failing-test-using-real-tracker-object",
+            "name": "Test doubles: add failing test using real tracker object",
+            "description": null
+        },
+        {
+            "id": "test-doubles-add-tracker-stub",
+            "name": "Test doubles: add tracker stub",
+            "description": null
+        },
+        {
+            "id": "test-doubles-tracker-testing-with-empty-return-map",
+            "name": "Test doubles: tracker testing with empty return map",
+            "description": null
+        },
+        {
+            "id": "test-doubles-add-return-map-choices",
+            "name": "Test doubles: add return map choices",
+            "description": null
+        },
+        {
+            "id": "test-doubles-return-different-value-on-consecutive-calls",
+            "name": "Test doubles: return different value on consecutive calls",
+            "description": null
+        },
+        {
+            "id": "test-doubles-stub-is-throwing-an-exception",
+            "name": "Test doubles: stub is throwing an exception",
+            "description": null
+        },
+        {
+            "id": "test-doubles-add-test-with-a-mock",
+            "name": "Test doubles: add test with a mock",
+            "description": null
         }
     ],
-    "sha": "ffefc424700b415ebb41ba0b941dce4fbcee8afc"
+    "sha": "6a82ab6cd43df670ef4f58c89042df071af02135"
 }

@@ -1,0 +1,24 @@
+diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
+index d184a07..1a13a0b 100644
+--- a/tests/AppBundle/Entity/DinosaurTest.php
++++ b/tests/AppBundle/Entity/DinosaurTest.php
+@@ -78,4 +78,19 @@ class DinosaurTest extends TestCase
+             'battery healthy' => ['yes', 'battery', 'healthy', 'Battery should be healthy'],
+         ];
+     }
++
++    public function testDinosaurIsMoving()
++    {
++        $tracker = $this->createMock(Tracker::class);
++
++        $tracker->method('getLocation')
++            ->willReturn(5, 3, 3);
++
++        $dinosaur = new Dinosaur();
++        $dinosaur->addTracker($tracker);
++
++        $this->assertContains('area "5"', $dinosaur->track());
++        $this->assertContains('area "3"', $dinosaur->track());
++        $this->assertContains('area "3"', $dinosaur->track());
++    }
+ }

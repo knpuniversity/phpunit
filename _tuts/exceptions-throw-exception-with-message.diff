@@ -1,0 +1,15 @@
+diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
+index 62548fc..4fc3cd6 100644
+--- a/src/AppBundle/Entity/Enclosure.php
++++ b/src/AppBundle/Entity/Enclosure.php
+@@ -58,6 +58,10 @@ class Enclosure
+ 
+     public function addSecurity($security): void
+     {
++        if (!$security instanceof Security) {
++            throw new \InvalidArgumentException('This does not look safe');
++        }
++
+         $this->securities[] = $security;
+     }
+ }

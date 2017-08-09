@@ -1,0 +1,15 @@
+diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
+index be22975..2480c71 100644
+--- a/tests/AppBundle/Entity/DinosaurTest.php
++++ b/tests/AppBundle/Entity/DinosaurTest.php
+@@ -31,7 +31,9 @@ class DinosaurTest extends TestCase
+ 
+     public function testCanGetAPositionOfDinosaur()
+     {
+-        $tracker = new Tracker();
++        $tracker = $this->createMock(Tracker::class);
++        $tracker->method('getLocation')
++            ->willReturn(5);
+ 
+         $dinosaur = new Dinosaur();
+         $dinosaur->addTracker($tracker);

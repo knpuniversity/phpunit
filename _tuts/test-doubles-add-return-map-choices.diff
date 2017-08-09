@@ -1,0 +1,16 @@
+diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
+index bb136e3..d184a07 100644
+--- a/tests/AppBundle/Entity/DinosaurTest.php
++++ b/tests/AppBundle/Entity/DinosaurTest.php
+@@ -52,7 +52,10 @@ class DinosaurTest extends TestCase
+     )
+     {
+         $tracker = $this->createMock(Tracker::class);
+-        $map = [];
++        $map = [
++            ['battery', 'healthy', 'yes'],
++            ['gps', 'online', 'no'],
++        ];
+ 
+         $tracker->method('test')
+             ->will($this->returnValueMap($map));

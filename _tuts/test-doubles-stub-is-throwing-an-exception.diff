@@ -1,0 +1,51 @@
+diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
+index d0a3f52..80b7e3f 100644
+--- a/src/AppBundle/Entity/Dinosaur.php
++++ b/src/AppBundle/Entity/Dinosaur.php
+@@ -94,4 +94,9 @@ class Dinosaur
+             $this->tracker->getLocation()
+         );
+     }
++
++    public function incapacitate(): void
++    {
++        $this->tracker->zap();
++    }
+ }
+diff --git a/src/AppBundle/Entity/Tracker.php b/src/AppBundle/Entity/Tracker.php
+index f6e014c..f9a2436 100644
+--- a/src/AppBundle/Entity/Tracker.php
++++ b/src/AppBundle/Entity/Tracker.php
+@@ -20,4 +20,8 @@ class Tracker
+         // TODO: replace with real logic before pushing to production :)
+         return random_int(0, 1) ? 'yes' : 'no';
+     }
++
++    public function zap(): void
++    {
++    }
+ }
+diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
+index 1a13a0b..10cba46 100644
+--- a/tests/AppBundle/Entity/DinosaurTest.php
++++ b/tests/AppBundle/Entity/DinosaurTest.php
+@@ -93,4 +93,19 @@ class DinosaurTest extends TestCase
+         $this->assertContains('area "3"', $dinosaur->track());
+         $this->assertContains('area "3"', $dinosaur->track());
+     }
++
++    public function testReceivingExceptionFromAStub()
++    {
++        $tracker = $this->createMock(Tracker::class);
++
++        $tracker->method('zap')
++            ->willThrowException(new \RuntimeException('TODO in the next sprint'));
++
++        $dinosaur = new Dinosaur();
++        $dinosaur->addTracker($tracker);
++
++        $this->expectException(\RuntimeException::class);
++
++        $dinosaur->incapacitate();
++    }
+ }
