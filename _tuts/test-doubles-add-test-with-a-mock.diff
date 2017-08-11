@@ -87,14 +87,15 @@ index 0000000..0165de3
 +}
 diff --git a/tests/AppBundle/Service/TrackerServiceTest.php b/tests/AppBundle/Service/TrackerServiceTest.php
 new file mode 100644
-index 0000000..a005df4
+index 0000000..f7314b9
 --- /dev/null
 +++ b/tests/AppBundle/Service/TrackerServiceTest.php
-@@ -0,0 +1,30 @@
+@@ -0,0 +1,31 @@
 +<?php
 +
 +namespace Tests\AppBundle\Service;
 +
++use AppBundle\Entity\History;
 +use AppBundle\Entity\Tracker;
 +use AppBundle\Service\TrackerService;
 +use Doctrine\Common\Persistence\ObjectManager;

@@ -1,0 +1,15 @@
+diff --git a/phpunit.xml.dist b/phpunit.xml.dist
+index 5a12e67..94ea1e8 100644
+--- a/phpunit.xml.dist
++++ b/phpunit.xml.dist
+@@ -16,6 +16,10 @@
+         <testsuite name="Project Test Suite">
+             <directory>tests</directory>
+         </testsuite>
++
++        <testsuite name="entities">
++            <directory>tests/*Bundle/Entity</directory>
++        </testsuite>
+     </testsuites>
+ 
+     <filter>

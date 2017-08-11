@@ -154,7 +154,32 @@
             "id": "test-doubles-add-test-with-a-mock",
             "name": "Test doubles: add test with a mock",
             "description": null
+        },
+        {
+            "id": "test-doubles-fulfill-persist-method-expectation-of-mock",
+            "name": "Test doubles: fulfill persist method expectation of mock",
+            "description": null
+        },
+        {
+            "id": "test-doubles-fulfill-flush-method-expectation-of-mock",
+            "name": "Test doubles: fulfill flush method expectation of mock ",
+            "description": null
+        },
+        {
+            "id": "test-doubles-mocking-with-prophecy",
+            "name": "Test doubles: mocking with prophecy",
+            "description": null
+        },
+        {
+            "id": "introduction-to-cli-configuration",
+            "name": "Introduction to CLI & configuration",
+            "description": null
+        },
+        {
+            "id": "integration-test-prepare-database",
+            "name": "Integration test: prepare database",
+            "description": null
         }
     ],
-    "sha": "6a82ab6cd43df670ef4f58c89042df071af02135"
+    "sha": "ab4ca043ad80ce3be5218802130b1d33ad2629e1"
 }

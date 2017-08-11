@@ -1,0 +1,23 @@
+diff --git a/src/AppBundle/Service/TrackerService.php b/src/AppBundle/Service/TrackerService.php
+index 0165de3..122e1ca 100644
+--- a/src/AppBundle/Service/TrackerService.php
++++ b/src/AppBundle/Service/TrackerService.php
+@@ -2,6 +2,7 @@
+ 
+ namespace AppBundle\Service;
+ 
++use AppBundle\Entity\History;
+ use AppBundle\Entity\Tracker;
+ use Doctrine\Common\Persistence\ObjectManager;
+ 
+@@ -29,5 +30,10 @@ class TrackerService
+ 
+     public function takeSnapshot(): void
+     {
++        foreach ($this->trackers as $tracker) {
++            $history = new History($tracker);
++
++            $this->objectManager->persist($history);
++        }
+     }
+ }

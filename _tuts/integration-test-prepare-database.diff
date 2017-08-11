@@ -1,0 +1,54 @@
+diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
+index 80b7e3f..d4bc7ad 100644
+--- a/src/AppBundle/Entity/Dinosaur.php
++++ b/src/AppBundle/Entity/Dinosaur.php
+@@ -12,6 +12,13 @@ class Dinosaur
+ {
+     const LARGE = 7;
+ 
++    /**
++     * @ORM\Id
++     * @ORM\GeneratedValue(strategy="AUTO")
++     * @ORM\Column(type="integer")
++     */
++    private $id;
++
+     /**
+      * @ORM\Column(type="integer")
+      */
+diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
+index 4fc3cd6..915217e 100644
+--- a/src/AppBundle/Entity/Enclosure.php
++++ b/src/AppBundle/Entity/Enclosure.php
+@@ -12,6 +12,13 @@ use Doctrine\ORM\Mapping as ORM;
+  */
+ class Enclosure
+ {
++    /**
++     * @ORM\Id
++     * @ORM\GeneratedValue(strategy="AUTO")
++     * @ORM\Column(type="integer")
++     */
++    private $id;
++
+     /**
+      * @var iterable
+      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dinosaur", mappedBy="enclosure")
+diff --git a/src/AppBundle/Entity/Tracker.php b/src/AppBundle/Entity/Tracker.php
+index f9a2436..aa25919 100644
+--- a/src/AppBundle/Entity/Tracker.php
++++ b/src/AppBundle/Entity/Tracker.php
+@@ -10,6 +10,13 @@ use Doctrine\ORM\Mapping as ORM;
+  */
+ class Tracker
+ {
++    /**
++     * @ORM\Id
++     * @ORM\GeneratedValue(strategy="AUTO")
++     * @ORM\Column(type="integer")
++     */
++    private $id;
++
+     public function getLocation(): int
+     {
+         return random_int(1, 9);
