@@ -1,6 +1,6 @@
 diff --git a/tests/AppBundle/Service/TrackerServiceProphecyTest.php b/tests/AppBundle/Service/TrackerServiceProphecyTest.php
 new file mode 100644
-index 0000000..5195cca
+index 0000000..3a1edbd
 --- /dev/null
 +++ b/tests/AppBundle/Service/TrackerServiceProphecyTest.php
 @@ -0,0 +1,30 @@
@@ -11,7 +11,7 @@ index 0000000..5195cca
 +use AppBundle\Entity\History;
 +use AppBundle\Entity\Tracker;
 +use AppBundle\Service\TrackerService;
-+use Doctrine\Common\Persistence\ObjectManager;
++use Doctrine\ORM\EntityManagerInterface;
 +use PHPUnit\Framework\TestCase;
 +use Prophecy\Argument;
 +
@@ -19,14 +19,14 @@ index 0000000..5195cca
 +{
 +    public function testItStoresTheLocationOfAllTrackers()
 +    {
-+        $objectManager = $this->prophesize(ObjectManager::class);
++        $entityManager = $this->prophesize(EntityManagerInterface::class);
 +
-+        $objectManager->persist(Argument::type(History::class))
++        $entityManager->persist(Argument::type(History::class))
 +            ->shouldBeCalledTimes(2);
 +
-+        $objectManager->flush()->shouldBeCalled();
++        $entityManager->flush()->shouldBeCalled();
 +
-+        $trackerService = new TrackerService($objectManager->reveal());
++        $trackerService = new TrackerService($entityManager->reveal());
 +
 +        $trackerService->addTracker(new Tracker());
 +        $trackerService->addTracker(new Tracker());

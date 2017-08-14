@@ -48,7 +48,7 @@ index 0000000..9c70ac3
 +}
 diff --git a/src/AppBundle/Service/TrackerService.php b/src/AppBundle/Service/TrackerService.php
 new file mode 100644
-index 0000000..0165de3
+index 0000000..43814d6
 --- /dev/null
 +++ b/src/AppBundle/Service/TrackerService.php
 @@ -0,0 +1,33 @@
@@ -57,23 +57,23 @@ index 0000000..0165de3
 +namespace AppBundle\Service;
 +
 +use AppBundle\Entity\Tracker;
-+use Doctrine\Common\Persistence\ObjectManager;
++use Doctrine\ORM\EntityManagerInterface;
 +
 +class TrackerService
 +{
 +    /**
-+     * @var ObjectManager
++     * @var EntityManagerInterface
 +     */
-+    private $objectManager;
++    private $entityManager;
 +
 +    /**
 +     * @var Tracker[]
 +     */
 +    private $trackers = [];
 +
-+    public function __construct(ObjectManager $objectManager)
++    public function __construct(EntityManagerInterface $entityManager)
 +    {
-+        $this->objectManager = $objectManager;
++        $this->entityManager = $entityManager;
 +    }
 +
 +    public function addTracker(Tracker $tracker): void
@@ -87,7 +87,7 @@ index 0000000..0165de3
 +}
 diff --git a/tests/AppBundle/Service/TrackerServiceTest.php b/tests/AppBundle/Service/TrackerServiceTest.php
 new file mode 100644
-index 0000000..f7314b9
+index 0000000..a77faac
 --- /dev/null
 +++ b/tests/AppBundle/Service/TrackerServiceTest.php
 @@ -0,0 +1,31 @@
@@ -98,23 +98,23 @@ index 0000000..f7314b9
 +use AppBundle\Entity\History;
 +use AppBundle\Entity\Tracker;
 +use AppBundle\Service\TrackerService;
-+use Doctrine\Common\Persistence\ObjectManager;
++use Doctrine\ORM\EntityManagerInterface;
 +use PHPUnit\Framework\TestCase;
 +
 +class TrackerServiceTest extends TestCase
 +{
 +    public function testItStoresTheLocationOfAllTrackers()
 +    {
-+        $objectManager = $this->createMock(ObjectManager::class);
++        $entityManager = $this->createMock(EntityManagerInterface::class);
 +
-+        $objectManager->expects($this->exactly(2))
++        $entityManager->expects($this->exactly(2))
 +            ->method('persist')
 +            ->with($this->isInstanceOf(History::class));
 +
-+        $objectManager->expects($this->once())
++        $entityManager->expects($this->once())
 +            ->method('flush');
 +
-+        $trackerService = new TrackerService($objectManager);
++        $trackerService = new TrackerService($entityManager);
 +
 +        $trackerService->addTracker(new Tracker());
 +        $trackerService->addTracker(new Tracker());

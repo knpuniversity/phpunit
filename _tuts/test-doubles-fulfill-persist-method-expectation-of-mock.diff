@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Service/TrackerService.php b/src/AppBundle/Service/TrackerService.php
-index 0165de3..122e1ca 100644
+index 43814d6..7ef0f20 100644
 --- a/src/AppBundle/Service/TrackerService.php
 +++ b/src/AppBundle/Service/TrackerService.php
 @@ -2,6 +2,7 @@
@@ -8,7 +8,7 @@ index 0165de3..122e1ca 100644
  
 +use AppBundle\Entity\History;
  use AppBundle\Entity\Tracker;
- use Doctrine\Common\Persistence\ObjectManager;
+ use Doctrine\ORM\EntityManagerInterface;
  
 @@ -29,5 +30,10 @@ class TrackerService
  
@@ -17,7 +17,7 @@ index 0165de3..122e1ca 100644
 +        foreach ($this->trackers as $tracker) {
 +            $history = new History($tracker);
 +
-+            $this->objectManager->persist($history);
++            $this->entityManager->persist($history);
 +        }
      }
  }

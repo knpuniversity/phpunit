@@ -1,0 +1,68 @@
+diff --git a/tests/AppBundle/Service/TrackerServiceIntegrationTest.php b/tests/AppBundle/Service/TrackerServiceIntegrationTest.php
+new file mode 100644
+index 0000000..0210e78
+--- /dev/null
++++ b/tests/AppBundle/Service/TrackerServiceIntegrationTest.php
+@@ -0,0 +1,62 @@
++<?php
++
++namespace Tests\AppBundle\Service;
++
++use AppBundle\Entity\History;
++use AppBundle\Entity\Tracker;
++use AppBundle\Service\TrackerService;
++use Doctrine\ORM\EntityManagerInterface;
++use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
++
++class TrackerServiceIntegrationTest extends KernelTestCase
++{
++    /**
++     * @var EntityManagerInterface
++     */
++    private $entityManager;
++
++    /**
++     * @var TrackerService
++     */
++    private $trackerService;
++
++    protected function setUp()
++    {
++        self::bootKernel();
++
++        $this->entityManager = static::$kernel->getContainer()
++            ->get('doctrine')
++            ->getManager();
++
++        $this->trackerService = new TrackerService($this->entityManager);
++    }
++
++    public function testItStoresTheLocationOfAllTrackers()
++    {
++        $tracker1 = new Tracker();
++        $tracker2 = new Tracker();
++
++        $this->entityManager->persist($tracker1);
++        $this->entityManager->persist($tracker2);
++
++        $this->trackerService->addTracker($tracker1);
++        $this->trackerService->addTracker($tracker2);
++
++        $this->trackerService->takeSnapshot();
++
++        $query = 'SELECT COUNT(h) FROM ' . History::class . ' h';
++        $count = $this->entityManager
++            ->createQuery($query)
++            ->getSingleScalarResult();
++
++        $this->assertSame(2, $count, 'Amount of history records is not the same');
++    }
++
++    protected function tearDown()
++    {
++        parent::tearDown();
++
++        $this->entityManager->close();
++        $this->entityManager = null; // avoid memory leaks
++    }
++}
