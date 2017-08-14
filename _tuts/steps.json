@@ -184,7 +184,17 @@
             "id": "integration-tests-write-test",
             "name": "Integration tests: write test",
             "description": null
+        },
+        {
+            "id": "integration-tests-use-separate-database-for-testing",
+            "name": "Integration tests: use separate database for testing",
+            "description": null
+        },
+        {
+            "id": "integration-tests-truncate-tables-before-tests",
+            "name": "Integration tests: truncate tables before tests",
+            "description": null
         }
     ],
-    "sha": "586053362956e8bc88f02517b9fb92daacd9e00f"
+    "sha": "15de693e99da3988e108ac6b0d4686dbb87d320d"
 }

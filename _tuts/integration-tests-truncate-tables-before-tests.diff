@@ -1,0 +1,40 @@
+diff --git a/tests/AppBundle/Service/TrackerServiceIntegrationTest.php b/tests/AppBundle/Service/TrackerServiceIntegrationTest.php
+index 4180538..10a3182 100644
+--- a/tests/AppBundle/Service/TrackerServiceIntegrationTest.php
++++ b/tests/AppBundle/Service/TrackerServiceIntegrationTest.php
+@@ -28,6 +28,8 @@ class TrackerServiceIntegrationTest extends KernelTestCase
+             ->get('doctrine')
+             ->getManager();
+ 
++        $this->truncateEntities([History::class, Tracker::class]);
++
+         $this->trackerService = new TrackerService($this->entityManager);
+     }
+ 
+@@ -59,4 +61,26 @@ class TrackerServiceIntegrationTest extends KernelTestCase
+         $this->entityManager->close();
+         $this->entityManager = null; // avoid memory leaks
+     }
++
++    private function truncateEntities(array $entities): void
++    {
++        $connection = $this->entityManager->getConnection();
++        $databasePlatform = $connection->getDatabasePlatform();
++
++        if ($databasePlatform->supportsForeignKeyConstraints()) {
++            $connection->query('SET FOREIGN_KEY_CHECKS=0');
++        }
++
++        foreach ($entities as $entity) {
++            $query = $databasePlatform->getTruncateTableSQL(
++                $this->entityManager->getClassMetadata($entity)->getTableName()
++            );
++
++            $connection->executeUpdate($query);
++        }
++
++        if ($databasePlatform->supportsForeignKeyConstraints()) {
++            $connection->query('SET FOREIGN_KEY_CHECKS=1');
++        }
++    }
+ }
