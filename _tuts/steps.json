@@ -161,13 +161,8 @@
             "description": null
         },
         {
-            "id": "test-doubles-fulfill-flush-method-expectation-of-mock-alt",
-            "name": "Test doubles: fulfill flush method expectation of mock - alt",
-            "description": null
-        },
-        {
             "id": "test-doubles-fulfill-flush-method-expectation-of-mock",
-            "name": "Test doubles: fulfill flush method expectation of mock ",
+            "name": "Test doubles: fulfill flush method expectation of mock",
             "description": null
         },
         {
