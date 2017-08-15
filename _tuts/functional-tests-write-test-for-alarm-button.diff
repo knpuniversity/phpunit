@@ -1,0 +1,43 @@
+diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
+index b53475c..feac852 100644
+--- a/src/AppBundle/Entity/Enclosure.php
++++ b/src/AppBundle/Entity/Enclosure.php
+@@ -44,6 +44,11 @@ class Enclosure
+         $this->securities = new ArrayCollection();
+     }
+ 
++    public function getId(): ?int
++    {
++        return $this->id;
++    }
++
+     public function getDinosaurs(): iterable
+     {
+         return $this->dinosaurs;
+diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/AppBundle/Controller/DefaultControllerTest.php
+index bfa14d0..c922dbb 100644
+--- a/tests/AppBundle/Controller/DefaultControllerTest.php
++++ b/tests/AppBundle/Controller/DefaultControllerTest.php
+@@ -10,9 +10,20 @@ class DefaultControllerTest extends WebTestCase
+ {
+     public function testTheIsAWayToSoundAnAlarmOnInactiveSecurity()
+     {
+-        $this->loadFixtures([
++        $fixtures = $this->loadFixtures([
+             LoadBasicParkData::class,
+             LoadSecurityData::class,
+-        ]);
++        ])->getReferenceRepository();
++
++        $client = $this->makeClient();
++
++        $crawler = $client->request('GET', '/');
++
++        $this->assertStatusCode(200, $client);
++
++        $enclosure = $fixtures->getReference('carnivorous-enclosure');
++        $selector = '#enclosure-' . $enclosure->getId() . ' .alarm-button';
++
++        $this->assertGreaterThan(1, $crawler->filter($selector)->count());
+     }
+ }

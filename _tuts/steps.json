@@ -194,7 +194,22 @@
             "id": "integration-tests-truncate-tables-before-tests",
             "name": "Integration tests: truncate tables before tests",
             "description": null
+        },
+        {
+            "id": "functional-tests-intro",
+            "name": "Functional tests: intro",
+            "description": null
+        },
+        {
+            "id": "functional-tests-load-fixtures",
+            "name": "Functional tests: load fixtures",
+            "description": null
+        },
+        {
+            "id": "functional-tests-write-test-for-alarm-button",
+            "name": "Functional tests: write test for alarm button",
+            "description": null
         }
     ],
-    "sha": "15de693e99da3988e108ac6b0d4686dbb87d320d"
+    "sha": "95469f9e5ed977705c6023a18353a031def0cf40"
 }
