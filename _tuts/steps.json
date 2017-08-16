@@ -209,7 +209,27 @@
             "id": "functional-tests-write-test-for-alarm-button",
             "name": "Functional tests: write test for alarm button",
             "description": null
+        },
+        {
+            "id": "functional-tests-add-enclosures-table",
+            "name": "Functional tests: add enclosures table",
+            "description": null
+        },
+        {
+            "id": "functional-tests-add-alarm-button",
+            "name": "Functional tests: add alarm button",
+            "description": null
+        },
+        {
+            "id": "functional-tests-write-a-form-submission-test",
+            "name": "Functional tests: write a form submission test",
+            "description": null
+        },
+        {
+            "id": "functional-tests-add-form-to-grow-from-specification",
+            "name": "Functional tests: add form to grow from specification",
+            "description": null
         }
     ],
-    "sha": "95469f9e5ed977705c6023a18353a031def0cf40"
+    "sha": "ed3fe01c9cec19ca843c1b194015b95d21347e84"
 }

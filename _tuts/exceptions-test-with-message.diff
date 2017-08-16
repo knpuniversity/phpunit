@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index 5cca59d..62548fc 100644
+index b91ab4a..7d75094 100644
 --- a/src/AppBundle/Entity/Enclosure.php
 +++ b/src/AppBundle/Entity/Enclosure.php
 @@ -24,10 +24,17 @@ class Enclosure
@@ -30,58 +30,6 @@ index 5cca59d..62548fc 100644
 +        $this->securities[] = $security;
 +    }
  }
-diff --git a/src/AppBundle/Entity/Security.php b/src/AppBundle/Entity/Security.php
-new file mode 100644
-index 0000000..d35a5f4
---- /dev/null
-+++ b/src/AppBundle/Entity/Security.php
-@@ -0,0 +1,46 @@
-+<?php
-+
-+namespace AppBundle\Entity;
-+
-+use Doctrine\ORM\Mapping as ORM;
-+
-+/**
-+ * @ORM\Entity
-+ * @ORM\Table(name="securities")
-+ */
-+class Security
-+{
-+    /**
-+     * @ORM\Id
-+     * @ORM\GeneratedValue(strategy="AUTO")
-+     * @ORM\Column(type="integer")
-+     */
-+    private $id;
-+
-+    /**
-+     * @ORM\Column(type="string")
-+     */
-+    private $name;
-+
-+    /**
-+     * @ORM\Column(type="boolean")
-+     */
-+    private $isActive;
-+
-+    /**
-+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Enclosure")
-+     */
-+    private $enclosure;
-+
-+    public function __construct(string $name, bool $isActive, Enclosure $enclosure)
-+    {
-+        $this->name = $name;
-+        $this->isActive = $isActive;
-+        $this->enclosure = $enclosure;
-+    }
-+
-+    public function getIsActive(): bool
-+    {
-+        return $this->isActive;
-+    }
-+}
 diff --git a/tests/AppBundle/Entity/EnclosureTest.php b/tests/AppBundle/Entity/EnclosureTest.php
 index 1f7f647..e7fd14d 100644
 --- a/tests/AppBundle/Entity/EnclosureTest.php

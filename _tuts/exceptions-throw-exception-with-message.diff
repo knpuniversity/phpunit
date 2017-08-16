@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index 62548fc..4fc3cd6 100644
+index 7d75094..3b515ec 100644
 --- a/src/AppBundle/Entity/Enclosure.php
 +++ b/src/AppBundle/Entity/Enclosure.php
 @@ -58,6 +58,10 @@ class Enclosure

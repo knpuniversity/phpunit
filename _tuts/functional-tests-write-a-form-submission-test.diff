@@ -1,0 +1,36 @@
+diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/AppBundle/Controller/DefaultControllerTest.php
+index 656efd6..f3ee993 100644
+--- a/tests/AppBundle/Controller/DefaultControllerTest.php
++++ b/tests/AppBundle/Controller/DefaultControllerTest.php
+@@ -26,4 +26,31 @@ class DefaultControllerTest extends WebTestCase
+ 
+         $this->assertGreaterThan(0, $crawler->filter($selector)->count());
+     }
++
++    public function testItGrowsADinosaurFromSpecification()
++    {
++        $this->loadFixtures([
++            LoadBasicParkData::class,
++            LoadSecurityData::class,
++        ]);
++
++        $client = $this->makeClient();
++        $client->followRedirects();
++
++        $crawler = $client->request('GET', '/');
++
++        $this->assertStatusCode(200, $client);
++
++        $form = $crawler->selectButton('Grow dinosaur')->form();
++
++        $form['enclosure']->select(3);
++        $form['specification']->setValue('large herbavore');
++
++        $client->submit($form);
++
++        $this->assertContains(
++            'Grown a large herbavore in enclosure #3',
++            $client->getResponse()->getContent()
++        );
++    }
+ }

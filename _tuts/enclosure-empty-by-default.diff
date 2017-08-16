@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index dafa52a..50f1bef 100644
+index dafa52a..1bd4777 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
 @@ -29,6 +29,12 @@ class Dinosaur
@@ -8,7 +8,7 @@ index dafa52a..50f1bef 100644
  
 +    /**
 +     * @var Enclosure
-+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Enclosure")
++     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Enclosure", inversedBy="dinosaurs")
 +     */
 +    private $enclosure;
 +
@@ -17,7 +17,7 @@ index dafa52a..50f1bef 100644
          $this->genus = $genus;
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
 new file mode 100644
-index 0000000..5a668ab
+index 0000000..b0ff46e
 --- /dev/null
 +++ b/src/AppBundle/Entity/Enclosure.php
 @@ -0,0 +1,29 @@
@@ -36,7 +36,7 @@ index 0000000..5a668ab
 +{
 +    /**
 +     * @var iterable
-+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dinosaur", mappedBy="enclosure")
++     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dinosaur", mappedBy="enclosure", cascade={"persist"})
 +     */
 +    private $dinosaurs;
 +

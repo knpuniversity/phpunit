@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index b53475c..feac852 100644
+index 98c2dd8..f81b173 100644
 --- a/src/AppBundle/Entity/Enclosure.php
 +++ b/src/AppBundle/Entity/Enclosure.php
 @@ -44,6 +44,11 @@ class Enclosure
@@ -15,7 +15,7 @@ index b53475c..feac852 100644
      {
          return $this->dinosaurs;
 diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/AppBundle/Controller/DefaultControllerTest.php
-index bfa14d0..c922dbb 100644
+index bfa14d0..656efd6 100644
 --- a/tests/AppBundle/Controller/DefaultControllerTest.php
 +++ b/tests/AppBundle/Controller/DefaultControllerTest.php
 @@ -10,9 +10,20 @@ class DefaultControllerTest extends WebTestCase
@@ -36,8 +36,8 @@ index bfa14d0..c922dbb 100644
 +        $this->assertStatusCode(200, $client);
 +
 +        $enclosure = $fixtures->getReference('carnivorous-enclosure');
-+        $selector = '#enclosure-' . $enclosure->getId() . ' .alarm-button';
++        $selector = '#enclosure-' . $enclosure->getId() . ' .button-alarm';
 +
-+        $this->assertGreaterThan(1, $crawler->filter($selector)->count());
++        $this->assertGreaterThan(0, $crawler->filter($selector)->count());
      }
  }
