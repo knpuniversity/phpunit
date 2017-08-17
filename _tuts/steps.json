@@ -229,7 +229,17 @@
             "id": "functional-tests-add-form-to-grow-from-specification",
             "name": "Functional tests: add form to grow from specification",
             "description": null
+        },
+        {
+            "id": "functional-tests-write-a-failing-test-for-alarm-command",
+            "name": "Functional tests: write a failing test for alarm command",
+            "description": null
+        },
+        {
+            "id": "functional-tests-write-option-code-in-alarm-command",
+            "name": "Functional tests: write option code in alarm command",
+            "description": null
         }
     ],
-    "sha": "ed3fe01c9cec19ca843c1b194015b95d21347e84"
+    "sha": "40e0c7753b74be8f82930929af707231ebba1194"
 }

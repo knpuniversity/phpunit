@@ -1,0 +1,56 @@
+diff --git a/src/AppBundle/Command/SoundAlarmCommand.php b/src/AppBundle/Command/SoundAlarmCommand.php
+new file mode 100644
+index 0000000..dbfb319
+--- /dev/null
++++ b/src/AppBundle/Command/SoundAlarmCommand.php
+@@ -0,0 +1,26 @@
++<?php
++
++namespace AppBundle\Command;
++
++use Symfony\Component\Console\Command\Command;
++use Symfony\Component\Console\Input\InputArgument;
++use Symfony\Component\Console\Input\InputInterface;
++use Symfony\Component\Console\Output\OutputInterface;
++
++class SoundAlarmCommand extends Command
++{
++    protected function configure()
++    {
++        $this
++            ->setName('app:sound-alarm')
++            ->addArgument('message', InputArgument::REQUIRED, 'Message to be broadcast')
++            ->setDescription('Sound alarm on security breach');
++    }
++
++    protected function execute(InputInterface $input, OutputInterface $output)
++    {
++        $message = 'Alarm: ' . $input->getArgument('message');
++
++        $output->write($message);
++    }
++}
+diff --git a/tests/AppBundle/Command/SoundAlarmCommandTest.php b/tests/AppBundle/Command/SoundAlarmCommandTest.php
+new file mode 100644
+index 0000000..2dcdfb2
+--- /dev/null
++++ b/tests/AppBundle/Command/SoundAlarmCommandTest.php
+@@ -0,0 +1,18 @@
++<?php
++
++namespace Tests\AppBundle\Command;
++
++use Liip\FunctionalTestBundle\Test\WebTestCase;
++
++class SoundAlarmCommandTest extends WebTestCase
++{
++    public function testItOutputsInUppercaseOnYellOption()
++    {
++        $output = $this->runCommand('app:sound-alarm', [
++            'message' => 'run',
++            '--yell' => true,
++        ]);
++
++        $this->assertSame('ALARM: RUN !!!', $output);
++    }
++}
