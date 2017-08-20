@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Service/TrackerService.php b/src/AppBundle/Service/TrackerService.php
-index 7ef0f20..07b873d 100644
+index 27c9449..66fc344 100644
 --- a/src/AppBundle/Service/TrackerService.php
 +++ b/src/AppBundle/Service/TrackerService.php
 @@ -35,5 +35,7 @@ class TrackerService

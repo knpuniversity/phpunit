@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index ca6cd1f..69763c1 100644
+index 6283a23..5dcec6c 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
 @@ -12,6 +12,13 @@ class Dinosaur
@@ -17,7 +17,7 @@ index ca6cd1f..69763c1 100644
       * @ORM\Column(type="integer")
       */
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index 3b515ec..59464ea 100644
+index 98f2ce5..98c2dd8 100644
 --- a/src/AppBundle/Entity/Enclosure.php
 +++ b/src/AppBundle/Entity/Enclosure.php
 @@ -12,6 +12,13 @@ use Doctrine\ORM\Mapping as ORM;
@@ -35,7 +35,7 @@ index 3b515ec..59464ea 100644
       * @var iterable
       * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dinosaur", mappedBy="enclosure", cascade={"persist"})
 diff --git a/src/AppBundle/Entity/Tracker.php b/src/AppBundle/Entity/Tracker.php
-index f9a2436..aa25919 100644
+index 77ca4c9..bdfbb53 100644
 --- a/src/AppBundle/Entity/Tracker.php
 +++ b/src/AppBundle/Entity/Tracker.php
 @@ -10,6 +10,13 @@ use Doctrine\ORM\Mapping as ORM;

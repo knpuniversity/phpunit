@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index 41f8e0f..6a80859 100644
+index 10e7cf7..fe56555 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
 @@ -82,6 +82,11 @@ class Dinosaur
@@ -30,10 +30,10 @@ index 0c6095f..f6e014c 100644
 +    }
  }
 diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
-index 2480c71..bb136e3 100644
+index 3d9cd19..630023a 100644
 --- a/tests/AppBundle/Entity/DinosaurTest.php
 +++ b/tests/AppBundle/Entity/DinosaurTest.php
-@@ -40,4 +40,39 @@ class DinosaurTest extends TestCase
+@@ -49,4 +49,39 @@ class DinosaurTest extends TestCase
  
          $this->assertContains('area "5"', $dinosaur->track());
      }

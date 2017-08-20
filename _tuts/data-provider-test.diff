@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index 56c25e4..dafa52a 100644
+index 146551d..df5832b 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
 @@ -10,6 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
@@ -35,10 +35,10 @@ index 2c0ede5..40b6c68 100644
 +    }
  }
 diff --git a/tests/AppBundle/Factory/DinosaurFactoryTest.php b/tests/AppBundle/Factory/DinosaurFactoryTest.php
-index 561c4ad..b7ca728 100644
+index 8aa11e2..c340f30 100644
 --- a/tests/AppBundle/Factory/DinosaurFactoryTest.php
 +++ b/tests/AppBundle/Factory/DinosaurFactoryTest.php
-@@ -48,4 +48,27 @@ class DinosaurFactoryTest extends TestCase
+@@ -43,4 +43,27 @@ class DinosaurFactoryTest extends TestCase
  
          $this->assertSame(1, $dinosaur->getLength());
      }

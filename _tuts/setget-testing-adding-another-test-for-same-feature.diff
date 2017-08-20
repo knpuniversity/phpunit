@@ -1,0 +1,18 @@
+diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
+index 6af9fc1..d019474 100644
+--- a/tests/AppBundle/Entity/DinosaurTest.php
++++ b/tests/AppBundle/Entity/DinosaurTest.php
+@@ -17,4 +17,13 @@ class DinosaurTest extends TestCase
+ 
+         $this->assertSame(9, $dinosaur->getLength());
+     }
++
++    public function testDinosaurHasNotShrunk()
++    {
++        $dinosaur = new Dinosaur();
++
++        $dinosaur->setLength(9);
++
++        $this->assertGreaterThan(7, $dinosaur->getLength(), 'Did you put it in the washing machine?');
++    }
+ }

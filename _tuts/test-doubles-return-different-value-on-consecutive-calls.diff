@@ -1,8 +1,8 @@
 diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
-index d184a07..1a13a0b 100644
+index 583a084..4a7c8ca 100644
 --- a/tests/AppBundle/Entity/DinosaurTest.php
 +++ b/tests/AppBundle/Entity/DinosaurTest.php
-@@ -78,4 +78,19 @@ class DinosaurTest extends TestCase
+@@ -87,4 +87,19 @@ class DinosaurTest extends TestCase
              'battery healthy' => ['yes', 'battery', 'healthy', 'Battery should be healthy'],
          ];
      }

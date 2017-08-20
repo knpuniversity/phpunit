@@ -1,6 +1,6 @@
 diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
 new file mode 100644
-index 0000000..2d7d558
+index 0000000..16551d5
 --- /dev/null
 +++ b/tests/AppBundle/Entity/DinosaurTest.php
 @@ -0,0 +1,13 @@
@@ -12,7 +12,7 @@ index 0000000..2d7d558
 +
 +class DinosaurTest extends TestCase
 +{
-+    public function testThatItFails()
++    public function testThatYourComputerWorks()
 +    {
 +        $this->assertTrue(false);
 +    }

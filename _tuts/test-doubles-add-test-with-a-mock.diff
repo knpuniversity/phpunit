@@ -48,7 +48,7 @@ index 0000000..9c70ac3
 +}
 diff --git a/src/AppBundle/Service/TrackerService.php b/src/AppBundle/Service/TrackerService.php
 new file mode 100644
-index 0000000..43814d6
+index 0000000..6c26165
 --- /dev/null
 +++ b/src/AppBundle/Service/TrackerService.php
 @@ -0,0 +1,33 @@
@@ -76,12 +76,12 @@ index 0000000..43814d6
 +        $this->entityManager = $entityManager;
 +    }
 +
-+    public function addTracker(Tracker $tracker): void
++    public function addTracker(Tracker $tracker)
 +    {
 +        $this->trackers[] = $tracker;
 +    }
 +
-+    public function takeSnapshot(): void
++    public function takeSnapshot()
 +    {
 +    }
 +}

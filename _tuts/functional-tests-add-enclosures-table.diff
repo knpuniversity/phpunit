@@ -90,19 +90,6 @@ index f81b173..f0d2f67 100644
 +        return $this->dinosaurs->count();
 +    }
  }
-diff --git a/src/AppBundle/Entity/Tracker.php b/src/AppBundle/Entity/Tracker.php
-index aa25919..bdfbb53 100644
---- a/src/AppBundle/Entity/Tracker.php
-+++ b/src/AppBundle/Entity/Tracker.php
-@@ -28,7 +28,7 @@ class Tracker
-         return random_int(0, 1) ? 'yes' : 'no';
-     }
- 
--    public function zap(): void
-+    public function zap()
-     {
-     }
- }
 diff --git a/web/css/main.css b/web/css/main.css
 new file mode 100644
 index 0000000..c8fe0fb

@@ -31,6 +31,11 @@
             "description": null
         },
         {
+            "id": "setget-testing-adding-another-test-for-same-feature",
+            "name": "SetGet testing: adding another test for same feature",
+            "description": null
+        },
+        {
             "id": "setget-testing-add-specification-test",
             "name": "SetGet testing: add specification test",
             "description": null
@@ -241,5 +246,5 @@
             "description": null
         }
     ],
-    "sha": "40e0c7753b74be8f82930929af707231ebba1194"
+    "sha": "04d22585cad0d038a6beac54acb58036d9bb1519"
 }

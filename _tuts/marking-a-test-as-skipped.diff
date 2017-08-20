@@ -1,27 +1,15 @@
 diff --git a/tests/AppBundle/Factory/DinosaurFactoryTest.php b/tests/AppBundle/Factory/DinosaurFactoryTest.php
-index d04ff56..561c4ad 100644
+index d04ff56..8aa11e2 100644
 --- a/tests/AppBundle/Factory/DinosaurFactoryTest.php
 +++ b/tests/AppBundle/Factory/DinosaurFactoryTest.php
-@@ -13,6 +13,11 @@ class DinosaurFactoryTest extends TestCase
-      */
-     private $factory;
- 
-+    /**
-+     * @var bool
-+     */
-+    private $isPopulationControlEnabled = true;
-+
-     public function setUp()
-     {
-         $this->factory = new DinosaurFactory();
-@@ -32,4 +37,15 @@ class DinosaurFactoryTest extends TestCase
+@@ -32,4 +32,15 @@ class DinosaurFactoryTest extends TestCase
      {
          $this->markTestIncomplete('Waiting for confirmation from GenLab');
      }
 +
 +    public function testItGrowsASmallVelociraptor()
 +    {
-+        if ($this->isPopulationControlEnabled) {
++        if (!class_exists('Nanny')) {
 +            $this->markTestSkipped();
 +        }
 +

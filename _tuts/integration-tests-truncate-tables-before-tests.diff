@@ -1,5 +1,5 @@
 diff --git a/tests/AppBundle/Service/TrackerServiceIntegrationTest.php b/tests/AppBundle/Service/TrackerServiceIntegrationTest.php
-index 4180538..10a3182 100644
+index 4180538..c382227 100644
 --- a/tests/AppBundle/Service/TrackerServiceIntegrationTest.php
 +++ b/tests/AppBundle/Service/TrackerServiceIntegrationTest.php
 @@ -28,6 +28,8 @@ class TrackerServiceIntegrationTest extends KernelTestCase
@@ -16,7 +16,7 @@ index 4180538..10a3182 100644
          $this->entityManager = null; // avoid memory leaks
      }
 +
-+    private function truncateEntities(array $entities): void
++    private function truncateEntities(array $entities)
 +    {
 +        $connection = $this->entityManager->getConnection();
 +        $databasePlatform = $connection->getDatabasePlatform();

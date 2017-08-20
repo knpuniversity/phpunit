@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index 1c4fd9b..b91ab4a 100644
+index 52c4c70..f90314d 100644
 --- a/src/AppBundle/Entity/Enclosure.php
 +++ b/src/AppBundle/Entity/Enclosure.php
 @@ -2,6 +2,7 @@
@@ -30,7 +30,7 @@ index 1c4fd9b..b91ab4a 100644
      public function getDinosaurs(): iterable
 @@ -29,6 +37,15 @@ class Enclosure
  
-     public function addDinosaur(Dinosaur $dinosaur): void
+     public function addDinosaur(Dinosaur $dinosaur)
      {
 +        if ($dinosaur->isCarnivorous() !== $this->isCarnivorous()) {
 +            throw new NotABuffetException();

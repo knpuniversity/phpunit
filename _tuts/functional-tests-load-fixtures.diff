@@ -284,7 +284,7 @@ index 0000000..f02342e
 +    }
 +}
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index 69763c1..4b5bbbf 100644
+index 5dcec6c..362adab 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
 @@ -106,4 +106,9 @@ class Dinosaur
@@ -292,33 +292,11 @@ index 69763c1..4b5bbbf 100644
          $this->tracker->zap();
      }
 +
-+    public function setEnclosure(Enclosure $enclosure): void
++    public function setEnclosure(Enclosure $enclosure)
 +    {
 +        $this->enclosure = $enclosure;
 +    }
  }
-diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index 59464ea..98c2dd8 100644
---- a/src/AppBundle/Entity/Enclosure.php
-+++ b/src/AppBundle/Entity/Enclosure.php
-@@ -49,7 +49,7 @@ class Enclosure
-         return $this->dinosaurs;
-     }
- 
--    public function addDinosaur(Dinosaur $dinosaur): void
-+    public function addDinosaur(Dinosaur $dinosaur)
-     {
-         if ($dinosaur->isCarnivorous() !== $this->isCarnivorous()) {
-             throw new NotABuffetException();
-@@ -63,7 +63,7 @@ class Enclosure
-         return $this->isCarnivorous;
-     }
- 
--    public function addSecurity($security): void
-+    public function addSecurity($security)
-     {
-         if (!$security instanceof Security) {
-             throw new \InvalidArgumentException('This does not look safe');
 diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/AppBundle/Controller/DefaultControllerTest.php
 index 821ebdd..bfa14d0 100644
 --- a/tests/AppBundle/Controller/DefaultControllerTest.php

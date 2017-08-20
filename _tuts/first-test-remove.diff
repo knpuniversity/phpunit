@@ -1,12 +1,12 @@
 diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
-index 2d7d558..9c64356 100644
+index 16551d5..9c64356 100644
 --- a/tests/AppBundle/Entity/DinosaurTest.php
 +++ b/tests/AppBundle/Entity/DinosaurTest.php
 @@ -6,8 +6,4 @@ use PHPUnit\Framework\TestCase;
  
  class DinosaurTest extends TestCase
  {
--    public function testThatItFails()
+-    public function testThatYourComputerWorks()
 -    {
 -        $this->assertTrue(false);
 -    }

@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index b0ff46e..1c4fd9b 100644
+index b0ff46e..52c4c70 100644
 --- a/src/AppBundle/Entity/Enclosure.php
 +++ b/src/AppBundle/Entity/Enclosure.php
 @@ -26,4 +26,9 @@ class Enclosure
@@ -7,7 +7,7 @@ index b0ff46e..1c4fd9b 100644
          return $this->dinosaurs;
      }
 +
-+    public function addDinosaur(Dinosaur $dinosaur): void
++    public function addDinosaur(Dinosaur $dinosaur)
 +    {
 +        $this->dinosaurs[] = $dinosaur;
 +    }

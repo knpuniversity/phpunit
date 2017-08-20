@@ -1,6 +1,6 @@
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
 new file mode 100644
-index 0000000..ba30da2
+index 0000000..3226294
 --- /dev/null
 +++ b/src/AppBundle/Entity/Dinosaur.php
 @@ -0,0 +1,27 @@
@@ -26,13 +26,13 @@ index 0000000..ba30da2
 +        return $this->length;
 +    }
 +
-+    public function setLength(int $length): void
++    public function setLength(int $length)
 +    {
 +        $this->length = $length;
 +    }
 +}
 diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
-index 2cc9c7f..109b4ae 100644
+index d3e2bf4..6af9fc1 100644
 --- a/tests/AppBundle/Entity/DinosaurTest.php
 +++ b/tests/AppBundle/Entity/DinosaurTest.php
 @@ -2,6 +2,7 @@

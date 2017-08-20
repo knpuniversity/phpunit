@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index 1bd4777..41f8e0f 100644
+index 2151fd1..10e7cf7 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
 @@ -35,6 +35,12 @@ class Dinosaur
@@ -20,7 +20,7 @@ index 1bd4777..41f8e0f 100644
          return $this->isCarnivorous;
      }
 +
-+    public function addTracker(Tracker $tracker): void
++    public function addTracker(Tracker $tracker)
 +    {
 +        $this->tracker = $tracker;
 +    }
@@ -57,7 +57,7 @@ index 0000000..0c6095f
 +    }
 +}
 diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
-index 75d6184..be22975 100644
+index 7d03e4e..3797c1a 100644
 --- a/tests/AppBundle/Entity/DinosaurTest.php
 +++ b/tests/AppBundle/Entity/DinosaurTest.php
 @@ -3,6 +3,7 @@
@@ -68,7 +68,7 @@ index 75d6184..be22975 100644
  use PHPUnit\Framework\TestCase;
  
  class DinosaurTest extends TestCase
-@@ -27,4 +28,14 @@ class DinosaurTest extends TestCase
+@@ -36,4 +37,14 @@ class DinosaurTest extends TestCase
              $dinosaur->getSpecification()
          );
      }

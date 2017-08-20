@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index 6a80859..ca6cd1f 100644
+index fe56555..6283a23 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
 @@ -94,4 +94,9 @@ class Dinosaur
@@ -7,13 +7,13 @@ index 6a80859..ca6cd1f 100644
          );
      }
 +
-+    public function incapacitate(): void
++    public function incapacitate()
 +    {
 +        $this->tracker->zap();
 +    }
  }
 diff --git a/src/AppBundle/Entity/Tracker.php b/src/AppBundle/Entity/Tracker.php
-index f6e014c..f9a2436 100644
+index f6e014c..77ca4c9 100644
 --- a/src/AppBundle/Entity/Tracker.php
 +++ b/src/AppBundle/Entity/Tracker.php
 @@ -20,4 +20,8 @@ class Tracker
@@ -21,15 +21,15 @@ index f6e014c..f9a2436 100644
          return random_int(0, 1) ? 'yes' : 'no';
      }
 +
-+    public function zap(): void
++    public function zap()
 +    {
 +    }
  }
 diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
-index 1a13a0b..10cba46 100644
+index 4a7c8ca..91830ea 100644
 --- a/tests/AppBundle/Entity/DinosaurTest.php
 +++ b/tests/AppBundle/Entity/DinosaurTest.php
-@@ -93,4 +93,19 @@ class DinosaurTest extends TestCase
+@@ -102,4 +102,19 @@ class DinosaurTest extends TestCase
          $this->assertContains('area "3"', $dinosaur->track());
          $this->assertContains('area "3"', $dinosaur->track());
      }
