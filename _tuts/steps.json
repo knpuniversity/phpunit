@@ -146,6 +146,11 @@
             "description": null
         },
         {
+            "id": "exceptions-fix-broken-tests",
+            "name": "Exceptions: fix broken tests",
+            "description": null
+        },
+        {
             "id": "test-doubles-add-failing-test-using-real-tracker-object",
             "name": "Test doubles: add failing test using real tracker object",
             "description": null
@@ -266,5 +271,5 @@
             "description": null
         }
     ],
-    "sha": "f4afb9955d8237d19239794eeef4adefd6052f96"
+    "sha": "09ae64d8b2012812ba0e99c3968e8b4b1fbb934d"
 }

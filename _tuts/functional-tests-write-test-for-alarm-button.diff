@@ -1,9 +1,9 @@
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index 98c2dd8..f81b173 100644
+index e60a631..c97d3f2 100644
 --- a/src/AppBundle/Entity/Enclosure.php
 +++ b/src/AppBundle/Entity/Enclosure.php
-@@ -44,6 +44,11 @@ class Enclosure
-         $this->securities = new ArrayCollection();
+@@ -42,6 +42,11 @@ class Enclosure
+         }
      }
  
 +    public function getId(): ?int

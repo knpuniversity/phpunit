@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index 42e56c4..e57918e 100644
+index 076bba3..51c4c5f 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
 @@ -36,6 +36,12 @@ class Dinosaur
@@ -15,9 +15,9 @@ index 42e56c4..e57918e 100644
      public function __construct(string $genus = 'Unknown', bool $isCarnivorous = false)
      {
          $this->genus = $genus;
-@@ -71,4 +77,17 @@ class Dinosaur
+@@ -76,4 +82,17 @@ class Dinosaur
      {
-         return $this->isCarnivorous;
+         return $this->isCarnivorous() === $dinosaur->isCarnivorous();
      }
 +
 +    public function addTracker(Tracker $tracker)

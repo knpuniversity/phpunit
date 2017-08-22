@@ -77,11 +77,11 @@ index 36ea5c0..d8c21cc 100644
      }
  }
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index f81b173..f0d2f67 100644
+index c97d3f2..1201d5e 100644
 --- a/src/AppBundle/Entity/Enclosure.php
 +++ b/src/AppBundle/Entity/Enclosure.php
-@@ -76,4 +76,9 @@ class Enclosure
- 
+@@ -86,4 +86,9 @@ class Enclosure
+     {
          $this->securities[] = $security;
      }
 +

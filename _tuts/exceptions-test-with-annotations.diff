@@ -51,7 +51,7 @@ index 0000000..894f57c
 +    }
 +}
 diff --git a/tests/AppBundle/Entity/EnclosureTest.php b/tests/AppBundle/Entity/EnclosureTest.php
-index ca35496..1f7f647 100644
+index ca35496..9dbb2a2 100644
 --- a/tests/AppBundle/Entity/EnclosureTest.php
 +++ b/tests/AppBundle/Entity/EnclosureTest.php
 @@ -36,4 +36,15 @@ class EnclosureTest extends TestCase
@@ -64,7 +64,7 @@ index ca35496..1f7f647 100644
 +     */
 +    public function testItDoesNotAllowToAddNonCarnivorousDinosaursToCarnivorousEnclosure()
 +    {
-+        $enclosure = new Enclosure(true);
++        $enclosure = new Enclosure();
 +
 +        $enclosure->addDinosaur(new Dinosaur('Velociraptor', true));
 +        $enclosure->addDinosaur(new Dinosaur());
