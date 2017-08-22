@@ -284,10 +284,10 @@ index 0000000..f02342e
 +    }
 +}
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index 5dcec6c..362adab 100644
+index f0d0d22..476f7de 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
-@@ -106,4 +106,9 @@ class Dinosaur
+@@ -107,4 +107,9 @@ class Dinosaur
      {
          $this->tracker->zap();
      }

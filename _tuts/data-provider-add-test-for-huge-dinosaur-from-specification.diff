@@ -1,0 +1,42 @@
+diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
+index df5832b..69a6f63 100644
+--- a/src/AppBundle/Entity/Dinosaur.php
++++ b/src/AppBundle/Entity/Dinosaur.php
+@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
+ class Dinosaur
+ {
+     const LARGE = 7;
++    const HUGE = 20;
+ 
+     /**
+      * @ORM\Column(type="integer")
+diff --git a/tests/AppBundle/Factory/DinosaurFactoryTest.php b/tests/AppBundle/Factory/DinosaurFactoryTest.php
+index c340f30..1597d47 100644
+--- a/tests/AppBundle/Factory/DinosaurFactoryTest.php
++++ b/tests/AppBundle/Factory/DinosaurFactoryTest.php
+@@ -66,4 +66,25 @@ class DinosaurFactoryTest extends TestCase
+             ['large herbavore', true, false],
+         ];
+     }
++
++    /**
++     * @dataProvider specificationForHugeDinosaursProvider
++     */
++    public function testItGrowsAHugeDinosaur(string $specification)
++    {
++        $dinosaur = $this->factory->growFromSpecification($specification);
++
++        $this->assertGreaterThanOrEqual(Dinosaur::HUGE, $dinosaur->getLength());
++    }
++
++    public function specificationForHugeDinosaursProvider()
++    {
++        return [
++            ['huge dinosaur'],
++            ['huge dino'],
++            ['huge'],
++            ['OMG'],
++            ['😱'],
++        ];
++    }
+ }

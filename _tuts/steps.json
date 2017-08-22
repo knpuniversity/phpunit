@@ -91,6 +91,26 @@
             "description": null
         },
         {
+            "id": "data-provider-add-test-for-huge-dinosaur-from-specification",
+            "name": "Data provider: add test for huge dinosaur from specification",
+            "description": null
+        },
+        {
+            "id": "data-provider-add-code-for-growing-huge-dinosaurs",
+            "name": "Data provider: add code for growing huge dinosaurs ",
+            "description": null
+        },
+        {
+            "id": "data-provider-add-code-to-pass-remaining-huge-dinosaur-dataset",
+            "name": "Data provider: add code to pass remaining huge dinosaur dataset",
+            "description": null
+        },
+        {
+            "id": "data-provider-refactor-specification-method-code",
+            "name": "Data provider: refactor specification method code",
+            "description": null
+        },
+        {
             "id": "enclosure-empty-by-default",
             "name": "Enclosure: empty by default",
             "description": null
@@ -246,5 +266,5 @@
             "description": null
         }
     ],
-    "sha": "04d22585cad0d038a6beac54acb58036d9bb1519"
+    "sha": "f4afb9955d8237d19239794eeef4adefd6052f96"
 }

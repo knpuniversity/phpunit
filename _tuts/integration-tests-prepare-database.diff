@@ -1,10 +1,10 @@
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index 6283a23..5dcec6c 100644
+index be9571f..f0d0d22 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
-@@ -12,6 +12,13 @@ class Dinosaur
- {
+@@ -13,6 +13,13 @@ class Dinosaur
      const LARGE = 7;
+     const HUGE = 20;
  
 +    /**
 +     * @ORM\Id

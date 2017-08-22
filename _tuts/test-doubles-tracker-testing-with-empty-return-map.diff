@@ -1,8 +1,8 @@
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index 10e7cf7..fe56555 100644
+index e57918e..e71f48e 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
-@@ -82,6 +82,11 @@ class Dinosaur
+@@ -83,6 +83,11 @@ class Dinosaur
          $this->tracker = $tracker;
      }
  
