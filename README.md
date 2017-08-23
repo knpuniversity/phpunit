@@ -59,6 +59,16 @@ Now check out the site at `http://localhost:8000`
 
 Have fun!
 
+**(optional) Add bash alias for better DX**
+
+For better DX to avoid having to use `./vendor/bin/phpunit` all the time create a bash alias:
+
+```bash
+alias phpunit=./vendor/bin/phpunit
+```
+
+From now on you will be able to run local PHPUnit from your project directory by executing `phpunit` command. Add alias command to your bash profile if you don't want to run it every time you enter a new terminal.
+
 ## Have Ideas, Feedback or an Issue?
 
 If you have suggestions or questions, please feel free to
