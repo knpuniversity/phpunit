@@ -284,12 +284,12 @@ index 0000000..f02342e
 +    }
 +}
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index ce4aece..f6c5241 100644
+index 91acac7..6c0f9ab 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
-@@ -112,4 +112,9 @@ class Dinosaur
-     {
-         $this->tracker->zap();
+@@ -102,4 +102,9 @@ class Dinosaur
+             $this->tracker->getLocation()
+         );
      }
 +
 +    public function setEnclosure(Enclosure $enclosure)
