@@ -161,26 +161,6 @@
             "description": null
         },
         {
-            "id": "test-doubles-tracker-testing-with-empty-return-map",
-            "name": "Test doubles: tracker testing with empty return map",
-            "description": null
-        },
-        {
-            "id": "test-doubles-add-return-map-choices",
-            "name": "Test doubles: add return map choices",
-            "description": null
-        },
-        {
-            "id": "test-doubles-return-different-value-on-consecutive-calls",
-            "name": "Test doubles: return different value on consecutive calls",
-            "description": null
-        },
-        {
-            "id": "test-doubles-stub-is-throwing-an-exception",
-            "name": "Test doubles: stub is throwing an exception",
-            "description": null
-        },
-        {
             "id": "test-doubles-add-test-with-a-mock",
             "name": "Test doubles: add test with a mock",
             "description": null
