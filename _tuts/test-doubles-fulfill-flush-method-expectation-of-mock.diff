@@ -1,12 +1,13 @@
-diff --git a/src/AppBundle/Service/TrackerService.php b/src/AppBundle/Service/TrackerService.php
-index 27c9449..66fc344 100644
---- a/src/AppBundle/Service/TrackerService.php
-+++ b/src/AppBundle/Service/TrackerService.php
-@@ -35,5 +35,7 @@ class TrackerService
+diff --git a/src/AppBundle/Service/EnclosureBuilderService.php b/src/AppBundle/Service/EnclosureBuilderService.php
+index b2bc3eb..cc1eb37 100644
+--- a/src/AppBundle/Service/EnclosureBuilderService.php
++++ b/src/AppBundle/Service/EnclosureBuilderService.php
+@@ -41,6 +41,8 @@ class EnclosureBuilderService
  
-             $this->entityManager->persist($history);
-         }
-+
+         $this->entityManager->persist($enclosure);
+ 
 +        $this->entityManager->flush();
++
+         return $enclosure;
      }
- }
+ 

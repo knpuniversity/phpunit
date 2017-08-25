@@ -11,11 +11,11 @@ index df5832b..69a6f63 100644
      /**
       * @ORM\Column(type="integer")
 diff --git a/tests/AppBundle/Factory/DinosaurFactoryTest.php b/tests/AppBundle/Factory/DinosaurFactoryTest.php
-index c340f30..1597d47 100644
+index 3fd7103..76ae1d7 100644
 --- a/tests/AppBundle/Factory/DinosaurFactoryTest.php
 +++ b/tests/AppBundle/Factory/DinosaurFactoryTest.php
 @@ -66,4 +66,25 @@ class DinosaurFactoryTest extends TestCase
-             ['large herbavore', true, false],
+             ['large herbivore', true, false],
          ];
      }
 +

@@ -1,23 +1,13 @@
-diff --git a/src/AppBundle/Service/TrackerService.php b/src/AppBundle/Service/TrackerService.php
-index 6c26165..27c9449 100644
---- a/src/AppBundle/Service/TrackerService.php
-+++ b/src/AppBundle/Service/TrackerService.php
-@@ -2,6 +2,7 @@
+diff --git a/src/AppBundle/Service/EnclosureBuilderService.php b/src/AppBundle/Service/EnclosureBuilderService.php
+index d56b557..b2bc3eb 100644
+--- a/src/AppBundle/Service/EnclosureBuilderService.php
++++ b/src/AppBundle/Service/EnclosureBuilderService.php
+@@ -39,6 +39,8 @@ class EnclosureBuilderService
  
- namespace AppBundle\Service;
+         $this->addDinosaurs($numberOfDinosaurs, $enclosure);
  
-+use AppBundle\Entity\History;
- use AppBundle\Entity\Tracker;
- use Doctrine\ORM\EntityManagerInterface;
- 
-@@ -29,5 +30,10 @@ class TrackerService
- 
-     public function takeSnapshot()
-     {
-+        foreach ($this->trackers as $tracker) {
-+            $history = new History($tracker);
++        $this->entityManager->persist($enclosure);
 +
-+            $this->entityManager->persist($history);
-+        }
+         return $enclosure;
      }
- }
+ 

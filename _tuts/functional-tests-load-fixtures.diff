@@ -18,16 +18,19 @@ index bb49609..c05a763 100644
              if ('dev' === $this->getEnvironment()) {
                  $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
 diff --git a/app/config/config_test.yml b/app/config/config_test.yml
-index e947019..906b1d4 100644
+index 117c141..5d4ff18 100644
 --- a/app/config/config_test.yml
 +++ b/app/config/config_test.yml
-@@ -19,4 +19,5 @@ doctrine:
+@@ -19,7 +19,8 @@ doctrine:
      dbal:
          url: 'sqlite:///%kernel.project_dir%/var/data/test.sqlite'
  
 -liip_functional_test: ~
 +liip_functional_test:
 +    cache_sqlite_db: true
+ 
+ services:
+     test.AppBundle\Factory\DinosaurFactory: '@AppBundle\Factory\DinosaurFactory'
 diff --git a/composer.json b/composer.json
 index cbaa0ec..59197e9 100644
 --- a/composer.json

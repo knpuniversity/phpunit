@@ -1,12 +1,14 @@
 diff --git a/app/config/config_test.yml b/app/config/config_test.yml
-index 2f6d925..452d8e4 100644
+index f1d817c..150cda4 100644
 --- a/app/config/config_test.yml
 +++ b/app/config/config_test.yml
-@@ -14,3 +14,7 @@ web_profiler:
- 
+@@ -15,5 +15,9 @@ web_profiler:
  swiftmailer:
      disable_delivery: true
-+
+ 
 +doctrine:
 +    dbal:
 +        url: 'sqlite:///%kernel.project_dir%/var/data/test.sqlite'
++
+ services:
+     test.AppBundle\Factory\DinosaurFactory: '@AppBundle\Factory\DinosaurFactory'

@@ -1,36 +1,45 @@
-diff --git a/tests/AppBundle/Service/TrackerServiceProphecyTest.php b/tests/AppBundle/Service/TrackerServiceProphecyTest.php
+diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
 new file mode 100644
-index 0000000..3a1edbd
+index 0000000..3853207
 --- /dev/null
-+++ b/tests/AppBundle/Service/TrackerServiceProphecyTest.php
-@@ -0,0 +1,30 @@
++++ b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
+@@ -0,0 +1,39 @@
 +<?php
 +
 +namespace Tests\AppBundle\Service;
 +
-+use AppBundle\Entity\History;
-+use AppBundle\Entity\Tracker;
-+use AppBundle\Service\TrackerService;
++use AppBundle\Entity\Dinosaur;
++use AppBundle\Entity\Enclosure;
++use AppBundle\Factory\DinosaurFactory;
++use AppBundle\Service\EnclosureBuilderService;
 +use Doctrine\ORM\EntityManagerInterface;
 +use PHPUnit\Framework\TestCase;
 +use Prophecy\Argument;
 +
-+class TrackerServiceProphecyTest extends TestCase
++class EnclosureBuilderServiceProphecyTest extends TestCase
 +{
-+    public function testItStoresTheLocationOfAllTrackers()
++    public function testItPersistsBuildEnclosure()
 +    {
 +        $entityManager = $this->prophesize(EntityManagerInterface::class);
 +
-+        $entityManager->persist(Argument::type(History::class))
-+            ->shouldBeCalledTimes(2);
++        $entityManager
++            ->persist(Argument::type(Enclosure::class))
++            ->shouldBeCalledTimes(1);
 +
 +        $entityManager->flush()->shouldBeCalled();
 +
-+        $trackerService = new TrackerService($entityManager->reveal());
++        $dinosaurFactory = $this->prophesize(DinosaurFactory::class);
 +
-+        $trackerService->addTracker(new Tracker());
-+        $trackerService->addTracker(new Tracker());
++        $dinosaurFactory
++            ->growFromSpecification(Argument::type('string'))
++            ->shouldBeCalledTimes(2)
++            ->willReturn(new Dinosaur());
 +
-+        $trackerService->takeSnapshot();
++        $enclosureBuilderService = new EnclosureBuilderService(
++            $entityManager->reveal(),
++            $dinosaurFactory->reveal()
++        );
++
++        $enclosureBuilderService->buildEnclosure(1, 2);
 +    }
 +}

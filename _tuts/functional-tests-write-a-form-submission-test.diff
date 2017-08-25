@@ -1,5 +1,5 @@
 diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/AppBundle/Controller/DefaultControllerTest.php
-index 656efd6..f3ee993 100644
+index 656efd6..93d2d2c 100644
 --- a/tests/AppBundle/Controller/DefaultControllerTest.php
 +++ b/tests/AppBundle/Controller/DefaultControllerTest.php
 @@ -26,4 +26,31 @@ class DefaultControllerTest extends WebTestCase
@@ -24,12 +24,12 @@ index 656efd6..f3ee993 100644
 +        $form = $crawler->selectButton('Grow dinosaur')->form();
 +
 +        $form['enclosure']->select(3);
-+        $form['specification']->setValue('large herbavore');
++        $form['specification']->setValue('large herbivore');
 +
 +        $client->submit($form);
 +
 +        $this->assertContains(
-+            'Grown a large herbavore in enclosure #3',
++            'Grown a large herbivore in enclosure #3',
 +            $client->getResponse()->getContent()
 +        );
 +    }

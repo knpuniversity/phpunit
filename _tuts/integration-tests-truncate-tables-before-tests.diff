@@ -1,19 +1,23 @@
-diff --git a/tests/AppBundle/Service/TrackerServiceIntegrationTest.php b/tests/AppBundle/Service/TrackerServiceIntegrationTest.php
-index 4180538..c382227 100644
---- a/tests/AppBundle/Service/TrackerServiceIntegrationTest.php
-+++ b/tests/AppBundle/Service/TrackerServiceIntegrationTest.php
-@@ -28,6 +28,8 @@ class TrackerServiceIntegrationTest extends KernelTestCase
-             ->get('doctrine')
-             ->getManager();
+diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
+index 0f264d8..4dfb5c0 100644
+--- a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
++++ b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
+@@ -38,6 +38,12 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
+         $this->dinosaurFactory = static::$kernel->getContainer()
+             ->get('test.' . DinosaurFactory::class);
  
-+        $this->truncateEntities([History::class, Tracker::class]);
++        $this->truncateEntities([
++            Enclosure::class,
++            Security::class,
++            Dinosaur::class,
++        ]);
 +
-         $this->trackerService = new TrackerService($this->entityManager);
-     }
- 
-@@ -59,4 +61,26 @@ class TrackerServiceIntegrationTest extends KernelTestCase
-         $this->entityManager->close();
-         $this->entityManager = null; // avoid memory leaks
+         $this->enclosureBuilderService = new EnclosureBuilderService(
+             $this->entityManager,
+             $this->dinosaurFactory
+@@ -74,4 +80,26 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
+         $this->dinosaurFactory = null;
+         $this->enclosureBuilderService = null;
      }
 +
 +    private function truncateEntities(array $entities)

@@ -21,15 +21,17 @@ index ef068e0..bb49609 100644
  
          return $bundles;
 diff --git a/app/config/config_test.yml b/app/config/config_test.yml
-index 452d8e4..e947019 100644
+index 150cda4..117c141 100644
 --- a/app/config/config_test.yml
 +++ b/app/config/config_test.yml
-@@ -18,3 +18,5 @@ swiftmailer:
- doctrine:
+@@ -19,5 +19,7 @@ doctrine:
      dbal:
          url: 'sqlite:///%kernel.project_dir%/var/data/test.sqlite'
-+
+ 
 +liip_functional_test: ~
++
+ services:
+     test.AppBundle\Factory\DinosaurFactory: '@AppBundle\Factory\DinosaurFactory'
 diff --git a/composer.json b/composer.json
 index c016cae..cbaa0ec 100644
 --- a/composer.json

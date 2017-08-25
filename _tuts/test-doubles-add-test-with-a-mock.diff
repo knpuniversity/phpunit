@@ -1,65 +1,19 @@
-diff --git a/src/AppBundle/Entity/History.php b/src/AppBundle/Entity/History.php
+diff --git a/src/AppBundle/Service/EnclosureBuilderService.php b/src/AppBundle/Service/EnclosureBuilderService.php
 new file mode 100644
-index 0000000..9c70ac3
+index 0000000..d56b557
 --- /dev/null
-+++ b/src/AppBundle/Entity/History.php
-@@ -0,0 +1,42 @@
-+<?php
-+
-+namespace AppBundle\Entity;
-+
-+use Doctrine\ORM\Mapping as ORM;
-+
-+/**
-+ * @ORM\Entity
-+ * @ORM\Table(name="histories")
-+ */
-+class History
-+{
-+    /**
-+     * @ORM\Id
-+     * @ORM\GeneratedValue(strategy="AUTO")
-+     * @ORM\Column(type="integer")
-+     */
-+    private $id;
-+
-+    /**
-+     * @ORM\Column(type="integer")
-+     */
-+    private $location;
-+
-+    /**
-+     * @var Tracker
-+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Tracker")
-+     */
-+    private $tracker;
-+
-+    /**
-+     * @ORM\Column(type="datetime")
-+     */
-+    private $createdAt;
-+
-+    public function __construct(Tracker $tracker)
-+    {
-+        $this->tracker = $tracker;
-+        $this->location = $tracker->getLocation();
-+        $this->createdAt = new \DateTime();
-+    }
-+}
-diff --git a/src/AppBundle/Service/TrackerService.php b/src/AppBundle/Service/TrackerService.php
-new file mode 100644
-index 0000000..6c26165
---- /dev/null
-+++ b/src/AppBundle/Service/TrackerService.php
-@@ -0,0 +1,33 @@
++++ b/src/AppBundle/Service/EnclosureBuilderService.php
+@@ -0,0 +1,64 @@
 +<?php
 +
 +namespace AppBundle\Service;
 +
-+use AppBundle\Entity\Tracker;
++use AppBundle\Entity\Enclosure;
++use AppBundle\Entity\Security;
++use AppBundle\Factory\DinosaurFactory;
 +use Doctrine\ORM\EntityManagerInterface;
 +
-+class TrackerService
++class EnclosureBuilderService
 +{
 +    /**
 +     * @var EntityManagerInterface
@@ -67,58 +21,95 @@ index 0000000..6c26165
 +    private $entityManager;
 +
 +    /**
-+     * @var Tracker[]
++     * @var DinosaurFactory
 +     */
-+    private $trackers = [];
++    private $dinosaurFactory;
 +
-+    public function __construct(EntityManagerInterface $entityManager)
++    public function __construct(
++        EntityManagerInterface $entityManager,
++        DinosaurFactory $dinosaurFactory
++    )
 +    {
 +        $this->entityManager = $entityManager;
++        $this->dinosaurFactory = $dinosaurFactory;
 +    }
 +
-+    public function addTracker(Tracker $tracker)
++    public function buildEnclosure(
++        int $numberOfSecuritySystems = 1,
++        int $numberOfDinosaurs = 3
++    ): Enclosure
 +    {
-+        $this->trackers[] = $tracker;
++        $enclosure = new Enclosure();
++
++        $this->addSecuritySystems($numberOfSecuritySystems, $enclosure);
++
++        $this->addDinosaurs($numberOfDinosaurs, $enclosure);
++
++        return $enclosure;
 +    }
 +
-+    public function takeSnapshot()
++    private function addSecuritySystems(int $numberOfSecuritySystems, Enclosure $enclosure)
 +    {
++        for ($i = 0; $i < $numberOfSecuritySystems; $i++) {
++            $securityName = array_rand(['Fence', 'Electric fence', 'Guard tower']);
++            $security = new Security($securityName, true, $enclosure);
++
++            $enclosure->addSecurity($security);
++        }
++    }
++
++    private function addDinosaurs(int $numberOfDinosaurs, Enclosure $enclosure)
++    {
++        $length = array_rand(['small', 'large', 'huge']);
++        $diet = array_rand(['herbivore', 'carnivorous']);
++        $specification = "{$length} {$diet} dinosaur";
++        $dinosaur = $this->dinosaurFactory->growFromSpecification($specification);
++
++        $enclosure->addDinosaur($dinosaur);
 +    }
 +}
-diff --git a/tests/AppBundle/Service/TrackerServiceTest.php b/tests/AppBundle/Service/TrackerServiceTest.php
+diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
 new file mode 100644
-index 0000000..a77faac
+index 0000000..e401a1d
 --- /dev/null
-+++ b/tests/AppBundle/Service/TrackerServiceTest.php
-@@ -0,0 +1,31 @@
++++ b/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
+@@ -0,0 +1,39 @@
 +<?php
 +
 +namespace Tests\AppBundle\Service;
 +
-+use AppBundle\Entity\History;
-+use AppBundle\Entity\Tracker;
-+use AppBundle\Service\TrackerService;
++use AppBundle\Entity\Dinosaur;
++use AppBundle\Entity\Enclosure;
++use AppBundle\Factory\DinosaurFactory;
++use AppBundle\Service\EnclosureBuilderService;
 +use Doctrine\ORM\EntityManagerInterface;
 +use PHPUnit\Framework\TestCase;
 +
-+class TrackerServiceTest extends TestCase
++class EnclosureBuilderServiceTest extends TestCase
 +{
-+    public function testItStoresTheLocationOfAllTrackers()
++    public function testItPersistsBuildEnclosure()
 +    {
 +        $entityManager = $this->createMock(EntityManagerInterface::class);
 +
-+        $entityManager->expects($this->exactly(2))
-+            ->method('persist')
-+            ->with($this->isInstanceOf(History::class));
-+
 +        $entityManager->expects($this->once())
++            ->method('persist')
++            ->with($this->isInstanceOf(Enclosure::class));
++
++        $entityManager->expects($this->atLeastOnce())
 +            ->method('flush');
 +
-+        $trackerService = new TrackerService($entityManager);
++        $dinosaurFactory = $this->createMock(DinosaurFactory::class);
 +
-+        $trackerService->addTracker(new Tracker());
-+        $trackerService->addTracker(new Tracker());
++        $dinosaurFactory->expects($this->exactly(2))
++            ->method('growFromSpecification')
++            ->with($this->isType('string'))
++            ->willReturn(new Dinosaur());
 +
-+        $trackerService->takeSnapshot();
++        $enclosureBuilderService = new EnclosureBuilderService(
++            $entityManager,
++            $dinosaurFactory
++        );
++
++        $enclosureBuilderService->buildEnclosure(1, 2);
 +    }
 +}

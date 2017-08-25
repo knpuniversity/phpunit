@@ -176,6 +176,11 @@
             "description": null
         },
         {
+            "id": "test-doubles-fulfill-loop-expectation-of-mock",
+            "name": "Test doubles: fulfill loop expectation of mock",
+            "description": null
+        },
+        {
             "id": "test-doubles-mocking-with-prophecy",
             "name": "Test doubles: mocking with prophecy",
             "description": null
@@ -251,5 +256,5 @@
             "description": null
         }
     ],
-    "sha": "3d217a275f38ba3c8ce7cf4f4e6c2db724d6c315"
+    "sha": "142eb93489533d1d9a5a707290a81779fe62791c"
 }
