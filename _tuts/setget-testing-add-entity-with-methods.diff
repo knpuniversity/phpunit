@@ -1,0 +1,45 @@
+diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
+new file mode 100644
+index 0000000..3226294
+--- /dev/null
++++ b/src/AppBundle/Entity/Dinosaur.php
+@@ -0,0 +1,27 @@
++<?php
++
++namespace AppBundle\Entity;
++
++use Doctrine\ORM\Mapping as ORM;
++
++/**
++ * @ORM\Entity
++ * @ORM\Table(name="dinosaurs")
++ */
++class Dinosaur
++{
++    /**
++     * @ORM\Column(type="integer")
++     */
++    private $length = 0;
++
++    public function getLength(): int
++    {
++        return $this->length;
++    }
++
++    public function setLength(int $length)
++    {
++        $this->length = $length;
++    }
++}
+diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
+index d3e2bf4..6af9fc1 100644
+--- a/tests/AppBundle/Entity/DinosaurTest.php
++++ b/tests/AppBundle/Entity/DinosaurTest.php
+@@ -2,6 +2,7 @@
+ 
+ namespace Tests\AppBundle\Entity;
+ 
++use AppBundle\Entity\Dinosaur;
+ use PHPUnit\Framework\TestCase;
+ 
+ class DinosaurTest extends TestCase

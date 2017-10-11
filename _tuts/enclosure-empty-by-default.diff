@@ -1,0 +1,74 @@
+diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
+index 69a6f63..42e56c4 100644
+--- a/src/AppBundle/Entity/Dinosaur.php
++++ b/src/AppBundle/Entity/Dinosaur.php
+@@ -30,6 +30,12 @@ class Dinosaur
+      */
+     private $isCarnivorous;
+ 
++    /**
++     * @var Enclosure
++     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Enclosure", inversedBy="dinosaurs")
++     */
++    private $enclosure;
++
+     public function __construct(string $genus = 'Unknown', bool $isCarnivorous = false)
+     {
+         $this->genus = $genus;
+diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
+new file mode 100644
+index 0000000..b0ff46e
+--- /dev/null
++++ b/src/AppBundle/Entity/Enclosure.php
+@@ -0,0 +1,29 @@
++<?php
++
++namespace AppBundle\Entity;
++
++use Doctrine\Common\Collections\ArrayCollection;
++use Doctrine\ORM\Mapping as ORM;
++
++/**
++ * @ORM\Entity
++ * @ORM\Table(name="enclosures")
++ */
++class Enclosure
++{
++    /**
++     * @var iterable
++     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dinosaur", mappedBy="enclosure", cascade={"persist"})
++     */
++    private $dinosaurs;
++
++    public function __construct()
++    {
++        $this->dinosaurs = new ArrayCollection();
++    }
++
++    public function getDinosaurs(): iterable
++    {
++        return $this->dinosaurs;
++    }
++}
+diff --git a/tests/AppBundle/Entity/EnclosureTest.php b/tests/AppBundle/Entity/EnclosureTest.php
+new file mode 100644
+index 0000000..0cba364
+--- /dev/null
++++ b/tests/AppBundle/Entity/EnclosureTest.php
+@@ -0,0 +1,16 @@
++<?php
++
++namespace Tests\AppBundle\Entity;
++
++use AppBundle\Entity\Enclosure;
++use PHPUnit\Framework\TestCase;
++
++class EnclosureTest extends TestCase
++{
++    public function testItHasNoDinosaursByDefault()
++    {
++        $enclosure = new Enclosure();
++
++        $this->assertCount(0, $enclosure->getDinosaurs());
++    }
++}

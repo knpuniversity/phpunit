@@ -1,0 +1,26 @@
+diff --git a/tests/AppBundle/Factory/DinosaurFactoryTest.php b/tests/AppBundle/Factory/DinosaurFactoryTest.php
+index 3f5ef20..4d12e2c 100644
+--- a/tests/AppBundle/Factory/DinosaurFactoryTest.php
++++ b/tests/AppBundle/Factory/DinosaurFactoryTest.php
+@@ -8,10 +8,19 @@ use PHPUnit\Framework\TestCase;
+ 
+ class DinosaurFactoryTest extends TestCase
+ {
++    /**
++     * @var DinosaurFactory
++     */
++    private $factory;
++
++    public function setUp()
++    {
++        $this->factory = new DinosaurFactory();
++    }
++
+     public function testItGrowsALargeVelociraptor()
+     {
+-        $factory = new DinosaurFactory();
+-        $dinosaur = $factory->growVelociraptor(5);
++        $dinosaur = $this->factory->growVelociraptor(5);
+ 
+         $this->assertInstanceOf(Dinosaur::class, $dinosaur);
+         $this->assertInternalType('string', $dinosaur->getGenus());

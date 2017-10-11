@@ -1,0 +1,56 @@
+diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
+index 11bd5c6..8ce5a8e 100644
+--- a/src/AppBundle/Entity/Enclosure.php
++++ b/src/AppBundle/Entity/Enclosure.php
+@@ -2,6 +2,7 @@
+ 
+ namespace AppBundle\Entity;
+ 
++use AppBundle\Exception\GottaCatchEmAllException;
+ use AppBundle\Exception\NotABuffetException;
+ use Doctrine\Common\Collections\ArrayCollection;
+ use Doctrine\ORM\Mapping as ORM;
+@@ -18,9 +19,16 @@ class Enclosure
+      */
+     private $dinosaurs;
+ 
++    /**
++     * @var iterable
++     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Security", mappedBy="enclosure", cascade={"persist"})
++     */
++    private $securities;
++
+     public function __construct()
+     {
+         $this->dinosaurs = new ArrayCollection();
++        $this->securities = new ArrayCollection();
+     }
+ 
+     public function getDinosaurs(): iterable
+@@ -30,6 +38,10 @@ class Enclosure
+ 
+     public function addDinosaur(Dinosaur $dinosaur)
+     {
++        if (!$this->getIsSecurityActive()) {
++            throw new GottaCatchEmAllException('Are you craaazy?!?');
++        }
++
+         if (!$this->canAddDinosaur($dinosaur)) {
+             throw new NotABuffetException();
+         }
+@@ -42,4 +54,15 @@ class Enclosure
+         return count($this->dinosaurs) === 0
+             || $this->dinosaurs->first()->sameDietAs($dinosaur);
+     }
++
++    public function getIsSecurityActive(): bool
++    {
++        foreach ($this->securities as $security) {
++            if ($security->getIsActive()) {
++                return true;
++            }
++        }
++
++        return false;
++    }
+ }

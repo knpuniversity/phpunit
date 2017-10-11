@@ -1,0 +1,45 @@
+diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
+new file mode 100644
+index 0000000..3853207
+--- /dev/null
++++ b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
+@@ -0,0 +1,39 @@
++<?php
++
++namespace Tests\AppBundle\Service;
++
++use AppBundle\Entity\Dinosaur;
++use AppBundle\Entity\Enclosure;
++use AppBundle\Factory\DinosaurFactory;
++use AppBundle\Service\EnclosureBuilderService;
++use Doctrine\ORM\EntityManagerInterface;
++use PHPUnit\Framework\TestCase;
++use Prophecy\Argument;
++
++class EnclosureBuilderServiceProphecyTest extends TestCase
++{
++    public function testItPersistsBuildEnclosure()
++    {
++        $entityManager = $this->prophesize(EntityManagerInterface::class);
++
++        $entityManager
++            ->persist(Argument::type(Enclosure::class))
++            ->shouldBeCalledTimes(1);
++
++        $entityManager->flush()->shouldBeCalled();
++
++        $dinosaurFactory = $this->prophesize(DinosaurFactory::class);
++
++        $dinosaurFactory
++            ->growFromSpecification(Argument::type('string'))
++            ->shouldBeCalledTimes(2)
++            ->willReturn(new Dinosaur());
++
++        $enclosureBuilderService = new EnclosureBuilderService(
++            $entityManager->reveal(),
++            $dinosaurFactory->reveal()
++        );
++
++        $enclosureBuilderService->buildEnclosure(1, 2);
++    }
++}

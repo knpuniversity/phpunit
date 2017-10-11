@@ -1,0 +1,49 @@
+diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
+index 67b243e..146551d 100644
+--- a/src/AppBundle/Entity/Dinosaur.php
++++ b/src/AppBundle/Entity/Dinosaur.php
+@@ -52,4 +52,9 @@ class Dinosaur
+             $this->length
+         );
+     }
++
++    public function getGenus(): string
++    {
++        return $this->genus;
++    }
+ }
+diff --git a/src/AppBundle/Factory/DinosaurFactory.php b/src/AppBundle/Factory/DinosaurFactory.php
+new file mode 100644
+index 0000000..2c0ede5
+--- /dev/null
++++ b/src/AppBundle/Factory/DinosaurFactory.php
+@@ -0,0 +1,17 @@
++<?php
++
++namespace AppBundle\Factory;
++
++use AppBundle\Entity\Dinosaur;
++
++class DinosaurFactory
++{
++    public function growVelociraptor(int $length): Dinosaur
++    {
++        $dinosaur = new Dinosaur('Velociraptor', true);
++
++        $dinosaur->setLength($length);
++
++        return $dinosaur;
++    }
++}
+diff --git a/tests/AppBundle/Factory/DinosaurFactoryTest.php b/tests/AppBundle/Factory/DinosaurFactoryTest.php
+index 4a1da54..3f5ef20 100644
+--- a/tests/AppBundle/Factory/DinosaurFactoryTest.php
++++ b/tests/AppBundle/Factory/DinosaurFactoryTest.php
+@@ -3,6 +3,7 @@
+ namespace Tests\AppBundle\Factory;
+ 
+ use AppBundle\Entity\Dinosaur;
++use AppBundle\Factory\DinosaurFactory;
+ use PHPUnit\Framework\TestCase;
+ 
+ class DinosaurFactoryTest extends TestCase

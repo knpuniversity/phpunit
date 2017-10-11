@@ -1,0 +1,44 @@
+diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
+index 0f264d8..4dfb5c0 100644
+--- a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
++++ b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
+@@ -38,6 +38,12 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
+         $this->dinosaurFactory = static::$kernel->getContainer()
+             ->get('test.' . DinosaurFactory::class);
+ 
++        $this->truncateEntities([
++            Enclosure::class,
++            Security::class,
++            Dinosaur::class,
++        ]);
++
+         $this->enclosureBuilderService = new EnclosureBuilderService(
+             $this->entityManager,
+             $this->dinosaurFactory
+@@ -74,4 +80,26 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
+         $this->dinosaurFactory = null;
+         $this->enclosureBuilderService = null;
+     }
++
++    private function truncateEntities(array $entities)
++    {
++        $connection = $this->entityManager->getConnection();
++        $databasePlatform = $connection->getDatabasePlatform();
++
++        if ($databasePlatform->supportsForeignKeyConstraints()) {
++            $connection->query('SET FOREIGN_KEY_CHECKS=0');
++        }
++
++        foreach ($entities as $entity) {
++            $query = $databasePlatform->getTruncateTableSQL(
++                $this->entityManager->getClassMetadata($entity)->getTableName()
++            );
++
++            $connection->executeUpdate($query);
++        }
++
++        if ($databasePlatform->supportsForeignKeyConstraints()) {
++            $connection->query('SET FOREIGN_KEY_CHECKS=1');
++        }
++    }
+ }

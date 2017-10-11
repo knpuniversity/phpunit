@@ -1,0 +1,15 @@
+diff --git a/src/AppBundle/Factory/DinosaurFactory.php b/src/AppBundle/Factory/DinosaurFactory.php
+index c1719fb..f36eb18 100644
+--- a/src/AppBundle/Factory/DinosaurFactory.php
++++ b/src/AppBundle/Factory/DinosaurFactory.php
+@@ -22,6 +22,10 @@ class DinosaurFactory
+         $length = random_int(1, Dinosaur::LARGE - 1);
+         $isCarnivorous = false;
+ 
++        if (stripos($specification, 'large') !== false) {
++            $length = random_int(Dinosaur::LARGE, 100);
++        }
++
+         $dinosaur = new Dinosaur($codeName, $isCarnivorous);
+ 
+         $dinosaur->setLength($length);

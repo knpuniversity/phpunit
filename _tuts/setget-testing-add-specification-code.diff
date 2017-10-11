@@ -1,0 +1,42 @@
+diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
+index 6ef0c68..67b243e 100644
+--- a/src/AppBundle/Entity/Dinosaur.php
++++ b/src/AppBundle/Entity/Dinosaur.php
+@@ -15,6 +15,24 @@ class Dinosaur
+      */
+     private $length = 0;
+ 
++    /**
++     * @var string
++     * @ORM\Column(type="string")
++     */
++    private $genus;
++
++    /**
++     * @var bool
++     * @ORM\Column(type="boolean")
++     */
++    private $isCarnivorous;
++
++    public function __construct(string $genus = 'Unknown', bool $isCarnivorous = false)
++    {
++        $this->genus = $genus;
++        $this->isCarnivorous = $isCarnivorous;
++    }
++
+     public function getLength(): int
+     {
+         return $this->length;
+@@ -27,6 +45,11 @@ class Dinosaur
+ 
+     public function getSpecification(): string
+     {
+-        return '';
++        return sprintf(
++            'The %s %scarnivorous dinosaur is %d meters long',
++            $this->genus,
++            $this->isCarnivorous ? '' : 'non-',
++            $this->length
++        );
+     }
+ }

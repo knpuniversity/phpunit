@@ -1,0 +1,40 @@
+diff --git a/src/AppBundle/Exception/GottaCatchEmAllException.php b/src/AppBundle/Exception/GottaCatchEmAllException.php
+new file mode 100644
+index 0000000..35d07e3
+--- /dev/null
++++ b/src/AppBundle/Exception/GottaCatchEmAllException.php
+@@ -0,0 +1,7 @@
++<?php
++
++namespace AppBundle\Exception;
++
++class GottaCatchEmAllException extends \Exception
++{
++}
+diff --git a/tests/AppBundle/Entity/EnclosureTest.php b/tests/AppBundle/Entity/EnclosureTest.php
+index 9dbb2a2..cead282 100644
+--- a/tests/AppBundle/Entity/EnclosureTest.php
++++ b/tests/AppBundle/Entity/EnclosureTest.php
+@@ -4,6 +4,7 @@ namespace Tests\AppBundle\Entity;
+ 
+ use AppBundle\Entity\Dinosaur;
+ use AppBundle\Entity\Enclosure;
++use AppBundle\Exception\GottaCatchEmAllException;
+ use AppBundle\Exception\NotABuffetException;
+ use PHPUnit\Framework\TestCase;
+ 
+@@ -47,4 +48,14 @@ class EnclosureTest extends TestCase
+         $enclosure->addDinosaur(new Dinosaur('Velociraptor', true));
+         $enclosure->addDinosaur(new Dinosaur());
+     }
++
++    public function testItDoesNotAllowToAddDinosaursToUnsecureEnclosures()
++    {
++        $enclosure = new Enclosure();
++
++        $this->expectException(GottaCatchEmAllException::class);
++        $this->expectExceptionMessage('Are you craaazy?!?');
++
++        $enclosure->addDinosaur(new Dinosaur('Velociraptor', true));
++    }
+ }

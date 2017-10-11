@@ -1,0 +1,13 @@
+diff --git a/src/AppBundle/Service/EnclosureBuilderService.php b/src/AppBundle/Service/EnclosureBuilderService.php
+index b2bc3eb..cc1eb37 100644
+--- a/src/AppBundle/Service/EnclosureBuilderService.php
++++ b/src/AppBundle/Service/EnclosureBuilderService.php
+@@ -41,6 +41,8 @@ class EnclosureBuilderService
+ 
+         $this->entityManager->persist($enclosure);
+ 
++        $this->entityManager->flush();
++
+         return $enclosure;
+     }
+ 

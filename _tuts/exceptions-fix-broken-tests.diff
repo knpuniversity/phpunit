@@ -1,0 +1,61 @@
+diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
+index 8ce5a8e..398b456 100644
+--- a/src/AppBundle/Entity/Enclosure.php
++++ b/src/AppBundle/Entity/Enclosure.php
+@@ -25,10 +25,14 @@ class Enclosure
+      */
+     private $securities;
+ 
+-    public function __construct()
++    public function __construct(bool $withBasicSecurity = false)
+     {
+         $this->dinosaurs = new ArrayCollection();
+         $this->securities = new ArrayCollection();
++
++        if ($withBasicSecurity) {
++            $this->addSecurity(new Security('Fence', true, $this));
++        }
+     }
+ 
+     public function getDinosaurs(): iterable
+@@ -65,4 +69,9 @@ class Enclosure
+ 
+         return false;
+     }
++
++    public function addSecurity($security)
++    {
++        $this->securities[] = $security;
++    }
+ }
+diff --git a/tests/AppBundle/Entity/EnclosureTest.php b/tests/AppBundle/Entity/EnclosureTest.php
+index cead282..1e6b3b8 100644
+--- a/tests/AppBundle/Entity/EnclosureTest.php
++++ b/tests/AppBundle/Entity/EnclosureTest.php
+@@ -19,7 +19,7 @@ class EnclosureTest extends TestCase
+ 
+     public function testItAddsDinosaurs()
+     {
+-        $enclosure = new Enclosure();
++        $enclosure = new Enclosure(true);
+ 
+         $enclosure->addDinosaur(new Dinosaur());
+         $enclosure->addDinosaur(new Dinosaur());
+@@ -29,7 +29,7 @@ class EnclosureTest extends TestCase
+ 
+     public function testItDoesNotAllowToAddCarnivorousDinosaursToNonCarnivorousEnclosure()
+     {
+-        $enclosure = new Enclosure();
++        $enclosure = new Enclosure(true);
+ 
+         $enclosure->addDinosaur(new Dinosaur());
+ 
+@@ -43,7 +43,7 @@ class EnclosureTest extends TestCase
+      */
+     public function testItDoesNotAllowToAddNonCarnivorousDinosaursToCarnivorousEnclosure()
+     {
+-        $enclosure = new Enclosure();
++        $enclosure = new Enclosure(true);
+ 
+         $enclosure->addDinosaur(new Dinosaur('Velociraptor', true));
+         $enclosure->addDinosaur(new Dinosaur());

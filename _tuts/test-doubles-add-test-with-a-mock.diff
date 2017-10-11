@@ -1,0 +1,115 @@
+diff --git a/src/AppBundle/Service/EnclosureBuilderService.php b/src/AppBundle/Service/EnclosureBuilderService.php
+new file mode 100644
+index 0000000..d56b557
+--- /dev/null
++++ b/src/AppBundle/Service/EnclosureBuilderService.php
+@@ -0,0 +1,64 @@
++<?php
++
++namespace AppBundle\Service;
++
++use AppBundle\Entity\Enclosure;
++use AppBundle\Entity\Security;
++use AppBundle\Factory\DinosaurFactory;
++use Doctrine\ORM\EntityManagerInterface;
++
++class EnclosureBuilderService
++{
++    /**
++     * @var EntityManagerInterface
++     */
++    private $entityManager;
++
++    /**
++     * @var DinosaurFactory
++     */
++    private $dinosaurFactory;
++
++    public function __construct(
++        EntityManagerInterface $entityManager,
++        DinosaurFactory $dinosaurFactory
++    )
++    {
++        $this->entityManager = $entityManager;
++        $this->dinosaurFactory = $dinosaurFactory;
++    }
++
++    public function buildEnclosure(
++        int $numberOfSecuritySystems = 1,
++        int $numberOfDinosaurs = 3
++    ): Enclosure
++    {
++        $enclosure = new Enclosure();
++
++        $this->addSecuritySystems($numberOfSecuritySystems, $enclosure);
++
++        $this->addDinosaurs($numberOfDinosaurs, $enclosure);
++
++        return $enclosure;
++    }
++
++    private function addSecuritySystems(int $numberOfSecuritySystems, Enclosure $enclosure)
++    {
++        for ($i = 0; $i < $numberOfSecuritySystems; $i++) {
++            $securityName = array_rand(['Fence', 'Electric fence', 'Guard tower']);
++            $security = new Security($securityName, true, $enclosure);
++
++            $enclosure->addSecurity($security);
++        }
++    }
++
++    private function addDinosaurs(int $numberOfDinosaurs, Enclosure $enclosure)
++    {
++        $length = array_rand(['small', 'large', 'huge']);
++        $diet = array_rand(['herbivore', 'carnivorous']);
++        $specification = "{$length} {$diet} dinosaur";
++        $dinosaur = $this->dinosaurFactory->growFromSpecification($specification);
++
++        $enclosure->addDinosaur($dinosaur);
++    }
++}
+diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
+new file mode 100644
+index 0000000..e401a1d
+--- /dev/null
++++ b/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
+@@ -0,0 +1,39 @@
++<?php
++
++namespace Tests\AppBundle\Service;
++
++use AppBundle\Entity\Dinosaur;
++use AppBundle\Entity\Enclosure;
++use AppBundle\Factory\DinosaurFactory;
++use AppBundle\Service\EnclosureBuilderService;
++use Doctrine\ORM\EntityManagerInterface;
++use PHPUnit\Framework\TestCase;
++
++class EnclosureBuilderServiceTest extends TestCase
++{
++    public function testItPersistsBuildEnclosure()
++    {
++        $entityManager = $this->createMock(EntityManagerInterface::class);
++
++        $entityManager->expects($this->once())
++            ->method('persist')
++            ->with($this->isInstanceOf(Enclosure::class));
++
++        $entityManager->expects($this->atLeastOnce())
++            ->method('flush');
++
++        $dinosaurFactory = $this->createMock(DinosaurFactory::class);
++
++        $dinosaurFactory->expects($this->exactly(2))
++            ->method('growFromSpecification')
++            ->with($this->isType('string'))
++            ->willReturn(new Dinosaur());
++
++        $enclosureBuilderService = new EnclosureBuilderService(
++            $entityManager,
++            $dinosaurFactory
++        );
++
++        $enclosureBuilderService->buildEnclosure(1, 2);
++    }
++}

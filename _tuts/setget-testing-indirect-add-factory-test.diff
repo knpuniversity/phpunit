@@ -1,0 +1,26 @@
+diff --git a/tests/AppBundle/Factory/DinosaurFactoryTest.php b/tests/AppBundle/Factory/DinosaurFactoryTest.php
+new file mode 100644
+index 0000000..4a1da54
+--- /dev/null
++++ b/tests/AppBundle/Factory/DinosaurFactoryTest.php
+@@ -0,0 +1,20 @@
++<?php
++
++namespace Tests\AppBundle\Factory;
++
++use AppBundle\Entity\Dinosaur;
++use PHPUnit\Framework\TestCase;
++
++class DinosaurFactoryTest extends TestCase
++{
++    public function testItGrowsALargeVelociraptor()
++    {
++        $factory = new DinosaurFactory();
++        $dinosaur = $factory->growVelociraptor(5);
++
++        $this->assertInstanceOf(Dinosaur::class, $dinosaur);
++        $this->assertInternalType('string', $dinosaur->getGenus());
++        $this->assertSame('Velociraptor', $dinosaur->getGenus());
++        $this->assertSame(5, $dinosaur->getLength());
++    }
++}

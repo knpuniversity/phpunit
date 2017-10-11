@@ -1,0 +1,41 @@
+diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
+index b0ff46e..52c4c70 100644
+--- a/src/AppBundle/Entity/Enclosure.php
++++ b/src/AppBundle/Entity/Enclosure.php
+@@ -26,4 +26,9 @@ class Enclosure
+     {
+         return $this->dinosaurs;
+     }
++
++    public function addDinosaur(Dinosaur $dinosaur)
++    {
++        $this->dinosaurs[] = $dinosaur;
++    }
+ }
+diff --git a/tests/AppBundle/Entity/EnclosureTest.php b/tests/AppBundle/Entity/EnclosureTest.php
+index 0cba364..f585eed 100644
+--- a/tests/AppBundle/Entity/EnclosureTest.php
++++ b/tests/AppBundle/Entity/EnclosureTest.php
+@@ -2,6 +2,7 @@
+ 
+ namespace Tests\AppBundle\Entity;
+ 
++use AppBundle\Entity\Dinosaur;
+ use AppBundle\Entity\Enclosure;
+ use PHPUnit\Framework\TestCase;
+ 
+@@ -13,4 +14,14 @@ class EnclosureTest extends TestCase
+ 
+         $this->assertCount(0, $enclosure->getDinosaurs());
+     }
++
++    public function testItAddsDinosaurs()
++    {
++        $enclosure = new Enclosure();
++
++        $enclosure->addDinosaur(new Dinosaur());
++        $enclosure->addDinosaur(new Dinosaur());
++
++        $this->assertCount(2, $enclosure->getDinosaurs());
++    }
+ }

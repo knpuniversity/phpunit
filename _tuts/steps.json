@@ -1,0 +1,260 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "installation",
+            "name": "Installation",
+            "description": null
+        },
+        {
+            "id": "first-test",
+            "name": "First test",
+            "description": null
+        },
+        {
+            "id": "first-test-remove",
+            "name": "First test - remove",
+            "description": null
+        },
+        {
+            "id": "setget-testing-initial-length-test",
+            "name": "SetGet testing: initial length test",
+            "description": null
+        },
+        {
+            "id": "setget-testing-add-entity-with-methods",
+            "name": "SetGet testing: add entity with methods",
+            "description": null
+        },
+        {
+            "id": "setget-testing-adding-another-test-for-same-feature",
+            "name": "SetGet testing: adding another test for same feature",
+            "description": null
+        },
+        {
+            "id": "setget-testing-add-specification-test",
+            "name": "SetGet testing: add specification test",
+            "description": null
+        },
+        {
+            "id": "setget-testing-add-specification-code",
+            "name": "SetGet testing: add specification code",
+            "description": null
+        },
+        {
+            "id": "setget-testing-indirect-add-factory-test",
+            "name": "SetGet testing: indirect - add factory test",
+            "description": null
+        },
+        {
+            "id": "setget-testing-indirect-add-factory-code",
+            "name": "SetGet testing: indirect - add factory code",
+            "description": null
+        },
+        {
+            "id": "setget-testing-refactoring-add-set-up-method",
+            "name": "SetGet testing: refactoring - add set up method",
+            "description": null
+        },
+        {
+            "id": "marking-a-test-as-incomplete",
+            "name": "Marking a test as incomplete",
+            "description": null
+        },
+        {
+            "id": "marking-a-test-as-skipped",
+            "name": "Marking a test as skipped",
+            "description": null
+        },
+        {
+            "id": "data-provider-test",
+            "name": "Data provider: test",
+            "description": null
+        },
+        {
+            "id": "data-provider-initial-specification-method",
+            "name": "Data provider: initial specification method",
+            "description": null
+        },
+        {
+            "id": "data-provider-pass-large-assertion-in-specification-method",
+            "name": "Data provider: pass large assertion in specification method",
+            "description": null
+        },
+        {
+            "id": "data-provider-pass-carnivorous-assertion-in-specification-method",
+            "name": "Data provider: pass carnivorous assertion in specification method",
+            "description": null
+        },
+        {
+            "id": "data-provider-add-test-for-huge-dinosaur-from-specification",
+            "name": "Data provider: add test for huge dinosaur from specification",
+            "description": null
+        },
+        {
+            "id": "data-provider-add-code-for-growing-huge-dinosaurs",
+            "name": "Data provider: add code for growing huge dinosaurs ",
+            "description": null
+        },
+        {
+            "id": "data-provider-add-code-to-pass-remaining-huge-dinosaur-dataset",
+            "name": "Data provider: add code to pass remaining huge dinosaur dataset",
+            "description": null
+        },
+        {
+            "id": "data-provider-refactor-specification-method-code",
+            "name": "Data provider: refactor specification method code",
+            "description": null
+        },
+        {
+            "id": "enclosure-empty-by-default",
+            "name": "Enclosure: empty by default",
+            "description": null
+        },
+        {
+            "id": "enclosure-testing-with-dependencies-on-other-objects",
+            "name": "Enclosure: testing with dependencies on other objects",
+            "description": null
+        },
+        {
+            "id": "exceptions-test-expecting-exception",
+            "name": "Exceptions: test expecting exception",
+            "description": null
+        },
+        {
+            "id": "exceptions-code-throwing-exception",
+            "name": "Exceptions: code throwing exception",
+            "description": null
+        },
+        {
+            "id": "exceptions-test-with-annotations",
+            "name": "Exceptions: test with annotations",
+            "description": null
+        },
+        {
+            "id": "exceptions-test-with-message",
+            "name": "Exceptions: test with message",
+            "description": null
+        },
+        {
+            "id": "exceptions-throw-exception-with-message",
+            "name": "Exceptions: throw exception with message",
+            "description": null
+        },
+        {
+            "id": "exceptions-fix-broken-tests",
+            "name": "Exceptions: fix broken tests",
+            "description": null
+        },
+        {
+            "id": "test-doubles-add-failing-test-using-real-tracker-object",
+            "name": "Test doubles: add failing test using real tracker object",
+            "description": null
+        },
+        {
+            "id": "test-doubles-add-tracker-stub",
+            "name": "Test doubles: add tracker stub",
+            "description": null
+        },
+        {
+            "id": "test-doubles-add-test-with-a-mock",
+            "name": "Test doubles: add test with a mock",
+            "description": null
+        },
+        {
+            "id": "test-doubles-fulfill-persist-method-expectation-of-mock",
+            "name": "Test doubles: fulfill persist method expectation of mock",
+            "description": null
+        },
+        {
+            "id": "test-doubles-fulfill-flush-method-expectation-of-mock",
+            "name": "Test doubles: fulfill flush method expectation of mock",
+            "description": null
+        },
+        {
+            "id": "test-doubles-fulfill-loop-expectation-of-mock",
+            "name": "Test doubles: fulfill loop expectation of mock",
+            "description": null
+        },
+        {
+            "id": "test-doubles-mocking-with-prophecy",
+            "name": "Test doubles: mocking with prophecy",
+            "description": null
+        },
+        {
+            "id": "introduction-to-cli-configuration",
+            "name": "Introduction to CLI & configuration",
+            "description": null
+        },
+        {
+            "id": "integration-tests-prepare-database",
+            "name": "Integration tests: prepare database",
+            "description": null
+        },
+        {
+            "id": "integration-tests-write-test",
+            "name": "Integration tests: write test",
+            "description": null
+        },
+        {
+            "id": "integration-tests-use-separate-database-for-testing",
+            "name": "Integration tests: use separate database for testing",
+            "description": null
+        },
+        {
+            "id": "integration-tests-truncate-tables-before-tests",
+            "name": "Integration tests: truncate tables before tests",
+            "description": null
+        },
+        {
+            "id": "functional-tests-intro",
+            "name": "Functional tests: intro",
+            "description": null
+        },
+        {
+            "id": "functional-tests-load-fixtures",
+            "name": "Functional tests: load fixtures",
+            "description": null
+        },
+        {
+            "id": "functional-tests-write-test-for-alarm-button",
+            "name": "Functional tests: write test for alarm button",
+            "description": null
+        },
+        {
+            "id": "functional-tests-add-enclosures-table",
+            "name": "Functional tests: add enclosures table",
+            "description": null
+        },
+        {
+            "id": "functional-tests-add-alarm-button",
+            "name": "Functional tests: add alarm button",
+            "description": null
+        },
+        {
+            "id": "functional-tests-write-a-form-submission-test",
+            "name": "Functional tests: write a form submission test",
+            "description": null
+        },
+        {
+            "id": "functional-tests-add-form-to-grow-from-specification",
+            "name": "Functional tests: add form to grow from specification",
+            "description": null
+        },
+        {
+            "id": "functional-tests-write-a-failing-test-for-alarm-command",
+            "name": "Functional tests: write a failing test for alarm command",
+            "description": null
+        },
+        {
+            "id": "functional-tests-write-option-code-in-alarm-command",
+            "name": "Functional tests: write option code in alarm command",
+            "description": null
+        }
+    ],
+    "sha": "142eb93489533d1d9a5a707290a81779fe62791c"
+}

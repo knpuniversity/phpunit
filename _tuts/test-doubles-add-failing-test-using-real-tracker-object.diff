@@ -1,0 +1,85 @@
+diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
+index 076bba3..51c4c5f 100644
+--- a/src/AppBundle/Entity/Dinosaur.php
++++ b/src/AppBundle/Entity/Dinosaur.php
+@@ -36,6 +36,12 @@ class Dinosaur
+      */
+     private $enclosure;
+ 
++    /**
++     * @var Tracker
++     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Tracker", cascade={"persist"})
++     */
++    private $tracker;
++
+     public function __construct(string $genus = 'Unknown', bool $isCarnivorous = false)
+     {
+         $this->genus = $genus;
+@@ -76,4 +82,17 @@ class Dinosaur
+     {
+         return $this->isCarnivorous() === $dinosaur->isCarnivorous();
+     }
++
++    public function addTracker(Tracker $tracker)
++    {
++        $this->tracker = $tracker;
++    }
++
++    public function track(): string
++    {
++        return sprintf(
++            'Dinosaur is somewhere in area "%d"',
++            $this->tracker->getLocation()
++        );
++    }
+ }
+diff --git a/src/AppBundle/Entity/Tracker.php b/src/AppBundle/Entity/Tracker.php
+new file mode 100644
+index 0000000..0c6095f
+--- /dev/null
++++ b/src/AppBundle/Entity/Tracker.php
+@@ -0,0 +1,17 @@
++<?php
++
++namespace AppBundle\Entity;
++
++use Doctrine\ORM\Mapping as ORM;
++
++/**
++ * @ORM\Entity
++ * @ORM\Table(name="trackers")
++ */
++class Tracker
++{
++    public function getLocation(): int
++    {
++        return random_int(1, 9);
++    }
++}
+diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
+index 7d03e4e..3797c1a 100644
+--- a/tests/AppBundle/Entity/DinosaurTest.php
++++ b/tests/AppBundle/Entity/DinosaurTest.php
+@@ -3,6 +3,7 @@
+ namespace Tests\AppBundle\Entity;
+ 
+ use AppBundle\Entity\Dinosaur;
++use AppBundle\Entity\Tracker;
+ use PHPUnit\Framework\TestCase;
+ 
+ class DinosaurTest extends TestCase
+@@ -36,4 +37,14 @@ class DinosaurTest extends TestCase
+             $dinosaur->getSpecification()
+         );
+     }
++
++    public function testCanGetAPositionOfDinosaur()
++    {
++        $tracker = new Tracker();
++
++        $dinosaur = new Dinosaur();
++        $dinosaur->addTracker($tracker);
++
++        $this->assertContains('area "5"', $dinosaur->track());
++    }
+ }

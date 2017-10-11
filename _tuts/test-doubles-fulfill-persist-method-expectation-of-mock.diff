@@ -1,0 +1,13 @@
+diff --git a/src/AppBundle/Service/EnclosureBuilderService.php b/src/AppBundle/Service/EnclosureBuilderService.php
+index d56b557..b2bc3eb 100644
+--- a/src/AppBundle/Service/EnclosureBuilderService.php
++++ b/src/AppBundle/Service/EnclosureBuilderService.php
+@@ -39,6 +39,8 @@ class EnclosureBuilderService
+ 
+         $this->addDinosaurs($numberOfDinosaurs, $enclosure);
+ 
++        $this->entityManager->persist($enclosure);
++
+         return $enclosure;
+     }
+ 

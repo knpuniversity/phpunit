@@ -1,0 +1,14 @@
+diff --git a/tests/AppBundle/Factory/DinosaurFactoryTest.php b/tests/AppBundle/Factory/DinosaurFactoryTest.php
+index 4d12e2c..d04ff56 100644
+--- a/tests/AppBundle/Factory/DinosaurFactoryTest.php
++++ b/tests/AppBundle/Factory/DinosaurFactoryTest.php
+@@ -27,4 +27,9 @@ class DinosaurFactoryTest extends TestCase
+         $this->assertSame('Velociraptor', $dinosaur->getGenus());
+         $this->assertSame(5, $dinosaur->getLength());
+     }
++
++    public function testItGrowsATriceraptors()
++    {
++        $this->markTestIncomplete('Waiting for confirmation from GenLab');
++    }
+ }

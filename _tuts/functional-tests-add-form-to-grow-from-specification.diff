@@ -1,0 +1,95 @@
+diff --git a/app/Resources/views/default/index.html.twig b/app/Resources/views/default/index.html.twig
+index e61ca97..b81df14 100644
+--- a/app/Resources/views/default/index.html.twig
++++ b/app/Resources/views/default/index.html.twig
+@@ -4,6 +4,41 @@
+     <h1 class="header">Welcome to Dinosaur Park</h1>
+ 
+     <div class="container">
++        {% if app.session.started and app.session.flashBag.peekAll is not empty %}
++            <div id="flash-messages" class="messages">
++                {% for type, messages in app.session.flashBag.all() %}
++                    {% for message in messages %}
++                        <blockquote>
++                            {{ message }}
++                        </blockquote>
++                    {% endfor %}
++                {% endfor %}
++            </div>
++        {% endif %}
++
++        <form action="{{ url('grow-dinosaur') }}" method="POST">
++            <div class="row">
++                <div class="column">
++                    <label for="enclosure">Enclosure</label>
++                    <select name="enclosure" id="enclosure">
++                        {% for enclosure in enclosures %}
++                            <option value="{{ enclosure.id }}">Enclosure #{{ enclosure.id }}</option>
++                        {% endfor %}
++                    </select>
++                </div>
++
++                <div class="column">
++                    <label for="specification">Specification</label>
++                    <input type="text" id="specification" name="specification" />
++                </div>
++
++                <div class="column">
++                    <label for="">&nbsp;</label>
++                    <input type="submit" class="button" value="Grow dinosaur" />
++                </div>
++            </div>
++        </form>
++
+         <h3>Enclosures</h3>
+ 
+         <table>
+diff --git a/src/AppBundle/Controller/DefaultController.php b/src/AppBundle/Controller/DefaultController.php
+index d8c21cc..1f1524f 100644
+--- a/src/AppBundle/Controller/DefaultController.php
++++ b/src/AppBundle/Controller/DefaultController.php
+@@ -3,8 +3,11 @@
+ namespace AppBundle\Controller;
+ 
+ use AppBundle\Entity\Enclosure;
++use AppBundle\Factory\DinosaurFactory;
++use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
++use Symfony\Component\HttpFoundation\Request;
+ 
+ class DefaultController extends Controller
+ {
+@@ -19,4 +22,32 @@ class DefaultController extends Controller
+             'enclosures' => $manager->getRepository(Enclosure::class)->findAll(),
+         ]);
+     }
++
++    /**
++     * @Route("/grow", name="grow-dinosaur")
++     * @Method({"POST"})
++     */
++    public function growAction(Request $request, DinosaurFactory $dinosaurFactory)
++    {
++        $manager = $this->getDoctrine()->getManager();
++
++        $enclosure = $manager->getRepository(Enclosure::class)
++            ->find($request->request->get('enclosure'));
++
++        $specification = $request->request->get('specification');
++        $dinosaur = $dinosaurFactory->growFromSpecification($specification);
++
++        $dinosaur->setEnclosure($enclosure);
++        $enclosure->addDinosaur($dinosaur);
++
++        $manager->flush();
++
++        $this->addFlash('success', sprintf(
++            'Grown a %s in enclosure #%d',
++            mb_strtolower($specification),
++            $enclosure->getId()
++        ));
++
++        return $this->redirectToRoute('homepage');
++    }
+ }
