@@ -22,14 +22,14 @@ index 146551d..df5832b 100644
 +    }
  }
 diff --git a/src/AppBundle/Factory/DinosaurFactory.php b/src/AppBundle/Factory/DinosaurFactory.php
-index 2c0ede5..40b6c68 100644
+index a0c83ea..e666f88 100644
 --- a/src/AppBundle/Factory/DinosaurFactory.php
 +++ b/src/AppBundle/Factory/DinosaurFactory.php
-@@ -14,4 +14,8 @@ class DinosaurFactory
- 
-         return $dinosaur;
+@@ -19,4 +19,8 @@ class DinosaurFactory
+     {
+         return $this->createDinosaur('Velociraptor', true, $length);
      }
-+
++    
 +    public function growFromSpecification(string $specification): Dinosaur
 +    {
 +    }

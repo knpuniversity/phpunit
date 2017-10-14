@@ -66,8 +66,13 @@
             "description": null
         },
         {
-            "id": "setget-testing-refactoring-add-set-up-method",
-            "name": "SetGet testing: refactoring - add set up method",
+            "id": "setget-testing-refactoring",
+            "name": "SetGet testing: refactoring",
+            "description": null
+        },
+        {
+            "id": "setget-testing-fixing-failed-refactoring",
+            "name": "SetGet testing: fixing failed refactoring",
             "description": null
         },
         {
@@ -266,5 +271,5 @@
             "description": null
         }
     ],
-    "sha": "3bbf25cd6bdc9e3b7bddbd5e25357280324835a3"
+    "sha": "eb3dcccbe1281558bdf0bb8f9f0487cb1b5ac924"
 }

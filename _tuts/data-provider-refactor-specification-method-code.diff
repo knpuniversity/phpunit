@@ -1,8 +1,8 @@
 diff --git a/src/AppBundle/Factory/DinosaurFactory.php b/src/AppBundle/Factory/DinosaurFactory.php
-index d710386..c995cf8 100644
+index 2f992d2..0bc615c 100644
 --- a/src/AppBundle/Factory/DinosaurFactory.php
 +++ b/src/AppBundle/Factory/DinosaurFactory.php
-@@ -19,25 +19,9 @@ class DinosaurFactory
+@@ -24,25 +24,9 @@ class DinosaurFactory
      {
          // defaults
          $codeName = 'InG-' . random_int(1, 99999);
@@ -29,7 +29,7 @@ index d710386..c995cf8 100644
          if (stripos($specification, 'carnivorous') !== false) {
              $isCarnivorous = true;
          }
-@@ -48,4 +32,29 @@ class DinosaurFactory
+@@ -51,4 +35,29 @@ class DinosaurFactory
  
          return $dinosaur;
      }
