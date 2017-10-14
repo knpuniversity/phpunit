@@ -7,3 +7,8 @@
     border-bottom: 1px solid #636363;
     text-align: center;
 }
+
+.button-alarm {
+    background: #cb4e56;
+    border-color: #cb4e56;
+}
