@@ -1,0 +1,22 @@
+<form action="{{ url('grow-dinosaur') }}" method="POST">
+    <div class="row">
+        <div class="column">
+            <label for="enclosure">Enclosure</label>
+            <select name="enclosure" id="enclosure">
+                {% for enclosure in enclosures %}
+                    <option value="{{ enclosure.id }}">Enclosure #{{ enclosure.id }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="column">
+            <label for="specification">Dino description</label>
+            <input type="text" id="specification" name="specification" placeholder="Small carnivorous dino friend" />
+        </div>
+
+        <div class="column">
+            <label for="">&nbsp;</label>
+            <input type="submit" class="button" value="Grow dinosaur" />
+        </div>
+    </div>
+</form>
