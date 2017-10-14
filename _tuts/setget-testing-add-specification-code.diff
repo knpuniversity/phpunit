@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index 6ef0c68..67b243e 100644
+index 8ef630a..67b243e 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
 @@ -15,6 +15,24 @@ class Dinosaur
@@ -31,7 +31,7 @@ index 6ef0c68..67b243e 100644
  
      public function getSpecification(): string
      {
--        return '';
+-        return 'The Unknown non-carnivorous dinosaur is 0 meters long';
 +        return sprintf(
 +            'The %s %scarnivorous dinosaur is %d meters long',
 +            $this->genus,
@@ -40,3 +40,16 @@ index 6ef0c68..67b243e 100644
 +        );
      }
  }
+diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
+index 15b48a8..3c71e24 100644
+--- a/tests/AppBundle/Entity/DinosaurTest.php
++++ b/tests/AppBundle/Entity/DinosaurTest.php
+@@ -39,7 +39,7 @@ class DinosaurTest extends TestCase
+ 
+     public function testReturnsFullSpecificationForTyrannosaurus()
+     {
+-        $dinosaur = new Dinosaur();
++        $dinosaur = new Dinosaur('Tyrannosaurus', true);
+ 
+         $dinosaur->setLength(12);
+ 

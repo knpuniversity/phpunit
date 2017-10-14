@@ -41,6 +41,16 @@
             "description": null
         },
         {
+            "id": "setget-testing-add-hard-coded-specification-code",
+            "name": "SetGet testing: add hard coded specification code",
+            "description": null
+        },
+        {
+            "id": "setget-testing-add-additional-specification-test",
+            "name": "SetGet testing: add additional specification test",
+            "description": null
+        },
+        {
             "id": "setget-testing-add-specification-code",
             "name": "SetGet testing: add specification code",
             "description": null
@@ -256,5 +266,5 @@
             "description": null
         }
     ],
-    "sha": "fe0b750cbaf5fe828dad578eb325aa2e35ba6ba9"
+    "sha": "3bbf25cd6bdc9e3b7bddbd5e25357280324835a3"
 }

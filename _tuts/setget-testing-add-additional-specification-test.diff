@@ -1,0 +1,21 @@
+diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
+index 7d03e4e..15b48a8 100644
+--- a/tests/AppBundle/Entity/DinosaurTest.php
++++ b/tests/AppBundle/Entity/DinosaurTest.php
+@@ -36,4 +36,16 @@ class DinosaurTest extends TestCase
+             $dinosaur->getSpecification()
+         );
+     }
++
++    public function testReturnsFullSpecificationForTyrannosaurus()
++    {
++        $dinosaur = new Dinosaur();
++
++        $dinosaur->setLength(12);
++
++        $this->assertSame(
++            'The Tyrannosaurus carnivorous dinosaur is 12 meters long',
++            $dinosaur->getSpecification()
++        );
++    }
+ }
