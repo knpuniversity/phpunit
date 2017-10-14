@@ -1,18 +1,18 @@
 diff --git a/app/Resources/views/default/index.html.twig b/app/Resources/views/default/index.html.twig
-index 3fabf3b..e61ca97 100644
+index 575dbb6..685b48c 100644
 --- a/app/Resources/views/default/index.html.twig
 +++ b/app/Resources/views/default/index.html.twig
-@@ -13,6 +13,13 @@
-                     <td>
-                         Contains <strong>{{ enclosure.dinosaurCount }}</strong> dinosaur(s)
-                     </td>
-+                    <td>
-+                        {% if enclosure.isSecurityActive %}
-+                            🔒 Security active!
-+                        {% else %}
-+                            <button class="button button-alarm">Sound alarm !!!</button>
-+                        {% endif %}
-+                    </td>
-                 </tr>
-             {% endfor %}
-         </table>
+@@ -10,6 +10,13 @@
+                 <td>
+                     Contains <strong>{{ enclosure.dinosaurCount }}</strong> dinosaur(s)
+                 </td>
++                <td>
++                    {% if enclosure.isSecurityActive %}
++                        🔒 Security active!
++                    {% else %}
++                        <button class="button button-alarm">Sound alarm !!!</button>
++                    {% endif %}
++                </td>
+             </tr>
+         {% endfor %}
+     </table>

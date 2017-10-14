@@ -1,26 +1,23 @@
 diff --git a/app/Resources/views/default/index.html.twig b/app/Resources/views/default/index.html.twig
-index cd32fdb..3fabf3b 100644
+index 62e26d4..575dbb6 100644
 --- a/app/Resources/views/default/index.html.twig
 +++ b/app/Resources/views/default/index.html.twig
-@@ -2,4 +2,19 @@
+@@ -1,4 +1,16 @@
+ {% extends 'base.html.twig' %}
  
  {% block body %}
-     <h1 class="header">Welcome to Dinosaur Park</h1>
++    <h3>Enclosures</h3>
 +
-+    <div class="container">
-+        <h3>Enclosures</h3>
-+
-+        <table>
-+            {% for enclosure in enclosures %}
-+                <tr id="enclosure-{{ enclosure.id }}">
-+                    <td>Enclosure #{{ enclosure.id }}</td>
-+                    <td>
-+                        Contains <strong>{{ enclosure.dinosaurCount }}</strong> dinosaur(s)
-+                    </td>
-+                </tr>
-+            {% endfor %}
-+        </table>
-+    </div>
++    <table>
++        {% for enclosure in enclosures %}
++            <tr id="enclosure-{{ enclosure.id }}">
++                <td>Enclosure #{{ enclosure.id }}</td>
++                <td>
++                    Contains <strong>{{ enclosure.dinosaurCount }}</strong> dinosaur(s)
++                </td>
++            </tr>
++        {% endfor %}
++    </table>
  {% endblock %}
 diff --git a/src/AppBundle/Controller/DefaultController.php b/src/AppBundle/Controller/DefaultController.php
 index 36ea5c0..d8c21cc 100644
