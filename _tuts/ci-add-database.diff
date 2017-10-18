@@ -1,0 +1,12 @@
+diff --git a/.circleci/config.yml b/.circleci/config.yml
+index 4c4e971..ba214dd 100644
+--- a/.circleci/config.yml
++++ b/.circleci/config.yml
+@@ -22,5 +22,7 @@ jobs:
+                     - ./vendor
+                 key: v1-dependencies-{{ checksum "composer.json" }}
+ 
++            - run: mkdir var/data
++
+             # run tests!
+             - run: ./vendor/bin/phpunit

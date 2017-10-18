@@ -269,7 +269,27 @@
             "id": "functional-tests-write-option-code-in-alarm-command",
             "name": "Functional tests: write option code in alarm command",
             "description": null
+        },
+        {
+            "id": "ci-initial-config",
+            "name": "CI: initial config",
+            "description": null
+        },
+        {
+            "id": "ci-running-tests",
+            "name": "CI: running tests",
+            "description": null
+        },
+        {
+            "id": "ci-add-database",
+            "name": "CI: add database",
+            "description": null
+        },
+        {
+            "id": "ci-storing-artifacts",
+            "name": "CI: storing artifacts",
+            "description": null
         }
     ],
-    "sha": "c6d28251ad6651965d7dda635a406ff9e82c1369"
+    "sha": "b57f6749649cceabc5eb08f3904ca66ec05f113b"
 }
