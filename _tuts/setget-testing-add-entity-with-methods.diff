@@ -1,9 +1,9 @@
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
 new file mode 100644
-index 0000000..6ef0c68
+index 0000000..3226294
 --- /dev/null
 +++ b/src/AppBundle/Entity/Dinosaur.php
-@@ -0,0 +1,32 @@
+@@ -0,0 +1,27 @@
 +<?php
 +
 +namespace AppBundle\Entity;
@@ -29,11 +29,6 @@ index 0000000..6ef0c68
 +    public function setLength(int $length)
 +    {
 +        $this->length = $length;
-+    }
-+
-+    public function getSpecification(): string
-+    {
-+        return '';
 +    }
 +}
 diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php

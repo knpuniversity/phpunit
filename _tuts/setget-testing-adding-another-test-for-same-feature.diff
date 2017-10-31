@@ -1,5 +1,5 @@
 diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
-index 6af9fc1..d019474 100644
+index 6af9fc1..5a68ddd 100644
 --- a/tests/AppBundle/Entity/DinosaurTest.php
 +++ b/tests/AppBundle/Entity/DinosaurTest.php
 @@ -17,4 +17,13 @@ class DinosaurTest extends TestCase
@@ -11,8 +11,8 @@ index 6af9fc1..d019474 100644
 +    {
 +        $dinosaur = new Dinosaur();
 +
-+        $dinosaur->setLength(9);
++        $dinosaur->setLength(15);
 +
-+        $this->assertGreaterThan(7, $dinosaur->getLength(), 'Did you put it in the washing machine?');
++        $this->assertGreaterThan(12, $dinosaur->getLength(), 'Did you put it in the washing machine?');
 +    }
  }

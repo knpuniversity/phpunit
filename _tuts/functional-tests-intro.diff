@@ -33,7 +33,7 @@ index 150cda4..117c141 100644
  services:
      test.AppBundle\Factory\DinosaurFactory: '@AppBundle\Factory\DinosaurFactory'
 diff --git a/composer.json b/composer.json
-index c016cae..cbaa0ec 100644
+index a9ec1ed..490d4f5 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -33,6 +33,7 @@
@@ -45,23 +45,22 @@ index c016cae..cbaa0ec 100644
          "sensio/generator-bundle": "^3.0",
          "symfony/phpunit-bridge": "^3.0"
 diff --git a/composer.lock b/composer.lock
-index a429ba9..a62063b 100644
+index 9312b89..e4f6ef4 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
          "This file is @generated automatically"
      ],
--    "content-hash": "2d1566662eda647aeceaa1204f6a6475",
-+    "content-hash": "74e810d4c4084eead40f620a68cad933",
+-    "content-hash": "29b25e4972772a1e605fedc081e76657",
++    "content-hash": "fa58ec91a7de01844071d80bce09bbff",
      "packages": [
          {
              "name": "composer/ca-bundle",
-@@ -2250,6 +2250,84 @@
-         }
+@@ -2262,6 +2262,84 @@
      ],
      "packages-dev": [
-+        {
+         {
 +            "name": "liip/functional-test-bundle",
 +            "version": "1.8.0",
 +            "source": {
@@ -139,9 +138,10 @@ index a429ba9..a62063b 100644
 +            ],
 +            "time": "2017-06-19T09:12:22+00:00"
 +        },
-         {
++        {
              "name": "myclabs/deep-copy",
-             "version": "1.6.1",
+             "version": "1.7.0",
+             "source": {
 diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/AppBundle/Controller/DefaultControllerTest.php
 new file mode 100644
 index 0000000..821ebdd

@@ -57,7 +57,7 @@ index 0000000..0c6095f
 +    }
 +}
 diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
-index 3c71e24..1cf47ae 100644
+index 3b3b8d3..ee4d6d9 100644
 --- a/tests/AppBundle/Entity/DinosaurTest.php
 +++ b/tests/AppBundle/Entity/DinosaurTest.php
 @@ -3,6 +3,7 @@

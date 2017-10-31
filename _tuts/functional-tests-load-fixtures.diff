@@ -32,7 +32,7 @@ index 117c141..5d4ff18 100644
  services:
      test.AppBundle\Factory\DinosaurFactory: '@AppBundle\Factory\DinosaurFactory'
 diff --git a/composer.json b/composer.json
-index cbaa0ec..59197e9 100644
+index 490d4f5..80ec68c 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -33,6 +33,7 @@
@@ -44,23 +44,22 @@ index cbaa0ec..59197e9 100644
          "phpunit/phpunit": "^6.3",
          "sensio/generator-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index a62063b..5d4d96b 100644
+index e4f6ef4..7117580 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
          "This file is @generated automatically"
      ],
--    "content-hash": "74e810d4c4084eead40f620a68cad933",
-+    "content-hash": "133ffc76bc67cce81a5cf52f6057801b",
+-    "content-hash": "fa58ec91a7de01844071d80bce09bbff",
++    "content-hash": "69ea225244cdd6e431411abbc18ae261",
      "packages": [
          {
              "name": "composer/ca-bundle",
-@@ -2250,6 +2250,122 @@
-         }
+@@ -2262,6 +2262,122 @@
      ],
      "packages-dev": [
-+        {
+         {
 +            "name": "doctrine/data-fixtures",
 +            "version": "v1.2.2",
 +            "source": {
@@ -121,28 +120,28 @@ index a62063b..5d4d96b 100644
 +        },
 +        {
 +            "name": "doctrine/doctrine-fixtures-bundle",
-+            "version": "2.3.0",
++            "version": "v2.4.1",
 +            "source": {
 +                "type": "git",
 +                "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
-+                "reference": "0f1a2f91b349e10f5c343f75ab71d23aace5b029"
++                "reference": "74b8cc70a4a25b774628ee59f4cdf3623a146273"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/0f1a2f91b349e10f5c343f75ab71d23aace5b029",
-+                "reference": "0f1a2f91b349e10f5c343f75ab71d23aace5b029",
++                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/74b8cc70a4a25b774628ee59f4cdf3623a146273",
++                "reference": "74b8cc70a4a25b774628ee59f4cdf3623a146273",
 +                "shasum": ""
 +            },
 +            "require": {
 +                "doctrine/data-fixtures": "~1.0",
 +                "doctrine/doctrine-bundle": "~1.0",
 +                "php": ">=5.3.2",
-+                "symfony/doctrine-bridge": "~2.3|~3.0"
++                "symfony/doctrine-bridge": "~2.7|~3.0|~4.0"
 +            },
 +            "type": "symfony-bundle",
 +            "extra": {
 +                "branch-alias": {
-+                    "dev-master": "2.2.x-dev"
++                    "dev-master": "2.4.x-dev"
 +                }
 +            },
 +            "autoload": {
@@ -174,11 +173,12 @@ index a62063b..5d4d96b 100644
 +                "Fixture",
 +                "persistence"
 +            ],
-+            "time": "2015-11-04T21:23:23+00:00"
++            "time": "2017-10-30T19:26:42+00:00"
 +        },
-         {
++        {
              "name": "liip/functional-test-bundle",
              "version": "1.8.0",
+             "source": {
 diff --git a/src/AppBundle/DataFixtures/ORM/LoadBasicParkData.php b/src/AppBundle/DataFixtures/ORM/LoadBasicParkData.php
 new file mode 100644
 index 0000000..d57663a

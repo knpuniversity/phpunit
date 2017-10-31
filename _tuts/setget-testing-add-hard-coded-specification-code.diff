@@ -1,12 +1,14 @@
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index 6ef0c68..8ef630a 100644
+index 3226294..8ef630a 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
-@@ -27,6 +27,6 @@ class Dinosaur
- 
-     public function getSpecification(): string
+@@ -24,4 +24,9 @@ class Dinosaur
      {
--        return '';
-+        return 'The Unknown non-carnivorous dinosaur is 0 meters long';
+         $this->length = $length;
      }
++
++    public function getSpecification(): string
++    {
++        return 'The Unknown non-carnivorous dinosaur is 0 meters long';
++    }
  }

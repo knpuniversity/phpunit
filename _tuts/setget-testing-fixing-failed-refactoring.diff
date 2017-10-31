@@ -1,11 +1,11 @@
 diff --git a/src/AppBundle/Factory/DinosaurFactory.php b/src/AppBundle/Factory/DinosaurFactory.php
-index e4e8f24..a0c83ea 100644
+index 2566479..ddcd667 100644
 --- a/src/AppBundle/Factory/DinosaurFactory.php
 +++ b/src/AppBundle/Factory/DinosaurFactory.php
-@@ -6,11 +6,13 @@ use AppBundle\Entity\Dinosaur;
+@@ -11,10 +11,12 @@ class DinosaurFactory
+         return $this->createDinosaur('Velociraptor', true, $length);
+     }
  
- class DinosaurFactory
- {
 -    private function createDinosaur(string $genus, bool $isCarnivorous, int $length)
 +    private function createDinosaur(string $genus, bool $isCarnivorous, int $length): Dinosaur
      {
@@ -15,5 +15,4 @@ index e4e8f24..a0c83ea 100644
 +
 +        return $dinosaur;
      }
- 
-     public function growVelociraptor(int $length): Dinosaur
+ }

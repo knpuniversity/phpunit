@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Factory/DinosaurFactory.php b/src/AppBundle/Factory/DinosaurFactory.php
-index 613d053..e85d6f7 100644
+index e971847..7639b3a 100644
 --- a/src/AppBundle/Factory/DinosaurFactory.php
 +++ b/src/AppBundle/Factory/DinosaurFactory.php
 @@ -31,6 +31,10 @@ class DinosaurFactory

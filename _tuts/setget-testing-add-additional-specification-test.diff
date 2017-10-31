@@ -1,5 +1,5 @@
 diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
-index 7d03e4e..15b48a8 100644
+index 716ba82..3b3b8d3 100644
 --- a/tests/AppBundle/Entity/DinosaurTest.php
 +++ b/tests/AppBundle/Entity/DinosaurTest.php
 @@ -36,4 +36,16 @@ class DinosaurTest extends TestCase
@@ -9,7 +9,7 @@ index 7d03e4e..15b48a8 100644
 +
 +    public function testReturnsFullSpecificationForTyrannosaurus()
 +    {
-+        $dinosaur = new Dinosaur();
++        $dinosaur = new Dinosaur('Tyrannosaurus', true);
 +
 +        $dinosaur->setLength(12);
 +
