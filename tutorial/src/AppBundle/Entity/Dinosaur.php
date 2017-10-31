@@ -24,9 +24,4 @@ class Dinosaur
     {
         $this->length = $length;
     }
-
-    public function getSpecification(): string
-    {
-        return '';
-    }
 }
