@@ -1,0 +1,15 @@
+diff --git a/.circleci/config.yml b/.circleci/config.yml
+new file mode 100644
+index 0000000..f1fd833
+--- /dev/null
++++ b/.circleci/config.yml
+@@ -0,0 +1,9 @@
++version: 2
++
++jobs:
++    build:
++        docker:
++            - image: circleci/php:7.1-cli
++        steps:
++            - checkout
++            - run: echo "It works, mwahaha !!!'

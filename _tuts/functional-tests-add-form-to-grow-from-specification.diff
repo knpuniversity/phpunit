@@ -1,49 +1,44 @@
+diff --git a/app/Resources/views/_partials/_newDinoForm.html.twig b/app/Resources/views/_partials/_newDinoForm.html.twig
+new file mode 100644
+index 0000000..d9c909a
+--- /dev/null
++++ b/app/Resources/views/_partials/_newDinoForm.html.twig
+@@ -0,0 +1,22 @@
++<form action="{{ url('grow-dinosaur') }}" method="POST">
++    <div class="row">
++        <div class="column">
++            <label for="enclosure">Enclosure</label>
++            <select name="enclosure" id="enclosure">
++                {% for enclosure in enclosures %}
++                    <option value="{{ enclosure.id }}">Enclosure #{{ enclosure.id }}</option>
++                {% endfor %}
++            </select>
++        </div>
++
++        <div class="column">
++            <label for="specification">Dino description</label>
++            <input type="text" id="specification" name="specification" placeholder="Small carnivorous dino friend" />
++        </div>
++
++        <div class="column">
++            <label for="">&nbsp;</label>
++            <input type="submit" class="button" value="Grow dinosaur" />
++        </div>
++    </div>
++</form>
 diff --git a/app/Resources/views/default/index.html.twig b/app/Resources/views/default/index.html.twig
-index e61ca97..b81df14 100644
+index 685b48c..61d23c9 100644
 --- a/app/Resources/views/default/index.html.twig
 +++ b/app/Resources/views/default/index.html.twig
-@@ -4,6 +4,41 @@
-     <h1 class="header">Welcome to Dinosaur Park</h1>
+@@ -1,6 +1,8 @@
+ {% extends 'base.html.twig' %}
  
-     <div class="container">
-+        {% if app.session.started and app.session.flashBag.peekAll is not empty %}
-+            <div id="flash-messages" class="messages">
-+                {% for type, messages in app.session.flashBag.all() %}
-+                    {% for message in messages %}
-+                        <blockquote>
-+                            {{ message }}
-+                        </blockquote>
-+                    {% endfor %}
-+                {% endfor %}
-+            </div>
-+        {% endif %}
+ {% block body %}
++    {{ include('_partials/_newDinoForm.html.twig') }}
 +
-+        <form action="{{ url('grow-dinosaur') }}" method="POST">
-+            <div class="row">
-+                <div class="column">
-+                    <label for="enclosure">Enclosure</label>
-+                    <select name="enclosure" id="enclosure">
-+                        {% for enclosure in enclosures %}
-+                            <option value="{{ enclosure.id }}">Enclosure #{{ enclosure.id }}</option>
-+                        {% endfor %}
-+                    </select>
-+                </div>
-+
-+                <div class="column">
-+                    <label for="specification">Specification</label>
-+                    <input type="text" id="specification" name="specification" />
-+                </div>
-+
-+                <div class="column">
-+                    <label for="">&nbsp;</label>
-+                    <input type="submit" class="button" value="Grow dinosaur" />
-+                </div>
-+            </div>
-+        </form>
-+
-         <h3>Enclosures</h3>
+     <h3>Enclosures</h3>
  
-         <table>
+     <table>
 diff --git a/src/AppBundle/Controller/DefaultController.php b/src/AppBundle/Controller/DefaultController.php
 index d8c21cc..1f1524f 100644
 --- a/src/AppBundle/Controller/DefaultController.php

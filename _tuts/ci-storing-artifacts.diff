@@ -1,0 +1,16 @@
+diff --git a/.circleci/config.yml b/.circleci/config.yml
+index ba214dd..ca69725 100644
+--- a/.circleci/config.yml
++++ b/.circleci/config.yml
+@@ -25,4 +25,10 @@ jobs:
+             - run: mkdir var/data
+ 
+             # run tests!
+-            - run: ./vendor/bin/phpunit
++            - run: ./vendor/bin/phpunit --log-junit ~/phpunit/junit.xml
++
++            - store_test_results:
++                path: ~/phpunit
++
++            - store_artifacts:
++                path: ~/phpunit

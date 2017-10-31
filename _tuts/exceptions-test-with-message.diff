@@ -1,25 +1,25 @@
-diff --git a/src/AppBundle/Exception/GottaCatchEmAllException.php b/src/AppBundle/Exception/GottaCatchEmAllException.php
+diff --git a/src/AppBundle/Exception/DinosaursAreRunningRampantException.php b/src/AppBundle/Exception/DinosaursAreRunningRampantException.php
 new file mode 100644
-index 0000000..35d07e3
+index 0000000..f441acb
 --- /dev/null
-+++ b/src/AppBundle/Exception/GottaCatchEmAllException.php
++++ b/src/AppBundle/Exception/DinosaursAreRunningRampantException.php
 @@ -0,0 +1,7 @@
 +<?php
 +
 +namespace AppBundle\Exception;
 +
-+class GottaCatchEmAllException extends \Exception
++class DinosaursAreRunningRampantException extends \Exception
 +{
 +}
 diff --git a/tests/AppBundle/Entity/EnclosureTest.php b/tests/AppBundle/Entity/EnclosureTest.php
-index 9dbb2a2..cead282 100644
+index 9dbb2a2..fb8b708 100644
 --- a/tests/AppBundle/Entity/EnclosureTest.php
 +++ b/tests/AppBundle/Entity/EnclosureTest.php
 @@ -4,6 +4,7 @@ namespace Tests\AppBundle\Entity;
  
  use AppBundle\Entity\Dinosaur;
  use AppBundle\Entity\Enclosure;
-+use AppBundle\Exception\GottaCatchEmAllException;
++use AppBundle\Exception\DinosaursAreRunningRampantException;
  use AppBundle\Exception\NotABuffetException;
  use PHPUnit\Framework\TestCase;
  
@@ -32,7 +32,7 @@ index 9dbb2a2..cead282 100644
 +    {
 +        $enclosure = new Enclosure();
 +
-+        $this->expectException(GottaCatchEmAllException::class);
++        $this->expectException(DinosaursAreRunningRampantException::class);
 +        $this->expectExceptionMessage('Are you craaazy?!?');
 +
 +        $enclosure->addDinosaur(new Dinosaur('Velociraptor', true));

@@ -41,6 +41,16 @@
             "description": null
         },
         {
+            "id": "setget-testing-add-hard-coded-specification-code",
+            "name": "SetGet testing: add hard coded specification code",
+            "description": null
+        },
+        {
+            "id": "setget-testing-add-additional-specification-test",
+            "name": "SetGet testing: add additional specification test",
+            "description": null
+        },
+        {
             "id": "setget-testing-add-specification-code",
             "name": "SetGet testing: add specification code",
             "description": null
@@ -56,8 +66,13 @@
             "description": null
         },
         {
-            "id": "setget-testing-refactoring-add-set-up-method",
-            "name": "SetGet testing: refactoring - add set up method",
+            "id": "setget-testing-refactoring",
+            "name": "SetGet testing: refactoring",
+            "description": null
+        },
+        {
+            "id": "setget-testing-fixing-failed-refactoring",
+            "name": "SetGet testing: fixing failed refactoring",
             "description": null
         },
         {
@@ -254,7 +269,27 @@
             "id": "functional-tests-write-option-code-in-alarm-command",
             "name": "Functional tests: write option code in alarm command",
             "description": null
+        },
+        {
+            "id": "ci-initial-config",
+            "name": "CI: initial config",
+            "description": null
+        },
+        {
+            "id": "ci-running-tests",
+            "name": "CI: running tests",
+            "description": null
+        },
+        {
+            "id": "ci-add-database",
+            "name": "CI: add database",
+            "description": null
+        },
+        {
+            "id": "ci-storing-artifacts",
+            "name": "CI: storing artifacts",
+            "description": null
         }
     ],
-    "sha": "142eb93489533d1d9a5a707290a81779fe62791c"
+    "sha": "b57f6749649cceabc5eb08f3904ca66ec05f113b"
 }

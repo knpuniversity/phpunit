@@ -57,7 +57,7 @@ index 0000000..0c6095f
 +    }
 +}
 diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
-index 7d03e4e..3797c1a 100644
+index 3c71e24..1cf47ae 100644
 --- a/tests/AppBundle/Entity/DinosaurTest.php
 +++ b/tests/AppBundle/Entity/DinosaurTest.php
 @@ -3,6 +3,7 @@
@@ -68,7 +68,7 @@ index 7d03e4e..3797c1a 100644
  use PHPUnit\Framework\TestCase;
  
  class DinosaurTest extends TestCase
-@@ -36,4 +37,14 @@ class DinosaurTest extends TestCase
+@@ -48,4 +49,14 @@ class DinosaurTest extends TestCase
              $dinosaur->getSpecification()
          );
      }

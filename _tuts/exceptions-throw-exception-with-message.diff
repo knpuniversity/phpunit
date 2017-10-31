@@ -1,12 +1,12 @@
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index 11bd5c6..8ce5a8e 100644
+index 11bd5c6..de2ea83 100644
 --- a/src/AppBundle/Entity/Enclosure.php
 +++ b/src/AppBundle/Entity/Enclosure.php
 @@ -2,6 +2,7 @@
  
  namespace AppBundle\Entity;
  
-+use AppBundle\Exception\GottaCatchEmAllException;
++use AppBundle\Exception\DinosaursAreRunningRampantException;
  use AppBundle\Exception\NotABuffetException;
  use Doctrine\Common\Collections\ArrayCollection;
  use Doctrine\ORM\Mapping as ORM;
@@ -32,7 +32,7 @@ index 11bd5c6..8ce5a8e 100644
      public function addDinosaur(Dinosaur $dinosaur)
      {
 +        if (!$this->getIsSecurityActive()) {
-+            throw new GottaCatchEmAllException('Are you craaazy?!?');
++            throw new DinosaursAreRunningRampantException('Are you craaazy?!?');
 +        }
 +
          if (!$this->canAddDinosaur($dinosaur)) {
@@ -54,3 +54,55 @@ index 11bd5c6..8ce5a8e 100644
 +        return false;
 +    }
  }
+diff --git a/src/AppBundle/Entity/Security.php b/src/AppBundle/Entity/Security.php
+new file mode 100644
+index 0000000..894f57c
+--- /dev/null
++++ b/src/AppBundle/Entity/Security.php
+@@ -0,0 +1,46 @@
++<?php
++
++namespace AppBundle\Entity;
++
++use Doctrine\ORM\Mapping as ORM;
++
++/**
++ * @ORM\Entity
++ * @ORM\Table(name="securities")
++ */
++class Security
++{
++    /**
++     * @ORM\Id
++     * @ORM\GeneratedValue(strategy="AUTO")
++     * @ORM\Column(type="integer")
++     */
++    private $id;
++
++    /**
++     * @ORM\Column(type="string")
++     */
++    private $name;
++
++    /**
++     * @ORM\Column(type="boolean")
++     */
++    private $isActive;
++
++    /**
++     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Enclosure", inversedBy="securities")
++     */
++    private $enclosure;
++
++    public function __construct(string $name, bool $isActive, Enclosure $enclosure)
++    {
++        $this->name = $name;
++        $this->isActive = $isActive;
++        $this->enclosure = $enclosure;
++    }
++
++    public function getIsActive(): bool
++    {
++        return $this->isActive;
++    }
++}

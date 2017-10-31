@@ -1,18 +1,20 @@
 diff --git a/tests/AppBundle/Entity/DinosaurTest.php b/tests/AppBundle/Entity/DinosaurTest.php
-index d019474..7d03e4e 100644
+index 7d03e4e..15b48a8 100644
 --- a/tests/AppBundle/Entity/DinosaurTest.php
 +++ b/tests/AppBundle/Entity/DinosaurTest.php
-@@ -26,4 +26,14 @@ class DinosaurTest extends TestCase
- 
-         $this->assertGreaterThan(7, $dinosaur->getLength(), 'Did you put it in the washing machine?');
+@@ -36,4 +36,16 @@ class DinosaurTest extends TestCase
+             $dinosaur->getSpecification()
+         );
      }
 +
-+    public function testReturnsFullSpecificationOfDinosaur()
++    public function testReturnsFullSpecificationForTyrannosaurus()
 +    {
 +        $dinosaur = new Dinosaur();
 +
++        $dinosaur->setLength(12);
++
 +        $this->assertSame(
-+            'The Unknown non-carnivorous dinosaur is 0 meters long',
++            'The Tyrannosaurus carnivorous dinosaur is 12 meters long',
 +            $dinosaur->getSpecification()
 +        );
 +    }

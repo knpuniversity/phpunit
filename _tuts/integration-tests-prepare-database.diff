@@ -17,7 +17,7 @@ index 51c4c5f..91acac7 100644
       * @ORM\Column(type="integer")
       */
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index 398b456..e60a631 100644
+index dca6dbd..5b1f775 100644
 --- a/src/AppBundle/Entity/Enclosure.php
 +++ b/src/AppBundle/Entity/Enclosure.php
 @@ -13,6 +13,13 @@ use Doctrine\ORM\Mapping as ORM;

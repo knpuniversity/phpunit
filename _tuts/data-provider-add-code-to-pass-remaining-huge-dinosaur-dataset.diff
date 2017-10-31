@@ -1,8 +1,8 @@
 diff --git a/src/AppBundle/Factory/DinosaurFactory.php b/src/AppBundle/Factory/DinosaurFactory.php
-index b0bb287..d710386 100644
+index 02fc411..2f992d2 100644
 --- a/src/AppBundle/Factory/DinosaurFactory.php
 +++ b/src/AppBundle/Factory/DinosaurFactory.php
-@@ -26,6 +26,14 @@ class DinosaurFactory
+@@ -31,6 +31,14 @@ class DinosaurFactory
              $length = random_int(Dinosaur::HUGE, 100);
          }
  
