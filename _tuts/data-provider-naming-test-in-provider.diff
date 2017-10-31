@@ -1,0 +1,13 @@
+diff --git a/tests/AppBundle/Factory/DinosaurFactoryTest.php b/tests/AppBundle/Factory/DinosaurFactoryTest.php
+index 531872f..08b214e 100644
+--- a/tests/AppBundle/Factory/DinosaurFactoryTest.php
++++ b/tests/AppBundle/Factory/DinosaurFactoryTest.php
+@@ -65,7 +65,7 @@ class DinosaurFactoryTest extends TestCase
+         return [
+             // specification, is large, is carnivorous
+             ['large carnivorous dinosaur', true, true],
+-            ['give me all the cookies!!!', false, false],
++            'default response' => ['give me all the cookies!!!', false, false],
+             ['large herbivore', true, false],
+         ];
+     }

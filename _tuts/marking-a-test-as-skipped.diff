@@ -1,5 +1,5 @@
 diff --git a/tests/AppBundle/Factory/DinosaurFactoryTest.php b/tests/AppBundle/Factory/DinosaurFactoryTest.php
-index d04ff56..8aa11e2 100644
+index d04ff56..e75a67d 100644
 --- a/tests/AppBundle/Factory/DinosaurFactoryTest.php
 +++ b/tests/AppBundle/Factory/DinosaurFactoryTest.php
 @@ -32,4 +32,15 @@ class DinosaurFactoryTest extends TestCase
@@ -7,10 +7,10 @@ index d04ff56..8aa11e2 100644
          $this->markTestIncomplete('Waiting for confirmation from GenLab');
      }
 +
-+    public function testItGrowsASmallVelociraptor()
++    public function testItGrowsABabyVelociraptor()
 +    {
 +        if (!class_exists('Nanny')) {
-+            $this->markTestSkipped();
++            $this->markTestSkipped('There is nobody to watch the baby!');
 +        }
 +
 +        $dinosaur = $this->factory->growVelociraptor(1);

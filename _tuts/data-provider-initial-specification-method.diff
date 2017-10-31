@@ -1,9 +1,9 @@
 diff --git a/src/AppBundle/Factory/DinosaurFactory.php b/src/AppBundle/Factory/DinosaurFactory.php
-index e21b7a3..97213f1 100644
+index 601ca99..321ae27 100644
 --- a/src/AppBundle/Factory/DinosaurFactory.php
 +++ b/src/AppBundle/Factory/DinosaurFactory.php
-@@ -22,5 +22,13 @@ class DinosaurFactory
-     
+@@ -13,6 +13,14 @@ class DinosaurFactory
+ 
      public function growFromSpecification(string $specification): Dinosaur
      {
 +        // defaults
@@ -15,4 +15,5 @@ index e21b7a3..97213f1 100644
 +
 +        return $dinosaur;
      }
- }
+ 
+     private function createDinosaur(string $genus, bool $isCarnivorous, int $length): Dinosaur

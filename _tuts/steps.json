@@ -91,6 +91,16 @@
             "description": null
         },
         {
+            "id": "data-provider-add-data-provider",
+            "name": "Data provider: Add data provider",
+            "description": null
+        },
+        {
+            "id": "data-provider-naming-test-in-provider",
+            "name": "Data provider: Naming test in provider",
+            "description": null
+        },
+        {
             "id": "data-provider-initial-specification-method",
             "name": "Data provider: initial specification method",
             "description": null
@@ -291,5 +301,5 @@
             "description": null
         }
     ],
-    "sha": "91292dc279d290b926604948d89677e4789ed6b8"
+    "sha": "54d781cfae04dc039e31f1c84312e24e3fdcad1b"
 }
