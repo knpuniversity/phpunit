@@ -1,6 +1,6 @@
 # PHPUnit: Secure the Park
 
-Let me paint your a scary picture:
+Let me paint you a scary picture:
 
 It's Friday night. It's stormy. The office is empty and you're deploying fresh code
 straight to production. Suddenly, an alarm! What? The fences are down!? The dinosaurs are
