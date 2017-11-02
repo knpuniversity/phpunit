@@ -9,13 +9,13 @@ first and *then* your code. We'll talk more about TDD in a few minutes.
 
 ## Imagining Your Future Code
 
-But yea! That's what we're going to do. But, we need to use our imagination. Let's
+But yea! That's what we're going to do. We need to use our imagination. Let's
 imagine that in the `Entity` directory, we're going to need a `Dinosaur` class.
 And each `Dinosaur` will have a length property, along with `getLength()` and `setLength()`
 methods. So, in `DinosaurTest`, we might want to test that those methods work
 correctly.
 
-Actually, testing getters and setter methods is not something I *usually* do in
+Actually, testing getter and setter methods is not something I *usually* do in
 my code... because they're *so* simple. But, it's a *great* place to get started.
 
 ## Test Directory Structure
@@ -40,8 +40,8 @@ is `$dinosaur->getLength()`.
 
 This tests that - if we don't set a length - it defaults to 0. PHPUnit has a *ton*
 of these `assert` functions. Google for "PHPUnit Assertions" to find an appendix
-that talks *all* about them. There are many... many... many... You'll learn them
-as you go, so no need to memorize them all. There will *not* be a pop quiz at the
+that talks *all* about them. I'd say there is a plethora of them and you'll learn them
+as you go, so no need to memorize all of these. There will *not* be a pop quiz at the
 end.
 
 For `assertSame()`, the first argument is the *expected* value and the second is
@@ -79,13 +79,14 @@ into the *real* `Entity` directory.
 
 This is just a simple class with a `length` property. It *does* have Doctrine annotations,
 but that's not important! Sure, we will *eventually* be able to save dinosaurs to
-the database, but our test doesn't care about that: it's just checks to make sure
+the database, but our test doesn't care about that: it just checks to make sure
 setting and getting the length works.
 
 Let's add those methods: `public function getLength()` that returns an int. And
 `public function setLength()` with an int argument. Set the `length` property.
 
-Back in `DinosaurTest`, add the `use` statement. Ah, PhpStorm is happy!
+Back in `DinosaurTest`, add the `use` statement. Ah, PhpStorm is as happy as a
+raptor in a kitchen!
 
 Ok, find your terminal and... test!
 
@@ -93,20 +94,20 @@ Ok, find your terminal and... test!
 ./vendor/bin/phpunit
 ```
 
-Yes! Celebration! This is our very *first* - of *many* passing tests!
+Yes! Celebration time! This is our very *first* - of *many* passing tests!
 
 ## Testing for Bugs
 
 Let's add one more quickly: imagine that a bug has been reported! Gasp! People are
 saying that if they create a `Dinosaur` of length 15, by the time it is born and
-grows up, it's smaller than 15! The dinos are shrinking!
+grows up, it's smaller than 15! The dinos are shrinking! Probably a good thing.
 
 Let's add a test for this: `public function testDinosaurHasNotShrunk`. Start the
 same as before: `$dinosaur = new Dinosaur()`, and `$dinosaur->setLength(15)`.
 
 And *just* to make things more interesting, imagine that it's OK if the dinosaur
-shrinks a little bit... it just can't shrink *too* much. In other words,
-`$this->assertGreatherThan(12, $dinosuar->getLength())`. 
+shrinks a little bit... it just can't shrink *too* much. The guests want a thrill! 
+In other words, `$this->assertGreatherThan(12, $dinosuar->getLength())`. 
 
 You can also add an optional message as the last argument to *any* assert function.
 This will display when the test fails... which can sometimes making debugging easier.
@@ -118,7 +119,7 @@ Ok, try the test!
 ```
 
 Because our code is *actually* perfect, it passes! But if you make it fail temporarily
-and run again... there's our message, along with the normal failed assertion text.
+and run the test again... there's our message, along with the normal failed assertion text.
 
 Hey! In just a few minutes, we wrote our first test and *even* used test-driven
 development! It's time to learn more about that... and all the different *types*
