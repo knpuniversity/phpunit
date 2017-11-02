@@ -181,17 +181,16 @@ index e4f6ef4..7117580 100644
              "source": {
 diff --git a/src/AppBundle/DataFixtures/ORM/LoadBasicParkData.php b/src/AppBundle/DataFixtures/ORM/LoadBasicParkData.php
 new file mode 100644
-index 0000000..d57663a
+index 0000000..c7efe9f
 --- /dev/null
 +++ b/src/AppBundle/DataFixtures/ORM/LoadBasicParkData.php
-@@ -0,0 +1,55 @@
+@@ -0,0 +1,53 @@
 +<?php
 +
 +namespace AppBundle\DataFixtures\ORM;
 +
 +use AppBundle\Entity\Dinosaur;
 +use AppBundle\Entity\Enclosure;
-+use AppBundle\Entity\Tracker;
 +use Doctrine\Common\DataFixtures\AbstractFixture;
 +use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 +use Doctrine\Common\Persistence\ObjectManager;
@@ -235,7 +234,6 @@ index 0000000..d57663a
 +        $dinosaur = new Dinosaur($genus, $isCarnivorous);
 +        $dinosaur->setEnclosure($enclosure);
 +        $dinosaur->setLength($length);
-+        $dinosaur->addTracker(new Tracker());
 +
 +        $manager->persist($dinosaur);
 +    }
