@@ -1,0 +1,36 @@
+diff --git a/tests/AppBundle/Factory/DinosaurFactoryTest.php b/tests/AppBundle/Factory/DinosaurFactoryTest.php
+index fb7c2e3..46b7c98 100644
+--- a/tests/AppBundle/Factory/DinosaurFactoryTest.php
++++ b/tests/AppBundle/Factory/DinosaurFactoryTest.php
+@@ -14,10 +14,15 @@ class DinosaurFactoryTest extends TestCase
+      */
+     private $factory;
+ 
++    /**
++     * @var \PHPUnit_Framework_MockObject_MockObject
++     */
++    private $lengthDeterminator;
++
+     public function setUp()
+     {
+-        $mockLengthDeterminator = $this->createMock(DinosaurLengthDeterminator::class);
+-        $this->factory = new DinosaurFactory($mockLengthDeterminator);
++        $this->lengthDeterminator = $this->createMock(DinosaurLengthDeterminator::class);
++        $this->factory = new DinosaurFactory($this->lengthDeterminator);
+     }
+ 
+     public function testItGrowsALargeVelociraptor()
+@@ -51,9 +56,13 @@ class DinosaurFactoryTest extends TestCase
+      */
+     public function testItGrowsADinosaurFromSpecification(string $spec, bool $expectedIsCarnivorous)
+     {
++        $this->lengthDeterminator->method('getLengthFromSpecification')
++            ->willReturn(20);
++
+         $dinosaur = $this->factory->growFromSpecification($spec);
+ 
+         $this->assertSame($expectedIsCarnivorous, $dinosaur->isCarnivorous(), 'Diets do not match');
++        $this->assertSame(20, $dinosaur->getLength());
+     }
+ 
+     public function getSpecificationTests()

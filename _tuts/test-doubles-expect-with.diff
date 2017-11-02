@@ -1,0 +1,15 @@
+diff --git a/tests/AppBundle/Factory/DinosaurFactoryTest.php b/tests/AppBundle/Factory/DinosaurFactoryTest.php
+index 46b7c98..92e9ccc 100644
+--- a/tests/AppBundle/Factory/DinosaurFactoryTest.php
++++ b/tests/AppBundle/Factory/DinosaurFactoryTest.php
+@@ -56,7 +56,9 @@ class DinosaurFactoryTest extends TestCase
+      */
+     public function testItGrowsADinosaurFromSpecification(string $spec, bool $expectedIsCarnivorous)
+     {
+-        $this->lengthDeterminator->method('getLengthFromSpecification')
++        $this->lengthDeterminator->expects($this->once())
++            ->method('getLengthFromSpecification')
++            ->with($spec)
+             ->willReturn(20);
+ 
+         $dinosaur = $this->factory->growFromSpecification($spec);

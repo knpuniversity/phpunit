@@ -186,13 +186,28 @@
             "description": null
         },
         {
-            "id": "test-doubles-add-failing-test-using-real-tracker-object",
-            "name": "Test doubles: add failing test using real tracker object",
+            "id": "test-doubles-refactoring-into-dinosaurlengthdeterminator",
+            "name": "Test doubles: Refactoring into DinosaurLengthDeterminator",
             "description": null
         },
         {
-            "id": "test-doubles-add-tracker-stub",
-            "name": "Test doubles: add tracker stub",
+            "id": "test-doubles-di-determinator-into-factory",
+            "name": "Test doubles: DI determinator into factory",
+            "description": null
+        },
+        {
+            "id": "test-doubles-mock-determinator",
+            "name": "Test doubles: Mock determinator",
+            "description": null
+        },
+        {
+            "id": "test-doubles-stub-getlengthfromspecification",
+            "name": "Test doubles: stub getLengthFromSpecification()",
+            "description": null
+        },
+        {
+            "id": "test-doubles-expect-with",
+            "name": "Test doubles: expect() & with()",
             "description": null
         },
         {
@@ -311,5 +326,5 @@
             "description": null
         }
     ],
-    "sha": "449bffd757ad00e21598edc3932fd2b2387c9bff"
+    "sha": "f82512402aa5925b46ff9f57834ecbf5a28592b1"
 }

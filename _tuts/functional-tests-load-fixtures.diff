@@ -287,12 +287,12 @@ index 0000000..f02342e
 +    }
 +}
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index 5c688e0..66741cf 100644
+index a666318..f9a1729 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
-@@ -98,4 +98,9 @@ class Dinosaur
-             $this->tracker->getLocation()
-         );
+@@ -78,4 +78,9 @@ class Dinosaur
+     {
+         return $this->isCarnivorous;
      }
 +
 +    public function setEnclosure(Enclosure $enclosure)
