@@ -1,3 +1,16 @@
+diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
+index a2a8798..6f0db6b 100644
+--- a/src/AppBundle/Entity/Enclosure.php
++++ b/src/AppBundle/Entity/Enclosure.php
+@@ -19,6 +19,8 @@ class Enclosure
+      */
+     private $dinosaurs;
+ 
++    private $securities;
++
+     public function __construct()
+     {
+         $this->dinosaurs = new ArrayCollection();
 diff --git a/src/AppBundle/Exception/DinosaursAreRunningRampantException.php b/src/AppBundle/Exception/DinosaursAreRunningRampantException.php
 new file mode 100644
 index 0000000..f441acb
@@ -12,7 +25,7 @@ index 0000000..f441acb
 +{
 +}
 diff --git a/tests/AppBundle/Entity/EnclosureTest.php b/tests/AppBundle/Entity/EnclosureTest.php
-index 9dbb2a2..fb8b708 100644
+index eac6c7e..04d6542 100644
 --- a/tests/AppBundle/Entity/EnclosureTest.php
 +++ b/tests/AppBundle/Entity/EnclosureTest.php
 @@ -4,6 +4,7 @@ namespace Tests\AppBundle\Entity;
@@ -28,13 +41,13 @@ index 9dbb2a2..fb8b708 100644
          $enclosure->addDinosaur(new Dinosaur());
      }
 +
-+    public function testItDoesNotAllowToAddDinosaursToUnsecureEnclosures()
++    public function testItDoesNotAllowToAddDinosToUnsecureEnclosures()
 +    {
 +        $enclosure = new Enclosure();
 +
 +        $this->expectException(DinosaursAreRunningRampantException::class);
 +        $this->expectExceptionMessage('Are you craaazy?!?');
 +
-+        $enclosure->addDinosaur(new Dinosaur('Velociraptor', true));
++        $enclosure->addDinosaur(new Dinosaur());
 +    }
  }

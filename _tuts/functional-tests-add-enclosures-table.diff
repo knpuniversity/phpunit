@@ -48,16 +48,18 @@ index 36ea5c0..d8c21cc 100644
      }
  }
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index e5d0d64..503fc0a 100644
+index d9cf944..8bfa039 100644
 --- a/src/AppBundle/Entity/Enclosure.php
 +++ b/src/AppBundle/Entity/Enclosure.php
-@@ -86,4 +86,9 @@ class Enclosure
-     {
+@@ -70,6 +70,11 @@ class Enclosure
          $this->securities[] = $security;
      }
-+
+ 
 +    public function getDinosaurCount(): int
 +    {
 +        return $this->dinosaurs->count();
 +    }
- }
++
+     private function canAddDinosaur(Dinosaur $dinosaur): bool
+     {
+         return count($this->dinosaurs) === 0

@@ -1,5 +1,5 @@
 diff --git a/tests/AppBundle/Factory/DinosaurFactoryTest.php b/tests/AppBundle/Factory/DinosaurFactoryTest.php
-index a6c2c8d..531872f 100644
+index a6c2c8d..3d14ea4 100644
 --- a/tests/AppBundle/Factory/DinosaurFactoryTest.php
 +++ b/tests/AppBundle/Factory/DinosaurFactoryTest.php
 @@ -44,12 +44,29 @@ class DinosaurFactoryTest extends TestCase
@@ -10,19 +10,19 @@ index a6c2c8d..531872f 100644
 +    /**
 +     * @dataProvider getSpecificationTests
 +     */
-+    public function testItGrowsADinosaurFromSpecification(string $spec, bool $isLarge, bool $isCarnivorous)
++    public function testItGrowsADinosaurFromSpecification(string $spec, bool $expectedIsLarge, bool $expectedIsCarnivorous)
      {
 -        $dinosaur = $this->factory->growFromSpecification('large carnivorous dinosaur');
 +        $dinosaur = $this->factory->growFromSpecification($spec);
 +
-+        if ($isLarge) {
++        if ($expectedIsLarge) {
 +            $this->assertGreaterThanOrEqual(Dinosaur::LARGE, $dinosaur->getLength());
 +        } else {
 +            $this->assertLessThan(Dinosaur::LARGE, $dinosaur->getLength());
 +        }
  
 -        $this->assertGreaterThanOrEqual(Dinosaur::LARGE, $dinosaur->getLength());
-+        $this->assertSame($isCarnivorous, $dinosaur->isCarnivorous(), 'Diets do not match');
++        $this->assertSame($expectedIsCarnivorous, $dinosaur->isCarnivorous(), 'Diets do not match');
 +    }
  
 -        $this->assertTrue($dinosaur->isCarnivorous(), 'Diets do not match');

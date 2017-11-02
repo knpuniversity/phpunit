@@ -11,7 +11,7 @@ index df5832b..69a6f63 100644
      /**
       * @ORM\Column(type="integer")
 diff --git a/tests/AppBundle/Factory/DinosaurFactoryTest.php b/tests/AppBundle/Factory/DinosaurFactoryTest.php
-index 08b214e..17111e3 100644
+index e9f524b..969e4ff 100644
 --- a/tests/AppBundle/Factory/DinosaurFactoryTest.php
 +++ b/tests/AppBundle/Factory/DinosaurFactoryTest.php
 @@ -69,4 +69,25 @@ class DinosaurFactoryTest extends TestCase
@@ -20,7 +20,7 @@ index 08b214e..17111e3 100644
      }
 +
 +    /**
-+     * @dataProvider specificationForHugeDinosaursProvider
++     * @dataProvider getHugeDinosaurSpecTests
 +     */
 +    public function testItGrowsAHugeDinosaur(string $specification)
 +    {
@@ -29,7 +29,7 @@ index 08b214e..17111e3 100644
 +        $this->assertGreaterThanOrEqual(Dinosaur::HUGE, $dinosaur->getLength());
 +    }
 +
-+    public function specificationForHugeDinosaursProvider()
++    public function getHugeDinosaurSpecTests()
 +    {
 +        return [
 +            ['huge dinosaur'],

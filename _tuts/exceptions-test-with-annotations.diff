@@ -1,5 +1,5 @@
 diff --git a/tests/AppBundle/Entity/EnclosureTest.php b/tests/AppBundle/Entity/EnclosureTest.php
-index ca35496..9dbb2a2 100644
+index 6a10526..eac6c7e 100644
 --- a/tests/AppBundle/Entity/EnclosureTest.php
 +++ b/tests/AppBundle/Entity/EnclosureTest.php
 @@ -36,4 +36,15 @@ class EnclosureTest extends TestCase

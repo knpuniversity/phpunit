@@ -1,8 +1,8 @@
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index de2ea83..dca6dbd 100644
+index ce86d31..eda051b 100644
 --- a/src/AppBundle/Entity/Enclosure.php
 +++ b/src/AppBundle/Entity/Enclosure.php
-@@ -25,10 +25,14 @@ class Enclosure
+@@ -26,10 +26,14 @@ class Enclosure
       */
      private $securities;
  
@@ -17,19 +17,21 @@ index de2ea83..dca6dbd 100644
 +        }
      }
  
-     public function getDinosaurs(): iterable
-@@ -65,4 +69,9 @@ class Enclosure
- 
-         return false;
+     public function getDinosaurs(): Collection
+@@ -50,6 +54,11 @@ class Enclosure
+         $this->dinosaurs[] = $dinosaur;
      }
-+
-+    public function addSecurity($security)
+ 
++    public function addSecurity(Security $security)
 +    {
 +        $this->securities[] = $security;
 +    }
- }
++
+     private function canAddDinosaur(Dinosaur $dinosaur): bool
+     {
+         return count($this->dinosaurs) === 0
 diff --git a/tests/AppBundle/Entity/EnclosureTest.php b/tests/AppBundle/Entity/EnclosureTest.php
-index fb8b708..1422210 100644
+index 04d6542..bbc2c76 100644
 --- a/tests/AppBundle/Entity/EnclosureTest.php
 +++ b/tests/AppBundle/Entity/EnclosureTest.php
 @@ -19,7 +19,7 @@ class EnclosureTest extends TestCase
@@ -43,7 +45,7 @@ index fb8b708..1422210 100644
          $enclosure->addDinosaur(new Dinosaur());
 @@ -29,7 +29,7 @@ class EnclosureTest extends TestCase
  
-     public function testItDoesNotAllowToAddCarnivorousDinosaursToNonCarnivorousEnclosure()
+     public function testItDoesNotAllowCarnivorousDinosToMixWithHerbivores()
      {
 -        $enclosure = new Enclosure();
 +        $enclosure = new Enclosure(true);

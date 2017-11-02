@@ -13,7 +13,7 @@ index 0000000..889c852
 +    protected $message = 'Please do not mix the carnivorous and non-carnivorous dinosaurs. It will be a massacre!';
 +}
 diff --git a/tests/AppBundle/Entity/EnclosureTest.php b/tests/AppBundle/Entity/EnclosureTest.php
-index f585eed..ca35496 100644
+index d311c24..6a10526 100644
 --- a/tests/AppBundle/Entity/EnclosureTest.php
 +++ b/tests/AppBundle/Entity/EnclosureTest.php
 @@ -4,6 +4,7 @@ namespace Tests\AppBundle\Entity;
@@ -29,7 +29,7 @@ index f585eed..ca35496 100644
          $this->assertCount(2, $enclosure->getDinosaurs());
      }
 +
-+    public function testItDoesNotAllowToAddCarnivorousDinosaursToNonCarnivorousEnclosure()
++    public function testItDoesNotAllowCarnivorousDinosToMixWithHerbivores()
 +    {
 +        $enclosure = new Enclosure();
 +

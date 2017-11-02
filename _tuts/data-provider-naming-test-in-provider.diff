@@ -1,5 +1,5 @@
 diff --git a/tests/AppBundle/Factory/DinosaurFactoryTest.php b/tests/AppBundle/Factory/DinosaurFactoryTest.php
-index 531872f..08b214e 100644
+index 3d14ea4..e9f524b 100644
 --- a/tests/AppBundle/Factory/DinosaurFactoryTest.php
 +++ b/tests/AppBundle/Factory/DinosaurFactoryTest.php
 @@ -65,7 +65,7 @@ class DinosaurFactoryTest extends TestCase

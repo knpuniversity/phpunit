@@ -1,0 +1,12 @@
+diff --git a/tests/AppBundle/Entity/EnclosureTest.php b/tests/AppBundle/Entity/EnclosureTest.php
+index 0cba364..eb34b52 100644
+--- a/tests/AppBundle/Entity/EnclosureTest.php
++++ b/tests/AppBundle/Entity/EnclosureTest.php
+@@ -11,6 +11,6 @@ class EnclosureTest extends TestCase
+     {
+         $enclosure = new Enclosure();
+ 
+-        $this->assertCount(0, $enclosure->getDinosaurs());
++        $this->assertEmpty($enclosure->getDinosaurs());
+     }
+ }

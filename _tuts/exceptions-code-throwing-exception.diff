@@ -1,19 +1,5 @@
-diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index 42e56c4..076bba3 100644
---- a/src/AppBundle/Entity/Dinosaur.php
-+++ b/src/AppBundle/Entity/Dinosaur.php
-@@ -71,4 +71,9 @@ class Dinosaur
-     {
-         return $this->isCarnivorous;
-     }
-+
-+    public function sameDietAs(Dinosaur $dinosaur): bool
-+    {
-+        return $this->isCarnivorous() === $dinosaur->isCarnivorous();
-+    }
- }
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index 52c4c70..11bd5c6 100644
+index b43a94f..a2a8798 100644
 --- a/src/AppBundle/Entity/Enclosure.php
 +++ b/src/AppBundle/Entity/Enclosure.php
 @@ -2,6 +2,7 @@
@@ -22,9 +8,9 @@ index 52c4c70..11bd5c6 100644
  
 +use AppBundle\Exception\NotABuffetException;
  use Doctrine\Common\Collections\ArrayCollection;
+ use Doctrine\Common\Collections\Collection;
  use Doctrine\ORM\Mapping as ORM;
- 
-@@ -29,6 +30,16 @@ class Enclosure
+@@ -30,6 +31,16 @@ class Enclosure
  
      public function addDinosaur(Dinosaur $dinosaur)
      {
@@ -38,6 +24,6 @@ index 52c4c70..11bd5c6 100644
 +    private function canAddDinosaur(Dinosaur $dinosaur): bool
 +    {
 +        return count($this->dinosaurs) === 0
-+            || $this->dinosaurs->first()->sameDietAs($dinosaur);
++            || $this->dinosaurs->first()->isCarnivorous() === $dinosaur->isCarnivorous();
 +    }
  }

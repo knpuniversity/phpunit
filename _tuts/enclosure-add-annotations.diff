@@ -1,0 +1,37 @@
+diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
+index 69a6f63..42e56c4 100644
+--- a/src/AppBundle/Entity/Dinosaur.php
++++ b/src/AppBundle/Entity/Dinosaur.php
+@@ -30,6 +30,12 @@ class Dinosaur
+      */
+     private $isCarnivorous;
+ 
++    /**
++     * @var Enclosure
++     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Enclosure", inversedBy="dinosaurs")
++     */
++    private $enclosure;
++
+     public function __construct(string $genus = 'Unknown', bool $isCarnivorous = false)
+     {
+         $this->genus = $genus;
+diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
+index 0c6f7de..344102f 100644
+--- a/src/AppBundle/Entity/Enclosure.php
++++ b/src/AppBundle/Entity/Enclosure.php
+@@ -6,10 +6,15 @@ use Doctrine\Common\Collections\ArrayCollection;
+ use Doctrine\Common\Collections\Collection;
+ use Doctrine\ORM\Mapping as ORM;
+ 
++/**
++ * @ORM\Entity
++ * @ORM\Table(name="enclosures")
++ */
+ class Enclosure
+ {
+     /**
+      * @var Collection
++     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dinosaur", mappedBy="enclosure", cascade={"persist"})
+      */
+     private $dinosaurs;
+ 

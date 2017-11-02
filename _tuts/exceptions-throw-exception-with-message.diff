@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index 11bd5c6..de2ea83 100644
+index 6f0db6b..ce86d31 100644
 --- a/src/AppBundle/Entity/Enclosure.php
 +++ b/src/AppBundle/Entity/Enclosure.php
 @@ -2,6 +2,7 @@
@@ -9,41 +9,41 @@ index 11bd5c6..de2ea83 100644
 +use AppBundle\Exception\DinosaursAreRunningRampantException;
  use AppBundle\Exception\NotABuffetException;
  use Doctrine\Common\Collections\ArrayCollection;
- use Doctrine\ORM\Mapping as ORM;
-@@ -18,9 +19,16 @@ class Enclosure
+ use Doctrine\Common\Collections\Collection;
+@@ -19,11 +20,16 @@ class Enclosure
       */
      private $dinosaurs;
  
 +    /**
-+     * @var iterable
++     * @var Collection
 +     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Security", mappedBy="enclosure", cascade={"persist"})
 +     */
-+    private $securities;
-+
+     private $securities;
+ 
      public function __construct()
      {
          $this->dinosaurs = new ArrayCollection();
 +        $this->securities = new ArrayCollection();
      }
  
-     public function getDinosaurs(): iterable
-@@ -30,6 +38,10 @@ class Enclosure
+     public function getDinosaurs(): Collection
+@@ -33,6 +39,10 @@ class Enclosure
  
      public function addDinosaur(Dinosaur $dinosaur)
      {
-+        if (!$this->getIsSecurityActive()) {
++        if (!$this->isSecurityActive()) {
 +            throw new DinosaursAreRunningRampantException('Are you craaazy?!?');
 +        }
 +
          if (!$this->canAddDinosaur($dinosaur)) {
              throw new NotABuffetException();
          }
-@@ -42,4 +54,15 @@ class Enclosure
+@@ -45,4 +55,15 @@ class Enclosure
          return count($this->dinosaurs) === 0
-             || $this->dinosaurs->first()->sameDietAs($dinosaur);
+             || $this->dinosaurs->first()->isCarnivorous() === $dinosaur->isCarnivorous();
      }
 +
-+    public function getIsSecurityActive(): bool
++    public function isSecurityActive(): bool
 +    {
 +        foreach ($this->securities as $security) {
 +            if ($security->getIsActive()) {
