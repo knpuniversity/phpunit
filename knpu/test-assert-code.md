@@ -110,7 +110,7 @@ shrinks a little bit... it just can't shrink *too* much. The guests want a thril
 In other words, `$this->assertGreatherThan(12, $dinosuar->getLength())`. 
 
 You can also add an optional message as the last argument to *any* assert function.
-This will display when the test fails... which can sometimes making debugging easier.
+This will display when the test fails... which can sometimes make debugging easier.
 
 Ok, try the test!
 
