@@ -107,7 +107,7 @@ same as before: `$dinosaur = new Dinosaur()`, and `$dinosaur->setLength(15)`.
 
 And *just* to make things more interesting, imagine that it's OK if the dinosaur
 shrinks a little bit... it just can't shrink *too* much. The guests want a thrill! 
-In other words, `$this->assertGreatherThan(12, $dinosuar->getLength())`. 
+In other words, `$this->assertGreatherThan(12, $dinosaur->getLength())`. 
 
 You can also add an optional message as the last argument to *any* assert function.
 This will display when the test fails... which can sometimes make debugging easier.
