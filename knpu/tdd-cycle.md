@@ -34,7 +34,7 @@ More on *all* of these things later.
 
 Another question is how *much* you should test. Does every function need a unit
 test? Does every page and every validation error of every form need a functional
-test? Heck no! That sonds terrifying!
+test? Heck no! That sounds terrifying!
 
 Especially if you're new to testing, don't worry: a *few* tests is way better than
 none. And honestly, I think many people create *too* many tests. I follow a simple
