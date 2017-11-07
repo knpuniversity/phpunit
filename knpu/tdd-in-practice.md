@@ -1,6 +1,6 @@
 # TDD in Practice
 
-Let's put TDD in practice!
+Let's put TDD into practice!
 
 I want to add a new `getSpecification()` method to the `Dinosaur`
 class that will return a string description - like:
@@ -12,8 +12,8 @@ Create a new dinosaur, but don't set any data on it. Let's test the default stri
 `Unknown non-carnivorous dinosaur is 0 meters long` should equal `$dinosaur->getSpecification()`.
 
 Test done! Step 2 is to write the *minimum* amount of code to get this test to pass.
-In `Dinosaur`, add `public function getSpecification()`. What's the smaller amount
-of code we can write? I know! Return the hardcoded string!
+In `Dinosaur`, add `public function getSpecification()`. So... what's the smallest
+amount of code we can write? We can just return that a hardcoded string!
 
 Genius! Ok, try the test!
 
@@ -21,22 +21,22 @@ Genius! Ok, try the test!
 ./vendor/bin/phpunit
 ```
 
-Ha! It passes! The third step to TDD is refactor... but I don't think we need to
+Ha! It passes! The third step to TDD is refactor... which I don't think is needed
 in this case.
 
-Wait, what? You don't like my hardcoded stirng? I know, returning a hardcoded string
-is *silly*... and I don't do this in real life. But it highlights an important thing
+Wait, what? You *don't* like my hardcoded string? I know, returning a hardcoded string
+is *silly*... and I don't do this in real life. But it shows off an important thing
 with TDD: keep your code simple. Don't make it unnecessarily fancy or cover unnecessary
-use-cases. If you *do* have an edge-case you want to cover, add the test first,
-*then* code for it.
+use-cases. If you *do* have an edge-case that you want to cover, add the test first,
+and *then* code for it.
 
 ## Adding another Case
 
 Actually, let's do that now: add a new test method: `testReturnsFullSpecificationForTyrannosaurus`.
-Ok, I want each `Dinosaur` to have a *genus* - like Tyrannosaurus - and a flag that
-says whether or not it's carnivorous. These will be used in `getSpecification()`.
-Create a `new Dinosaur()` and pass `Tyrannosaurus`, and `true` for carnivorous...
-because T-Rex's love to eat people.
+I want each `Dinosaur` to have a *genus* - like Tyrannosaurus - and a flag that
+says whether or not it likes to eat people... I mean whether or not it's carnivorous.
+These will be used in `getSpecification()`. Create a `new Dinosaur()` and pass
+`Tyrannosaurus`, and `true` for carnivorous... because T-Rex's *love* to eat people.
 
 Set its length to 12. This time, the specification should be:
 
@@ -44,11 +44,11 @@ Set its length to 12. This time, the specification should be:
 
 ## Finishing getSpecification()
 
-Ok, test done! Let's write the code! Start in `Dinosaur`: I'll add a `__construct()`
+Test done! Let's write some code! Start in `Dinosaur`: I'll add a `__construct()`
 method with a `$genus = 'Unknown` argument  and `$isCarnivorous = false`. Add these
 two properties to the class. I'll go to Command -> Generate - or press Command+N
 on a Mac - and select "ORM Annotations" to add annotations above each method. We
-don't technically need those right now... but it'll save us time later.
+don't technically need those right now... but it'll save time later.
 
 Down in the constructor, set both properties to their values. The default values
 for each argument match our first test.
@@ -65,15 +65,14 @@ Perfect! Find your terminal and run the tests!
 ./vendor/bin/phpunit
 ```
 
-Passing! Ok, step 3! Refactor! And this time... I will! Let's include the word
-`carnivorous` in the string. Then below, just print `non-` when needed. I don't even
+Passing! Now to step 3... refactor! And this time... I will! Let's include the word
+`carnivorous` in the string. Then below, just print `non-` if needed. I don't even
 need to *think* about whether or not I made any mistakes. Just run the tests!
 
 ```terminal-silent
 ./vendor/bin/phpunit
 ```
 
-I love it! Testing gives you *confidence*!
+I *love* it! Testing gives you *confidence*!
 
-Next! Let's create a `DinosaurFactory` - because that sounds *awesome* - test it,
-and learn about some PHPUnit hooks.
+Next! Let's create a `DinosaurFactory` - because that sounds *awesome*.

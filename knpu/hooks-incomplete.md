@@ -1,57 +1,87 @@
-# setUp, tearDown & Skipping Tests
+# Hooks: setUp, tearDown & Skipping Tests
 
-That is the power of test driven development and tests in general. Now around
-the test. It passes. So another thing you might factor is actually the test
-itself because you might write the test really quickly at first and then
-refactor it to be a little bit better. So eventually we're going to have a lot
-of different methods inside this one test class so creating the factory inside
-each method may become tedious especially if eventually we have constructor
-arguments. So one thing you can do. Is actually create a. Factory.
+We can *also* use the TDD refactor step to improve our tests! Eventually, we're
+going to have a *lot* of test methods inside `DinosaurFactoryTest`. And *each* one
+will need to create the `DinosaurFactory` object. If that class eventually has some
+constructor arguments, that's going to be a pain!
 
-Property. I'll put a little documentation of this is going to be a dancer
-factory instance. Then. Create a new function of public function. Set. Up. And.
-Inside there say this error factory equals new factory.
+## The setUp Hook
 
-Then down below remove your factory line and use that property r. Here is
-what's going on the set up method is special. If you have a method called set
-up exactly then the unit will automatically call that method. Before each test.
-In other words if we had multiple test functions it will call set up method.
-Before each of those. That make sure that the factory property is set and that
-it's set to a new dinosaur factory for each of our tests. Because our
-individual tasks should be completely independent of each other. You never want
-one test to be dependent on another test being run. So the set up method is
-perfect for that. There are a few other methods which are special. The most
-common one is tear down which is the opposite of set up. It's called. Once per
-test.
+Add a new `$factory` property and give it some PHPDoc: this will be a `DinosaurFactory`
+object. Then - here's the magic part - create a new `public function setUp()`.
+Inside, set the property to a `new DinosaurFactory`.
 
-After running the test and want to talk more about tear down later. There are
-two important ones are set up before class and tear down after class. These are
-the same as set up and tear down. Except that they're only called once per
-class. So instead of being called before each test it's called once and then
-all of your tests are run and then after all of your tests have run it calls
-tear down after class. These are less common but if you need to set up
-something that is global or static then that's a perfect place to do it. One
-last method that I use occasionally is on not successful test. If you have that
-method then if any of your tests fail it calls that method and then maybe you
-can do some sort of extra printing the screen or saving up some logs so that
-it's easier for you to debug your tests. So after this revaluing we go back.
-And our tests still. Pass.
+Back in our test method, use the new property. Yep, this *will* work... but only
+thanks to a bit of PHPUnit magic. If you have a method that's exactly called `setUp`,
+PHPUnit will automatically call it *before* each test.
 
+If you have *multiple* test functions, that means that `setUp` will be called before
+each test *method*. This will make sure that the `$factory` property is a new, *fresh*
+`DinosaurFactory` object for *every* test. And that's *really* important: each test
+should be *completely* independent of each other. You never want one test to rely
+on something a different test set up first. Why? Because later, we'll learn how to
+execute just *one* test at a time - which is *really* useful for debugging.
 
-Sort a dinosaur factory grows a Lhasa Raptor's eventually. 
+## Other Hooks: tearDown, setUpAfterClass, etf
 
-We're going to grow triceratops. But honestly the scientists are still working on the triceratops. It's not safe. 
+There are a few other *magic* methods like this. The most common is `tearDown()`,
+which is the setUp's doppelganger. It's still called once per test, but *after*
+the test is executed. It's meant for cleanup, and we'll talk more about it later.
 
-To grow them yet. So eventually we're going to have that method and I don't want to forget to test it. So I'm going to add a function called test. It. Proves a. Triceratops. I don't want to code this yet. So instead I'm just going to say this. Test. Incomplete. We can give it a message. Waiting for confirmation. From Gen lab. 
+Two other useful hook methods are `setUpBeforeClass()` and `tearDownAfterClass`.
+Instead of being called before or after *every* test, these are called *once* for
+the *entire* class. They're less common, but if you need to setup something global
+or *static*, this is the place to do it.
 
-That feature that he uses occasionally it's just a nice way to put a marker in. So they don't forget that you have incomplete tests a little to do for later. Another thing you can do is e-mail which is more common if you're building a library and less common than building your code is to skip the tests which is something you would do if. A test requires a certain ph P version or a certain ph extension or a certain library that the user may or may not have installed. So let's for example create test. It grows a baby velociraptor. In this case. Will grow a velociraptor but a tiny one. That will assert that it has the right length. Of one. Now let's pretend that internally inside this function This requires some extra class which we maybe now have. Some sort of and some code here and say if not class exists. Manny. Then we can say this Mark test. Skit. And with the message of. 
+Oh, and one last, lesser-known hook method is `onNotSuccessfulTest`. Sometimes I'll
+use that to print extra debugging info.
 
-There's nobody to watch the baby. So 
+Ok, make sure the tests still pass!
 
-in your application code if you're testing something you should probably have the dependencies or the stuff that you need. So I would normally fail but sometimes this makes sense in. 
+```terminal-silent
+./vendor/bin/phpunit
+```
 
-Reusable third party applications. In this case there is our incomplete and are skipped. If you do use the skip thing is also a cool way to use the annotations. Up here you can annotate things. Like. App requires Petris 7.2. 
+Perfect!
 
-Or app requires OS Linux to test things for Linux versus Windows. So 
+## Marking Tests as Incomplete
 
-there's actually some pretty cool stuff you can do. 
+Our dinosaur park guests are *really* excited about seeing some triceratops! But...
+we can't grow them yet - the scientists are still working on some bugs - something
+about too many horns...
+
+But *eventually*, we're going to add a `growTriceratops` method to `DinosaurFactory`.
+To make sure we don't forget about this, let's *start* the test: `testItGrowsATriceratops`.
+But I don't *really* want this test to exist... and fail - that's lame. Instead,
+add `$this->markTestIncomplete('Waiting for confirmation from GenLab')`.
+
+Tryit!
+
+```terminal-silent
+./vendor/bin/phpunit
+```
+
+Nice! It's not a failure... just a clear marker to remind us that we have work to do!
+
+## Skipping Tests
+
+A *similar* thing you can do is *skip* tests. Try this: add a new method:
+`testItGrowsABabyVelociraptor()`. Create a *tiny* velociraptor - adorable! - and
+make sure it's length is correct.
+
+This will *totally* work. But let's pretend that, inside the `growVelociraptor()`
+method, we use some class or PHP extension that the user may or may not have installed.
+Check to see if some imaginary `Nanny` class exists. If it doesn't, we can't
+run the test! So mark it as skipped: there's nobody to watch the baby!
+
+```terminal-silent
+./vendor/bin/phpunit
+```
+
+When you run the tests now... cool! An I for incomplete and S for skipped.
+
+I don't use `markTestSkipped()` in my own apps - it's a bit more useful when
+you're building some reusable library and need to write tests for optional features
+that use optional libraries. It's used all the time inside Symfony's core.
+
+Next! I want to talk about my *favorite* feature in PHPUnit: data providers!
