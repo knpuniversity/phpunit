@@ -1,17 +1,17 @@
 # PHPUnit: Secure the Park
 
-Let me paint your a scary picture:
+Let me paint you a scary picture:
 
 It's Friday night. It's stormy. The office is empty and you're deploying fresh code
-to production. Suddenly, an alarm! What? The fences are down!? The dinosaurs are
+straight to production. Suddenly, an alarm! What? The fences are down!? The dinosaurs are
 escaping!? Somehow, your beautiful code contained a bug. And as the raptors
 surround you, one thought keeps coming back: if only you had written tests.
 
 I hate bugs, I hate fixing emergencies on production, and I *especially* hate being
 eaten by raptors.
 
-It's time to go pro with coding... and the means, learning to test! And not *just*
-because we hate running from dinosaurs. But also, we want to write code that is
+It's time to go pro with coding... and that means, learning to test! And not *just*
+because we hate running from dinosaurs. We want to write code that is
 thoughtfully-designed and have the ability to add *new* features with confidence.
 
 ## Hello Dinosaur Park
@@ -51,7 +51,7 @@ you can now run:
 ./vendor/bin/phpunit
 ```
 
-Hi PHPUnit! Hi Sebastian Bergmann and other contributors! There are *no* tests yetm
+Hi PHPUnit! And hello Sebastian Bergmann and other contributors! There are *no* tests yet
 but I already feel like we're making friends.
 
 ## Write some Tests
@@ -60,7 +60,7 @@ Let's write our first test. But, uh, don't worry about *what* we're testing yet 
 let's just experiment a little.
 
 Create a `tests/` directory and inside, another `AppBundle/Entity` directory.
-We'll talk about this structure soon.
+We'll talk about this structure soon, but first we have dinosaurs to contain!
 
 Add a new PHP class: `DinosaurTest`, and give it a namespace: `Tests\AppBundle\Entity`.
 Make sure you *extend* a class: `TestCase` from PHPUnit.
@@ -84,7 +84,7 @@ Ok, let's talk about the basic *rules* of writing a PHPUnit test. First, you can
 *technically* put your test classes *anywhere*... but.. you've gotta admit that
 `tests/` is a *pretty* good place. Actually, in a Symfony project, you automatically
 start with a `phpunit.xml.dist` file. Well, in Symfony 4, this is added when you
-install `phpunit`. We'll talk more about this later... but PHPUnit reads this
+install `phpunit`. We'll talk more about this file later... but PHPUnit reads this
 automatically. And... check it out! *It* says that our tests all live in... `tests/`.
 That's how PHPUnit is able to find our `DinosaurTest`.
 
@@ -92,11 +92,11 @@ Second, our test has a `namespace`... but that's not really important. In a Symf
 project, your `composer.json` file has an `autoload-dev` section that basically
 says that anything in `tests/` should start with the namespace `Tests`. No big deal.
 
-Let's get to the *really* important stuff, because PHPUnit *does* have a few important
+Let's get to the *really* important stuff, because PHPUnit *does* have a few crucial
 rules. First, your test class *must* extend `TestCase` *and* end in the word `Test`.
 Second, all of your test methods must be `public` and *start* with the word `test`.
 When you run PHPUnit, it basically looks for all classes ending in `Test` and all
-public function inside *starting* with `test`.
+public functions inside *starting* with `test`.
 
 Got it? Good... because the storm is coming, and we've got work to do. Delete the
 fake test. Let's start coding.
