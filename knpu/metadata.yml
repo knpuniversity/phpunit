@@ -1,4 +1,8 @@
 chapters:
     - phpunit-setup
     - test-assert-code
-    - tdd-unit-functional
+    - tdd-cycle
+    - tdd-in-practice
+    - factory-testing
+    - hooks-incomplete
+    - data-providers
