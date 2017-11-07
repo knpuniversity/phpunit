@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index 42e56c4..a666318 100644
+index 4ec961d..b1b2f41 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
 @@ -14,6 +14,13 @@ class Dinosaur

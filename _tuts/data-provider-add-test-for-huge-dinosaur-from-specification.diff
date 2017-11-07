@@ -1,11 +1,13 @@
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index df5832b..69a6f63 100644
+index 8837260..8906fee 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
-@@ -11,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
+@@ -10,7 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
+  */
  class Dinosaur
  {
-     const LARGE = 7;
+-    const LARGE = 20;
++    const LARGE = 10;
 +    const HUGE = 20;
  
      /**
