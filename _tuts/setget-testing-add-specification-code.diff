@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index 8ef630a..67b243e 100644
+index 8ef630a..5aabc23 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
 @@ -15,6 +15,24 @@ class Dinosaur
@@ -33,9 +33,9 @@ index 8ef630a..67b243e 100644
      {
 -        return 'The Unknown non-carnivorous dinosaur is 0 meters long';
 +        return sprintf(
-+            'The %s %scarnivorous dinosaur is %d meters long',
++            'The %s %s dinosaur is %d meters long',
 +            $this->genus,
-+            $this->isCarnivorous ? '' : 'non-',
++            $this->isCarnivorous ? 'carnivorous' : 'non-carnivorous',
 +            $this->length
 +        );
      }

@@ -56,6 +56,11 @@
             "description": null
         },
         {
+            "id": "setget-testing-minor-refactor",
+            "name": "SetGet testing: Minor refactor",
+            "description": null
+        },
+        {
             "id": "setget-testing-indirect-add-factory-test",
             "name": "SetGet testing: indirect - add factory test",
             "description": null
@@ -326,5 +331,5 @@
             "description": null
         }
     ],
-    "sha": "c79fda593bd41aa67507139af9873f8aca1f47d8"
+    "sha": "963d11da0f65f186d88ff1116d4a3a3799442b1e"
 }

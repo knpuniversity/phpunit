@@ -1,0 +1,16 @@
+diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
+index 5aabc23..67b243e 100644
+--- a/src/AppBundle/Entity/Dinosaur.php
++++ b/src/AppBundle/Entity/Dinosaur.php
+@@ -46,9 +46,9 @@ class Dinosaur
+     public function getSpecification(): string
+     {
+         return sprintf(
+-            'The %s %s dinosaur is %d meters long',
++            'The %s %scarnivorous dinosaur is %d meters long',
+             $this->genus,
+-            $this->isCarnivorous ? 'carnivorous' : 'non-carnivorous',
++            $this->isCarnivorous ? '' : 'non-',
+             $this->length
+         );
+     }
