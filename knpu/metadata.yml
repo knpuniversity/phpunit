@@ -6,3 +6,9 @@ chapters:
     - factory-testing
     - hooks-incomplete
     - data-providers
+    - coding-features-refactoring
+    - testing-exeptions
+    - mocking
+    - integration-tests
+    - functional-tests
+    - continuous-integration
