@@ -1,10 +1,10 @@
 # Data Providers!
 
-Park management have just *dreamt* up a new, fancy feature: they want to be able
-to create a new dinosaur... just by *describing* it. Like, they want to be able to
+Park management has just *dreamt* up a new, fancy feature: they want to be able
+to create a new dinosaur... just by *describing* it. They want to be able to
 say:
 
-	Large carnivorous dinosaur
+	Large friendly carnivorous dinosaur
 
 and then, poof! Our `DinosaurFactory` will figure out *exactly* what type of dino
 to grow and make it.
@@ -16,7 +16,8 @@ test. How about: `itGrowsADinosaurFromASpecification()`, where "specification" i
 the word we'll use for this "dinosaur description".
 
 The API for this future method will be simple: `$dinosaur = $this->growFromSpecification()`
-and pass it some string, like `large carnivorous dinosaur`.
+and pass it some string, like `large carnivorous dinosaur`. Maybe we should have included
+the word 'friendly'....meh, probably not necessary.
 
 Now, add some assertions! Like, `$this->assertGreaterThanOrEqual()` that the dinosaur
 is 20 meters or longer. Actually, instead of hardcoding that value, open up the
@@ -115,7 +116,7 @@ Check it out:
 ```
 
 Yay! Failures! But, *3* failures! And they're labeled as `with data set #0`, `#1`
-and `#2`... because programmers like to count from 0.
+and `#2`... because us programmers like to count from 0.
 
 This is *awesome*. Oh, and if you *want* to, you can assign an array key to any
 test, like `default response` for the second test. *Now* when you run the test,
