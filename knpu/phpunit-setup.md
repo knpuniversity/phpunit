@@ -65,8 +65,12 @@ We'll talk about this structure soon, but first we have dinosaurs to contain!
 Add a new PHP class: `DinosaurTest`, and give it a namespace: `Tests\AppBundle\Entity`.
 Make sure you *extend* a class: `TestCase` from PHPUnit.
 
+[[[ code('586ad0bcad') ]]]
+
 To actually make a test, create a public function called `testThatYourComputerWorks`.
 We're giving it that name because, inside, we're going to say `$this->assertTrue(false)`.
+
+[[[ code('69ed4aa286') ]]]
 
 If this test *passes*, you'll know to throw your computer out of the window and buy
 a new one. Let's find out. To run the tests, find your terminal, and re-run PHPUnit:
