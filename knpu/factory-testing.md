@@ -62,7 +62,7 @@ Yes! Let's code! Create the new `Factory` directory, then the class inside:
 name, its arguments and *exactly* how it should behave. Add `public function growVelociraptor`.
 We know this needs a `$length` argument and that it will return a `Dinosaur` object.
 
-Create the new `Dinsaur` object inside and pass it `Velociraptor` and true for
+Create the new `Dinosaur` object inside and pass it `Velociraptor` and true for
 the `isCarnivorous` argument. Set the length to `$length` and return that fresh,
 terrifying dinosaur!
 
