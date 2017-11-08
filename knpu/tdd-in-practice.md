@@ -46,7 +46,7 @@ Set its length to 12. This time, the specification should be:
 ## Finishing getSpecification()
 
 Test done! Let's write some code! Start in `Dinosaur`: I'll add a `__construct()`
-method with a `$genus = 'Unknown` argument  and `$isCarnivorous = false`. Add these
+method with a `$genus = 'Unknown'` argument  and `$isCarnivorous = false`. Add these
 two properties to the class. I'll go to the Code menu and then to Generate - or press 
 Command+N on a Mac - select "ORM Annotations" to add annotations above each method. 
 We don't technically need those right now... but it'll save time later.
@@ -57,7 +57,7 @@ for each argument match our first test.
 In `getSpecification()`, we can't really fake things anymore. Return `sprintf()`
 and the original string, but replace the variable parts with `%s`, `%s` and `%d`.
 
-Then pass `$this->genus`, `$this->isCarnivorous` to print `carnivorous` or `non-carnivirous`,
+Then pass `$this->genus`, `$this->isCarnivorous` to print `carnivorous` or `non-carnivorous`,
 and then `$this->length`.
 
 Perfect! Find your terminal and run the tests!
