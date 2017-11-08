@@ -15,7 +15,7 @@ the "Synchronize IDE Settings" check box is checked.
 
 Woh! The entire `tests/` directory just turned green... like a dinosaur! PhpStorm
 reads the `autoload-dev` section of `composer.json` and *now* knows what namespace
-to use. Create a new PHP class again: `DinosaurFactoryTest`. 
+to use. Creepy.... Create a new PHP class again: `DinosaurFactoryTest`. 
 
 Make it extend the usual `TestCase` from PHPUnit. And add a new method:
 `public function testItGrowsAVelociraptor()`.
@@ -62,7 +62,7 @@ Yes! Let's code! Create the new `Factory` directory, then the class inside:
 name, its arguments and *exactly* how it should behave. Add `public function growVelociraptor`.
 We know this needs a `$length` argument and that it will return a `Dinosaur` object.
 
-Create the new `Dinsaur` object inside and pass it `Velociraptor` and true for
+Create the new `Dinosaur` object inside and pass it `Velociraptor` and true for
 the `isCarnivorous` argument. Set the length to `$length` and return that fresh,
 terrifying dinosaur!
 

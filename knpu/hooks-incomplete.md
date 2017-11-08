@@ -25,7 +25,7 @@ execute just *one* test at a time - which is *really* useful for debugging.
 ## Other Hooks: tearDown, setUpAfterClass, etf
 
 There are a few other *magic* methods like this. The most common is `tearDown()`,
-which is the setUp's doppelganger. It's still called once per test, but *after*
+which is the opposite of setUp. It's still called once per test, but *after*
 the test is executed. It's meant for cleanup, and we'll talk more about it later.
 
 Two other useful hook methods are `setUpBeforeClass()` and `tearDownAfterClass`.
@@ -47,15 +47,14 @@ Perfect!
 ## Marking Tests as Incomplete
 
 Our dinosaur park guests are *really* excited about seeing some triceratops! But...
-we can't grow them yet - the scientists are still working on some bugs - something
-about too many horns...
+we can't grow them yet - the scientists are still working on that dino DNA.
 
 But *eventually*, we're going to add a `growTriceratops` method to `DinosaurFactory`.
 To make sure we don't forget about this, let's *start* the test: `testItGrowsATriceratops`.
 But I don't *really* want this test to exist... and fail - that's lame. Instead,
 add `$this->markTestIncomplete('Waiting for confirmation from GenLab')`.
 
-Tryit!
+Try it!
 
 ```terminal-silent
 ./vendor/bin/phpunit
@@ -72,7 +71,7 @@ make sure it's length is correct.
 This will *totally* work. But let's pretend that, inside the `growVelociraptor()`
 method, we use some class or PHP extension that the user may or may not have installed.
 Check to see if some imaginary `Nanny` class exists. If it doesn't, we can't
-run the test! So mark it as skipped: there's nobody to watch the baby!
+run the test! So mark it as skipped: there's nobody to watch the baby raptor!
 
 ```terminal-silent
 ./vendor/bin/phpunit

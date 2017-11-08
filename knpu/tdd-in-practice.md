@@ -13,7 +13,7 @@ Create a new dinosaur, but don't set any data on it. Let's test the default stri
 
 Test done! Step 2 is to write the *minimum* amount of code to get this test to pass.
 In `Dinosaur`, add `public function getSpecification()`. So... what's the smallest
-amount of code we can write? We can just return that a hardcoded string!
+amount of code we can write? We can just return a hardcoded string!
 
 Genius! Ok, try the test!
 
@@ -24,7 +24,8 @@ Genius! Ok, try the test!
 Ha! It passes! The third step to TDD is refactor... which I don't think is needed
 in this case.
 
-Wait, what? You *don't* like my hardcoded string? I know, returning a hardcoded string
+Wait, what? You *don't* like my hardcoded string? Looks like you're missing the last
+boat back to the mainland. Just kidding ... I know, returning a hardcoded string
 is *silly*... and I don't do this in real life. But it shows off an important thing
 with TDD: keep your code simple. Don't make it unnecessarily fancy or cover unnecessary
 use-cases. If you *do* have an edge-case that you want to cover, add the test first,
@@ -45,10 +46,10 @@ Set its length to 12. This time, the specification should be:
 ## Finishing getSpecification()
 
 Test done! Let's write some code! Start in `Dinosaur`: I'll add a `__construct()`
-method with a `$genus = 'Unknown` argument  and `$isCarnivorous = false`. Add these
-two properties to the class. I'll go to Command -> Generate - or press Command+N
-on a Mac - and select "ORM Annotations" to add annotations above each method. We
-don't technically need those right now... but it'll save time later.
+method with a `$genus = 'Unknown'` argument  and `$isCarnivorous = false`. Add these
+two properties to the class. I'll go to the Code menu and then to Generate - or press 
+Command+N on a Mac - select "ORM Annotations" to add annotations above each method. 
+We don't technically need those right now... but it'll save time later.
 
 Down in the constructor, set both properties to their values. The default values
 for each argument match our first test.
@@ -56,7 +57,7 @@ for each argument match our first test.
 In `getSpecification()`, we can't really fake things anymore. Return `sprintf()`
 and the original string, but replace the variable parts with `%s`, `%s` and `%d`.
 
-Then pass `$this->genus`, `$this->isCarnivorous` to print `carnivorous` or `non-carnivirous`,
+Then pass `$this->genus`, `$this->isCarnivorous` to print `carnivorous` or `non-carnivorous`,
 and then `$this->length`.
 
 Perfect! Find your terminal and run the tests!
