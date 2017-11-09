@@ -211,13 +211,43 @@
             "description": null
         },
         {
+            "id": "test-doubles-make-code-work-again",
+            "name": "Test doubles: Make code work again",
+            "description": null
+        },
+        {
             "id": "test-doubles-expect-with",
             "name": "Test doubles: expect() & with()",
             "description": null
         },
         {
+            "id": "test-doubles-fix-broken-code",
+            "name": "Test doubles: Fix broken code",
+            "description": null
+        },
+        {
             "id": "test-doubles-add-test-with-a-mock",
             "name": "Test doubles: add test with a mock",
+            "description": null
+        },
+        {
+            "id": "test-doubles-mock-2-args",
+            "name": "Test doubles: Mock 2 args",
+            "description": null
+        },
+        {
+            "id": "test-doubles-add-expect-fix-loop",
+            "name": "Test doubles: add expect & fix loop",
+            "description": null
+        },
+        {
+            "id": "test-doubles-dump-dinosaur-collection",
+            "name": "Test doubles: Dump Dinosaur collection",
+            "description": null
+        },
+        {
+            "id": "test-doubles-add-willreturn-dino",
+            "name": "Test doubles: Add willReturn Dino",
             "description": null
         },
         {
@@ -331,5 +361,5 @@
             "description": null
         }
     ],
-    "sha": "fcf030f224b41f866d1e93b53b9623704c384d7b"
+    "sha": "32faa9df6820ad2b77c8677225728cafb20df0f5"
 }

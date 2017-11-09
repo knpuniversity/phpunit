@@ -1,0 +1,27 @@
+diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
+index 5311121..dc9dbe0 100644
+--- a/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
++++ b/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
+@@ -2,6 +2,7 @@
+ 
+ namespace Tests\AppBundle\Service;
+ 
++use AppBundle\Entity\Dinosaur;
+ use AppBundle\Factory\DinosaurFactory;
+ use AppBundle\Service\EnclosureBuilderService;
+ use Doctrine\ORM\EntityManagerInterface;
+@@ -16,6 +17,7 @@ class EnclosureBuilderServiceTest extends TestCase
+ 
+         $dinoFactory->expects($this->exactly(2))
+             ->method('growFromSpecification')
++            ->willReturn(new Dinosaur())
+             ->with($this->isType('string'));
+ 
+         $builder = new EnclosureBuilderService($em, $dinoFactory);
+@@ -23,6 +25,5 @@ class EnclosureBuilderServiceTest extends TestCase
+ 
+         $this->assertCount(1, $enclosure->getSecurities());
+         $this->assertCount(2, $enclosure->getDinosaurs());
+-        dump($enclosure->getDinosaurs()->toArray());
+     }
+ }

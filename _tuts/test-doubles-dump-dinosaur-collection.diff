@@ -1,0 +1,11 @@
+diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
+index 54baeb9..5311121 100644
+--- a/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
++++ b/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
+@@ -23,5 +23,6 @@ class EnclosureBuilderServiceTest extends TestCase
+ 
+         $this->assertCount(1, $enclosure->getSecurities());
+         $this->assertCount(2, $enclosure->getDinosaurs());
++        dump($enclosure->getDinosaurs()->toArray());
+     }
+ }

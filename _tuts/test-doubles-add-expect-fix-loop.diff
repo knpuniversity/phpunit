@@ -1,0 +1,38 @@
+diff --git a/src/AppBundle/Service/EnclosureBuilderService.php b/src/AppBundle/Service/EnclosureBuilderService.php
+index d56b557..2b0b485 100644
+--- a/src/AppBundle/Service/EnclosureBuilderService.php
++++ b/src/AppBundle/Service/EnclosureBuilderService.php
+@@ -54,11 +54,13 @@ class EnclosureBuilderService
+ 
+     private function addDinosaurs(int $numberOfDinosaurs, Enclosure $enclosure)
+     {
+-        $length = array_rand(['small', 'large', 'huge']);
+-        $diet = array_rand(['herbivore', 'carnivorous']);
+-        $specification = "{$length} {$diet} dinosaur";
+-        $dinosaur = $this->dinosaurFactory->growFromSpecification($specification);
++        for ($i = 0; $i < $numberOfDinosaurs; $i++) {
++            $length = array_rand(['small', 'large', 'huge']);
++            $diet = array_rand(['herbivore', 'carnivorous']);
++            $specification = "{$length} {$diet} dinosaur";
++            $dinosaur = $this->dinosaurFactory->growFromSpecification($specification);
+ 
+-        $enclosure->addDinosaur($dinosaur);
++            $enclosure->addDinosaur($dinosaur);
++        }
+     }
+ }
+diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
+index ec13f70..54baeb9 100644
+--- a/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
++++ b/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
+@@ -14,6 +14,10 @@ class EnclosureBuilderServiceTest extends TestCase
+         $em = $this->createMock(EntityManagerInterface::class);
+         $dinoFactory = $this->createMock(DinosaurFactory::class);
+ 
++        $dinoFactory->expects($this->exactly(2))
++            ->method('growFromSpecification')
++            ->with($this->isType('string'));
++
+         $builder = new EnclosureBuilderService($em, $dinoFactory);
+         $enclosure = $builder->buildEnclosure(1, 2);
+ 

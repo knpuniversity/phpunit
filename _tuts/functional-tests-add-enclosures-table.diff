@@ -48,7 +48,7 @@ index 36ea5c0..d8c21cc 100644
      }
  }
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index d9cf944..8bfa039 100644
+index b02811c..b745aae 100644
 --- a/src/AppBundle/Entity/Enclosure.php
 +++ b/src/AppBundle/Entity/Enclosure.php
 @@ -70,6 +70,11 @@ class Enclosure
