@@ -261,11 +261,6 @@
             "description": null
         },
         {
-            "id": "test-doubles-fulfill-loop-expectation-of-mock",
-            "name": "Test doubles: fulfill loop expectation of mock",
-            "description": null
-        },
-        {
             "id": "test-doubles-mocking-with-prophecy",
             "name": "Test doubles: mocking with prophecy",
             "description": null
