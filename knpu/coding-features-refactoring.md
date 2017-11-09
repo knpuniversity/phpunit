@@ -1,13 +1,13 @@
 # Coding, Adding Features, Refactoring
 
 Ok, let's code! And remember: don't over-think things: just focus on getting each
-test to pass. Let's start with the *second* test, for the default values.
+test to pass. Let's start with the *second* test, the default values.
 
 ## Attacking Test #1
 
 Inside `DinosaurFactory`, I'll paste a few default values: we'll use `$codeName`
 as the genus, because these are *experimental* dinosaurs, set the `$length` to be
-a small dinosaur, and create veggie-eating friends.
+a small dinosaur, and create leaf-eating friends.
 
 Yep, with these values, our second test should be happy. Finish the function:
 `$dinosaur = $this->createDinosaur()` with `$codeName`, `$isCarnivorous` and `$length`.
@@ -56,7 +56,7 @@ argument. Grow the dino with `$dinosaur = $this->factory->growFromSpecification(
 Then, check to make sure it's *huge* with `$this->assertGreaterThanOrEqual()`.
 
 Oh, but we need to define what *huge* means. Back in `Dinosaur`, add `const HUGE = 30`.
-Oh, and management decided to make the large dinosaurs a bit smaller - set `LARGE`
+And management decided to make the large dinosaurs a bit smaller - set `LARGE`
 to 10.
 
 Use the constant in the test and compare it with `$dinosaur->getLength()`.
@@ -108,7 +108,7 @@ And *that* means we've reached step 3 of TDD: refactor! I don't *actually* love
 ugly code - it's just that it wasn't time to worry about it yet. TDD helps you focus
 on writing your business logic correctly *first*, and *then* on improving the code.
 
-So let's improve this. Actually, if you downloaded the course code, then you should
+So let's makes this better. Actually, if you downloaded the course code, then you should
 have a `tutorial/` directory with a `DinosaurFactory.php` file inside. Copy the
 `private function` from that file, find *our* `DinosaurFactory`, and paste at
 the bottom.

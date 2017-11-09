@@ -32,9 +32,13 @@ Ok, let's test! Create a new `public function testSettingLength()`. The method
 needs to start with `test`, but after that, give it a clever description that will
 help you recognize what the method is supposed to do.
 
+[[[ code('e76c4a7db8') ]]]
+
 Now, even though we *don't* have a `Dinosaur` class, we're going to *pretend* like
 we do. Ok... `$dinosaur = new Dinosaur()`. Then, `$this->assertSame()` that zero
 is `$dinosaur->getLength()`.
+
+[[[ code('692f4f14dc') ]]]
 
 ## We <3 Assertions
 
@@ -59,6 +63,8 @@ fail.
 
 Set the length: `$dinosaur->setLength(9)`. And then assert that it equals 9.
 
+[[[ code('aa3cff502a') ]]]
+
 Perfect! Our test is done! I know... kinda strange, right? By writing the test first,
 it forces us to think about *how* we want our `Dinosaur` class to look and act...
 instead of just diving in and hacking it together.
@@ -77,6 +83,8 @@ Time to make that test pass! If you downloaded the course code, then you should 
 a `tutorial/` directory with a `Dinosaur` class inside. Copy that and paste it
 into the *real* `Entity` directory.
 
+[[[ code('cbe858e9ed ') ]]]
+
 This is just a simple class with a `length` property. It *does* have Doctrine annotations,
 but that's not important! Sure, we will *eventually* be able to save dinosaurs to
 the database, but our test doesn't care about that: it just checks to make sure
@@ -85,8 +93,12 @@ setting and getting the length works.
 Let's add those methods: `public function getLength()` that returns an int. And
 `public function setLength()` with an int argument. Set the `length` property.
 
+[[[ code('a6e7836d8d') ]]]
+
 Back in `DinosaurTest`, add the `use` statement. Ah, PhpStorm is as happy as a
 raptor in a kitchen!
+
+[[[ code('17f8b906c5') ]]]
 
 Ok, find your terminal and... test!
 
@@ -105,9 +117,13 @@ grows up, it's smaller than 15! The dinos are shrinking! Probably a good thing.
 Let's add a test for this: `public function testDinosaurHasNotShrunk`. Start the
 same as before: `$dinosaur = new Dinosaur()`, and `$dinosaur->setLength(15)`.
 
+[[[ code('8a44c84aa6') ]]]
+
 And *just* to make things more interesting, imagine that it's OK if the dinosaur
 shrinks a little bit... it just can't shrink *too* much. The guests want a thrill! 
 In other words, `$this->assertGreatherThan(12, $dinosaur->getLength())`. 
+
+[[[ code('e06f1044f5') ]]]
 
 You can also add an optional message as the last argument to *any* assert function.
 This will display when the test fails... which can sometimes make debugging easier.
