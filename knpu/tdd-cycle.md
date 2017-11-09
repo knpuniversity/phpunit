@@ -46,8 +46,8 @@ scare me. In the real world, I would not test them.
 
 ## Test-Driven Development
 
-A few minutes ago, I mentioned the term "Test-Driven Development" or TDD. TDD is
-a philosophy that breaks coding into three steps. First, create the test. Second,
+A few minutes ago, I mentioned the term "Test-Driven Development" or TDD. TDD
+breaks coding into three steps. First, create the test. Second,
 write the *minimum* amount of code to get that test to pass. And third, now that
 your tests are passing, you can safely refactor your code to make it fancier.
 
