@@ -1,0 +1,13 @@
+diff --git a/src/AppBundle/Service/EnclosureBuilderService.php b/src/AppBundle/Service/EnclosureBuilderService.php
+index bb0c044..17ac375 100644
+--- a/src/AppBundle/Service/EnclosureBuilderService.php
++++ b/src/AppBundle/Service/EnclosureBuilderService.php
+@@ -62,7 +62,7 @@ class EnclosureBuilderService
+             $length = array_rand(['small', 'large', 'huge']);
+             $diet = array_rand(['herbivore', 'carnivorous']);
+             $specification = "{$length} {$diet} dinosaur";
+-            $dinosaur = $this->dinosaurFactory->growFromSpecification([]);
++            $dinosaur = $this->dinosaurFactory->growFromSpecification($specification);
+ 
+             $enclosure->addDinosaur($dinosaur);
+         }
