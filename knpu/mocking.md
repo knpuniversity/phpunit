@@ -44,7 +44,7 @@ A mock is a "zombie" version of the original object.
 
 I'll hold command and click `createMock()` to see that function. Behind the scenes,
 mocks are created with a mock *builder*. And sometimes, you'll want to use *that*
-instead, because if gives you a bit more control. As you can see, by default, the
+instead, because it gives you a bit more control. As you can see, by default, the
 constructor is skipped when creating the mock... which is pretty sweet, because you
 *don't* need to worry about the constructor arguments of a class.
 
@@ -53,11 +53,11 @@ to only mock *some* methods.
 
 By the way, the most common word you're going to hear for this object is a *mock*.
 But technically, there are a number of different terms: dummies, stubs, spies and
-mocks. They all mean *slightly* different things and. Technically, what we've created
+mocks. They all mean *slightly* different things. And technically, what we've created
 is a *dummy*... which is just a bit insulting!
 
 Anyways, if you want to learn what these terms *really* mean, you can check out a
-series of articles written by Andrew, our course co-author:
+series of articles written by Andrew, our course co-author at this link:
 http://www.ifdattic.com/dummy-test-double-using-prophecy/.
 
 Anyways, I'll use the word *mock* to keep things simple.
