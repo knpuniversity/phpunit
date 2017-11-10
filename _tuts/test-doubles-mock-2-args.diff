@@ -1,0 +1,25 @@
+diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
+index 2ec1363..ec13f70 100644
+--- a/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
++++ b/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
+@@ -2,14 +2,19 @@
+ 
+ namespace Tests\AppBundle\Service;
+ 
++use AppBundle\Factory\DinosaurFactory;
+ use AppBundle\Service\EnclosureBuilderService;
++use Doctrine\ORM\EntityManagerInterface;
+ use PHPUnit\Framework\TestCase;
+ 
+ class EnclosureBuilderServiceTest extends TestCase
+ {
+     public function testItBuildsAndPersistsEnclosure()
+     {
+-        $builder = new EnclosureBuilderService();
++        $em = $this->createMock(EntityManagerInterface::class);
++        $dinoFactory = $this->createMock(DinosaurFactory::class);
++
++        $builder = new EnclosureBuilderService($em, $dinoFactory);
+         $enclosure = $builder->buildEnclosure(1, 2);
+ 
+         $this->assertCount(1, $enclosure->getSecurities());

@@ -211,13 +211,43 @@
             "description": null
         },
         {
+            "id": "test-doubles-make-code-work-again",
+            "name": "Test doubles: Make code work again",
+            "description": null
+        },
+        {
             "id": "test-doubles-expect-with",
             "name": "Test doubles: expect() & with()",
             "description": null
         },
         {
+            "id": "test-doubles-fix-broken-code",
+            "name": "Test doubles: Fix broken code",
+            "description": null
+        },
+        {
             "id": "test-doubles-add-test-with-a-mock",
             "name": "Test doubles: add test with a mock",
+            "description": null
+        },
+        {
+            "id": "test-doubles-mock-2-args",
+            "name": "Test doubles: Mock 2 args",
+            "description": null
+        },
+        {
+            "id": "test-doubles-add-expect-fix-loop",
+            "name": "Test doubles: add expect & fix loop",
+            "description": null
+        },
+        {
+            "id": "test-doubles-dump-dinosaur-collection",
+            "name": "Test doubles: Dump Dinosaur collection",
+            "description": null
+        },
+        {
+            "id": "test-doubles-add-willreturn-dino",
+            "name": "Test doubles: Add willReturn Dino",
             "description": null
         },
         {
@@ -231,13 +261,18 @@
             "description": null
         },
         {
-            "id": "test-doubles-fulfill-loop-expectation-of-mock",
-            "name": "Test doubles: fulfill loop expectation of mock",
+            "id": "test-doubles-mocking-with-prophecy",
+            "name": "Test doubles: mocking with prophecy",
             "description": null
         },
         {
-            "id": "test-doubles-mocking-with-prophecy",
-            "name": "Test doubles: mocking with prophecy",
+            "id": "test-doubles-show-prophecy-failure",
+            "name": "Test doubles: Show prophecy failure",
+            "description": null
+        },
+        {
+            "id": "test-doubles-fix-code",
+            "name": "Test doubles: Fix code",
             "description": null
         },
         {
@@ -331,5 +366,5 @@
             "description": null
         }
     ],
-    "sha": "fcf030f224b41f866d1e93b53b9623704c384d7b"
+    "sha": "ffd568ebcc6ea3ddca0c2dc902241b6d69302d38"
 }

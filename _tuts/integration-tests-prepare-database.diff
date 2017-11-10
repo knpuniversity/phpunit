@@ -17,7 +17,7 @@ index 4ec961d..b1b2f41 100644
       */
      private $length = 0;
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index eda051b..400f244 100644
+index cda63d4..7e3cce9 100644
 --- a/src/AppBundle/Entity/Enclosure.php
 +++ b/src/AppBundle/Entity/Enclosure.php
 @@ -15,6 +15,12 @@ use Doctrine\ORM\Mapping as ORM;

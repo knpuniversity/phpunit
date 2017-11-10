@@ -1,0 +1,14 @@
+diff --git a/src/AppBundle/Factory/DinosaurFactory.php b/src/AppBundle/Factory/DinosaurFactory.php
+index 88a488f..3a29bc8 100644
+--- a/src/AppBundle/Factory/DinosaurFactory.php
++++ b/src/AppBundle/Factory/DinosaurFactory.php
+@@ -23,8 +23,7 @@ class DinosaurFactory
+     {
+         // defaults
+         $codeName = 'InG-' . random_int(1, 99999);
+-        //$length = $this->lengthDeterminator->getLengthFromSpecification($specification);
+-        $length = $this->lengthDeterminator->getLengthFromSpecification('foo');
++        $length = $this->lengthDeterminator->getLengthFromSpecification($specification);
+         $isCarnivorous = false;
+ 
+         if (stripos($specification, 'carnivorous') !== false) {

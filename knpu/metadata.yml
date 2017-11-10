@@ -7,8 +7,15 @@ chapters:
     - hooks-incomplete
     - data-providers
     - coding-features-refactoring
-    - testing-exeptions
+    - dependent-objects
+    - testing-exceptions
+    - exceptions-fence-security
+    - refactoring-di
     - mocking
+    - mock-returns-expects
+    - full-mock-example
+    - prophecy-mocking
+    - cli-options
     - integration-tests
     - functional-tests
     - continuous-integration

@@ -1,3 +1,17 @@
+diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
+index eda051b..cda63d4 100644
+--- a/src/AppBundle/Entity/Enclosure.php
++++ b/src/AppBundle/Entity/Enclosure.php
+@@ -75,4 +75,9 @@ class Enclosure
+ 
+         return false;
+     }
++
++    public function getSecurities(): Collection
++    {
++        return $this->securities;
++    }
+ }
 diff --git a/src/AppBundle/Service/EnclosureBuilderService.php b/src/AppBundle/Service/EnclosureBuilderService.php
 new file mode 100644
 index 0000000..d56b557
@@ -70,46 +84,25 @@ index 0000000..d56b557
 +}
 diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
 new file mode 100644
-index 0000000..e401a1d
+index 0000000..2ec1363
 --- /dev/null
 +++ b/tests/AppBundle/Service/EnclosureBuilderServiceTest.php
-@@ -0,0 +1,39 @@
+@@ -0,0 +1,18 @@
 +<?php
 +
 +namespace Tests\AppBundle\Service;
 +
-+use AppBundle\Entity\Dinosaur;
-+use AppBundle\Entity\Enclosure;
-+use AppBundle\Factory\DinosaurFactory;
 +use AppBundle\Service\EnclosureBuilderService;
-+use Doctrine\ORM\EntityManagerInterface;
 +use PHPUnit\Framework\TestCase;
 +
 +class EnclosureBuilderServiceTest extends TestCase
 +{
-+    public function testItPersistsBuildEnclosure()
++    public function testItBuildsAndPersistsEnclosure()
 +    {
-+        $entityManager = $this->createMock(EntityManagerInterface::class);
++        $builder = new EnclosureBuilderService();
++        $enclosure = $builder->buildEnclosure(1, 2);
 +
-+        $entityManager->expects($this->once())
-+            ->method('persist')
-+            ->with($this->isInstanceOf(Enclosure::class));
-+
-+        $entityManager->expects($this->atLeastOnce())
-+            ->method('flush');
-+
-+        $dinosaurFactory = $this->createMock(DinosaurFactory::class);
-+
-+        $dinosaurFactory->expects($this->exactly(2))
-+            ->method('growFromSpecification')
-+            ->with($this->isType('string'))
-+            ->willReturn(new Dinosaur());
-+
-+        $enclosureBuilderService = new EnclosureBuilderService(
-+            $entityManager,
-+            $dinosaurFactory
-+        );
-+
-+        $enclosureBuilderService->buildEnclosure(1, 2);
++        $this->assertCount(1, $enclosure->getSecurities());
++        $this->assertCount(2, $enclosure->getDinosaurs());
 +    }
 +}
