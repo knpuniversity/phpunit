@@ -116,5 +116,3 @@ Let's do the tests!
 
 Yes! This is *amazing*! We just created a dinosaur park *with* security. What a
 novel idea!
-
-Ok, next! Let's get to the most important part of this tutorial: mocking.
