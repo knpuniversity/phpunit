@@ -10,6 +10,7 @@ chapters:
     - dependent-objects
     - testing-exceptions
     - exceptions-fence-security
+    - refactoring-di
     - mocking
     - mock-returns-expects
     - full-mock-example
