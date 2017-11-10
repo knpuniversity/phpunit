@@ -78,4 +78,4 @@ name... so go copy the use statement and put it down here. Try it!
 Yes! One more test passing.
 
 I want to go through *one* more example next... and also add some security to the
-enclosures.
+enclosures. Our guests have been terrorized enough.
