@@ -11,9 +11,13 @@ TDD says: write that test first! Add `public function testReturnsFullSpecificati
 Create a new dinosaur, but don't set any data on it. Let's test the default string:
 `Unknown non-carnivorous dinosaur is 0 meters long` should equal `$dinosaur->getSpecification()`.
 
+[[[ code('0bd829480d') ]]]
+
 Test done! Step 2 is to write the *minimum* amount of code to get this test to pass.
 In `Dinosaur`, add `public function getSpecification()`. So... what's the smallest
 amount of code we can write? We can just return a hardcoded string!
+
+[[[ code('34f2dc2197') ]]]
 
 Genius! Ok, try the test!
 
@@ -43,6 +47,8 @@ Set its length to 12. This time, the specification should be:
 
 > Tyrannosaurus carnivorous dinosaur is 12 meters long
 
+[[[ code('ce35dbd573') ]]]
+
 ## Finishing getSpecification()
 
 Test done! Let's write some code! Start in `Dinosaur`: I'll add a `__construct()`
@@ -51,14 +57,20 @@ two properties to the class. I'll go to the Code menu and then to Generate - or 
 Command+N on a Mac - select "ORM Annotations" to add annotations above each method. 
 We don't technically need those right now... but it'll save time later.
 
+[[[ code('950ccb46a6') ]]]
+
 Down in the constructor, set both properties to their values. The default values
 for each argument match our first test.
+
+[[[ code('6e9510294c') ]]]
 
 In `getSpecification()`, we can't really fake things anymore. Return `sprintf()`
 and the original string, but replace the variable parts with `%s`, `%s` and `%d`.
 
 Then pass `$this->genus`, `$this->isCarnivorous` to print `carnivorous` or `non-carnivorous`,
 and then `$this->length`.
+
+[[[ code('9cd9d0258c') ]]]
 
 Perfect! Find your terminal and run the tests!
 
@@ -69,6 +81,8 @@ Perfect! Find your terminal and run the tests!
 Passing! Now to step 3... refactor! And this time... I will! Let's include the word
 `carnivorous` in the string. Then below, just print `non-` if needed. I don't even
 need to *think* about whether or not I made any mistakes. Just run the tests!
+
+[[[ code('6182e84a63') ]]]
 
 ```terminal-silent
 ./vendor/bin/phpunit
