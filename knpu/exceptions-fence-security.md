@@ -3,7 +3,7 @@
 Dinosaurs, check! Enclosures, check! But... we forgot to add *security* to the
 enclosures! Ya know, like *electric* fences! Dang it, I *knew* we forgot something.
 The dinosaurs have been escaping their enclosure and... of course, terrorizing the
-guests.
+guests. The investors are not going to like this...
 
 Inside `Enclosure`, add a new `securities` property: this will be a collection of
 `Security` objects - like "fence" security or "watch tower". We'll create that class
