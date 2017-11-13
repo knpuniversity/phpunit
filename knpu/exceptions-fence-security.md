@@ -2,8 +2,8 @@
 
 Dinosaurs, check! Enclosures, check! But... we forgot to add *security* to the
 enclosures! Ya know, like *electric* fences! Dang it, I *knew* we forgot something.
-The dinosaurs have been escapgin their enclosure and... of course, terrorizing the
-guests.
+The dinosaurs have been escaping their enclosure and... of course, terrorizing the
+guests. The investors are not going to like this...
 
 Inside `Enclosure`, add a new `securities` property: this will be a collection of
 `Security` objects - like "fence" security or "watch tower". We'll create that class
@@ -52,8 +52,9 @@ Speaking of `Enclosure`, initialize its `$securities` property to a `new ArrayCo
 Oh, and on the property, add `@var Collection|Security[]`.
 
 Really, this will be a `Collection` instance. But the `Security[]` part tells our
-editor that this is a collection of *Security* object. And that will give *us*
-better auto-completion.
+editor that this is a collection of *Security* objects. And that will give *us*
+better auto-completion. Which we can only enjoy if we get this dino security going,
+so let's get to it!
 
 ## Throwing the Exception
 
@@ -102,7 +103,7 @@ create this method next - `new Security('Fence', true)` - for `isActive` -
 and then `$this` for the Enclosure.
 
 Add the missing method `public function addSecurity()`, append the securities array
-and... and we're done!
+and... we're done!
 
 Inside `EnclosureTest`, the first test method does *not* need security: it never
 adds any dinosaurs. But the next three do: pass `true`, `true` and `true`.
@@ -115,5 +116,3 @@ Let's do the tests!
 
 Yes! This is *amazing*! We just created a dinosaur park *with* security. What a
 novel idea!
-
-Ok, next! Let's get to the most important part of this tutorial: mocking.

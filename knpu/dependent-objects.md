@@ -1,14 +1,14 @@
 # Handling Object Dependencies
 
 Now that we're building *all* these dinosaurs... we need a place to keep them! Right
-now they're running free! Terrorizing the guests! We need an `Enclosure` class
-that will hold a collection of dinosaurs.
+now they're running free! Terrorizing the guests! Eating all the ice cream! 
+We need an `Enclosure` class that will hold a collection of dinosaurs.
 
 You guys know the drill, start with the test! Create `EnclosureTest`. And inside,
 name the first method `testThatEnclosureIsEmptyByDefault()`: we don't want any surprise
 dinosaurs inside!
 
-Create the `new Enclosure()` and then check things out with `$this->assertCount(0)`
+Create the `new Enclosure()` and then check that `$this->assertCount(0)`
 matches `$enclosure->getDinosaurs()`.
 
 Ok, good start! Next, inside `Entity`, create `Enclosure`. This will eventually
@@ -16,7 +16,7 @@ be a Doctrine entity, but don't worry about the annotations yet. Add a `private 
 property. And, like normal, add `public function __construct()` so that we can
 initialize that to a new `ArrayCollection`.
 
-Back on the property, I'll add `@var Collection`. Collection is the interface
+Back on the property, I'll add `@var Collection`. That's the interface
 that `ArrayCollection` implements.
 
 Now that the class exists, go back to the test and add the `use` statement.
@@ -40,7 +40,7 @@ We are green! I know, this is simple so far... but stay tuned.
 
 ## Adding the Annotations
 
-Before we keep going, since the tests a green, let's add the missing Doctrine annotations.
+Before we keep going, since the tests are green, let's add the missing Doctrine annotations.
 With my cursor inside `Enclosure`, I'll go to the Code->Generate menu - or Command+N
 on a mac - and select "ORM Class". That's just a shortcut to add the annotations
 above the class.
@@ -97,7 +97,7 @@ As a rule, you *will* want to mock *service* classes, but you do *not* need to m
 classes tend to be simple and just hold data, it's easy enough to create those objects
 and set their data to whatever you want.
 
-If this does not making sense yet, don't worry. We're going to talk about mocking
+If this does not make sense yet, don't worry. We're going to talk about mocking
 *very* soon.
 
 Let's add one more dinosaur to the enclosure. And then check that `$this->assertCount(2)`
