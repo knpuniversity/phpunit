@@ -20,6 +20,8 @@ to use. Creepy.... Create a new PHP class again: `DinosaurFactoryTest`.
 Make it extend the usual `TestCase` from PHPUnit. And add a new method:
 `public function testItGrowsAVelociraptor()`.
 
+[[[ code('6f6e60e389') ]]]
+
 ## Planning the Design
 
 Ok, let's think about the *design* of this new class. There are a few dinosaurs
@@ -34,12 +36,16 @@ Awesome! Let's start using this imaginary class. First, create it:
 `$factory = new DinosaurFactory()`. Then, `$dinosaur = $factory->growVelociraptor()`
 and pass in the length.
 
+[[[ code('22216f8bff') ]]]
+
 Next, add some basic checks: `$this->assertInstanceOf()` to make sure that
 this returns a `Dinosaur::class` instance. We can also use `$this->assertInternalType()`
 to make sure that a `string` is what we get back from `$dinosaur->getGenus()`.
 
 Let's also check that value exactly - it should match `Velociraptor`. And
 make sure that 5 is the length.
+
+[[[ code('6038430144') ]]]
 
 Perfect! There's one cool thing you may not have noticed: we're now *indirectly*
 testing some of the methods on `Dinosaur`. Yep, if we have a bug in `getGenus()`
@@ -62,11 +68,17 @@ Yes! Let's code! Create the new `Factory` directory, then the class inside:
 name, its arguments and *exactly* how it should behave. Add `public function growVelociraptor`.
 We know this needs a `$length` argument and that it will return a `Dinosaur` object.
 
+[[[ code('3832aac39e') ]]]
+
 Create the new `Dinosaur` object inside and pass it `Velociraptor` and true for
 the `isCarnivorous` argument. Set the length to `$length` and return that fresh,
 terrifying dinosaur!
 
+[[[ code('69938df955') ]]]
+
 Back in `DinosaurFactoryTest`, add the `use` statement for the new class.
+
+[[[ code('24503c3d24') ]]]
 
 Ok, run the tests!
 
@@ -86,6 +98,8 @@ for bugs: only add methods when you need them.
 
 Add the `getGenus()` method and return that property. Try the tests again:
 
+[[[ code('625f13da06') ]]]
+
 ```terminal-silent
 ./vendor/bin/phpunit
 ```
@@ -98,10 +112,16 @@ And that means it's time to refactor! Since we're going to eventually create a
 *lot* of dinosaurs, let's create a new private function called `createDinosaur()`
 with three arguments: `$genus`, `$isCarnivorous` and `$length`.
 
+[[[ code('66e4d12d89') ]]]
+
 Use those on the `new Dinosaur()`.
+
+[[[ code('0c5fa317a5') ]]]
 
 Above in `growVelociraptor()`. return `$this->createDinosaur()` and pass
 `Velociraptor`, `true` and the length.
+
+[[[ code('917e74eec6') ]]]
 
 And because this has a test, *it* will tell us if we made any mistakes. But I
 doubt that... try the test!
@@ -115,6 +135,8 @@ Explosion!
 > Return value of DinosaurFactory::growVelociraptor must be a dinosaur: null returned
 
 Whooops. I forgot my return value. Let's even add a return-type for that method.
+
+[[[ code('adc2ab61fe') ]]]
 
 This is the power of test-driven development... and testing in general.
 
