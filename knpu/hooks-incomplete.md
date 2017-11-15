@@ -11,9 +11,13 @@ Add a new `$factory` property and give it some PHPDoc: this will be a `DinosaurF
 object. Then - here's the magic part - create a new `public function setUp()`.
 Inside, set the property to a `new DinosaurFactory`.
 
+[[[ code('c9473eafa6') ]]]
+
 Back in our test method, use the new property. Yep, this *will* work... but only
 thanks to a bit of PHPUnit magic. If you have a method that's exactly called `setUp`,
 PHPUnit will automatically call it *before* each test.
+
+[[[ code('eb58d7c0df') ]]]
 
 If you have *multiple* test functions, that means that `setUp` will be called before
 each test *method*. This will make sure that the `$factory` property is a new, *fresh*
@@ -54,6 +58,8 @@ To make sure we don't forget about this, let's *start* the test: `testItGrowsATr
 But I don't *really* want this test to exist... and fail - that's lame. Instead,
 add `$this->markTestIncomplete('Waiting for confirmation from GenLab')`.
 
+[[[ code('326f2b806a') ]]]
+
 Try it!
 
 ```terminal-silent
@@ -68,10 +74,14 @@ A *similar* thing you can do is *skip* tests. Try this: add a new method:
 `testItGrowsABabyVelociraptor()`. Create a *tiny* velociraptor - adorable! - and
 make sure it's length is correct.
 
+[[[ code('fc99234394') ]]]
+
 This will *totally* work. But let's pretend that, inside the `growVelociraptor()`
 method, we use some class or PHP extension that the user may or may not have installed.
 Check to see if some imaginary `Nanny` class exists. If it doesn't, we can't
 run the test! So mark it as skipped: there's nobody to watch the baby raptor!
+
+[[[ code('b915eba512') ]]]
 
 ```terminal-silent
 ./vendor/bin/phpunit
