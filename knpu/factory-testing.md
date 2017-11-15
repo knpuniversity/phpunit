@@ -18,7 +18,7 @@ reads the `autoload-dev` section of `composer.json` and *now* knows what namespa
 to use. Creepy.... Create a new PHP class again: `DinosaurFactoryTest`. 
 
 Make it extend the usual `TestCase` from PHPUnit. And add a new method:
-`public function testItGrowsAVelociraptor()`.
+`public function testItGrowsALargeVelociraptor()`.
 
 [[[ code('6f6e60e389') ]]]
 
