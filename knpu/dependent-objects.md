@@ -7,7 +7,7 @@ We need an `Enclosure` class that will hold a collection of dinosaurs.
 You guys know the drill, start with the test! Create `EnclosureTest`. 
 
 ***TIP
-And inside, name the first method `testThatEnclosureIsEmptyByDefault()
+And inside, name the first method `testThatEnclosureIsEmptyByDefault()`
 ***
 
 We don't want any surprise dinosaurs inside!
