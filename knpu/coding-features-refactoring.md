@@ -75,7 +75,7 @@ Use the constant in the test and compare it with `$dinosaur->getLength()`.
 
 [[[ code('3be90129cc') ]]]
 
-## Huge Data Provider 😱
+## Huge Data Provider
 
 With the test function done, create the data provider: `getHugeDinosaurSpecTests()`.
 Just like before, make this return an array. Each individual test case will *also*

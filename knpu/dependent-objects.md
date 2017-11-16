@@ -4,9 +4,13 @@ Now that we're building *all* these dinosaurs... we need a place to keep them! R
 now they're running free! Terrorizing the guests! Eating all the ice cream! 
 We need an `Enclosure` class that will hold a collection of dinosaurs.
 
-You guys know the drill, start with the test! Create `EnclosureTest`. And inside,
-name the first method `testThatEnclosureIsEmptyByDefault()`: we don't want any surprise
-dinosaurs inside!
+You guys know the drill, start with the test! Create `EnclosureTest`. 
+
+***TIP
+And inside, name the first method `testThatEnclosureIsEmptyByDefault()`
+***
+
+We don't want any surprise dinosaurs inside!
 
 Create the `new Enclosure()` and then check that `$this->assertCount(0)`
 matches `$enclosure->getDinosaurs()`.
