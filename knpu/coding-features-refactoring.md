@@ -9,10 +9,14 @@ Inside `DinosaurFactory`, I'll paste a few default values: we'll use `$codeName`
 as the genus, because these are *experimental* dinosaurs, set the `$length` to be
 a small dinosaur, and create leaf-eating friends.
 
+[[[ code('d0b36a05e2') ]]]
+
 Yep, with these values, our second test should be happy. Finish the function:
 `$dinosaur = $this->createDinosaur()` with `$codeName`, `$isCarnivorous` and `$length`.
 Then, return `$dinosaur`. Oh... and it doesn't really matter... but let's move this
 function up: I like to have my *public* functions *above* private ones.
+
+[[[ code('6946e9ce72') ]]]
 
 Ok, that should be enough to get *one* test to pass. Run 'em:
 
@@ -30,6 +34,8 @@ in it, it should be a large dinosaur. That's easy enough: inside the method: use
 we need a bigger length! Generate a random number between the `LARGE` constant and
 100... which would be a *horrifyingly* big dinosaur.
 
+[[[ code('8ab52099db') ]]]
+
 And *just* like that, another test passes!
 
 ## Attack Test #3
@@ -40,6 +46,8 @@ This is fun! It's like, every time I write a line of code, Sebastian Bergmann is
 Ok, the *last* test is one where the spec includes the word `carnivorous`. What's
 the *quickest* way to get this test to pass? Just copy the `if` statement, paste
 it, change the string to `carnivorous` and set `isCarnivorous` to `true`.
+
+[[[ code('2f6b80c829') ]]]
 
 And now... thanks to the *power* of TDD... they *all* pass! That felt *great*.
 
@@ -55,11 +63,17 @@ test. Let's do that: `testItGrowsAHugeDinosaur()` with *only* a `$specification`
 argument. Grow the dino with `$dinosaur = $this->factory->growFromSpecification()`.
 Then, check to make sure it's *huge* with `$this->assertGreaterThanOrEqual()`.
 
+[[[ code('9d41e96c00') ]]]
+
 Oh, but we need to define what *huge* means. Back in `Dinosaur`, add `const HUGE = 30`.
 And management decided to make the large dinosaurs a bit smaller - set `LARGE`
 to 10.
 
+[[[ code('80f3141a2e') ]]]
+
 Use the constant in the test and compare it with `$dinosaur->getLength()`.
+
+[[[ code('3be90129cc') ]]]
 
 ## Huge Data Provider 😱
 
@@ -69,7 +83,11 @@ be an array like last time, but now with only one item inside. Test for `'huge d
 then also `huge dino`, just the word `huge` and, of course, `OMG` and... the scream
 Emoji!
 
+[[[ code('7f144e3956') ]]]
+
 Back on the test method, connect it to the provider: `@dataProvider getHugeDinosaurSpecTests`.
+
+[[[ code('1070537026') ]]]
 
 Ok, let's watch some tests fail! Go Sebastian go!
 
@@ -86,8 +104,12 @@ TDD helps keep us focused.
 First, update the `large` if statement to make sure it creates large, but not
 HUGE dinosaurs. We could have updated our test *first* before making this change.
 
+[[[ code('08bbc838a1') ]]]
+
 Now, let's handle the HUGE dinos. Copy the `large` if statement, change the search
 text to `huge`, and generate a length between `HUGE` and 100.
+
+[[[ code('2100b82a42') ]]]
 
 Run the tests!
 
@@ -96,7 +118,7 @@ Run the tests!
 ```
 
 Easy! 3 of the 5 already pass: just OMG and the screaming Emoji left! Copy the `huge`
-if statement and paste two more times. Use `OMG` on the first and the screaming Emjoi
+if statement and paste two more times. Use `OMG` on the first and the screaming Emoji
 for the second.
 
 I know... there's *so* much duplication! It's *so* ugly. But... I don't care! I
@@ -113,9 +135,13 @@ have a `tutorial/` directory with a `DinosaurFactory.php` file inside. Copy the
 `private function` from that file, find *our* `DinosaurFactory`, and paste at
 the bottom.
 
+[[[ code('172d42eac9') ]]]
+
 This is still a bit complex, but it removes the duplication and makes the length
 calculation more systematic. Copy the method name, scroll up, delete *all* that
 ugly length logic... and just say `$length = $this->getLengthFromSpecification($specification)`.
+
+[[[ code('36141b7bee') ]]]
 
 My new code *probably* doesn't contain any bugs... but you should *totally* not
 trust me! I mess up all the time! Just run the tests.
