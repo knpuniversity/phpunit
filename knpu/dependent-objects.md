@@ -15,17 +15,25 @@ We don't want any surprise dinosaurs inside!
 Create the `new Enclosure()` and then check that `$this->assertCount(0)`
 matches `$enclosure->getDinosaurs()`.
 
+[[[ code('14578c6a71') ]]]
+
 Ok, good start! Next, inside `Entity`, create `Enclosure`. This will eventually
 be a Doctrine entity, but don't worry about the annotations yet. Add a `private $dinosaurs`
 property. And, like normal, add `public function __construct()` so that we can
 initialize that to a new `ArrayCollection`.
 
+[[[ code('3b418db08f') ]]]
+
 Back on the property, I'll add `@var Collection`. That's the interface
 that `ArrayCollection` implements.
+
+[[[ code('626283a751') ]]]
 
 Now that the class exists, go back to the test and add the `use` statement.
 Oh... and PhpStorm doesn't like my `assertCount()` method... because I forgot to
 extend `TestCase`!
+
+[[[ code('595a3bfa8e') ]]]
 
 If we run the test now, it - of course - fails:
 
@@ -35,6 +43,8 @@ If we run the test now, it - of course - fails:
 
 In `Enclosure`, finish the code by adding `getDinosaurs()`, which should return a
 `Collection`. Summon the tests!
+
+[[[ code('bbd80cab2c') ]]]
 
 ```terminal-silent
 ./vendor/bin/phpunit
@@ -49,11 +59,17 @@ With my cursor inside `Enclosure`, I'll go to the Code->Generate menu - or Comma
 on a mac - and select "ORM Class". That's just a shortcut to add the annotations
 above the class.
 
+[[[ code('4e3f15de5a') ]]]
+
 Now, above the `$dinosaurs` property, use `@ORM\OneToMany` with `targetEntity="Dinosaur"`,
 `mappedBy="enclosure"` - we'll add that property in a moment - and `cascade={"persist"}`.
 
+[[[ code('a33af48e2a') ]]]
+
 In `Dinosaur`, add the other side: `private $enclosure` with `@ORM\ManyToOne`.
 Point *back* to the `Enclosure` class with `inversedBy="dinosaurs"`.
+
+[[[ code('a33af48e2a') ]]]
 
 That should *not* have broken anything... but run the tests to be sure!
 
@@ -67,8 +83,12 @@ Testing that the enclosure starts *empty* is great... but we need a way to add
 dinosaurs! Create a new method: `testItAddsDinosaurs()`. Then, instantiate a `new Enclosure()`
 object.
 
+[[[ code('61b4ae5265') ]]]
+
 Design phase! How should we allow dinosaurs to be added to an `Enclosure`? Maybe...
 an `addDinosaur()` method. Brilliant!  `$enclosure->addDinosaur(new Dinosaur())`.
+
+[[[ code('764f971462') ]]]
 
 And *this* is where things get interesting. For the *first* time, in order to test
 one class - `Enclosure` - we need an object of a *different* class - `Dinosaur`.
@@ -107,6 +127,8 @@ If this does not make sense yet, don't worry. We're going to talk about mocking
 Let's add one more dinosaur to the enclosure. And then check that `$this->assertCount(2)`
 equals `$enclosure->getDinosaurs()`.
 
+[[[ code('7844a01543') ]]]
+
 Try the test!
 
 ```terminal-silent
@@ -117,11 +139,15 @@ Of course, it *fails* due to the missing method. Open `Enclosure` and create
 `public function addDinosaur()` with a `Dinosaur` argument. When you finish, try
 the tests again:
 
+[[[ code('69083c2f19') ]]]
+
 ```terminal-silent
 ./vendor/bin/phpunit
 ```
 
 Oh, and one last thing! Instead of `$this->assertCount(0)`, you can use
 `$this->assertEmpty()`... which just sounds cooler. It works the same.
+
+[[[ code('3562244356') ]]]
 
 Ok, *now* let's talk exceptions!
