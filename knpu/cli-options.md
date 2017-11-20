@@ -1,91 +1,116 @@
-# CLI & Options
+# The Important CLI Options & phpunit.xml.dist
 
-Board over to your terminal.
+Find your terminal. But *this* time, run phpunit with a `-h` option:
 
-Then using a and xed you go a lot. And you've seen a few of the captions.
+```terminal
+./vendor/bin/phpunit -h
+```
 
-That chap hasn't dash H. Holy cow. Are there a lot of options. OK so.
+Woh! That is a *lot* of options. Ok, let's talk about *every* single one of them.
+Just kidding! I've never even used most of these options! But there are a few *awesome*
+flags that will be *very* useful.
 
-They're out. One hundred and fifty options. But I'm going to go through the
-absolute most important and useful ones. You can google for us see how I define
-their documentation on this which is actually a lot more helpful than just that
-help page. So first as you can see the usage up here is you can actually point
-specific to a file or a number of files or a directory. And that's a way that
-you can run just one test file. We've done that one time. For example with new
-unit. Tests.
+Google for "PHPUnit cli" to find their page about this. It's a bit prettier than
+reading the terminal. At the top of the output, it says that you can pass one or
+more files or directories. That's useful to run just *one* test class or all the
+classes in one directory. For example, we could run just the `DinosaurFactoryTest`:
 
-At ball factory d'Azyr factory and it just runs those tests. By the way. A bit
-unrelated. But if you google for. Symphonie piece unit bridge. You'll find a
-component that lives in Symphonie. Called Symphonie slash Puno bridge. This is
-a wrapper around each unit that adds a couple of extra features like
-deprecation reporting that will actually tell you what method calls you were
-using. While running your tests that are deprecated which is really handy.
-Basically
+```terminal-silent
+./vendor/bin/phpunit tests/AppBundle/Factory/DinosaurFactoryTest.php
+```
 
-you install this and then instead of using vendor peach unit use it. Vendor
-been simple PV unit.
+## The Symfony PHPUnit Bridge
 
-All right. So going to the unit options probably the most useful one by far is
-dash dash filter which is going to allow you to run just one specific test. If
-you look down the documentation. And there are a bunch of examples so you can
-give it a namespace a test method just a class just a test method. You can even
-do things with data providers where you're showing the exact. Data. Number that
-you want. This is so awesome because when you're debugging a test you want to
-run only that one test will make debugging way easier. So let's try a few out.
-First. Rerun the last man but do a dash dash and debug. If you do this. It'll
-actually tell you exactly which test is right. Now for a vendor bent between.
-Dash dash filter and that's run just the test.
+Oh, and before I forget, Google for "Symfony PHPUnit Bridge" to find a special
+component that lives in Symfony.com: `symfony/phpunit-bridge`. 
 
-It grows from specification method. Of Ass dash dash debug so we can see those
-from. Just three tests. Remember this is. The test that has a date fire you see
-our number 0. Our default response and our number one. So we can actually rerun
-the command. Surround the filter with floats. And say number one to run it.
-Just that one test. Or. At default response. To run just the one that's called
-the far stops.
+This is a wrapper around PHPUnit that adds a couple of extra features like deprecation
+reporting that will tell you about deprecated code paths that you're using during
+your tests.
 
-For a long time. I did not know that existed. That is awesome. What other
-command line. Set of command line options. I like our dash dash stop on failure
-and dash estop.
+Basically, after you install this, you'll use `vendor/bin/simple-phpunit` to activate
+it. It supports all the same options.
 
-On Air is useful when you run your test in a whole bunch of them explode. You
-want to just stop after the first one fails. And see what failed. Instead of
-waiting to run all the tests are tests I'll pass.
+## The --filter Option
 
-But they didn't it would stop immediately. All right. The last thing I want to
-talk about is. That passing these arguments if you have some common sometimes
-passing these arguments can be a pain. And it actually has a configuration
-file. It reads it automatically reads a speech unit at X and now file that
-doesn't exist. It read The Vionnet that X and all that just file. Actually in
-our product. We have that. This sets of a couple of important bits of
-configuration. The most important is actually bootstrap. So this tells Pietsch
-unit that when it starts it should require that vendors on the map. We need
-that so that composers all of overworks that's what allows us to have access to
-all of the classes. There are lots of other things you can do and here you can
-actually set you up. And I said things. You can set environment variables that
-you can read and some of your code and configure test suites which will do in a
-second. You
+Back on the PHPUnit docs, my *favorite* option by far is `--filter`. This let's
+you run just *one* test method, and it's *critical* when you're trying to debug
+*one* test.
 
-can also control things for code coverage. So if you like to run code coverage
-to see what percentage of your code is being covered by tests then you can do
-it here. In this case this filter is basically saying ignore any resources
-directory don't count those files towards code covers because those aren't
-Pietsch classes.
+If you scroll down, the docs show a bunch of examples. Usually, I copy the method
+name I'm testing, pass `--filter` and then paste that name. But you can get a lot
+fancier.
 
-To the test suite. We always have one. And because of the one test we it
-basically means that all of our tests are going to be run at once. Something
-that you can do is you might want to separate your unit integration and
-functional tasks into different suites. And of course we'll talk more about
-those test and second integration function tests and usually slower. So
-sometimes it's nice to go from just the unit tests quickly. So just one
-example. We can create a test we call entities. And we can make it test just.
-Our entity directory. And I'm getting fancy with Star about Star Banville but
-we could just put on all their. Command line. Can run a venerable unit. Dash
-dash has sweet entities dash dash de-bug to see only those nine test run. Nax.
-So there are many other things you can do.
+Let's try a few! First, re-run the test with another flag: `--debug`:
 
-Peach Veendam ex-member dazed and Seelye options. But. Don't waste your time.
-This is basically what you need to know and you can find the rest of the stuff
-later. Off to have fun. Install it PGE you Moji. Library. To get much more
-interesting output than just these dots and apps and. All right. Next let's
-talk about integration tests unit tests where we actually do talk to the
-database or API. We do not mock our dependencies.
+```terminal-silent
+./vendor/bin/phpunit tests/AppBundle/Factory/DinosaurFactoryTest.php --debug
+```
+
+The output now tells us *which* tests are running. Let's run *just* one of them:
+
+```terminal
+./vendor/bin/phpunit --filter testItGrowsADinosaurFromASpecification --debug
+```
+
+And... yes! It ran *three* tests, because this one method has a data provider. But
+sometimes, you'll need to debug *just* one test case of a provider. Surround the
+method name in quotes, and then add `#1`:
+
+```terminal-silent
+./vendor/bin/phpunit --filter 'testItGrowsADinosaurFromASpecification #1' --debug
+```
+
+Ah, *so* cool! You can also use `@default response` - that's the test case that we
+gave a special name.
+
+```terminal-silent
+./vendor/bin/phpunit --filter 'testItGrowsADinosaurFromASpecification @default response' --debug
+```
+
+For the *longest* time, I didn't know you could do this. I *love* it.
+
+## Stopping on Failure or Error
+
+If you're running a *lot* of tests, you can tell PHPUnit to stop *immediately*
+when one of them has an error or fails... instead of waiting for *all* of them
+to finish running.
+
+To do that, use the `--stop-on-failure` and `--stop-on-error` options:
+
+```terminal-silent
+./vendor/bin/phpunit --stop-on-failure --stop-on-error
+```
+
+We don't have any errors - woo! - but you get the idea!
+
+## The phpunit.xml.dist File
+
+There are *many* other options... but you can do even *more* in the configuration
+file! And we already have one! PHPUnit automatically looks for a `phpunit.xml`
+file and then a `phpunit.xml.dist` file.
+
+This configures a few *really* important things... like `bootstrap`. Thanks to this,
+PHPUnit requires the autoloader before running the tests. But there is so much
+more you can do: tweak `php.ini` settings, set environment variables, configure
+test suites or tweak code coverage setup.
+
+Most of the time, you'll have just one test suite... which means that all the test
+are always executed. But you could, for example, separate your unit, integration
+and functional tests into different suites so that you could run them independently.
+That's kind of cool, because integration and functional tests are much slower than
+unit tests.
+
+Let's do one quick example: add a test suite called `entities` and set its directory
+to `tests/*Bundle/Entity`.
+
+To run this suite, use:
+
+```terminal
+./vendor/bin/phpunit --testsuite entities --debug
+```
+
+It runs *only* those tests.
+
+Ok, enough of this! Let's get back to work and talk about integration tests: what
+they are, and when they can save your life.

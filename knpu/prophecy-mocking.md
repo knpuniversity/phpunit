@@ -1,77 +1,100 @@
 # Mocking with Prophecy
 
-Peach unit obviously has a marking system built into it that there are actually
-other marking libraries out there. One is called prophecy. And it's really fun
-and it comes with the unit. So how to take us through testing this exact same
-class using prophecy. Ultimately they're doing the same things behind the
-scenes. But then you can pick which ever one you like better. Plus create a new
-test called. Enclosure. Builder service. Prophecy. Test. Mentis extend the
-normal test case. With the same test method test it builds. And. Persist.
-Enclosure. And quite literally we're just learning to. Adapt this code over
-here over to way the way that prophecy does it. So first instead of this arrow
-create mock we're going to say it equals this all prophesies. And they're going
-to pass it. The magic interface calling one class.
+PHPUnit has a mocking system. But it's not the *only* mocking library available.
+There are two other popular ones: Mockery & Prophecy. They all do the same thing,
+but each as its own *feel*.
 
-So that starts pretty similar. Next we need to expect that to persist Nothing
-is only called once and that's passed in the enclosure. Object as an argument.
-Here's the big difference with prophecy. Since we. Want to do. Since we want to
-control things related to persist method. We're actually going to say e an
-arrow persist. We're going to pretend like the the manager object. The end
-really is the entity manager and call the persisting method on its. Now since
-we as a persistent have. A specific argument here we will actually pass.
-Arguments. Colon type. And say enclosure colon corner class. I want to talk
-more about the argument thing in a second. Then since we want this to be called
-exactly once. We can say. Should be. Call. Times. 1. Now I understand you're
-not getting any of completion here prophecies is super magic library.
+I really like Prophecy, *and* it comes with PHPUnit automatically! So let's redo
+the `EnclosureBuilderTest` with Prophecy to see how it feels.
 
-And so unfortunately you're not going to get the auto completion scene need to
-be a little bit more careful but it's kind of fun. So next. When you do x.
-Expect that flush is called at least once. So basically we just pretend that.
-We're calling the function in error and flush. And then we'll say.
+Create a new class called `EnclosureBuilderServiceProphecyTest`. It will extend the
+normal `TestCase` and we can give it the same method: `testItBuildsAndPersistsEnclosure()`.
 
-Should be called. So it should be called at least one time.
+## Mocking Prophecy Style
 
-So in addition to should be called Times and should we call. There's also
-should it not be called. And a sure method that receives a callback and then
-you can do your own custom logic. Arts and need to create the dinosaur factory.
-Will start the same way our factory equals this arrow prophesies. That a sort
-of factory call and call and class. Here. We need to make sure that the growth
-from specification method is called exactly two times with a string argument
-and returns a dinosaur. So we're doing everything we can on this mock. Sitting
-down a factory. That will call grow from the specifications on it. Now here's
-how this works. If you don't care what arguments are passed to your method what
-prophecy. Just leave this blank. But if you do care what arguments are passed
-through it you're actually going to pass those arguments one by one.
+Let's translate the PHPUnit mock code into Prophecy line-by-line. To create
+the `EntityManager` mock, use `$this->em->prophesize(EntityManagerInterface::class)`.
+That's pretty similar.
 
-So if there were three arguments we passed foo comma bar comma bass then it
-would make sure that exactly those three arguments are passed to this method.
-Where things get tricky is when you don't want to you can. We. When you can't.
-Tell it exactly what argument we passed. Instead you want to check to make sure
-it's a certain object or a certain type. In this case we want to make sure that
-it is just a string. The. We use the same argument calling Cohen. Type. And.
+Next, we need to assert that `persist()` will be called `once()` and that it is passed
+an `Enclosure` object. *This* is where things get different... and pretty fun...
+Instead of thinking of `$em` as a mock, pretend it's the *real* object. Call
+`$em->persist()`. To make sure this is passed some `Enclosure` object, pass
+`Argument::type(Enclosure::class)`.
 
-Pass.
+We'll talk more about how these arguments work in a minute. Then, because we want
+this to be called exactly once, add `shouldBeCalledTimes(1)`.
 
-There are a few other methods on type. The most important one is any. If you
-don't care what argument is passed. And another call that and then you pass
-that a call back so that you can. Do a custom check on it. Now as soon as you
-specify. One argument. You need to specify the rest of the arguments as well.
-All right. Next. We need to make sure this is called two times. So we know we
-can say should it be called times 2. And then we need to control its return
-value to make sure turns into dinosaur object. So that's actually the saying it
-will return. To dinosaur. In addition to what we turn there's also will throw
-if should throw an exception. And will we just pass a call back which again
-allows you guys to do custom logic to control the return.
+Oh, and notice that I am *not* getting auto-completion. That's because Prophecy is
+a super magic library, so PhpStorm doesn't really know what's going on. But actually,
+there are two *amazing* PhpStorm plugins that - together - *will* give you auto-completion
+for Prophecy... and many other things. They're called "PHP Toolbox" and "PHPUnit Enhancement".
+I learned about these *so* recently, that I didn't have them installed yet for this
+tutorial.
 
-And. Yeah that's it. The rest of the test I'm going to copy. And then paste.
-And then I'll retake. Because you know the service that we get the use
-statement on top for it. Now the one other thing that will. Bite you with
-prophecy is that once you're finally ready to pass in your marks you need to
-call you feel on the. Face of it it turns it from this sort of mock builder
-object into the true mock object.
+Next, we need to make sure `flush()` is called at least once. That's easy:
+`$em->flush()->shouldBeCalled()`.
 
-And that should be it. Let's flip over.
+Don't you love it? In addition to `shouldBeCalledTimes()` and `shouldBeCalled()`,
+there is also `shouldNotBeCalled()` and simply `should()`, which accepts a callback
+so you can do custom logic.
 
-And run our test. And they pass. So there you go. You can use props see which
-is a little bit more fun and weird. Or you can stick to the classic. Each unit
-marking framework.
+## Mocking the DinosaurFactory
+
+Let's keep moving: add the `DinosaurFactory` with `$dinoFactory = $this->prophesize()`
+and `DinosaurFactory::class`.
+
+Here, we need to make sure that the `growFromSpecification` method is called exactly
+two times with a string argument and returns a dinosaur. Ok! Start with
+`$dinoFactory->growFromSpecification()`. 
+
+Here's how the arguments part *really* works. If you don't care what arguments are
+passed to the method, just leave this blank. But if you *do* care, then you need
+to pass *all* of the arguments here, as if you were *calling* this method.
+
+For example, imagine the method accepts *three* arguments. If we passed `foo`,
+`bar`, `baz` here, this would make sure that the method was called with exactly
+these three args.
+
+Our situation is a bit trickier: we don't know the *exact* argument, we only know
+that it should be a string. To check that, use `Argument::type('string')`.
+
+There are a few other useful methods on this `Argument` class. The most important
+is `Argument::any()`. You'll need this if you want to assert that *some* of your
+arguments match a value, but you don't care what value is passed for the *other*
+arguments.
+
+The most powerful is `that()`, which accepts an all-powerful callback as an argument.
+
+Next, this method should be called 2 times. No problem: `->shouldBeCalledTimes(2)`.
+And finally, it should return a new `Dinosaur` object. And that's the same as in
+PHPUnit: `->willReturn(new Dinosaur())`. The other 2 useful functions are `willThrow()`
+to make the method throw an exception and `will()`, which accepts a callback so you
+can completely control the return value.
+
+And... yea! That's it! I'll copy the rest of the test and paste it. Re-type the `e`
+on `EnclosureBuilderService` to add the `use` statement on top.
+
+## Revealing the Prophecy
+
+There's *one* other tiny difference in Prophecy. I'll break this onto multiple lines
+first so things look better. When you finally pass in your mock, you need to call
+`->reveal()`. On a technical level, this kind of turns your "mock builder" object
+into a true mock object. On a philosophical Prophecy level, this *reveals the prophecy*
+that the prophet prophesized.
+
+Fun, right? If that made no sense - it's ok! The Prophecy documentation - while being
+a little strange - is really fun and talks a lot more about dummies, stubs, prophets
+and other things. If you're curious, it's worth a read.
+
+Ok, that should be it! Find your terminal and run the test:
+
+```terminal-silent
+./vendor/bin/phpunit
+```
+
+They pass! Right on the first try. So that's Prohecy: it's a bit more fun that PHPUnit
+and is also quite popular. If you like it better, use it!
+
+Next, there are *many* options you can pass to the phpunit command. Let's learn
+about the most important ones... so that we can ignore the rest.

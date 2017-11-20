@@ -12,8 +12,10 @@ chapters:
     - exceptions-fence-security
     - refactoring-di
     - mocking
-    - mock-returns-expects
+    - mock-return
+    - mock-expects
     - full-mock-example
+    - full-mock2
     - prophecy-mocking
     - cli-options
     - integration-tests
