@@ -69,5 +69,5 @@ Search once more for `callback()`. This is the most *powerful* option: you creat
 your *own* callback and do whatever logic you want to determine if the argument
 passed is valid.
 
-Guys, we've got mocking down! But it's *so* important that I want to go through
+We've got mocking down! But it's *so* important that I want to go through
 one more, fully-featured and classic example.
