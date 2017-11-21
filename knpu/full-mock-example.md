@@ -4,7 +4,7 @@ Mocking is *so* important... and honestly... pretty fun. I think we should code 
 another example. In some ways... an even *better* and more common example.
 
 Here's the setup: we're going to need a lot of dinosaurs, a lot of enclosures and
-a lot of security. Instead of creating these by hand *each* time a new batch of
+even more security. Instead of creating these by hand *each* time a new batch of
 adorable dinosaurs arrives, let's create a service that can do it all for us.
 
 If you downloaded the source code, then in the `tutorial/` directory, you should
@@ -21,7 +21,7 @@ And *this* time, let's make sure it `extends TestCase` from PHPUnit. At first,
 the test is pretty simple: create a `new EnclosureBuilderService()`. This has two
 required constructor arguments... but let's ignore those at first and finish the
 test. Add `$enclosure = $builder->buildEnclosure()` with, how about, 1 security system
-and 2 dinosaurs.
+and 2 dinosaurs. 
 
 Below this, just assert that this has the right stuff: `$this->assertCount()` that
 1 matches the count of `$enclosure->getSecurities()`. That method does not exist
