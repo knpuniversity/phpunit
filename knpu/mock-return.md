@@ -8,7 +8,7 @@ But... what if we accidentally *forgot* to call the length determinator? Like, w
 temporarily set the length to a hardcoded value... but forgot to fix it! Well, if
 you run your tests... surprise! They pass.
 
-If the possibility of making this mistake scares... don't worry! This is something
+If the possibility of making this mistake scares you... don't worry! This is something
 we can test for!
 
 ## willReturn()
@@ -41,7 +41,7 @@ Next, chain *off* of that with `->willReturn(20)`.
 That's it! *Whenever* that method is called, it will return 20. And that means, at
 the bottom, we can assert that 20 should match `$dinosaur->getLength()`.
 
-If it does *not*... something is funny! Try the tests!
+If it does *not*... something is fishy! Try the tests!
 
 ```terminal-silent
 ./vendor/bin/phpunit
@@ -49,7 +49,7 @@ If it does *not*... something is funny! Try the tests!
 
 Yes! They *fail*! Go back to `DinosaurFactory`, and fix the bad length code.
 
-Run the tests! Of course *now*, they pass.
+Run the tests again! Of course *now*, they pass.
 
 ## More ways to Return
 
@@ -75,7 +75,7 @@ same method multiple times with different values.
 
 Oh, and in this case, the code is `->will()` and then `$this->returnValueMap()`.
 But there's also a single method called `willReturnValueMap()`: each of these return
-method can be called with both styles.
+methods can be called with both styles.
 
 There's also another called `willReturnCallback()` where you can pass a callback
 and return whatever value you want. It's got the power of the value map... but is
