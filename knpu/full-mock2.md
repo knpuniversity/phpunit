@@ -25,7 +25,7 @@ the dump out of the test.
 
 ## The Bug: Unsaved Enclosure
 
-Ok, there's more bug hiding inside `EnclosureBuilderService`. The *whole* point of
+Ok, there's one more bug hiding inside `EnclosureBuilderService`. The *whole* point of
 the method is that we can call it and it will create the `Enclosure` *and* save it
 to the database. But look! That never happens! We inject the entity manager...
 and then... never use it! Whoops!
