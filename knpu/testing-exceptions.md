@@ -15,6 +15,8 @@ It's optional, but let's create a custom exception class for this: `NotABuffetEx
 I'll even give this a default message: people need to understand how horrible this
 is!
 
+[[[ code('667bd9846b') ]]]
+
 Making sure that this exception is thrown at the right time is *critical* to business.
 So let's write a test: `testItDoesNotAllowCarnivorousDinosaursToMixWithHerbivores`.
 
@@ -23,12 +25,16 @@ and `$enclosure->addDinosaur(new Dinosaur())`. By default, dinosaurs are *non-ca
 So now, let's add a predator: `new Dinosaur('Velociraptor')` and `true` for the
 `isCarnivorous` argument.
 
+[[[ code('57a2a6f870') ]]]
+
 ## Expecting an Exception
 
 At this point, an exception *should* be thrown. So... how can we test for that?
 By telling PHPUnit to *expect* an exception with... well... `$this->expectException()`
 and then the exception class: `NotABuffetException::class`. Make sure you add this
 *before* calling the final code.
+
+[[[ code('018fdf90ba') ]]]
 
 If we've done our work correctly, this should fail. Try the test!
 
@@ -42,15 +48,23 @@ Awesome! Let's go throw that exception! Inside `Enclosure`, at the bottom, add a
 new `private function` called `canAddDinosaur` with a `Dinosaur` argument. This
 will return a `bool`.
 
+[[[ code('ec3c7b2a5b') ]]]
+
 Here's some simple logic: `return count($this->dinosaurs) === 0`. So, if the enclosure
 is empty, then it's *definitely* ok to add a dinosaur. Or, check to see if
 `$this->dinosaurs->first()->isCarnivorous()` equals `$dinosaur->isCarnivorous()`.
 If they match, we're good!
 
+[[[ code('b3787eaaa0') ]]]
+
 Back in `addDinosaur()`, if not `$this->canAddDinosaur()`. Throw the exception!
 Oh wait... make sure the class extends `\Exception`. My bad!
 
+[[[ code('9ad44b270e') ]]]
+
 *Now* throw that exception!
+
+[[[ code('f97edca4fa') ]]]
 
 Check the tests!
 
@@ -67,9 +81,13 @@ Copy the test method and rename it so we can test for the *opposite* condition:
 `testItDoesNotAllowToAddNonCarnivorousDinosaursToCarnivorousEnclosure`. Wow that's
 a long name!
 
+[[[ code('8390ae3548') ]]]
+
 Add the Velociraptor *first* and then remove `expectException`. Instead, add an
 annotation: `@expectedException` followed by the full class. PhpStorm puts the short
 name... so go copy the use statement and put it down here. Try it!
+
+[[[ code('afc9ac3897') ]]]
 
 ```terminal-silent
 ./vendor/bin/phpunit
