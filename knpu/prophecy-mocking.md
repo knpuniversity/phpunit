@@ -2,7 +2,7 @@
 
 PHPUnit has a mocking system. But it's not the *only* mocking library available.
 There are two other popular ones: Mockery & Prophecy. They all do the same thing,
-but each as its own *feel*.
+but each has its own *feel*.
 
 I really like Prophecy, *and* it comes with PHPUnit automatically! So let's redo
 the `EnclosureBuilderTest` with Prophecy to see how it feels.
@@ -93,7 +93,7 @@ Ok, that should be it! Find your terminal and run the test:
 ./vendor/bin/phpunit
 ```
 
-They pass! Right on the first try. So that's Prohecy: it's a bit more fun that PHPUnit
+They pass! Right on the first try. So that's Prohecy: it's a bit more fun than PHPUnit
 and is also quite popular. If you like it better, use it!
 
 Next, there are *many* options you can pass to the phpunit command. Let's learn
