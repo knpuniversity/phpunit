@@ -2,7 +2,7 @@
 
 *We* know that in `DinosaurFactoryTest`, we don't need to worry about testing the
 length anymore because that's done inside DinosaurLengthDeterminator's test. Every
-test class can stay focused.
+test class can stay focused. Which is important when there's dinosaurs running around.
 
 But... what if we accidentally *forgot* to call the length determinator? Like, we
 temporarily set the length to a hardcoded value... but forgot to fix it! Well, if
@@ -77,7 +77,7 @@ Oh, and in this case, the code is `->will()` and then `$this->returnValueMap()`.
 But there's also a single method called `willReturnValueMap()`: each of these return
 methods can be called with both styles.
 
-There's also another called `willReturnCallback()` where you can pass a callback
+There's also one called `willReturnCallback()` where you can pass a callback
 and return whatever value you want. It's got the power of the value map... but is
 way less weird.
 
