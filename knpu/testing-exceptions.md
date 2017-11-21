@@ -52,7 +52,7 @@ will return a `bool`.
 
 Here's some simple logic: `return count($this->dinosaurs) === 0`. So, if the enclosure
 is empty, then it's *definitely* ok to add a dinosaur. Or, check to see if
-`$this->dinosaurs->first()->isCarnivorous()` equals `$dinosaur->isCarnivorous()`.
+`$this->dinosaurs->first()->isCarnivorous() === $dinosaur->isCarnivorous()`.
 If they match, we're good!
 
 [[[ code('b3787eaaa0') ]]]

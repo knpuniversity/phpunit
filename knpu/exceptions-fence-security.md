@@ -1,4 +1,4 @@
-# Exception part 2: Adding Fence Security
+# Exceptions Part 2: Adding Fence Security
 
 Dinosaurs, check! Enclosures, check! But... we forgot to add *security* to the
 enclosures! Ya know, like *electric* fences! Dang it, I *knew* we forgot something.

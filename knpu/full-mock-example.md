@@ -1,134 +1,113 @@
 # Full Mock Example
 
-Mocking is so important that I want to look at another example in some ways an
-even better example. So we're going to need a lot of dinosaurs. We're going to
-need a lot of inclosures. Soon. So instead of creating those enclosures by hand
-we're going to add a new service that helps us create enclosures with security
-and dinosaurs. If you downloaded the source code. Then in the directory. You
-should have an enclosure build or service. On top of that into our service
-directory. This has one public function on it. Where you pass that number of
-security systems. The number of dinosaurs in it takes care of creating the
-security systems creating the dinosaurs and then putting everything together.
-This is a one stop shop. For creating enclosures. Now in this case we're not
-going to use TDD because I've already given you the class and it's actually
-going to be pretty interesting. So let's create a test. In the service
-directory a new. Enclosure builder service test.
+Mocking is *so* important... and honestly... pretty fun. I think we should code through
+another example. In some ways... an even *better* and more common example.
 
-Inside a test it builds and persists enclosure.
+Here's the setup: we're going to need a lot of dinosaurs, a lot of enclosures and
+a lot of security. Instead of creating these by hand *each* time a new batch of
+adorable dinosaurs arrives, let's create a service that can do it all for us.
 
-And this time let's make sure this extends our test case from Pietsch view. So
-it's pretty simple. Let's create a builder. He calls new enclosure builder
-service. You see this does have to require constructor arguments. Let's ignore
-those for now and write test. Next saying closure equals and say the arrow Bill
-enclosure and let's build one security system and two don't source. And down
-below can just assert that there exist. A circuit count. That one is equal to.
-Enclosure aero good securities. That method doesn't exist yet so we'll need to
-create better socket. And then work out that two is equal to enclosure. Good
-dinosaurs. And then let's go into closer.
+If you downloaded the source code, then in the `tutorial/` directory, you should
+have an `EnclosureBuilderService` class. Copy that and paste it into our `Service`
+directory. This has just one public function: you pass that number of security systems
+and the number of dinosaurs, and *it* takes care of creating those security systems,
+creating the dinosaurs and putting everything together inside a new `Enclosure`.
 
-And make sure we have a good security method. Paul. Functional. Security is.
-Will we return a collection. And we'll return this air securities.
+For this... we're going to cheat and *not* do TDD because... well... I *just* gave
+you the code. So let's add the test: in the `Service` directory, create a new
+`EnclosureBuilderServiceTest`. And inside, `public function testItBuildsAndPersistsEnclosure()`.
 
-So our test oh then missing it's too concerned our audience is pretty happy. So
-the two can start our tyrants are the answer the manager which we're going to
-use to save the enclosure and the dinosaur factory which we use. To help create
-the dinosaurs. These are pool services so they're perfect for mocking. Even
-more than that if you try to create a city manager that requires a database
-connection. We don't actually want our unit test to talk to the database and
-even the dinosaur factory at this point it has a constructor argument. So
-creating a dinosaur factory will be a little bit complex. You can start to see
-how making an object makes life much much easier. So inside. Our test per se.
-Yes because this way Mark. And we're expecting an entity manager interface.
-Slut's mock the manager interface calling in class. And also create a factory.
-As another box. Or a dinosaur factory called Call in class.
+And *this* time, let's make sure it `extends TestCase` from PHPUnit. At first,
+the test is pretty simple: create a `new EnclosureBuilderService()`. This has two
+required constructor arguments... but let's ignore those at first and finish the
+test. Add `$enclosure = $builder->buildEnclosure()` with, how about, 1 security system
+and 2 dinosaurs.
 
-And pass them in down a factory as the two constructor arguments.
+Below this, just assert that this has the right stuff: `$this->assertCount()` that
+1 matches the count of `$enclosure->getSecurities()`. That method does not exist
+yet. And then `assertCount()` that 2 matches the count of `$enclosure->getDinosaurs()`.
 
-So I'm not worried about controlling any return values. I'm just trying to do
-as little as possible to start our test. Because really these asserts down here
-are pretty good. So change over. And run the tests. Well when they fail fail a
-certain one matches to find one. So for some reason we're only getting back one
-dinosaur. Even though we past two is the argument. Going to enclosure builders
-service and go down to add dinosaur. I actually have a blog in our code. You
-pass on the number of dinosaurs but we don't actually use that. We only add one
-dinosaur. So this is cool. We already have a test so we can very easily fix the
-code. But if we want to. We can actually add a little bit more logic to our.
-Data olfactory mark to make this test even. Even tougher. What I mean is we can
-actually make sure that that kind of factory. Is called two types. If we want
-to.
+We *could* test more, but this is pretty good! It tests that the core functionality
+works correctly. Later, if we think of some edge-case that could happen, we can
+add more.
 
-Do that let's say the answer factory. Eric expects. This. Exactly to. Because
-we're created to dinosaurs. And then math is. Grow from specification.
+Ok, find the `Enclosure` class, scroll to the bottom, and add the missing
+`public function getSecurities()`, which should return a `Collection`. Return
+`$this->securities`.
 
-So now make sure that we have exactly two types. Now we don't need to pass
-with. But we can also make sure if we want that this has passed a string we
-don't know exactly what the string will be because it's random but we can
-always check the type. To do that. We'll say this arrow is tongue. String. I
-don't always do that but that's how you do it. Now if you can't really comment
-on the last failure. The. Last count. You know like to see what this value
-would look like expected failed for method name grows from specification. It
-expected that grow from specification wasn't about 2 times. But it was actually
-called Just once. That's. Cool. So pull the circuit back. And then let's go
-into our incredible service and actually fix this. For loop for equals zero by
-less than number of dinosaurs. I plus plus. We move all of this code. Inside.
-Of that. Loop. And move back over.
+## Adding the Basic Mocks
 
-Rather Yes. And the last.
+Other than the missing constructor arguments, the test looks happy! But somehow,
+we need to pass the builder an `EntityManagerInterface` and a `DinosaurFactory`.
+These are both services, so they should be *mocked*, instead of created manually.
+That becomes even *more* obvious if you think about *trying* to create these objects.
+The `EntityManager` requires a database connection... and we definitely do *not*
+want to instantiate all of that. And even `DinosaurFactory` *itself* requires a
+`DinosaurLengthDeterminator`... so creating a new factory would take some work...
+*too* much work.
 
-But hold on a socket. Since the dinosaur factory is a mock.
+You can start to see why mocking makes life so much easier.
 
-And we're not controlling the return value. So. Normally. That means that that
-method should return all. But if you look at the dinosaur method in enclosure.
-This expects a dinosaur object so. That should be failing. So if return
-girlfriend specifications return. No this should be failing. Let's see what's
-going on there. Back in our test at the bar. Dock. Enclosure air get the
-dinosaurs aero to Array. So we can see what it looks like. Then move over. And
-run the test. Whoa. Is that right with two objects. But they're Mach objects.
-Mark dinosaur. This is a really cool thing. An enclosure builder service. One
-piece for unit calls grow from specification on or mock. It sees that that has
-a return value of a dinosaur object. So instead of returning. No it actually
-marks a dinosaur object and returns that.
+Back in the test, add `$em = $this->createMock()`. The argument expects an `EntityManagerInterface`.
+So that's what we'll use here: `EntityManagerInterface::class`. Yep, you can *totally*
+mock an interface. Then add `$dinosaurFactory = $this->createMock(DinosaurFactory::class)`.
 
-That's not necessarily very important. I just want you to realize that's what
-happens. Know reads the return types and make sure that your methods your
-mocked methods actually return those things. We don't need you but if you want.
-We will return the new dinosaur. And then when you're really tasked. You're
-going to get back your actual dinosaur object.
+Pass both arguments into new `EnclosureBuilderService()`.
 
-I'll remove the up on the bottom. There's actually one last problem with our
-enclosure and all the service.
+I'm not worried about controlling the return values: I'm trying to do as little
+work as possible so that the test will run and the asserts at the bottom can do
+their job. It *may* turn out that we *do* need to control some return values so
+that the function can run... but... let's find out! Run the tests:
 
-The whole point of the service is that we can call it and it will create
-enclosure in save that enclosure to the database. But. Look. That never
-happens. We inject the into the manager but we forgot to actually save the
-enclosure. This is actually pretty important. This is a big bug in our code. So
-I want to make sure that we actually in Savir are closer to the database.
+```terminal-silent
+./vendor/bin/phpunit
+```
 
-And that means I want to make sure that that persist map and flush methods are
-called on the entity manager. So back in our tasks let's say E-M aero expects.
-This arrow once. That the method persist is called. And we know that it should
-be called with an instance of an enclosure object. We don't know exactly which
-enclosure object we just want to make sure that is some type of enclosure
-object. So we can say this arrow is instance of. Enclosure. I'm calling class.
-Now that we have the tasks. Right there is our failure expected present to be
-called 1 times actually call 0 times. So back into your builder service. At the
-bottom will say this area and the manager will persist.
+The test *fails*! We're expecting some actual size 1 to match 2, on line 20. For
+some reason, we're only getting back *one* `Dinosaur`... even though we passed *2*
+as the argument.
 
-In closure. Of course the flush is also missing and that's also just as
-important. So the tasks. That say iam air expects. This arrow at least once.
-Method. Flush.
+Open `EnlosureBuilder` and scroll down to `addDinosaur()`. Ah! There's a *bug* in
+my code already! The `$numberOfDinosaurs` argument is not used: we always add just
+*one* dinosaur.
 
-Is want to make sure this is called At least one time. We can also use that
-once because calling flush multiple times is wasteful. But I'm just showing you
-the different options. Find terminal.
+That's great! The simple test caught the bug and the fix is easy.
 
-Run the test. It fails on flush. So now we go back. To see this error and City
-Manager wash.
+## Asserting growFromSpecification is Called Twice
 
-And now our tests pass. So this is mocking. And the important thing to remember
-with marking. Is that you should use it whenever the class we're testing
-requires a different class. And that class is a service. If you're just a
-simple model object. Then mocking those. In many cases is just overkill and not
-needed. Remember we did that an. Enclosure test. That case we needed a dinosaur
-class object that surpasses a simple model class so we just created it. We
-could have mocked the dinosaur but it's just so simple that it's overkill.
+But! If we want, we could also make the test a bit tougher before fixing this. In
+the test, add `$dinoFactory->expects($this->exactly(2))` and then
+`->method('growFromSpecification')`.
+
+We could stop here: we don't *need* to also call `->with()`. But if you *do* want
+to assert that the correct argument is passed, you can. Well actually, the exact
+argument is random. So the best we can do is use `$this->isType('string')`.
+
+In practice, I think adding `with()` in this situation is a bit overkill. But it
+*always* depends.
+
+Ok, I want to see these errors! Comment out the assert at the bottom. Any test failures
+from mocking will come *after* the test finishes running successfully. Try the tests!
+
+```terminal-silent
+./vendor/bin/phpunit
+```
+
+Awesome! Translating from robot-speech, this says:
+
+> Expectation failed for method `growFromSpecification()`: we expected it to be
+> called two times, but was actually called 1 time.
+
+That's cool! Uncomment the "assert" in the test. Now, go into the service and fix
+my bug! Add a `for` loop where `$i = 0; $i < $numberOfDinosaurs; $i++`. Move *all*
+that dino code inside.
+
+Move back to your terminal and, test!
+
+```terminal-silent
+./vendor/bin/phpunit
+```
+
+We're green! But... there's something interesting going on. *And*, our test is weak
+in one important way... there's still a bug in `EnclosureBuilderService`! And our
+tests are missing it!
