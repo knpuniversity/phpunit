@@ -10,8 +10,8 @@ What happens to the tests?
 ./vendor/bin/phpunit
 ```
 
-Yep... they pass! *If* this possibility scares you... yes! We can also cover this
-in the test.
+Yep... they pass! *If* this possibility frightens you more than the sound of raptor
+claws on the door... We can also cover this in the test.
 
 In addition to saying that `getLengthFromSpecification()` should return 20, you
 can *also* say that the method must be called exactly *once* or with some *exact*
