@@ -20,6 +20,8 @@ or makes API calls, the mock will do nothing.
 Let's do it! `$mockLengthDeterminator = $this->createMock(DinosaurLengthDeterminator::class)`.
 Pass that as the first argument.
 
+[[[ code('6a4fc18e22') ]]]
+
 Before we talk about this, find your terminal, and run the tests:
 
 ```terminal-silent
@@ -75,7 +77,11 @@ In other words, we shouldn't even be *testing* the length! Completely delete the
 logic is correct, but we don't need the length stuff! Remove the second argument:
 `expectedIsLarge`. And then remove the asserts for it.
 
+[[[ code('516025ae0c') ]]]
+
 In the data provider, take out the second argument from each test case.
+
+[[[ code('52d6d63e4f') ]]]
 
 Try the tests again!
 
