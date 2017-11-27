@@ -79,7 +79,7 @@ logic is correct, but we don't need the length stuff! Remove the second argument
 
 [[[ code('516025ae0c') ]]]
 
-In the data provider, take out the second argument from each test case.
+In the data provider, remove the second argument from each test case.
 
 [[[ code('52d6d63e4f') ]]]
 

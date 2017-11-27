@@ -1,4 +1,4 @@
-# Mocks: Control the Return the return Value
+# Mocks: Control the Return Value
 
 *We* know that in `DinosaurFactoryTest`, we don't need to worry about testing the
 length anymore because that's done inside DinosaurLengthDeterminator's test. Every
@@ -33,7 +33,7 @@ To get auto-completion, add `@var` and then `\PHPUnit_Framework_MockObject_MockO
 
 Now, scroll down to the specification test. *Before* we call `growFromSpecification`,
 we can *train* the length determinator. How? Use `$this->lengthDeterminator->method()`
-and then `growLengthFromSpecification`: this is the name of the method that we call
+and then `getLengthFromSpecification`: this is the name of the method that we call
 and want to control.
 
 Next, chain *off* of that with `->willReturn(20)`.
