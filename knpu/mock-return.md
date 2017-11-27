@@ -1,4 +1,4 @@
-# Mocks: Control the Return the return Value
+# Mocks: Control the Return Value
 
 *We* know that in `DinosaurFactoryTest`, we don't need to worry about testing the
 length anymore because that's done inside DinosaurLengthDeterminator's test. Every
