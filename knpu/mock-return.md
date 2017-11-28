@@ -29,17 +29,27 @@ To get this setup, create a new property called `lengthDeterminator`. And then
 set our mock onto that. This will give us access to the mock down inside the test
 functions.
 
+[[[ code('18f553dff6') ]]]
+
 To get auto-completion, add `@var` and then `\PHPUnit_Framework_MockObject_MockObject`.
+
+[[[ code('82409a0a5d') ]]]
 
 Now, scroll down to the specification test. *Before* we call `growFromSpecification`,
 we can *train* the length determinator. How? Use `$this->lengthDeterminator->method()`
 and then `getLengthFromSpecification`: this is the name of the method that we call
 and want to control.
 
+[[[ code('b630ba5944') ]]]
+
 Next, chain *off* of that with `->willReturn(20)`.
+
+[[[ code('87b984e77f') ]]]
 
 That's it! *Whenever* that method is called, it will return 20. And that means, at
 the bottom, we can assert that 20 should match `$dinosaur->getLength()`.
+
+[[[ code('fe010015f5') ]]]
 
 If it does *not*... something is fishy! Try the tests!
 
@@ -48,6 +58,8 @@ If it does *not*... something is fishy! Try the tests!
 ```
 
 Yes! They *fail*! Go back to `DinosaurFactory`, and fix the bad length code.
+
+[[[ code('75f0a13258') ]]]
 
 Run the tests again! Of course *now*, they pass.
 
