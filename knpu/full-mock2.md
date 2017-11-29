@@ -47,7 +47,7 @@ Try the test!
 
 There's the failure: `persist` should be called 1 time, but was called 0 times.
 
-Back into `Enclosurebuilder`, add `$this->entityManager->persist($enclosure)`.
+Back in `Enclosurebuilder`, add `$this->entityManager->persist($enclosure)`.
 
 Of course, the `flush()` call is still missing. In the test, check for that:
 `$em->expects($this->atLeastOnce())->method('flush')`.
