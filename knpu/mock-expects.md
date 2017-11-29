@@ -21,10 +21,14 @@ arguments, the test will *fail*.
 Move the `method()` call onto the next line. Then add `->expects($this->once())`.
 The method must *now* be called *exactly* once.
 
+[[[ code('0da3213364') ]]]
+
 Then, after `method()`, add `->with($spec)`. This `with()` function is pretty sweet:
 if the real method accepts three arguments, then you'll pass those three arguments
 to `with()`. In this case, if the value passed to the first argument of
 `getLengthFromSpecification()` does *not* match `$spec`, the test will fail.
+
+[[[ code('1a62bf21b3 ') ]]]
 
 This *should* finally kill the test. Try it!
 
@@ -37,6 +41,8 @@ not match the actual value: `foo`.
 
 Awesome! Move back to `DinosaurFactory`, and re-fix the length line. Double-check
 that this fixes things. It does!
+
+[[[ code('e0ca2be24d') ]]]
 
 This is *really* cool stuff. But you should *not* use it everywhere. Remember:
 at this point, we're really testing how the internal code of the method is written.
