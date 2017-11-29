@@ -30,7 +30,7 @@ a super magic library, so PhpStorm doesn't really know what's going on. But actu
 there are two *amazing* PhpStorm plugins that - together - *will* give you auto-completion
 for Prophecy... and many other things. They're called "PHP Toolbox" and "PHPUnit Enhancement".
 I learned about these *so* recently, that I didn't have them installed yet for this
-tutorial.
+tutorial. Thanks for the tip Stof!
 
 Next, we need to make sure `flush()` is called at least once. That's easy:
 `$em->flush()->shouldBeCalled()`.
@@ -77,8 +77,8 @@ on `EnclosureBuilderService` to add the `use` statement on top.
 
 ## Revealing the Prophecy
 
-There's *one* other tiny difference in Prophecy. I'll break this onto multiple lines
-first so things look better. When you finally pass in your mock, you need to call
+There's *one* other tiny difference in Prophecy. First, I'll break this onto multiple 
+lines so it looks nicer. When you finally pass in your mock, you need to call
 `->reveal()`. On a technical level, this kind of turns your "mock builder" object
 into a true mock object. On a philosophical Prophecy level, this *reveals the prophecy*
 that the prophet prophesized.
