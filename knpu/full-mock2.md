@@ -59,7 +59,7 @@ a problem... but it *is* a bit wasteful. Make sure the test fails before we fix 
 ./vendor/bin/phpunit
 ```
 
-It *does*. In the builder, add `$this->flush()` and then... run the tests. They pass!
+It *does*. In the builder, add `$this->entityManager->flush()` and then... run the tests. They pass!
 Thanks to mocking, we just created a *killer* test. Just remember: if the object
 you need is a service, mock it. If it's a simple model object, that's overkill:
 just create the object normally.
