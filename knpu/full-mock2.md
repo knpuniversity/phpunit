@@ -1,4 +1,4 @@
-# Full Mock Example Part 2
+# Full Mock Example: the Sequel
 
 There's something interesting going on. We're mocking the `growFromSpecification()`
 method... but we are *not* controlling its return value. And, the `addDinosaur()`
