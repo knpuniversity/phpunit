@@ -286,8 +286,18 @@
             "description": null
         },
         {
-            "id": "integration-tests-write-test",
-            "name": "Integration tests: write test",
+            "id": "integration-tests-start-test",
+            "name": "Integration tests: start test",
+            "description": null
+        },
+        {
+            "id": "integration-tests-adding-service-alias",
+            "name": "Integration tests: Adding service alias",
+            "description": null
+        },
+        {
+            "id": "integration-tests-finish-basic-test",
+            "name": "Integration tests: finish basic test",
             "description": null
         },
         {
@@ -298,6 +308,21 @@
         {
             "id": "integration-tests-truncate-tables-before-tests",
             "name": "Integration tests: truncate tables before tests",
+            "description": null
+        },
+        {
+            "id": "integration-tests-ormpurger",
+            "name": "Integration tests: ORMPurger",
+            "description": null
+        },
+        {
+            "id": "integration-tests-partial-mocking",
+            "name": "Integration tests: Partial-mocking",
+            "description": null
+        },
+        {
+            "id": "integration-tests-use-returnvaluecallback",
+            "name": "Integration tests: use returnValueCallback",
             "description": null
         },
         {
@@ -366,5 +391,5 @@
             "description": null
         }
     ],
-    "sha": "ffd568ebcc6ea3ddca0c2dc902241b6d69302d38"
+    "sha": "6ffd375c2854c646703c009176e1d6de06ff0aae"
 }

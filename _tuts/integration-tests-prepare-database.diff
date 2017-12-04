@@ -17,19 +17,21 @@ index 4ec961d..b1b2f41 100644
       */
      private $length = 0;
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index cda63d4..7e3cce9 100644
+index 8fc7fba..018f522 100644
 --- a/src/AppBundle/Entity/Enclosure.php
 +++ b/src/AppBundle/Entity/Enclosure.php
-@@ -15,6 +15,12 @@ use Doctrine\ORM\Mapping as ORM;
+@@ -15,7 +15,13 @@ use Doctrine\ORM\Mapping as ORM;
  class Enclosure
  {
      /**
+-     * @var Collection
 +     * @ORM\Id
 +     * @ORM\GeneratedValue(strategy="AUTO")
 +     * @ORM\Column(type="integer")
 +     */
 +    private $id;
 +
-      * @var Collection
++    /** @var Collection
       * @ORM\OneToMany(targetEntity="AppBundle\Entity\Dinosaur", mappedBy="enclosure", cascade={"persist"})
       */
+     private $dinosaurs;

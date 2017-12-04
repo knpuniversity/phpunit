@@ -1,0 +1,15 @@
+diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
+index 382cb82..47f4a16 100644
+--- a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
++++ b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
+@@ -28,7 +28,9 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
+         $dinoFactory = $this->createMock(DinosaurFactory::class);
+         $dinoFactory->expects($this->any())
+             ->method('growFromSpecification')
+-            ->willReturn(new Dinosaur());
++            ->willReturnCallback(function($spec) {
++                return new Dinosaur();
++            });
+ 
+         $enclosureBuilderService = new EnclosureBuilderService(
+             $this->getEntityManager(),

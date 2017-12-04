@@ -1,0 +1,33 @@
+diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
+index fc413b4..382cb82 100644
+--- a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
++++ b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
+@@ -5,6 +5,7 @@ namespace Tests\AppBundle\Service;
+ use AppBundle\Entity\Dinosaur;
+ use AppBundle\Entity\Enclosure;
+ use AppBundle\Entity\Security;
++use AppBundle\Factory\DinosaurFactory;
+ use AppBundle\Service\EnclosureBuilderService;
+ use Doctrine\Common\DataFixtures\Purger\ORMPurger;
+ use Doctrine\ORM\EntityManagerInterface;
+@@ -21,8 +22,18 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
+     {
+         self::bootKernel();
+ 
+-        $enclosureBuilderService = static::$kernel->getContainer()
+-            ->get('test.'.EnclosureBuilderService::class);
++//        $enclosureBuilderService = static::$kernel->getContainer()
++//            ->get('test.'.EnclosureBuilderService::class);
++
++        $dinoFactory = $this->createMock(DinosaurFactory::class);
++        $dinoFactory->expects($this->any())
++            ->method('growFromSpecification')
++            ->willReturn(new Dinosaur());
++
++        $enclosureBuilderService = new EnclosureBuilderService(
++            $this->getEntityManager(),
++            $dinoFactory
++        );
+ 
+         $enclosureBuilderService->buildEnclosure();
+ 

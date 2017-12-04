@@ -1,0 +1,43 @@
+diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
+index 2b15a82..3a8374d 100644
+--- a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
++++ b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
+@@ -2,6 +2,8 @@
+ 
+ namespace Tests\AppBundle\Service;
+ 
++use AppBundle\Entity\Dinosaur;
++use AppBundle\Entity\Security;
+ use AppBundle\Service\EnclosureBuilderService;
+ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+ 
+@@ -13,5 +15,29 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
+ 
+         $enclosureBuilderService = static::$kernel->getContainer()
+             ->get('test.'.EnclosureBuilderService::class);
++
++        $enclosureBuilderService->buildEnclosure();
++
++        $em = self::$kernel->getContainer()
++            ->get('doctrine')
++            ->getManager();
++
++        $count = (int)$em
++            ->getRepository(Security::class)
++            ->createQueryBuilder('s')
++            ->select('COUNT(s.id)')
++            ->getQuery()
++            ->getSingleScalarResult();
++
++        $this->assertSame(1, $count, 'Amount of security systems is not the same');
++
++        $count = (int)$em
++            ->getRepository(Dinosaur::class)
++            ->createQueryBuilder('d')
++            ->select('COUNT(d.id)')
++            ->getQuery()
++            ->getSingleScalarResult();
++
++        $this->assertSame(3, $count, 'Amount of dinosaurs is not the same');
+     }
+ }

@@ -1,0 +1,144 @@
+diff --git a/composer.json b/composer.json
+index a9ec1ed..e667fcc 100644
+--- a/composer.json
++++ b/composer.json
+@@ -33,6 +33,7 @@
+         "twig/twig": "^1.0||^2.0"
+     },
+     "require-dev": {
++        "doctrine/data-fixtures": "^1.3",
+         "phpunit/phpunit": "^6.3",
+         "sensio/generator-bundle": "^3.0",
+         "symfony/phpunit-bridge": "^3.0"
+diff --git a/composer.lock b/composer.lock
+index 9312b89..fe3731d 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "29b25e4972772a1e605fedc081e76657",
++    "content-hash": "1ccf91976f47a4108370ca1ed0f6db64",
+     "packages": [
+         {
+             "name": "composer/ca-bundle",
+@@ -2262,6 +2262,63 @@
+     ],
+     "packages-dev": [
+         {
++            "name": "doctrine/data-fixtures",
++            "version": "v1.3.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/doctrine/data-fixtures.git",
++                "reference": "7b76ccc8e648c4502aad7f61347326c8a072bd3b"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/7b76ccc8e648c4502aad7f61347326c8a072bd3b",
++                "reference": "7b76ccc8e648c4502aad7f61347326c8a072bd3b",
++                "shasum": ""
++            },
++            "require": {
++                "doctrine/common": "~2.2",
++                "php": "^7.1"
++            },
++            "require-dev": {
++                "doctrine/dbal": "^2.5.4",
++                "doctrine/orm": "^2.5.4",
++                "phpunit/phpunit": "^6.3"
++            },
++            "suggest": {
++                "alcaeus/mongo-php-adapter": "For using MongoDB ODM with PHP 7",
++                "doctrine/mongodb-odm": "For loading MongoDB ODM fixtures",
++                "doctrine/orm": "For loading ORM fixtures",
++                "doctrine/phpcr-odm": "For loading PHPCR ODM fixtures"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "1.3.x-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Doctrine\\Common\\DataFixtures\\": "lib/Doctrine/Common/DataFixtures"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Jonathan Wage",
++                    "email": "jonwage@gmail.com"
++                }
++            ],
++            "description": "Data Fixtures for all Doctrine Object Managers",
++            "homepage": "http://www.doctrine-project.org",
++            "keywords": [
++                "database"
++            ],
++            "time": "2017-11-27T18:48:06+00:00"
++        },
++        {
+             "name": "myclabs/deep-copy",
+             "version": "1.7.0",
+             "source": {
+diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
+index e602dbe..fc413b4 100644
+--- a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
++++ b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
+@@ -6,6 +6,7 @@ use AppBundle\Entity\Dinosaur;
+ use AppBundle\Entity\Enclosure;
+ use AppBundle\Entity\Security;
+ use AppBundle\Service\EnclosureBuilderService;
++use Doctrine\Common\DataFixtures\Purger\ORMPurger;
+ use Doctrine\ORM\EntityManagerInterface;
+ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+ 
+@@ -13,11 +14,7 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
+ {
+     public function setUp()
+     {
+-        $this->truncateEntities([
+-            Enclosure::class,
+-            Security::class,
+-            Dinosaur::class,
+-        ]);
++        $this->truncateEntities();
+     }
+ 
+     public function testItBuildsEnclosureWithDefaultSpecifications()
+@@ -50,26 +47,10 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
+         $this->assertSame(3, $count, 'Amount of dinosaurs is not the same');
+     }
+ 
+-    private function truncateEntities(array $entities)
++    private function truncateEntities()
+     {
+-        $connection = $this->getEntityManager()->getConnection();
+-        $databasePlatform = $connection->getDatabasePlatform();
+-
+-        if ($databasePlatform->supportsForeignKeyConstraints()) {
+-            $connection->query('SET FOREIGN_KEY_CHECKS=0');
+-        }
+-
+-        foreach ($entities as $entity) {
+-            $query = $databasePlatform->getTruncateTableSQL(
+-                $this->getEntityManager()->getClassMetadata($entity)->getTableName()
+-            );
+-
+-            $connection->executeUpdate($query);
+-        }
+-
+-        if ($databasePlatform->supportsForeignKeyConstraints()) {
+-            $connection->query('SET FOREIGN_KEY_CHECKS=1');
+-        }
++        $purger = new ORMPurger($this->getEntityManager());
++        $purger->purge();
+     }
+ 
+     /**
