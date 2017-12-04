@@ -1,5 +1,5 @@
 diff --git a/app/config/config_test.yml b/app/config/config_test.yml
-index f1d817c..410ffe3 100644
+index 2f6d925..7679a47 100644
 --- a/app/config/config_test.yml
 +++ b/app/config/config_test.yml
 @@ -1,6 +1,12 @@
@@ -16,13 +16,13 @@ index f1d817c..410ffe3 100644
      test: ~
      session:
 diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
-index 2067fd0..2b15a82 100644
+index fa0e332..2daa544 100644
 --- a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
 +++ b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
 @@ -12,6 +12,6 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
          self::bootKernel();
  
-         $enclosureBuilderService = static::$kernel->getContainer()
+         $enclosureBuilderService = self::$kernel->getContainer()
 -            ->get(EnclosureBuilderService::class);
 +            ->get('test.'.EnclosureBuilderService::class);
      }

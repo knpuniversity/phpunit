@@ -1,5 +1,5 @@
 diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
-index fc413b4..382cb82 100644
+index 3edd1a6..b23289f 100644
 --- a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
 +++ b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
 @@ -5,6 +5,7 @@ namespace Tests\AppBundle\Service;
@@ -9,12 +9,12 @@ index fc413b4..382cb82 100644
 +use AppBundle\Factory\DinosaurFactory;
  use AppBundle\Service\EnclosureBuilderService;
  use Doctrine\Common\DataFixtures\Purger\ORMPurger;
- use Doctrine\ORM\EntityManagerInterface;
+ use Doctrine\ORM\EntityManager;
 @@ -21,8 +22,18 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
-     {
-         self::bootKernel();
  
--        $enclosureBuilderService = static::$kernel->getContainer()
+     public function testItBuildsEnclosureWithDefaultSpecifications()
+     {
+-        $enclosureBuilderService = self::$kernel->getContainer()
 -            ->get('test.'.EnclosureBuilderService::class);
 +//        $enclosureBuilderService = static::$kernel->getContainer()
 +//            ->get('test.'.EnclosureBuilderService::class);

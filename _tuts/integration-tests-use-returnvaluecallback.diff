@@ -1,5 +1,5 @@
 diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
-index 382cb82..47f4a16 100644
+index b23289f..5ec8e76 100644
 --- a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
 +++ b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
 @@ -28,7 +28,9 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase

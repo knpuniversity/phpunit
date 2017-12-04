@@ -1,21 +1,24 @@
 diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
-index 3a8374d..e602dbe 100644
+index 417ff6a..f504733 100644
 --- a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
 +++ b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
-@@ -3,12 +3,23 @@
+@@ -3,6 +3,7 @@
  namespace Tests\AppBundle\Service;
  
  use AppBundle\Entity\Dinosaur;
 +use AppBundle\Entity\Enclosure;
  use AppBundle\Entity\Security;
  use AppBundle\Service\EnclosureBuilderService;
-+use Doctrine\ORM\EntityManagerInterface;
- use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+ use Doctrine\ORM\EntityManager;
+@@ -10,19 +11,25 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  
  class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
  {
+-    public function testItBuildsEnclosureWithDefaultSpecifications()
 +    public function setUp()
-+    {
+     {
+         self::bootKernel();
+ 
 +        $this->truncateEntities([
 +            Enclosure::class,
 +            Security::class,
@@ -23,21 +26,22 @@ index 3a8374d..e602dbe 100644
 +        ]);
 +    }
 +
-     public function testItBuildsEnclosureWithDefaultSpecifications()
-     {
-         self::bootKernel();
-@@ -18,9 +29,7 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
++    public function testItBuildsEnclosureWithDefaultSpecifications()
++    {
+         $enclosureBuilderService = self::$kernel->getContainer()
+             ->get('test.'.EnclosureBuilderService::class);
  
          $enclosureBuilderService->buildEnclosure();
  
+-        /** @var EntityManager $em */
 -        $em = self::$kernel->getContainer()
 -            ->get('doctrine')
 -            ->getManager();
 +        $em = $this->getEntityManager();
  
-         $count = (int)$em
-             ->getRepository(Security::class)
-@@ -40,4 +49,38 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
+         $count = (int) $em->getRepository(Security::class)
+             ->createQueryBuilder('s')
+@@ -40,4 +47,36 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
  
          $this->assertSame(3, $count, 'Amount of dinosaurs is not the same');
      }
@@ -65,12 +69,10 @@ index 3a8374d..e602dbe 100644
 +    }
 +
 +    /**
-+     * @return EntityManagerInterface
++     * @return EntityManager
 +     */
 +    private function getEntityManager()
 +    {
-+        self::bootKernel();
-+
 +        return self::$kernel->getContainer()
 +            ->get('doctrine')
 +            ->getManager();

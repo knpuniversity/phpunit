@@ -18,19 +18,16 @@ index bb49609..c05a763 100644
              if ('dev' === $this->getEnvironment()) {
                  $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
 diff --git a/app/config/config_test.yml b/app/config/config_test.yml
-index 9d44218..6cb172c 100644
+index d73f497..f2b3b3a 100644
 --- a/app/config/config_test.yml
 +++ b/app/config/config_test.yml
-@@ -25,7 +25,8 @@ doctrine:
+@@ -25,4 +25,5 @@ doctrine:
      dbal:
          url: 'sqlite:///%kernel.project_dir%/var/data/test.sqlite'
  
 -liip_functional_test: ~
 +liip_functional_test:
 +    cache_sqlite_db: true
- 
- services:
-     test.AppBundle\Factory\DinosaurFactory: '@AppBundle\Factory\DinosaurFactory'
 diff --git a/composer.json b/composer.json
 index 91e41ad..5ff6731 100644
 --- a/composer.json
@@ -240,10 +237,10 @@ index b1b2f41..b9ac69e 100644
 +    }
  }
 diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/AppBundle/Controller/DefaultControllerTest.php
-index 821ebdd..bfa14d0 100644
+index e6b4502..e3e789a 100644
 --- a/tests/AppBundle/Controller/DefaultControllerTest.php
 +++ b/tests/AppBundle/Controller/DefaultControllerTest.php
-@@ -2,12 +2,17 @@
+@@ -2,12 +2,19 @@
  
  namespace Tests\AppBundle\Controller;
  
@@ -253,12 +250,13 @@ index 821ebdd..bfa14d0 100644
  
  class DefaultControllerTest extends WebTestCase
  {
-     public function testTheIsAWayToSoundAnAlarmOnInactiveSecurity()
+     public function testEnclosuresAreShownOnHomepage()
      {
--
 +        $this->loadFixtures([
 +            LoadBasicParkData::class,
 +            LoadSecurityData::class,
 +        ]);
-     }
- }
++
+         $client = $this->makeClient();
+ 
+         $crawler = $client->request('GET', '/');

@@ -15,12 +15,12 @@ index 018f522..8e21630 100644
      {
          return $this->dinosaurs;
 diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/AppBundle/Controller/DefaultControllerTest.php
-index bfa14d0..656efd6 100644
+index e3e789a..f15e8bd 100644
 --- a/tests/AppBundle/Controller/DefaultControllerTest.php
 +++ b/tests/AppBundle/Controller/DefaultControllerTest.php
-@@ -10,9 +10,20 @@ class DefaultControllerTest extends WebTestCase
+@@ -10,15 +10,20 @@ class DefaultControllerTest extends WebTestCase
  {
-     public function testTheIsAWayToSoundAnAlarmOnInactiveSecurity()
+     public function testEnclosuresAreShownOnHomepage()
      {
 -        $this->loadFixtures([
 +        $fixtures = $this->loadFixtures([
@@ -28,12 +28,12 @@ index bfa14d0..656efd6 100644
              LoadSecurityData::class,
 -        ]);
 +        ])->getReferenceRepository();
-+
-+        $client = $this->makeClient();
-+
-+        $crawler = $client->request('GET', '/');
-+
-+        $this->assertStatusCode(200, $client);
+ 
+         $client = $this->makeClient();
+ 
+         $crawler = $client->request('GET', '/');
+ 
+         $this->assertStatusCode(200, $client);
 +
 +        $enclosure = $fixtures->getReference('carnivorous-enclosure');
 +        $selector = '#enclosure-' . $enclosure->getId() . ' .button-alarm';

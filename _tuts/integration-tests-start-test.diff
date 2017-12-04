@@ -1,17 +1,6 @@
-diff --git a/app/config/config_test.yml b/app/config/config_test.yml
-index 2f6d925..f1d817c 100644
---- a/app/config/config_test.yml
-+++ b/app/config/config_test.yml
-@@ -14,3 +14,6 @@ web_profiler:
- 
- swiftmailer:
-     disable_delivery: true
-+
-+services:
-+    test.AppBundle\Factory\DinosaurFactory: '@AppBundle\Factory\DinosaurFactory'
 diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
 new file mode 100644
-index 0000000..2067fd0
+index 0000000..fa0e332
 --- /dev/null
 +++ b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
 @@ -0,0 +1,17 @@
@@ -28,7 +17,7 @@ index 0000000..2067fd0
 +    {
 +        self::bootKernel();
 +
-+        $enclosureBuilderService = static::$kernel->getContainer()
++        $enclosureBuilderService = self::$kernel->getContainer()
 +            ->get(EnclosureBuilderService::class);
 +    }
 +}

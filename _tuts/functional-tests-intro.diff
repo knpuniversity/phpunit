@@ -21,17 +21,14 @@ index ef068e0..bb49609 100644
  
          return $bundles;
 diff --git a/app/config/config_test.yml b/app/config/config_test.yml
-index dcc7f37..9d44218 100644
+index 7e5a4d0..d73f497 100644
 --- a/app/config/config_test.yml
 +++ b/app/config/config_test.yml
-@@ -25,5 +25,7 @@ doctrine:
+@@ -25,3 +25,4 @@ doctrine:
      dbal:
          url: 'sqlite:///%kernel.project_dir%/var/data/test.sqlite'
  
 +liip_functional_test: ~
-+
- services:
-     test.AppBundle\Factory\DinosaurFactory: '@AppBundle\Factory\DinosaurFactory'
 diff --git a/composer.json b/composer.json
 index e667fcc..91e41ad 100644
 --- a/composer.json
@@ -788,10 +785,10 @@ index fe3731d..c67408a 100644
              "name": "theseer/tokenizer",
 diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/AppBundle/Controller/DefaultControllerTest.php
 new file mode 100644
-index 0000000..821ebdd
+index 0000000..e6b4502
 --- /dev/null
 +++ b/tests/AppBundle/Controller/DefaultControllerTest.php
-@@ -0,0 +1,13 @@
+@@ -0,0 +1,17 @@
 +<?php
 +
 +namespace Tests\AppBundle\Controller;
@@ -800,8 +797,12 @@ index 0000000..821ebdd
 +
 +class DefaultControllerTest extends WebTestCase
 +{
-+    public function testTheIsAWayToSoundAnAlarmOnInactiveSecurity()
++    public function testEnclosuresAreShownOnHomepage()
 +    {
++        $client = $this->makeClient();
 +
++        $crawler = $client->request('GET', '/');
++
++        $this->assertStatusCode(200, $client);
 +    }
 +}

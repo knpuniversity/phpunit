@@ -1,5 +1,5 @@
 diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/AppBundle/Controller/DefaultControllerTest.php
-index 656efd6..93d2d2c 100644
+index f15e8bd..b84fb90 100644
 --- a/tests/AppBundle/Controller/DefaultControllerTest.php
 +++ b/tests/AppBundle/Controller/DefaultControllerTest.php
 @@ -26,4 +26,31 @@ class DefaultControllerTest extends WebTestCase

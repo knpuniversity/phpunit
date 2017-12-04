@@ -88,7 +88,7 @@ index 9312b89..fe3731d 100644
              "version": "1.7.0",
              "source": {
 diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
-index e602dbe..fc413b4 100644
+index f504733..3edd1a6 100644
 --- a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
 +++ b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
 @@ -6,6 +6,7 @@ use AppBundle\Entity\Dinosaur;
@@ -96,13 +96,13 @@ index e602dbe..fc413b4 100644
  use AppBundle\Entity\Security;
  use AppBundle\Service\EnclosureBuilderService;
 +use Doctrine\Common\DataFixtures\Purger\ORMPurger;
- use Doctrine\ORM\EntityManagerInterface;
+ use Doctrine\ORM\EntityManager;
  use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  
-@@ -13,11 +14,7 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
- {
-     public function setUp()
+@@ -15,11 +16,7 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
      {
+         self::bootKernel();
+ 
 -        $this->truncateEntities([
 -            Enclosure::class,
 -            Security::class,
@@ -112,7 +112,7 @@ index e602dbe..fc413b4 100644
      }
  
      public function testItBuildsEnclosureWithDefaultSpecifications()
-@@ -50,26 +47,10 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
+@@ -48,26 +45,10 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
          $this->assertSame(3, $count, 'Amount of dinosaurs is not the same');
      }
  

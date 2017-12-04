@@ -1,29 +1,31 @@
 diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
-index 2b15a82..3a8374d 100644
+index 2daa544..417ff6a 100644
 --- a/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
 +++ b/tests/AppBundle/Service/EnclosureBuilderServiceIntegrationTest.php
-@@ -2,6 +2,8 @@
+@@ -2,7 +2,10 @@
  
  namespace Tests\AppBundle\Service;
  
 +use AppBundle\Entity\Dinosaur;
 +use AppBundle\Entity\Security;
  use AppBundle\Service\EnclosureBuilderService;
++use Doctrine\ORM\EntityManager;
  use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  
-@@ -13,5 +15,29 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
+ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
+@@ -13,5 +16,28 @@ class EnclosureBuilderServiceIntegrationTest extends KernelTestCase
  
-         $enclosureBuilderService = static::$kernel->getContainer()
+         $enclosureBuilderService = self::$kernel->getContainer()
              ->get('test.'.EnclosureBuilderService::class);
 +
 +        $enclosureBuilderService->buildEnclosure();
 +
++        /** @var EntityManager $em */
 +        $em = self::$kernel->getContainer()
 +            ->get('doctrine')
 +            ->getManager();
 +
-+        $count = (int)$em
-+            ->getRepository(Security::class)
++        $count = (int) $em->getRepository(Security::class)
 +            ->createQueryBuilder('s')
 +            ->select('COUNT(s.id)')
 +            ->getQuery()
@@ -31,8 +33,7 @@ index 2b15a82..3a8374d 100644
 +
 +        $this->assertSame(1, $count, 'Amount of security systems is not the same');
 +
-+        $count = (int)$em
-+            ->getRepository(Dinosaur::class)
++        $count = (int) $em->getRepository(Dinosaur::class)
 +            ->createQueryBuilder('d')
 +            ->select('COUNT(d.id)')
 +            ->getQuery()
