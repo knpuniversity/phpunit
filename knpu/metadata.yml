@@ -19,5 +19,7 @@ chapters:
     - prophecy-mocking
     - cli-options
     - integration-tests
+    - control-database
+    - partial-mocking
     - functional-tests
     - continuous-integration
