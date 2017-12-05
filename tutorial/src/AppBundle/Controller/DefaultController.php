@@ -5,7 +5,7 @@ class DefaultController
     // copy JUST this method :)
 
     /**
-     * @Route("/grow", name="grow-dinosaur")
+     * @Route("/grow", name="grow_dinosaur")
      * @Method({"POST"})
      */
     public function growAction(Request $request, DinosaurFactory $dinosaurFactory)
