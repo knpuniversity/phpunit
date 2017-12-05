@@ -7,7 +7,7 @@ test.
 
 ## Creating a Test Database
 
-Step one to accomplising this is to use a *different* database for our test environment.
+Step one to accomplishing this is to use a *different* database for our test environment.
 Actually, this is mostly for convenience: using the same database for testing
 and development is annoying. One minute, you're coding through something awesome
 in your browser, then you run your tests, then back in the browser, all your nice
