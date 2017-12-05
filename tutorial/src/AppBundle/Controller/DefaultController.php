@@ -24,7 +24,7 @@ class DefaultController
         $manager->flush();
 
         $this->addFlash('success', sprintf(
-            'Grown a %s in enclosure #%d',
+            'Grew a %s in enclosure #%d',
             mb_strtolower($specification),
             $enclosure->getId()
         ));
