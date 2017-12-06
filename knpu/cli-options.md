@@ -82,7 +82,7 @@ To do that, use the `--stop-on-failure` and `--stop-on-error` options:
 ./vendor/bin/phpunit --stop-on-failure --stop-on-error
 ```
 
-We don't have any errors - woo! - but you get the idea!
+We don't have any errors - yes! - but you get the idea!
 
 ## The phpunit.xml.dist File
 
