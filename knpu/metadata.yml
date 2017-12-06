@@ -22,4 +22,8 @@ chapters:
     - control-database
     - partial-mocking
     - functional-tests
+    - crawler
+    - fixtures-fast-db
+    - fixtures-reference
+    - form-submit
     - continuous-integration
