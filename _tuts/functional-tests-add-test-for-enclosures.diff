@@ -1,0 +1,87 @@
+diff --git a/app/Resources/views/default/index.html.twig b/app/Resources/views/default/index.html.twig
+index 62e26d4..4f5a247 100644
+--- a/app/Resources/views/default/index.html.twig
++++ b/app/Resources/views/default/index.html.twig
+@@ -1,4 +1,18 @@
+ {% extends 'base.html.twig' %}
+ 
+ {% block body %}
++    <h3>Enclosures</h3>
++
++    <table class="table-enclosures">
++        <tbody>
++            {% for enclosure in enclosures %}
++                <tr id="enclosure-{{ enclosure.id }}">
++                    <td>Enclosure #{{ enclosure.id }}</td>
++                    <td>
++                        Contains <strong>{{ enclosure.dinosaurCount }}</strong> dinosaur(s)
++                    </td>
++                </tr>
++            {% endfor %}
++        </tbody>
++    </table>
+ {% endblock %}
+diff --git a/src/AppBundle/Controller/DefaultController.php b/src/AppBundle/Controller/DefaultController.php
+index 36ea5c0..944fca4 100644
+--- a/src/AppBundle/Controller/DefaultController.php
++++ b/src/AppBundle/Controller/DefaultController.php
+@@ -2,6 +2,7 @@
+ 
+ namespace AppBundle\Controller;
+ 
++use AppBundle\Entity\Enclosure;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+ use Symfony\Component\HttpFoundation\Request;
+@@ -13,7 +14,12 @@ class DefaultController extends Controller
+      */
+     public function indexAction(Request $request)
+     {
++        $enclosures = $this->getDoctrine()
++            ->getRepository(Enclosure::class)
++            ->findAll();
++
+         return $this->render('default/index.html.twig', [
++            'enclosures' => $enclosures,
+         ]);
+     }
+ }
+diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
+index 018f522..1cab714 100644
+--- a/src/AppBundle/Entity/Enclosure.php
++++ b/src/AppBundle/Entity/Enclosure.php
+@@ -42,6 +42,11 @@ class Enclosure
+         }
+     }
+ 
++    public function getId(): ?int
++    {
++        return $this->id;
++    }
++
+     public function getDinosaurs(): Collection
+     {
+         return $this->dinosaurs;
+@@ -86,4 +91,9 @@ class Enclosure
+     {
+         return $this->securities;
+     }
++
++    public function getDinosaurCount(): int
++    {
++        return $this->dinosaurs->count();
++    }
+ }
+diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/AppBundle/Controller/DefaultControllerTest.php
+index e6b4502..c6b3992 100644
+--- a/tests/AppBundle/Controller/DefaultControllerTest.php
++++ b/tests/AppBundle/Controller/DefaultControllerTest.php
+@@ -13,5 +13,8 @@ class DefaultControllerTest extends WebTestCase
+         $crawler = $client->request('GET', '/');
+ 
+         $this->assertStatusCode(200, $client);
++
++        $table = $crawler->filter('.table-enclosures');
++        $this->assertCount(3, $table->filter('tbody tr'));
+     }
+ }

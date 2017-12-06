@@ -1,8 +1,8 @@
 diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/AppBundle/Controller/DefaultControllerTest.php
-index f15e8bd..b84fb90 100644
+index 978b65b..aed98da 100644
 --- a/tests/AppBundle/Controller/DefaultControllerTest.php
 +++ b/tests/AppBundle/Controller/DefaultControllerTest.php
-@@ -26,4 +26,31 @@ class DefaultControllerTest extends WebTestCase
+@@ -41,4 +41,31 @@ class DefaultControllerTest extends WebTestCase
  
          $this->assertGreaterThan(0, $crawler->filter($selector)->count());
      }
@@ -29,7 +29,7 @@ index f15e8bd..b84fb90 100644
 +        $client->submit($form);
 +
 +        $this->assertContains(
-+            'Grown a large herbivore in enclosure #3',
++            'Grew a large herbivore in enclosure #3',
 +            $client->getResponse()->getContent()
 +        );
 +    }
