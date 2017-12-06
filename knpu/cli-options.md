@@ -28,6 +28,11 @@ This is a wrapper around PHPUnit that adds a couple of extra features like depre
 reporting that will tell you about deprecated code paths that you're using during
 your tests.
 
+***TIP
+In Symfony 4, this is the officially-recommended way to use PHPUnit. You should
+install this instead of installing PHPUnit directly.
+***
+
 Basically, after you install this, you'll use `vendor/bin/simple-phpunit` to activate
 it. It supports all the same options.
 
@@ -82,7 +87,7 @@ To do that, use the `--stop-on-failure` and `--stop-on-error` options:
 ./vendor/bin/phpunit --stop-on-failure --stop-on-error
 ```
 
-We don't have any errors - woo! - but you get the idea!
+We don't have any errors - yes! - but you get the idea!
 
 ## The phpunit.xml.dist File
 

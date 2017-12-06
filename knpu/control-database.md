@@ -7,11 +7,11 @@ test.
 
 ## Creating a Test Database
 
-Step one to accomplising this is to use a *different* database for our test environment.
+Step one to accomplishing this is to use a *different* database for our test environment.
 Actually, this is mostly for convenience: using the same database for testing
 and development is annoying. One minute, you're coding through something awesome
 in your browser, then you run your tests, then back in the browser, all your nice
-data is gone or totally different! Isolation is nice.
+data is gone or totally different! Isolation in this instance is nice.
 
 To do that, go back to `config_test.yml`. In a Symfony 4 Flex application, you
 should create a `config/packages/test/doctrine.yaml` file since this will contain
@@ -42,13 +42,14 @@ php bin/console doctrine:schema:create --env=test
 ```
 
 And, congrats! You are the owner of a fancy new `var/data/test.sqlite` file!
+Take good care of it.
 
 ## Clearing the Database before Tests
 
 At this point, not much has changed really. Our tests will still pass *one* time,
 but will fail each time after. We haven't *actually* fixed the problem yet!
 
-How can w? The best way is to *fully* empty the database at the beginning of each
+How can we? The best way is to *fully* empty the database at the beginning of each
 test. This would *certainly* put our database into a known state: empty! Then, if
 we *do* need any data before running the test, we can manually add it *in* the test.
 It's not super fancy, but it keeps everything really clear.
