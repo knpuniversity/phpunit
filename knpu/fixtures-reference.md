@@ -16,7 +16,8 @@ Here's the deal: if you look in the fixtures, you can see that the first two Enc
 do *not* have any security. You can *also* see that we're using some sort
 of "reference" system. This allows us to store a specific object in memory so that
 we can re-use it somewhere else. For example, in `LoadSecurityData`, we get the
-`herbivorous-enclosure` object out and *add* security! Those veggi dinos are safe!
+`herbivorous-enclosure` object out and *add* security! We're safe from those wild
+veggie eating dinos!
 
 It does the same for `carnivorous-enclosure`... but then adds two Security objects
 that are both *inactive*. Doh! Yep, this means that the `carnivorous-enclosure` is
@@ -53,7 +54,7 @@ If security *is* active, we rock! Add a cute lock icon and say "Security active"
 Yep, just sit back and enjoy some Jolt soda: nobody is getting eaten today!
 
 But if security is *not* active, ah crap! Add the button with the `button-alarm`
-class that the test is looking for. And say "Sound alarm !!!".
+class that the test is looking for. And say "Sound alarm!!!".
 
 That should be it! Run the test:
 
