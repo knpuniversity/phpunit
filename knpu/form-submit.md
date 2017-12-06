@@ -2,16 +2,16 @@
 
 New feature request! On the homepage, management wants a form where they can choose
 an enclosure, write a dinosaur spec - like "Large herbivore" and submit! Behind
-the scenes, it would create that new `Dinosaur` and put it into the `Enclosure`.
+the scenes, we will create that new `Dinosaur` and put it into the `Enclosure`.
 
 We're now functional-testing pros, so let's get right to the test! Add
 `public function testItGrowsADinosaurFromSpecification()`. And as usual, steal some
-code from earlier and paste that at the top. You can start to see how some of this
-could be refactored to a `setUp` method.
+code from earlier and paste it on top. You can start to see how some of this could
+be refactored to a `setUp` method.
 
 After creating the client, add `$client->followRedirects()`. Normally, when our
 app redirects, Symfony's Client does *not* follow the redirect. Sometimes that's
-useful... but this line makes it behave a bit more like a normal browser.
+useful... but this line makes it behave like a normal browser.
 
 ## Filling in the Form Fields
 
@@ -20,7 +20,7 @@ To fill out the form fields, first we need to *find* the form. Do that with
 will be on your form. How about "Grow dinosaur". Then call `->form()`.
 
 We now have a `Form` object. No, not Symfony's normal Form object from its form system.
-This is from the `DomCrawler` component and its job is to help us fill out the form.
+This is from the `DomCrawler` component and its job is to help us fill out its fields.
 
 So let's think about it: we will need 2 fields: an `enclosure` select field and
 a `specification` text box. To fill in the first, use `$form['enclosure']` - the
@@ -32,11 +32,11 @@ of the `option` element you want to select. Do this again for a `specification` 
 Setting this one is easier: `->setValue('large herbivore')`.
 
 Honestly, I don't *love* Symfony's API for filling in forms - I like Mink's better.
-But, it works just fine. When the form is ready, submit with `$client->submit($form)`.
+But, it works fine. When the form is ready, submit with `$client->submit($form)`.
 That will submit to the correct URL and send all the data up!
 
 But... now what? What should the user see after submitting the form? Well... we
-should probably redirect *back* toe the homepage with a nice message explaining
+should probably redirect *back* to the homepage with a nice message explaining
 what just happened. Use `$this->assertContains()` to look for the text
 "Grew a large herbivore in enclosure #3" inside `$client->getResponse()->getContent()`.
 
@@ -56,24 +56,24 @@ means that some element could not be found.
 ## Code the Form
 
 With the test done, let's code! And... yea, let's cheat! In the `tutorial/` directory,
-find a `app/Resources/viwes/_partials` folder, copy it, and paste it in *our*
+find the `app/Resources/views/_partials` folder, copy it, and paste it in *our*
 `app/Resources/views` directory.
 
 Then, at the top of `index.html.twig`, use it: `include('_partials/_newDinoForm.html.twig')`.
 
-The form is really simple - it's not even using Symfony's form system! You can see
+The form is really simple: it's not even using Symfony's form system! You can see
 the `name="enclosure"` select field where the value for each option is the enclosure's
 id. Below that is the `name="specification"` text field and the "Grow dinosaur" button
-the test is using!
+the test relies on.
 
 For the submit logic, go back into the `tutorial/` directory, find `DefaultController`
-and copy all of `growAction()`. Pate this into *our* `DefaultController`. Oh, and
-we need a few `use` statements: re-type part of `@Method` and hit tab to add its
-`use` statement and do the same for `DinosaurFactory`.
+and copy all of the `growAction()` method. Paste this into *our* `DefaultController`.
+Oh, and we need a few `use` statements: re-type part of `@Method` and hit tab to
+add its `use` statement. Do the same for `DinosaurFactory`.
 
 Ok, it's happy! Sure, the code is lacking the normal security and safeguards we expect
-when using Symfony's form system, but it's only a dinosaur park! We *do*, however,
-have the success flash message!
+when using Symfony's form system... but it's only a dinosaur park people! We *do*,
+however, have the success flash message!
 
 So if we haven't messed anything up, it should work. Try the test!
 
@@ -88,4 +88,4 @@ So that's the power of functional tests. And I find them *especially* powerful w
 using Mink and testing that my JavaScript works.
 
 Ok guys, just *one* more topic left, and it's *fun*! Continuous integration! Yea
-know, the fancy words that means: let the robots run your tests automatically!
+know, the fancy term that means: let the robots run your tests automatically!

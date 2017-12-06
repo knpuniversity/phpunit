@@ -13,24 +13,24 @@ add `getReferenceRepository()` and assign this to a new `$fixtures` variable.
 ## What are Fixture References?
 
 Here's the deal: if you look in the fixtures, you can see that the first two Enclosures
-do *not* have any security. You can *also* see that in the we're using some sort
+do *not* have any security. You can *also* see that we're using some sort
 of "reference" system. This allows us to store a specific object in memory so that
 we can re-use it somewhere else. For example, in `LoadSecurityData`, we get the
-`herbivorous-enclosure` object out and add security!
+`herbivorous-enclosure` object out and *add* security! Those veggi dinos are safe!
 
 It does the same for `carnivorous-enclosure`... but then adds two Security objects
-that are both *inactive*. Yep, this means that the `carnivorous-enclosure` is the
-only `Enclosure` that is *not* secure. That means we need to assert that, on the
-homepage, *this* exact Enclosure has the alarm button.
+that are both *inactive*. Doh! Yep, this means that the `carnivorous-enclosure` is
+the only `Enclosure` that is *not* secure. In the test, our goal is to assert that,
+on the homepage, *this* exact Enclosure has the alarm button.
 
 And we planned ahead for this! Remember, in the template, we added an `enclosure-{id}`
 to each `tr` element. So if we can get the actual id value of the Carnivorous Enclosure,
-it will be *really* easy to find the correct `tr` element and look for the alarm
-button. The reference system gives us that power!
+it will be *really* easy to find its `tr` element and look for the alarm button.
+The reference system gives us that power!
 
 Yep, we can fetch the exact `Enclosure` object by saying
 `$enclosure = $fixtures->getReference('carnivorous-enclosure')`. Next, create a
-`$selector` variable set to `sprintf('#enclosure-%s .button-alarm)` and `$enclosure->getId()`.
+`$selector` variable set to `sprintf('#enclosure-%s .button-alarm')` and `$enclosure->getId()`.
 We'll expect the alarm button to have this class.
 
 Finish the test! `$this->greaterThan(0, $crawler->filter($selector)->count())`.
@@ -42,18 +42,18 @@ and run phpunit with the `--filter` option:
 ./vendor/bin/phpunit --filter testThatThereIsAnAlarmButtonWithoutSecurity
 ```
 
-Yes! It fails!
+Awesome!
 
 ## Adding the Alarm Button
 
-Let's code! In `index.html.twig`, add one more `<td>`: `if enclosure.isSecurityActive()`
+So let's code! In `index.html.twig`, add one more `<td>`: `if enclosure.isSecurityActive()`
 with `else` and `endif`.
 
 If security *is* active, we rock! Add a cute lock icon and say "Security active".
 Yep, just sit back and enjoy some Jolt soda: nobody is getting eaten today!
 
 But if security is *not* active, ah crap! Add the button with the `button-alarm`
-class we're looking for. And say "Sound alarm !!!".
+class that the test is looking for. And say "Sound alarm !!!".
 
 That should be it! Run the test:
 
@@ -65,16 +65,16 @@ Ha! It passes!
 
 ## Debugging Functional Tests
 
-But... what if it *didn't* pass? Well... the error isn't very helpful: it would
-basically just say that 0 is not greater than 0. When things fail, the trick is to
-go *above* the failure and `dump($client->getResponse()->getContent())`. If you're
-using Flex, make sure to install the `var-dumper` package.
+But... what if it *didn't* pass? Well... the errors wouldn't be very helpful: it
+would basically just say that 0 is not greater than 0. When things fail, the trick
+is to go *above* the failure and `dump($client->getResponse()->getContent())`. If
+you're using Flex, make sure to install the `var-dumper` package.
 
 Now when you run the test, it will *at least* print out the HTML body. By the way,
 with a little bit of clever coding, you can hook into the `onNotSuccessfulTest` method
 and have the last response content printed automatically when a test fails. I'll
 leave that as a challenge for you. But, ask us in the comments if you have any
-issues.
+questions.
 
 Ok, there's *one* more thing I want to talk about with functional tests: filling
 out and submitting a form.
