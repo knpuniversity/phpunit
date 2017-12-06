@@ -41,7 +41,8 @@ php bin/console doctrine:schema:create
 Now to the integration test! Create a new class: `EnclosureBuilderServiceIntegrationTest`.
 I don't always create a separate class for integration tests: it's up to you. Unit
 tests and integration tests can actually live next to each other in the same test
-class.
+class. Unlike herbivore and carnivore dinsosaurs who should really each get their
+own enclosure.
 
 This time, instead of `TestCase`, extend `KernelTestCase`.
 
@@ -61,8 +62,8 @@ And of course, *that* will be configured to talk to our real database. This make
 integration tests less "pure" than unit tests: if an integration tests fails, the
 problem could live in *multiple* different places - not just in *this* class. And
 also, integration tests are *way* slower than unit tests. Together, this makes them
-less hipster than unit tests. But trendiness be damned! Integration tests are *really*
-helpful.
+less hipster than unit tests. Despite my love for being hipster, I'll concede that
+integration tests are *really* helpful.
 
 To use the real services, first call `self::bootKernel()` to... um... boot Symfony's
 "kernel": its "core". Now we can say `$enclosureBuilderService = self::$kernel->getContainer()->get()`
@@ -97,7 +98,7 @@ open or create `config/services_test.yaml`. Add the `services` key and use `_def
 below with `public: true`.
 
 Then, we're going to create a service *alias*. Back in the test, copy the entire
-class name - which is the service id. Back in `config_test.yml`, add `test.` and
+class name - which is the service id. Over in `config_test.yml`, add `test.` and
 then paste. Set this to `@` and paste again.
 
 This creates a public *alias*: even though the original service is private, we can
@@ -118,7 +119,7 @@ Ha! It works! It shows "Risky" because we don't have any assertions. But it did
 
 Let's finish the thing! Above the variable, I'll add some inline documentation so
 that PhpStorm gives me auto-completion. Now, call the `->buildEnclosure()` method.
-We'll use the default arguments that should create 1 `Security` and 3 `Dinosaur`
+We'll use the default arguments. That should create 1 `Security` and 3 `Dinosaur`
 entities.
 
 And... yea! All we need to do now is count the results in the database to make sure
@@ -129,7 +130,8 @@ code completion.
 To count the results, I'll paste in some code: this accesses the `Security` repository,
 counts the results and calls `getSingleScalarResult()` to return *just* that number.
 After this, use `$this->assertSame()` to assert that `1` will match `$count`. If
-they don't match, then the "Amount of security systems is not the same".
+they don't match, then the "Amount of security systems is not the same". And you should
+look over your shoulder for escaped raptors!
 
 Copy all of that and repeat for `Dinosaur`. Change the class name, and I'll change
 the alias to be consistent. Update the message to say "dinosaurs" and this time -

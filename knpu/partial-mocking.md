@@ -30,7 +30,7 @@ Oh man! It fails! Weird! There is only 1 Dinosaur... but there should be 3! What
 going on? This is subtle: PhpUnit is smart enough to take this *one* dinosaur object
 and return it each time `growFromSpecification()` is called. But to Doctrine, it
 looks like we're asking it to save the same *one* `Dinosaur` object: not three *separate*
-dinosaurs.
+dinosaurs. The result would be a less than thrilling theme park.
 
 The fix is to change this to `willReturnCallback()` and pass it a function. This
 will be called each time `growFromSpecification()` is called. And since it is passed
