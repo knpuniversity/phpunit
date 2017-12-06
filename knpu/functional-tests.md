@@ -86,7 +86,7 @@ to a page, click on links and fill out forms. But, there are *multiple* librarie
 that give us this superpower. We're using Symfony's `BrowserKit` client... mostly
 because it's built into Symfony and easy to start using. But, there are others.
 My favorite is called Mink, which is used behind the scenes with Behat. We have
-a tutorial all about Behat, with big sections devoted to Mink.
+a tutorial all about Behat, with big sections devoted to Mink. So, check that out.
 
 So... what's the difference between Symfony's `BrowserKit` and Mink? With `BrowserKit`,
 you're not *actually* making a real HTTP request to your app. Nope, you're making
