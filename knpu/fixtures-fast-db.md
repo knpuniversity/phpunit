@@ -99,7 +99,7 @@ rm var/data/test.sqlite
 ```
 
 Bye bye database schema! But, when you run the tests, they still pass! When you
-load the fixtures, it creates the schema too. Thanks guys!
+load the fixtures, it creates the schema too. Thanks friends!
 
 The second trick lives in `app/config/config_test.yml`. Add a new option:
 `cache_sqlite_db` set to `true`.
