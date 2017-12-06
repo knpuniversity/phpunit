@@ -64,7 +64,7 @@ Run the tests!
 ./vendor/bin/phpunit tests/AppBundle/Controller/DefaultControllerTest.php
 ```
 
-They work! The pass, over and over again!
+They work! They pass, over and over again!
 
 So, how would things be different if you did *not* want to load fixtures? Well,
 you *will* still want to empty the database. So, you could use the same trick as
