@@ -13,9 +13,13 @@ directory. This has just one public function: you pass that number of security s
 and the number of dinosaurs, and *it* takes care of creating those security systems,
 creating the dinosaurs and putting everything together inside a new `Enclosure`.
 
+[[[ code('e0ca2be24d') ]]]
+
 For this... we're going to cheat and *not* do TDD because... well... I *just* gave
 you the code. So let's add the test: in the `Service` directory, create a new
 `EnclosureBuilderServiceTest`. And inside, `public function testItBuildsAndPersistsEnclosure()`.
+
+[[[ code('26ed5045de') ]]]
 
 And *this* time, let's make sure it `extends TestCase` from PHPUnit. At first,
 the test is pretty simple: create a `new EnclosureBuilderService()`. This has two
@@ -23,9 +27,13 @@ required constructor arguments... but let's ignore those at first and finish the
 test. Add `$enclosure = $builder->buildEnclosure()` with, how about, 1 security system
 and 2 dinosaurs. 
 
+[[[ code('a2a2539c0f') ]]]
+
 Below this, just assert that this has the right stuff: `$this->assertCount()` that
 1 matches the count of `$enclosure->getSecurities()`. That method does not exist
 yet. And then `assertCount()` that 2 matches the count of `$enclosure->getDinosaurs()`.
+
+[[[ code('6e49136f40') ]]]
 
 We *could* test more, but this is pretty good! It tests that the core functionality
 works correctly. Later, if we think of some edge-case that could happen, we can
@@ -34,6 +42,8 @@ add more.
 Ok, find the `Enclosure` class, scroll to the bottom, and add the missing
 `public function getSecurities()`, which should return a `Collection`. Return
 `$this->securities`.
+
+[[[ code('2842ad62b0') ]]]
 
 ## Adding the Basic Mocks
 
@@ -52,7 +62,11 @@ Back in the test, add `$em = $this->createMock()`. The argument expects an `Enti
 So that's what we'll use here: `EntityManagerInterface::class`. Yep, you can *totally*
 mock an interface. Then add `$dinosaurFactory = $this->createMock(DinosaurFactory::class)`.
 
+[[[ code('d007987461') ]]]
+
 Pass both arguments into new `EnclosureBuilderService()`.
+
+[[[ code('99ec626885') ]]]
 
 I'm not worried about controlling the return values: I'm trying to do as little
 work as possible so that the test will run and the asserts at the bottom can do
@@ -79,6 +93,8 @@ But! If we want, we could also make the test a bit tougher before fixing this. I
 the test, add `$dinoFactory->expects($this->exactly(2))` and then
 `->method('growFromSpecification')`.
 
+[[[ code('f464f3396f') ]]]
+
 We could stop here: we don't *need* to also call `->with()`. But if you *do* want
 to assert that the correct argument is passed, you can. Well actually, the exact
 argument is random. So the best we can do is use `$this->isType('string')`.
@@ -101,6 +117,8 @@ Awesome! Translating from robot-speech, this says:
 That's cool! Uncomment the "assert" in the test. Now, go into the service and fix
 my bug! Add a `for` loop where `$i = 0; $i < $numberOfDinosaurs; $i++`. Move *all*
 that dino code inside.
+
+[[[ code('eb0508768e') ]]]
 
 Move back to your terminal and, test!
 

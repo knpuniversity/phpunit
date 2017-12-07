@@ -3,7 +3,7 @@
 The last type of test is called a *functional* test. And it's *way* different than
 what we've seen so far. With unit and integration tests, we call methods
 on our code and test the output. But with a functional test, you command a browser,
-which surfs to your site, click on links, fill out forms and assert things it sees
+which surfs to your site, clicks on links, fills out forms and asserts things it sees
 on the page. Yep, you're testing the interface that your users *actually* use.
 
 Oh, and functional tests also apply if you're building an API. It's the same idea:
@@ -16,7 +16,7 @@ First, to give us some magic, I want to install a special bundle: Google for
 LiipFunctionalTestBundle.
 
 This bundle is *not* needed to write functional tests. But, it has a collection
-optional, extra goodies!
+of optional, extra goodies!
 
 Copy the composer require line, move over to your terminal, and paste:
 
@@ -40,14 +40,14 @@ But wait! There are two! The normal base class is the one from `FrameworkBundle`
 as integration tests. But, it adds a few methods to help create a *client* object:
 a special object we'll use to make requests into our app.
 
-But... choose `WebTestCase` from LiipFunctionalTestBundle. No surprise, this class
+Today we'll choose `WebTestCase` from LiipFunctionalTestBundle. No surprise, this class
 *itself* extends the normal `WebTestCase`. Then, it adds a bunch of optional magic.
 
 ## TDD & The Functional Test
 
 Let's add the first test: `public function testEnclosuresAreShownOnTheHomepage()`.
 Right now, the homepage is empty. But in a minute, we're going to render all of
-enclosures. So let's do a little TDD test! Start by creating a client with
+the enclosures. So let's do a little TDD testing! Start by creating a client with
 `$client = $this->makeClient()`. This method comes from LiipFunctionalTestBundle,
 but is just a wrapper around Symfony's normal `static::createClient()`. The version
 from the bundle just adds some optional authentication magic.
@@ -82,11 +82,11 @@ But... what just happened exactly? Did our code just make a *real* HTTP request
 to our app... just like if we refreshed it in the browser? Well... not *quite*.
 
 Remember: in a functional test, we use PHP to command a browser and tell it to go
-to page, click on links and fill out forms. But, there are *multiple* libraries
+to a page, click on links and fill out forms. But, there are *multiple* libraries
 that give us this superpower. We're using Symfony's `BrowserKit` client... mostly
 because it's built into Symfony and easy to start using. But, there are others.
 My favorite is called Mink, which is used behind the scenes with Behat. We have
-a tutorial all about Behat, with big sections devoted to Mink.
+a tutorial all about Behat, with big sections devoted to Mink. So, check that out.
 
 So... what's the difference between Symfony's `BrowserKit` and Mink? With `BrowserKit`,
 you're not *actually* making a real HTTP request to your app. Nope, you're making

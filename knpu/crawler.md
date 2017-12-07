@@ -4,7 +4,7 @@ Our test is *already* pretty cool. This is called a smoke test: with just
 a *tiny* bit of code, we're at *least* making sure the homepage doesn't have a
 huge error!
 
-And now... stop! Before we write any more tests, we need ask ourselves a question:
+And now... stop! Before we write any more tests, we need to ask ourselves a question:
 does the feature we're building *need* a test? We're going to add a list of all of
 the enclosures on the homepage. That doesn't sound too scary, so I might not test
 this in the real world. We *will* test it... yea know... because this is a tutorial
