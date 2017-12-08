@@ -24,6 +24,10 @@ First, we need to finish our entities. Find ``Security`` and copy the ``id`` fie
 Open ``Dinosaur`` and paste this in. Do the same for ``Enclosure``. We haven't needed
 these yet because we haven't touched the database at all. 
 
+[[[ code('4d9187422e') ]]]
+
+[[[ code('f3b1fb18e0') ]]]
+
 Now, go to your terminal and create the database:
 
 ```terminal
@@ -46,12 +50,16 @@ own enclosure.
 
 This time, instead of `TestCase`, extend `KernelTestCase`.
 
+[[[ code('679a2d164f') ]]]
+
 This is not *that* crazy: `KernelTestCase` itself extends `TestCase`: so we have
 all the normal methods. But it *also* has a few new methods to help us boot Symfony's
 container. And *that* will give us access to our *real* services.
 
 Add the test method: `public function testItBuildsEnclosureWithTheDefaultSpecification()`.
 Hmm, that's a big name!
+
+[[[ code('ac78eceaf6') ]]]
 
 ## Booting & Fetching the Container
 
@@ -68,6 +76,8 @@ integration tests are *really* helpful.
 To use the real services, first call `self::bootKernel()` to... um... boot Symfony's
 "kernel": its "core". Now we can say `$enclosureBuilderService = self::$kernel->getContainer()->get()`
 and the service's id: `EnclosureBuilderService::class`.
+
+[[[ code('32cb9d4955') ]]]
 
 But before we do *anything* else... there's a surprise! Find your terminal and run
 phpunit with `--filter`. Copy the method's name and paste it:
@@ -97,14 +107,20 @@ How do we fix this? Open `app/config/config_test.yml`. In Symfony 4, you should
 open or create `config/services_test.yaml`. Add the `services` key and use `_defaults`
 below with `public: true`.
 
+[[[ code('a3e817da13') ]]]
+
 Then, we're going to create a service *alias*. Back in the test, copy the entire
 class name - which is the service id. Over in `config_test.yml`, add `test.` and
 then paste. Set this to `@` and paste again.
+
+[[[ code('8fd5f902c5') ]]]
 
 This creates a public *alias*: even though the original service is private, we can
 use this new `test.` service id to fetch our original service out of the container.
 
 Try it! Back in the test, inside `get()`, add `test.` and *then* the class name.
+
+[[[ code('db3400a4f3') ]]]
 
 Move over and try the test again!
 
@@ -122,10 +138,14 @@ that PhpStorm gives me auto-completion. Now, call the `->buildEnclosure()` metho
 We'll use the default arguments. That should create 1 `Security` and 3 `Dinosaur`
 entities.
 
+[[[ code('dfc418cc4e') ]]]
+
 And... yea! All we need to do now is count the results in the database to make sure
 they're correct! First, fetch the EntityManager with `self::$kernel->getContainer()`
 then `->get('doctrine')->getManager()`. I'll also add inline phpdoc above this to help
 code completion.
+
+[[[ code('fe7306f23b') ]]]
 
 To count the results, I'll paste in some code: this accesses the `Security` repository,
 counts the results and calls `getSingleScalarResult()` to return *just* that number.
@@ -133,9 +153,13 @@ After this, use `$this->assertSame()` to assert that `1` will match `$count`. If
 they don't match, then the "Amount of security systems is not the same". And you should
 look over your shoulder for escaped raptors!
 
+[[[ code('b735dbfeb1') ]]]
+
 Copy all of that and repeat for `Dinosaur`. Change the class name, and I'll change
 the alias to be consistent. Update the message to say "dinosaurs" and this time -
 thanks to the default arguments in `buildEnclosure()` - there should be 3.
+
+[[[ code('e00a8115f3') ]]]
 
 Ok team! We're done! Try the test!
 
