@@ -5,7 +5,7 @@ class DefaultController
     // copy JUST this method :)
 
     /**
-     * @Route("/grow", name="grow-dinosaur")
+     * @Route("/grow", name="grow_dinosaur")
      * @Method({"POST"})
      */
     public function growAction(Request $request, DinosaurFactory $dinosaurFactory)
@@ -24,7 +24,7 @@ class DefaultController
         $manager->flush();
 
         $this->addFlash('success', sprintf(
-            'Grown a %s in enclosure #%d',
+            'Grew a %s in enclosure #%d',
             mb_strtolower($specification),
             $enclosure->getId()
         ));

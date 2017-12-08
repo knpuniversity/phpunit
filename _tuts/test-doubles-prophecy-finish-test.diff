@@ -1,0 +1,19 @@
+diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
+index b6cb7a7..f0677f2 100644
+--- a/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
++++ b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
+@@ -27,5 +27,14 @@ class EnclosureBuilderServiceProphecyTest extends TestCase
+ 	    ->growFromSpecification(Argument::type('string')
+ 	    ->shouldBeCalledTimes(2)
+ 	    ->willReturn(new Dinosaur());
++
++	$builder = new EnclosureBuilderService(
++	    $em->reveal(),
++	    $dinoFactory->reveal()
++	);
++	$enclosure = $builder->buildEnclosure(1, 2);
++
++	$this->assertCount(1, $enclosure->getSecurities());
++	$this->assertCount(2, $enclosure->getDinosaurs());
+     }
+ }

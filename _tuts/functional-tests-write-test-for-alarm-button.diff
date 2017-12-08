@@ -1,43 +1,26 @@
-diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
-index 018f522..8e21630 100644
---- a/src/AppBundle/Entity/Enclosure.php
-+++ b/src/AppBundle/Entity/Enclosure.php
-@@ -42,6 +42,11 @@ class Enclosure
-         }
-     }
- 
-+    public function getId(): ?int
-+    {
-+        return $this->id;
-+    }
-+
-     public function getDinosaurs(): Collection
-     {
-         return $this->dinosaurs;
 diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/AppBundle/Controller/DefaultControllerTest.php
-index e3e789a..f15e8bd 100644
+index df76e96..978b65b 100644
 --- a/tests/AppBundle/Controller/DefaultControllerTest.php
 +++ b/tests/AppBundle/Controller/DefaultControllerTest.php
-@@ -10,15 +10,20 @@ class DefaultControllerTest extends WebTestCase
- {
-     public function testEnclosuresAreShownOnHomepage()
-     {
--        $this->loadFixtures([
+@@ -24,4 +24,21 @@ class DefaultControllerTest extends WebTestCase
+         $table = $crawler->filter('.table-enclosures');
+         $this->assertCount(3, $table->filter('tbody tr'));
+     }
++
++    public function testThatThereIsAnAlarmButtonWithoutSecurity()
++    {
 +        $fixtures = $this->loadFixtures([
-             LoadBasicParkData::class,
-             LoadSecurityData::class,
--        ]);
++            LoadBasicParkData::class,
++            LoadSecurityData::class,
 +        ])->getReferenceRepository();
- 
-         $client = $this->makeClient();
- 
-         $crawler = $client->request('GET', '/');
- 
-         $this->assertStatusCode(200, $client);
++
++        $client = $this->makeClient();
++
++        $crawler = $client->request('GET', '/');
 +
 +        $enclosure = $fixtures->getReference('carnivorous-enclosure');
-+        $selector = '#enclosure-' . $enclosure->getId() . ' .button-alarm';
++        $selector = sprintf('#enclosure-%s .button-alarm', $enclosure->getId());
 +
 +        $this->assertGreaterThan(0, $crawler->filter($selector)->count());
-     }
++    }
  }

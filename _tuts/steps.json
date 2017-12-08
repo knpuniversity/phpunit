@@ -266,6 +266,31 @@
             "description": null
         },
         {
+            "id": "test-doubles-propechy-mock-em",
+            "name": "Test doubles: propechy mock em",
+            "description": null
+        },
+        {
+            "id": "test-doubles-prophecy-mock-flush",
+            "name": "Test doubles: prophecy mock flush",
+            "description": null
+        },
+        {
+            "id": "test-doubles-prophecy-mock-dino-factory",
+            "name": "Test doubles: prophecy mock dino factory",
+            "description": null
+        },
+        {
+            "id": "test-doubles-prophecy-mock-growfromspecification",
+            "name": "Test doubles: prophecy mock growFromSpecification",
+            "description": null
+        },
+        {
+            "id": "test-doubles-prophecy-finish-test",
+            "name": "Test doubles: prophecy finish test",
+            "description": null
+        },
+        {
             "id": "test-doubles-show-prophecy-failure",
             "name": "Test doubles: Show prophecy failure",
             "description": null
@@ -331,6 +356,11 @@
             "description": null
         },
         {
+            "id": "functional-tests-add-test-for-enclosures",
+            "name": "Functional tests: add test for enclosures",
+            "description": null
+        },
+        {
             "id": "functional-tests-load-fixtures",
             "name": "Functional tests: load fixtures",
             "description": null
@@ -341,8 +371,8 @@
             "description": null
         },
         {
-            "id": "functional-tests-add-enclosures-table",
-            "name": "Functional tests: add enclosures table",
+            "id": "functional-tests-empty",
+            "name": "Functional tests: EMPTY",
             "description": null
         },
         {
@@ -376,8 +406,18 @@
             "description": null
         },
         {
-            "id": "ci-running-tests",
-            "name": "CI: running tests",
+            "id": "ci-empty-step",
+            "name": "CI: EMPTY STEP",
+            "description": null
+        },
+        {
+            "id": "ci-change-phpunit-command",
+            "name": "CI: Change phpunit command",
+            "description": null
+        },
+        {
+            "id": "ci-change-image",
+            "name": "CI: Change image",
             "description": null
         },
         {
@@ -391,5 +431,5 @@
             "description": null
         }
     ],
-    "sha": "df05dd578370fc34674507e3e402f8ae38e20959"
+    "sha": "ffef45427973147307679cde749921869364c520"
 }

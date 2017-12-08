@@ -1,0 +1,12 @@
+diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
+index 8dad2dc..953a9b1 100644
+--- a/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
++++ b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
+@@ -20,5 +20,7 @@ class EnclosureBuilderServiceProphecyTest extends TestCase
+ 	    ->shouldBeCalledTimes(1);
+ 
+ 	$em->flush()->shouldBeCalled();
++
++	$dinoFactory = $this->prophesize(DinosaurFactory::class);
+     }
+ }

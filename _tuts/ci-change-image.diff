@@ -1,0 +1,13 @@
+diff --git a/.circleci/config.yml b/.circleci/config.yml
+index 41cc5df..f3356b4 100644
+--- a/.circleci/config.yml
++++ b/.circleci/config.yml
+@@ -7,7 +7,7 @@ jobs:
+   build:
+     docker:
+       # specify the version you desire here
+-      - image: circleci/php:7.1.5-browsers
++      - image: circleci/php:7.1-browsers
+ 
+       # Specify service dependencies here if necessary
+       # CircleCI maintains a library of pre-built images

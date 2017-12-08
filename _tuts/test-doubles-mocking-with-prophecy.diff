@@ -1,9 +1,9 @@
 diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
 new file mode 100644
-index 0000000..d73d539
+index 0000000..f93c3a1
 --- /dev/null
 +++ b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
-@@ -0,0 +1,42 @@
+@@ -0,0 +1,19 @@
 +<?php
 +
 +namespace Tests\AppBundle\Service;
@@ -21,28 +21,5 @@ index 0000000..d73d539
 +    public function testItBuildsAndPersistsEnclosure()
 +    {
 +        $em = $this->prophesize(EntityManagerInterface::class);
-+
-+        $em
-+            ->persist(Argument::type(Enclosure::class))
-+            ->shouldBeCalledTimes(1);
-+
-+        $em->flush()->shouldBeCalled();
-+
-+        $dinoFactory = $this->prophesize(DinosaurFactory::class);
-+
-+        $dinoFactory
-+            ->growFromSpecification(Argument::type('string'))
-+            ->shouldBeCalledTimes(2)
-+            ->willReturn(new Dinosaur());
-+
-+        $builder = new EnclosureBuilderService(
-+            $em->reveal(),
-+            $dinoFactory->reveal()
-+        );
-+
-+        $enclosure = $builder->buildEnclosure(1, 2);
-+
-+        $this->assertCount(1, $enclosure->getSecurities());
-+        $this->assertCount(2, $enclosure->getDinosaurs());
 +    }
 +}

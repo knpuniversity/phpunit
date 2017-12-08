@@ -27,3 +27,4 @@ chapters:
     - fixtures-reference
     - form-submit
     - continuous-integration
+    - circleci-artifacts
