@@ -10,11 +10,15 @@ the `EnclosureBuilderTest` with Prophecy to see how it feels.
 Create a new class called `EnclosureBuilderServiceProphecyTest`. It will extend the
 normal `TestCase` and we can give it the same method: `testItBuildsAndPersistsEnclosure()`.
 
+[[[ code('52f3f5715d') ]]]
+
 ## Mocking Prophecy Style
 
 Let's translate the PHPUnit mock code into Prophecy line-by-line. To create
 the `EntityManager` mock, use `$this->em->prophesize(EntityManagerInterface::class)`.
 That's pretty similar.
+
+[[[ code('c4446c7f50') ]]]
 
 Next, we need to assert that `persist()` will be called `once()` and that it is passed
 an `Enclosure` object. *This* is where things get different... and pretty fun...
@@ -22,8 +26,12 @@ Instead of thinking of `$em` as a mock, pretend it's the *real* object. Call
 `$em->persist()`. To make sure this is passed some `Enclosure` object, pass
 `Argument::type(Enclosure::class)`.
 
+[[[ code('87209a46ba') ]]]
+
 We'll talk more about how these arguments work in a minute. Then, because we want
 this to be called exactly once, add `shouldBeCalledTimes(1)`.
+
+[[[ code('7d58313b09 ') ]]]
 
 Oh, and notice that I am *not* getting auto-completion. That's because Prophecy is
 a super magic library, so PhpStorm doesn't really know what's going on. But actually,
@@ -35,6 +43,8 @@ tutorial. Thanks for the tip Stof!
 Next, we need to make sure `flush()` is called at least once. That's easy:
 `$em->flush()->shouldBeCalled()`.
 
+[[[ code('88fe8ece14') ]]]
+
 Don't you love it? In addition to `shouldBeCalledTimes()` and `shouldBeCalled()`,
 there is also `shouldNotBeCalled()` and simply `should()`, which accepts a callback
 so you can do custom logic.
@@ -43,6 +53,8 @@ so you can do custom logic.
 
 Let's keep moving: add the `DinosaurFactory` with `$dinoFactory = $this->prophesize()`
 and `DinosaurFactory::class`.
+
+[[[ code('13ceb602ff') ]]]
 
 Here, we need to make sure that the `growFromSpecification` method is called exactly
 two times with a string argument and returns a dinosaur. Ok! Start with
@@ -59,6 +71,8 @@ these three args.
 Our situation is a bit trickier: we don't know the *exact* argument, we only know
 that it should be a string. To check that, use `Argument::type('string')`.
 
+[[[ code('4d5b996237') ]]]
+
 There are a few other useful methods on this `Argument` class. The most important
 is `Argument::any()`. You'll need this if you want to assert that *some* of your
 arguments match a value, but you don't care what value is passed for the *other*
@@ -72,8 +86,12 @@ PHPUnit: `->willReturn(new Dinosaur())`. The other 2 useful functions are `willT
 to make the method throw an exception and `will()`, which accepts a callback so you
 can completely control the return value.
 
+[[[ code('0cdbde1278') ]]]
+
 And... yea! That's it! I'll copy the rest of the test and paste it. Re-type the `e`
 on `EnclosureBuilderService` to add the `use` statement on top.
+
+[[[ code('2005ae57f4') ]]]
 
 ## Revealing the Prophecy
 
