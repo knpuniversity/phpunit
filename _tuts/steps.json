@@ -266,6 +266,31 @@
             "description": null
         },
         {
+            "id": "test-doubles-propechy-mock-em",
+            "name": "Test doubles: propechy mock em",
+            "description": null
+        },
+        {
+            "id": "test-doubles-prophecy-mock-flush",
+            "name": "Test doubles: prophecy mock flush",
+            "description": null
+        },
+        {
+            "id": "test-doubles-prophecy-mock-dino-factory",
+            "name": "Test doubles: prophecy mock dino factory",
+            "description": null
+        },
+        {
+            "id": "test-doubles-prophecy-mock-growfromspecification",
+            "name": "Test doubles: prophecy mock growFromSpecification",
+            "description": null
+        },
+        {
+            "id": "test-doubles-prophecy-finish-test",
+            "name": "Test doubles: prophecy finish test",
+            "description": null
+        },
+        {
             "id": "test-doubles-show-prophecy-failure",
             "name": "Test doubles: Show prophecy failure",
             "description": null
@@ -406,5 +431,5 @@
             "description": null
         }
     ],
-    "sha": "da836cf07589d722aa2a2e00119cf9b343f25bf2"
+    "sha": "ffef45427973147307679cde749921869364c520"
 }
