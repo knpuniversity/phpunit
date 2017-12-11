@@ -4,7 +4,7 @@ New feature request! On the homepage, management wants a form where they can cho
 an enclosure, write a dinosaur spec - like "Large herbivore" and submit! Behind
 the scenes, we will create that new `Dinosaur` and put it into the `Enclosure`.
 
-We're now functional-testing pros, so let's get right to the test! Add
+Since we're functional-testing pros now, let's get right to the test! Add
 `public function testItGrowsADinosaurFromSpecification()`. And as usual, steal some
 code from earlier and paste it on top. You can start to see how some of this could
 be refactored to a `setUp` method.
