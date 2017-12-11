@@ -20,6 +20,8 @@ Doctrine configuration that you *only* want to use in the `test` environment.
 Inside, anywhere, add `doctrine`, `dbal` then `url` set to
 `sqlite:///%kernel.project_dir%/var/data/test.sqlite`.
 
+[[[ code('a607433445') ]]]
+
 This will override the settings in `app/config/config.yml` - the stuff under `doctrine`.
 With the new config, we're completely replacing this stuff and saying "Hey! Use an
 sqlite, flat-file database!".
@@ -59,22 +61,32 @@ the course code, then in the `tutorial/tests` directory, you'll find an
 `EnclosureBuilderServiceIntegrationTest.php` file. Copy the `truncateEntities()`
 method and paste that into your test class.
 
+[[[ code('48ab68cf6e') ]]]
+
 This is simple: pass the method an array of entities and it will empty them.
 
 You might want to call this at the top of every test method. But another great option
 is to override `setUp()` and add it there. Let's empty all three entities:
 `Enclosure`, `Security` and `Dinosaur`.
 
+[[[ code('5e36e601f6') ]]]
+
 For this method to work, we need a `getEntityManager()` method. At the bottom,
 add `private function getEntityManager()`. Then, copy our logic from above, paste
 it here, and add `return`. And since you know I *love* auto-completion, I'll add
 a `@return EntityManager`.
 
+[[[ code('f6e8793399') ]]]
+
 This makes `truncateEntities()` happy! And we can even use `getEntityManager()` above.
+
+[[[ code('976fdff42a') ]]]
 
 Oh, and it's *really* important that we call `self::bootKernel()` *before* we
 try to access any services. The best thing to do is remove it from the test method
 and add it to `setUp()`.
+
+[[[ code('17bc7a2473') ]]]
 
 Done! Try the tests:
 
@@ -101,6 +113,8 @@ entity manager.
 
 Then... `$purger->purger()`. And yea... that's it! We can remove the `$entities`
 argument and stop passing in the array.
+
+[[[ code('e3ec65fc99') ]]]
 
 This loops over all of your entity objects and deletes them one by one. It will even
 delete them in the correct order to avoid foreign key problems. But, if you have
