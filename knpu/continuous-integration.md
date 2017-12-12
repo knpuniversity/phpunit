@@ -71,12 +71,12 @@ This won't activate our first build *yet*, but we *do* have a functional config
 file. And that means we can click "Start Building". Deep breath. Do it!
 
 This installs a webhook on GitHub so that every push will automatically trigger a
-build. And because CircleCI is so friendly, it even started our first build right.
+build. And because CircleCI is so friendly, it even started our first build.
 
 ## Where is Composer?
 
 And... within 2 seconds, it failed! Geez! It *did* start the environment, which means
-it buidt the container image. Sometimes the image will be cached - it was this time.
+it built the container image. Sometimes the image will be cached - it was this time.
 When that happens, it's *super* fast. Then, it checked out our code and... huh!
 It failed because composer is missing?
 
