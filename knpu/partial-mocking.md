@@ -9,16 +9,24 @@ there's another option. Instead, create it manually - `new EnclosureBuilderServi
 and pass in the dependencies manually. For example, pass `$this->getEntityManager()`
 as the first argument.
 
+[[[ code('56b74263af') ]]]
+
 *Why* would we do this? It seems like more work! Because... if it's useful, we could
 *mock* certain dependencies. Yep! Instead of fetching the `DinosaurFactory` from
 the container, mock it: `$dinoFactory = $this->createMock(DinosaurFactory::class)`.
 
+[[[ code('095a65414b') ]]]
+
 Then, `$dinoFactory->expects($this->any())` - we don't really care - with
 `->method('growFromSpecification')` and `->willReturn(new Dinosaur())`.
+
+[[[ code('9e4b0d655c') ]]]
 
 Pass *this* as the second argument. This isn't *particularly* useful in this situation.
 But sometimes, being able to mock - and *control* - one or two dependencies in an
 integration test is *really* awesome! 
+
+[[[ code('f2b41940ee') ]]]
 
 Ok, try the test!
 
@@ -37,8 +45,12 @@ will be called each time `growFromSpecification()` is called. And since it is pa
 a `$specification` argument, the callback also receives this. It's the best way to
 return different values based on the arguments.
 
+[[[ code('a047991a5a') ]]]
+
 We don't need that in this case. We'll just say `return new Dinosaur()`. And that's
 it! Try the tests again.
+
+[[[ code('0ca16c4b9a') ]]]
 
 ```terminal-silent
 ./vendor/bin/phpunit --filter testItBuildsEnclosureWithTheDefaultSpecification
