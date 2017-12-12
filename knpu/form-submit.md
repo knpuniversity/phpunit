@@ -4,7 +4,7 @@ New feature request! On the homepage, management wants a form where they can cho
 an enclosure, write a dinosaur spec - like "Large herbivore" and submit! Behind
 the scenes, we will create that new `Dinosaur` and put it into the `Enclosure`.
 
-Since we're functional-testing pros now, let's get right to the test! Add
+Since we're now functional-testing pros, let's get right to the test! Add
 `public function testItGrowsADinosaurFromSpecification()`. And as usual, steal some
 code from earlier and paste it on top. You can start to see how some of this could
 be refactored to a `setUp` method.
@@ -55,7 +55,7 @@ means that some element could not be found.
 
 ## Code the Form
 
-With the test done, let's code! And... yea, let's cheat! In the `tutorial/` directory,
+With the test done, let's code! And... yea, let's take a shortcut! In the `tutorial/` directory,
 find the `app/Resources/views/_partials` folder, copy it, and paste it in *our*
 `app/Resources/views` directory.
 
@@ -81,11 +81,11 @@ So if we haven't messed anything up, it should work. Try the test!
 ./vendor/bin/phpunit --filter testItGrowsADinosaurFromSpecification
 ```
 
-Yes! It passes! We just proved this form works before we ever even loaded it in
+Yes! It passes! We just confirmed that this form works before we ever even loaded it in
 a browser. That's pretty cool.
 
 So that's the power of functional tests. And I find them *especially* powerful when
 using Mink and testing that my JavaScript works.
 
-Ok guys, just *one* more topic left, and it's *fun*! Continuous integration! Yea
+Ok guys, just *one* more topic left, and it's *fun*! Continuous integration! You
 know, the fancy term that means: let the robots run your tests automatically!
