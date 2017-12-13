@@ -43,6 +43,8 @@ a special object we'll use to make requests into our app.
 Today we'll choose `WebTestCase` from LiipFunctionalTestBundle. No surprise, this class
 *itself* extends the normal `WebTestCase`. Then, it adds a bunch of optional magic.
 
+[[[ code('e311abbc97') ]]]
+
 ## TDD & The Functional Test
 
 Let's add the first test: `public function testEnclosuresAreShownOnTheHomepage()`.
@@ -52,10 +54,14 @@ the enclosures. So let's do a little TDD testing! Start by creating a client wit
 but is just a wrapper around Symfony's normal `static::createClient()`. The version
 from the bundle just adds some optional authentication magic.
 
+[[[ code('69e8c3793a') ]]]
+
 Next, make a request! `$crawler = $client->request('GET', '/')` to go to the homepage.
 We'll talk more about this `Crawler` object in a few minutes. Then, the simplest test
 is to say `$this->assertStatusCode(200)` and pass `$client`. But even this is
 just a shortcut to make sure 200 matches `$client->getResponse()->getStatusCode()`.
+
+[[[ code('99da6035e7') ]]]
 
 And yea... the first part of the test is done! This *at least* makes sure our page
 isn't broken!
@@ -63,7 +69,14 @@ isn't broken!
 ## Finishing Installing LiipFunctionalTestBundle
 
 But before we try it, we need to finish installing the bundle. Copy the 3 bundle
-lines, open `AppKernel` and paste them there. We also need to add one line to `config_test.yml`.
+lines, open `AppKernel` and paste them there. 
+
+[[[ code('595f248672') ]]]
+
+We also need to add one line to `config_test.yml`.
+
+[[[ code('b67c3b59d3') ]]]
+
 If you're using Symfony Flex, these steps should eventually be done for you. I say
 eventually, because - at this moment - Symfony 4 support is still being added to
 the bundle.
