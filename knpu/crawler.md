@@ -22,10 +22,14 @@ similar to the `jQuery` function in JavaScript: by using its `filter()` method, 
 *really* good at finding elements via CSS. The `$table` variable is *itself* another
 `Crawler` object, which represents the table element.
 
+[[[ code('17570f1bac') ]]]
+
 Now, we can `assertCount()` that 3 is equal to `$table->filter('tbody tr')`. In other
 words, inside the table, we expect there to be 3 rows. Why 3? Well... I just made
 that up! Just like with integration tests, we're going to need to take control of
 the database so that we know *exactly* what's inside. More on that soon!
+
+[[[ code('af608c6f28') ]]]
 
 Try the test now:
 
@@ -41,14 +45,22 @@ Open `DefaultController` and query the database for all the enclosures:
 `$this->getDoctrine()->getRepository(Enclosure::class)->findAll()`. Use this to
 pass a new `enclosures` variable into Twig.
 
+[[[ code('ae022d338a') ]]]
+
 Now open that template! It's in `app/Resources/views/default/index.html.twig`.
 I'll add an h3, the table with `class="table-enclosures"` and a `tbody`.
+
+[[[ code('ae022d338a') ]]]
 
 Inside, start looping! `for enclosure in enclosures`. For the `<tr>`, I'm going
 to give each a unique id. This will help us write a *different* test in a few minutes.
 
+[[[ code('714cb6a13a') ]]]
+
 And now... let's print some stuff! Like the `Enclosure #`, and on the next column,
 "Contains" then `enclosure.dinosaurCount` dinosaurs. Rawr!
+
+[[[ code('f6717e640f') ]]]
 
 PhpStorm is angry... and it's right! We don't have `getId()` or `getDinosaurCount()`
 methods yet.
@@ -56,6 +68,8 @@ methods yet.
 Open up `Enclosure`. Near the top, at `getId()`: it should return a nullable int.
 And at the bottom, create a `public function getDinosaurCount()` that will return
 an `int`. Return `$this->dinosaurs->count()`.
+
+[[[ code('d9f685a01f') ]]]
 
 So... does the page work? It should! Try the tests!
 
