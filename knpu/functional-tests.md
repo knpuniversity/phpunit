@@ -101,6 +101,10 @@ because it's built into Symfony and easy to start using. But, there are others.
 My favorite is called Mink, which is used behind the scenes with Behat. We have
 a tutorial all about Behat, with big sections devoted to Mink. So, check that out.
 
+***SEEALSO
+Learn all about Mink and Behat: https://knpuniversity.com/screencast/behat
+***
+
 So... what's the difference between Symfony's `BrowserKit` and Mink? With `BrowserKit`,
 you're not *actually* making a real HTTP request to your app. Nope, you're making
 a "fake" request directly into your code. Honestly, that doesn't matter much. And
