@@ -28,15 +28,24 @@ composer require --dev doctrine/doctrine-fixtures-bundle
 ```
 
 If you downloaded the course code, in the `tutorial/` directory, you should have
-a `DataFixtures` directory. Copy that into your `AppBundle`. These two classes build
-3 Enclosures and also add some security to them. But, part of this code is using
-a `setEnclosure()` method on `Dinosaur`... and that doesn't exist! Open `Dinosaur`,
-scroll to the bottom, and add it: `public function setEnclosure()` with an `Enclosure`
-argument. Set that on the property.
+a `DataFixtures` directory. Copy that into your `AppBundle`. 
+
+[[[ code('282cbfe430') ]]]
+
+[[[ code('e61f1496b0') ]]]
+
+These two classes build 3 Enclosures and also add some security to them. But,
+part of this code is using a `setEnclosure()` method on `Dinosaur`... and that doesn't exist! 
+Open `Dinosaur`, scroll to the bottom, and add it: `public function setEnclosure()` 
+with an `Enclosure` argument. Set that on the property.
+
+[[[ code('de052ca604') ]]]
 
 Awesome! Once the bundle finishes downloading open ``AppKernel``. And inside the
 `if` statement, add `new DoctrineFixturesBundle()`. If you're using Flex, this step
 will have already been done for you automatically.
+
+[[[ code('5cc58fd931') ]]]
 
 We haven't hooked the fixtures into our tests yet, but we can at least try them!
 Run:
@@ -54,6 +63,8 @@ in business!
 Fortunately, LiipFunctionalTestBundle gives us a really nice way to do this. At
 the top of the test method, add `$this->loadFixtures()` and pass an array of the
 fixture classes you want to load: `LoadBasicParkData::class` and `LoadSecurityData::class`.
+
+[[[ code('301b4e4268') ]]]
 
 If you're going to use the same set of fixtures for all your test methods, then
 moving this to `setUp()` is a great choice.
@@ -103,6 +114,8 @@ load the fixtures, it creates the schema too. Thanks friends!
 
 The second trick lives in `app/config/config_test.yml`. Add a new option:
 `cache_sqlite_db` set to `true`.
+
+[[[ code('a46d945176') ]]]
 
 Visually... this doesn't make any difference. BUT! Behind the scenes, cool things
 are happening. Each time you call `loadFixtures()`, it loads the fixtures and then
