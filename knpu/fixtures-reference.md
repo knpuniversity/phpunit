@@ -10,6 +10,8 @@ Because this sounds pretty important, let's write the test first. Add
 and request code from before and paste it here. But, at the end of `loadFixtures()`,
 add `getReferenceRepository()` and assign this to a new `$fixtures` variable.
 
+[[[ code('5416d13f6d') ]]]
+
 ## What are Fixture References?
 
 Here's the deal: if you look in the fixtures, you can see that the first two Enclosures
@@ -34,7 +36,11 @@ Yep, we can fetch the exact `Enclosure` object by saying
 `$selector` variable set to `sprintf('#enclosure-%s .button-alarm')` and `$enclosure->getId()`.
 We'll expect the alarm button to have this class.
 
+[[[ code('3392c0e01a') ]]]
+
 Finish the test! `$this->greaterThan(0, $crawler->filter($selector)->count())`.
+
+[[[ code('33c392920f') ]]]
 
 I love it! So first, of course, make sure the test fails. Copy the method name
 and run phpunit with the `--filter` option:
@@ -50,11 +56,17 @@ Awesome!
 So let's code! In `index.html.twig`, add one more `<td>`: `if enclosure.isSecurityActive()`
 with `else` and `endif`.
 
+[[[ code('071ceac244') ]]]
+
 If security *is* active, we rock! Add a cute lock icon and say "Security active".
 Yep, just sit back and enjoy some Jolt soda: nobody is getting eaten today!
 
+[[[ code('31121dbb11') ]]]
+
 But if security is *not* active, ah crap! Add the button with the `button-alarm`
 class that the test is looking for. And say "Sound alarm!!!".
+
+[[[ code('673f00bb87') ]]]
 
 That should be it! Run the test:
 
