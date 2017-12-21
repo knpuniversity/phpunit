@@ -1,0 +1,12 @@
+diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/AppBundle/Controller/DefaultControllerTest.php
+index 16798e8..926630d 100644
+--- a/tests/AppBundle/Controller/DefaultControllerTest.php
++++ b/tests/AppBundle/Controller/DefaultControllerTest.php
+@@ -57,5 +57,7 @@ class DefaultControllerTest extends WebTestCase
+         $this->assertStatusCode(200, $client);
+ 
+ 	$form = $crawler->selectButton('Grow dinosaur')->form();
++	$form['enclosure']->select(3);
++        $form['specification']->setValue('large herbivore');
+     }
+ }

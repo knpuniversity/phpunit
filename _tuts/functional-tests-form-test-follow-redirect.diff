@@ -1,0 +1,12 @@
+diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/AppBundle/Controller/DefaultControllerTest.php
+index 56aedb7..0ea1fee 100644
+--- a/tests/AppBundle/Controller/DefaultControllerTest.php
++++ b/tests/AppBundle/Controller/DefaultControllerTest.php
+@@ -50,6 +50,7 @@ class DefaultControllerTest extends WebTestCase
+         ]);
+ 
+         $client = $this->makeClient();
++	$client->followsRedirect();
+ 
+         $crawler = $client->request('GET', '/');
+ 
