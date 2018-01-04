@@ -49,6 +49,8 @@ takes care of the rest.
 Over in our editor, create a `.circleci` directory with a `config.yml` file inside.
 Paste!
 
+[[[ code('10ad6dac7c') ]]]
+
 Woh! This is great! CircleCI is *super* powerful... but it can be a little confusing
 at first. That's probably why they gave us this amazing starter config! It uses
 a recent PHP image. The `-browsers` part means it comes pre-installed with tools
@@ -57,6 +59,8 @@ that help you test in a browser... like if you're using Mink. That's awesome!
 It also installs the composer dependencies, does some smart caching to speed up
 builds, and executes PHPUnit. Actually, that's the only thing I want to change
 right now: use `./vendor/bin/phpunit` instead of the globally installed version.
+
+[[[ code('e1d95c2181') ]]]
 
 Let's see what happens! In the terminal, add the directory, create a commit, and
 push!
@@ -81,8 +85,11 @@ When that happens, it's *super* fast. Then, it checked out our code and... huh!
 It failed because composer is missing?
 
 That's especially weird because this is *their* default config! The fix is mysterious.
-Ready for it? Remove the `.5` from the image name. In your terminal, commit this -
-"Using a different image" and push to origin master:
+Ready for it? Remove the `.5` from the image name. 
+
+[[[ code(''645a0cf66a) ]]]
+
+In your terminal, commit this - "Using a different image" and push to origin master:
 
 ```terminal-silent
 git add -u
@@ -113,6 +120,8 @@ keeps the container alive after and gives you SSH access. That's an *amazing* wa
 to run some commands and find out what's going wrong.
 
 Back in `config.yml`, add a new `run` line: `mkdir var/data`.
+
+[[[ code('b39776b0e3') ]]]
 
 You know the drill: find your terminal, commit that change and push!
 
