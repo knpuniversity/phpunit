@@ -21,11 +21,15 @@ artifacts, you should be able to translate to version 2 without a problem.
 Let's see artifacts in action. Go back to the config file. At the end of the
 `phpunit` command add `--log-junit ~/phpunit/junit.xml`.
 
+[[[ code('6678541037') ]]]
+
 This flag tells PHPUnit to output some logs in a standard "JUnit" format. This is
 basically a detailed diagnostic of what happened during the tests.
 
 Now, add two more steps: `store_test_results` with a `path` option set to `~/phpunit`.
 And another one called `store_artifacts` with that same option.
+
+[[[ code('14a222b93c') ]]]
 
 Let's commit this first, trigger the build, and *then* talk. Commit wildly... then push!
 
