@@ -87,7 +87,7 @@ It failed because composer is missing?
 That's especially weird because this is *their* default config! The fix is mysterious.
 Ready for it? Remove the `.5` from the image name. 
 
-[[[ code(''645a0cf66a) ]]]
+[[[ code('645a0cf66a') ]]]
 
 In your terminal, commit this - "Using a different image" and push to origin master:
 
