@@ -121,6 +121,8 @@ Easy! 3 of the 5 already pass: just OMG and the screaming Emoji left! Copy the `
 if statement and paste two more times. Use `OMG` on the first and the screaming Emoji
 for the second.
 
+[[[ code('8d4eca0cc5') ]]]
+
 I know... there's *so* much duplication! It's *so* ugly. But... I don't care! I
 love it because the tests *do* pass!
 
