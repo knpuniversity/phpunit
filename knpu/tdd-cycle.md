@@ -1,10 +1,5 @@
 # TDD & Unit, Integration & Functional Tests
 
-One way or another, you're going to test your code. You can be a sucker and test
-it *manually*... by pointing and clicking around on your site before every deploy
-Or, you can be *amazing* and automate your tests. I'm happy you've made the right
-decision.
-
 ## Unit, Functional & Integration Tests
 
 Before we get back to coding... we need to talk about just a *little* bit of theory!
