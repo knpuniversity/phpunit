@@ -15,7 +15,7 @@ After creating the client, add `$client->followRedirects()`. Normally, when our
 app redirects, Symfony's Client does *not* follow the redirect. Sometimes that's
 useful... but this line makes it behave like a normal browser.
 
-[[[ code('555bad54bf') ]]]
+[[[ code('f03eba2ae6') ]]]
 
 ## Filling in the Form Fields
 
