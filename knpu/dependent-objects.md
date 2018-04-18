@@ -60,7 +60,7 @@ above the class.
 Now, above the `$dinosaurs` property, use `@ORM\OneToMany` with `targetEntity="Dinosaur"`,
 `mappedBy="enclosure"` - we'll add that property in a moment - and `cascade={"persist"}`.
 
-[[[ code('a33af48e2a') ]]]
+[[[ code('90d9fe48af') ]]]
 
 In `Dinosaur`, add the other side: `private $enclosure` with `@ORM\ManyToOne`.
 Point *back* to the `Enclosure` class with `inversedBy="dinosaurs"`.
