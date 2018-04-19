@@ -36,7 +36,7 @@ Oh wait! No auto-completion! Bah! Extend `TestCase`!
 
 *Now* add `$this->assertGreaterThanOrEqual()` with `$minExpectedSize` and `$actualSize`.
 You need to read this... backwards: this asserts that `$actualSize` is greater than
-or equal to `$mixExpectedSize`.
+or equal to `$maxExpectedSize`.
 
 Repeat that with `$this->assertLessThanOrEqual()` and `$maxExpectedSize, $actualSize`.
 
