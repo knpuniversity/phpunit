@@ -26,7 +26,7 @@ Instead of thinking of `$em` as a mock, pretend it's the *real* object. Call
 `$em->persist()`. To make sure this is passed some `Enclosure` object, pass
 `Argument::type(Enclosure::class)`.
 
-[[[ code('87209a46ba') ]]]
+[[[ code('0b37dfefc9') ]]]
 
 We'll talk more about how these arguments work in a minute. Then, because we want
 this to be called exactly once, add `shouldBeCalledTimes(1)`.
