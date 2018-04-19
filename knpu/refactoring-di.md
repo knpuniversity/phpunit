@@ -53,18 +53,18 @@ Then, for a large dinosaur, it should be between `Dinosaur::LARGE` and `DINOSAUR
 For a small dinosaur, the range is 0 to `Dinosaur::LARGE - 1`. Copy the large dino
 range and use that for the last one too,
 
-[[[ code('13db1c7d84') ]]]
+[[[ code('18b6a76864') ]]]
 
 We can *also* move the huge dinosaur tests here. Copy them, move back, and paste!
 This time, the range should be `Dinosaur::HUGE` to 100. Copy that and use it for
 all of them.
 
-[[[ code('fe93dd0cb9') ]]]
+[[[ code('3b81da6187') ]]]
 
 And *finally*, hook this all up with `@dataProvider getSpecLengthTests()`. I'll
 even fix my typo!
 
-[[[ code('0600ce0c46') ]]]
+[[[ code('a612de89e2') ]]]
 
 Perfect! Because we deleted some code, the `DinosaurFactory` is temporarily broken.
 So let's execute *just* this test:
