@@ -1,5 +1,5 @@
 diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
-index f93c3a1..876da62 100644
+index f93c3a1..890f4ce 100644
 --- a/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
 +++ b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
 @@ -15,5 +15,8 @@ class EnclosureBuilderServiceProphecyTest extends TestCase
@@ -7,7 +7,7 @@ index f93c3a1..876da62 100644
      {
          $em = $this->prophesize(EntityManagerInterface::class);
 +
-+	$em->persist(Argument::type(Enclosure::class)
++	$em->persist(Argument::type(Enclosure::class))
 +	    ->shouldBeCalledTimes(1);
      }
  }

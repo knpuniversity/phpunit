@@ -1,5 +1,5 @@
 diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
-index 8dad2dc..953a9b1 100644
+index 1df492d..26eda92 100644
 --- a/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
 +++ b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
 @@ -20,5 +20,7 @@ class EnclosureBuilderServiceProphecyTest extends TestCase
