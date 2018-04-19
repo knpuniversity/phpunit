@@ -15,7 +15,7 @@ normal `TestCase` and we can give it the same method: `testItBuildsAndPersistsEn
 ## Mocking Prophecy Style
 
 Let's translate the PHPUnit mock code into Prophecy line-by-line. To create
-the `EntityManager` mock, use `$this->em->prophesize(EntityManagerInterface::class)`.
+the `EntityManager` mock, use `$this->prophesize(EntityManagerInterface::class)`.
 That's pretty similar.
 
 [[[ code('c4446c7f50') ]]]
