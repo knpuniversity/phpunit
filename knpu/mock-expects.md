@@ -42,7 +42,7 @@ not match the actual value: `foo`.
 Awesome! Move back to `DinosaurFactory`, and re-fix the length line. Double-check
 that this fixes things. It does!
 
-[[[ code('e0ca2be24d') ]]]
+[[[ code('fd49228939') ]]]
 
 This is *really* cool stuff. But you should *not* use it everywhere. Remember:
 at this point, we're really testing how the internal code of the method is written.
