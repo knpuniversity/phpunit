@@ -31,7 +31,7 @@ Instead of thinking of `$em` as a mock, pretend it's the *real* object. Call
 We'll talk more about how these arguments work in a minute. Then, because we want
 this to be called exactly once, add `shouldBeCalledTimes(1)`.
 
-[[[ code('7d58313b09 ') ]]]
+[[[ code('db040cdf5b ') ]]]
 
 Oh, and notice that I am *not* getting auto-completion. That's because Prophecy is
 a super magic library, so PhpStorm doesn't really know what's going on. But actually,
@@ -71,7 +71,7 @@ these three args.
 Our situation is a bit trickier: we don't know the *exact* argument, we only know
 that it should be a string. To check that, use `Argument::type('string')`.
 
-[[[ code('4d5b996237') ]]]
+[[[ code('3a9fdff1a5') ]]]
 
 There are a few other useful methods on this `Argument` class. The most important
 is `Argument::any()`. You'll need this if you want to assert that *some* of your
