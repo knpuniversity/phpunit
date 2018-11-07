@@ -1,5 +1,5 @@
 diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
-index 26eda92..95a2b14 100644
+index 26eda92..49595ef 100644
 --- a/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
 +++ b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
 @@ -22,5 +22,10 @@ class EnclosureBuilderServiceProphecyTest extends TestCase
@@ -8,7 +8,7 @@ index 26eda92..95a2b14 100644
  	$dinoFactory = $this->prophesize(DinosaurFactory::class);
 +
 +	$dinoFactory 
-+	    ->growFromSpecification(Argument::type('string')
++	    ->growFromSpecification(Argument::type('string'))
 +	    ->shouldBeCalledTimes(2)
 +	    ->willReturn(new Dinosaur());
      }

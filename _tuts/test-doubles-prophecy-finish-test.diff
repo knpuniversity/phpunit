@@ -1,9 +1,9 @@
 diff --git a/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
-index 95a2b14..ae5d707 100644
+index 49595ef..67c5a52 100644
 --- a/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
 +++ b/tests/AppBundle/Service/EnclosureBuilderServiceProphecyTest.php
 @@ -27,5 +27,14 @@ class EnclosureBuilderServiceProphecyTest extends TestCase
- 	    ->growFromSpecification(Argument::type('string')
+ 	    ->growFromSpecification(Argument::type('string'))
  	    ->shouldBeCalledTimes(2)
  	    ->willReturn(new Dinosaur());
 +
