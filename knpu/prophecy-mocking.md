@@ -86,7 +86,7 @@ PHPUnit: `->willReturn(new Dinosaur())`. The other 2 useful functions are `willT
 to make the method throw an exception and `will()`, which accepts a callback so you
 can completely control the return value.
 
-[[[ code('0cdbde1278') ]]]
+[[[ code('879051c19f') ]]]
 
 And... yea! That's it! I'll copy the rest of the test and paste it. Re-type the `e`
 on `EnclosureBuilderService` to add the `use` statement on top.
