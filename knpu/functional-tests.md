@@ -24,7 +24,9 @@ Copy the composer require line, move over to your terminal, and paste:
 composer require --dev liip/functional-test-bundle
 ```
 ***TIP
-If you are using PHPUnit 7+ or Symfony 4, you need to require version 2.0 of this bundle. At this time, 2.0 is still alpha, and needs to be installed specifically with: `composer require --dev liip/functional-test-bundle:~2.0@alpha` If you're using Symfony 3, make sure you've installed PHPUnit 6.3 and install version 1 of this bundle so that everything can play together nicely: `composer require --dev liip/functional-test-bundle:^1.9`
+If you are using PHPUnit 7+ or Symfony 4, you need to require version 2.0 of this bundle. At this time, 2.0 is still alpha, and needs to be installed specifically with: `composer require --dev liip/functional-test-bundle:~2.0@alpha` 
+
+If you're using Symfony 3, make sure you've installed PHPUnit 6.3 and install version 1 of this bundle so that everything can play together nicely: `composer require --dev liip/functional-test-bundle:^1.9`
 ***
 
 ## Functional Test Setup
