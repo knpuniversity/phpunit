@@ -56,8 +56,8 @@ class EnclosureBuilderService
     private function addDinosaurs(int $numberOfDinosaurs, Enclosure $enclosure)
     {
         $lengths = ['small', 'large', 'huge'];
-        $length = $lengths[array_rand($lengths)];
         $diets = ['herbivore', 'carnivorous'];
+        $length = $lengths[array_rand($lengths)];
         $diet = $diets[array_rand($diets)];
         $specification = "{$length} {$diet} dinosaur";
         $dinosaur = $this->dinosaurFactory->growFromSpecification($specification);
