@@ -44,8 +44,9 @@ class EnclosureBuilderService
 
     private function addSecuritySystems(int $numberOfSecuritySystems, Enclosure $enclosure)
     {
+        $securityNames = ['Fence', 'Electric fence', 'Guard tower'];
         for ($i = 0; $i < $numberOfSecuritySystems; $i++) {
-            $securityName = array_rand(['Fence', 'Electric fence', 'Guard tower']);
+            $securityName = $securityNames[array_rand($securityNames)];
             $security = new Security($securityName, true, $enclosure);
 
             $enclosure->addSecurity($security);
@@ -54,8 +55,10 @@ class EnclosureBuilderService
 
     private function addDinosaurs(int $numberOfDinosaurs, Enclosure $enclosure)
     {
-        $length = array_rand(['small', 'large', 'huge']);
-        $diet = array_rand(['herbivore', 'carnivorous']);
+        $lengths = ['small', 'large', 'huge'];
+        $length = $lengths[array_rand($lengths)];
+        $diets = ['herbivore', 'carnivorous'];
+        $diet = $diets[array_rand($diets)];
         $specification = "{$length} {$diet} dinosaur";
         $dinosaur = $this->dinosaurFactory->growFromSpecification($specification);
 
