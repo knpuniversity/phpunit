@@ -53,10 +53,11 @@ index c67408a..fa25a2c 100644
      "packages": [
          {
              "name": "composer/ca-bundle",
-@@ -2324,6 +2324,63 @@
+@@ -2323,6 +2323,63 @@
+             ],
              "time": "2017-11-27T18:48:06+00:00"
          },
-         {
++        {
 +            "name": "doctrine/doctrine-fixtures-bundle",
 +            "version": "v2.4.1",
 +            "source": {
@@ -113,10 +114,9 @@ index c67408a..fa25a2c 100644
 +            ],
 +            "time": "2017-10-30T19:26:42+00:00"
 +        },
-+        {
+         {
              "name": "liip/functional-test-bundle",
              "version": "1.8.0",
-             "source": {
 diff --git a/src/AppBundle/DataFixtures/ORM/LoadBasicParkData.php b/src/AppBundle/DataFixtures/ORM/LoadBasicParkData.php
 new file mode 100644
 index 0000000..eff6cfb

@@ -2,20 +2,20 @@ diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.p
 index 4ec961d..b1b2f41 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
-@@ -14,6 +14,13 @@ class Dinosaur
+@@ -13,6 +13,13 @@ class Dinosaur
+     const LARGE = 10;
      const HUGE = 20;
  
-     /**
++    /**
 +     * @ORM\Id
 +     * @ORM\GeneratedValue(strategy="AUTO")
 +     * @ORM\Column(type="integer")
 +     */
 +    private $id;
 +
-+    /**
+     /**
       * @ORM\Column(type="integer")
       */
-     private $length = 0;
 diff --git a/src/AppBundle/Entity/Enclosure.php b/src/AppBundle/Entity/Enclosure.php
 index 8fc7fba..018f522 100644
 --- a/src/AppBundle/Entity/Enclosure.php

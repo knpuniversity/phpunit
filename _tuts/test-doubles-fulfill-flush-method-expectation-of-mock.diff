@@ -1,5 +1,5 @@
 diff --git a/src/AppBundle/Service/EnclosureBuilderService.php b/src/AppBundle/Service/EnclosureBuilderService.php
-index 2f7fc10..17ac375 100644
+index d8e7ed6..b086ca8 100644
 --- a/src/AppBundle/Service/EnclosureBuilderService.php
 +++ b/src/AppBundle/Service/EnclosureBuilderService.php
 @@ -41,6 +41,8 @@ class EnclosureBuilderService

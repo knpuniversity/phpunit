@@ -23,10 +23,11 @@ index 8f55e33..9312b89 100644
      "packages": [
          {
              "name": "composer/ca-bundle",
-@@ -2262,6 +2262,1314 @@
+@@ -2261,6 +2261,1314 @@
+         }
      ],
      "packages-dev": [
-         {
++        {
 +            "name": "myclabs/deep-copy",
 +            "version": "1.7.0",
 +            "source": {
@@ -1334,10 +1335,9 @@ index 8f55e33..9312b89 100644
 +            "homepage": "https://github.com/sebastianbergmann/version",
 +            "time": "2016-10-03T07:35:21+00:00"
 +        },
-+        {
+         {
              "name": "sensio/generator-bundle",
              "version": "v3.1.6",
-             "source": {
 @@ -2376,6 +3684,96 @@
              "description": "Symfony PHPUnit Bridge",
              "homepage": "https://symfony.com",

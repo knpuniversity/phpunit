@@ -1,18 +1,19 @@
 diff --git a/src/AppBundle/Service/EnclosureBuilderService.php b/src/AppBundle/Service/EnclosureBuilderService.php
-index d56b557..2b0b485 100644
+index be4b13d..17b0e23 100644
 --- a/src/AppBundle/Service/EnclosureBuilderService.php
 +++ b/src/AppBundle/Service/EnclosureBuilderService.php
-@@ -54,11 +54,13 @@ class EnclosureBuilderService
- 
+@@ -56,12 +56,14 @@ class EnclosureBuilderService
      private function addDinosaurs(int $numberOfDinosaurs, Enclosure $enclosure)
      {
--        $length = array_rand(['small', 'large', 'huge']);
--        $diet = array_rand(['herbivore', 'carnivorous']);
+         $lengths = ['small', 'large', 'huge'];
+-        $length = $lengths[array_rand($lengths)];
+         $diets = ['herbivore', 'carnivorous'];
+-        $diet = $diets[array_rand($diets)];
 -        $specification = "{$length} {$diet} dinosaur";
 -        $dinosaur = $this->dinosaurFactory->growFromSpecification($specification);
 +        for ($i = 0; $i < $numberOfDinosaurs; $i++) {
-+            $length = array_rand(['small', 'large', 'huge']);
-+            $diet = array_rand(['herbivore', 'carnivorous']);
++            $length = $lengths[array_rand($lengths)];
++            $diet = $diets[array_rand($diets)];
 +            $specification = "{$length} {$diet} dinosaur";
 +            $dinosaur = $this->dinosaurFactory->growFromSpecification($specification);
  
