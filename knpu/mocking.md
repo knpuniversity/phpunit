@@ -62,7 +62,7 @@ Anyways, if you want to learn what these terms *really* mean, you can check out 
 series of articles written by Andrew, our course co-author at this link:
 http://www.ifdattic.com/dummy-test-double-using-prophecy/.
 
-Anyways, I'll use the word *mock* to keep things simple.
+But for this tutorial, I'll use the word *mock* to keep things simple.
 
 ## Removing the Length Tests
 
