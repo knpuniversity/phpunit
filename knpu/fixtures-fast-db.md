@@ -24,7 +24,7 @@ to use the first philosophy.
 First, install the DoctrineFixturesBundle:
 
 ```terminal
-composer require --dev doctrine/doctrine-fixtures-bundle
+composer require --dev doctrine/doctrine-fixtures-bundle:2.4.1
 ```
 
 If you downloaded the course code, in the `tutorial/` directory, you should have
