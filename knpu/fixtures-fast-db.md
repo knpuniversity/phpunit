@@ -30,9 +30,9 @@ composer require --dev doctrine/doctrine-fixtures-bundle:2.4.1
 If you downloaded the course code, in the `tutorial/` directory, you should have
 a `DataFixtures` directory. Copy that into your `AppBundle`. 
 
-[[[ code('282cbfe430') ]]]
+[[[ code('b4b216755f') ]]]
 
-[[[ code('e61f1496b0') ]]]
+[[[ code('0c7d13a937') ]]]
 
 These two classes build 3 Enclosures and also add some security to them. But,
 part of this code is using a `setEnclosure()` method on `Dinosaur`... and that doesn't exist! 
