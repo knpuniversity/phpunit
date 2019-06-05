@@ -4,11 +4,11 @@ namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Enclosure;
 use AppBundle\Entity\Security;
-use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class LoadSecurityData extends Fixture implements OrderedFixtureInterface
+class LoadSecurityData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {

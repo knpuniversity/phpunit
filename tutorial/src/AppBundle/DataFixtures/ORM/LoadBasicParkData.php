@@ -4,11 +4,11 @@ namespace AppBundle\DataFixtures\ORM;
 
 use AppBundle\Entity\Dinosaur;
 use AppBundle\Entity\Enclosure;
-use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class LoadBasicParkData extends Fixture implements OrderedFixtureInterface
+class LoadBasicParkData extends AbstractFixture implements OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
