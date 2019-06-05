@@ -41,7 +41,7 @@ with an `Enclosure` argument. Set that on the property.
 
 [[[ code('de052ca604') ]]]
 
-Awesome! Once the bundle finishes downloading open ``AppKernel``. And inside the
+Awesome! Once the bundle finishes downloading open `AppKernel`. And inside the
 `if` statement, add `new DoctrineFixturesBundle()`. If you're using Flex, this step
 will have already been done for you automatically.
 
