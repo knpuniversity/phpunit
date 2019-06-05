@@ -119,7 +119,7 @@ index c67408a..fa25a2c 100644
              "version": "1.8.0",
 diff --git a/src/AppBundle/DataFixtures/ORM/LoadBasicParkData.php b/src/AppBundle/DataFixtures/ORM/LoadBasicParkData.php
 new file mode 100644
-index 0000000..eff6cfb
+index 0000000..c7efe9f
 --- /dev/null
 +++ b/src/AppBundle/DataFixtures/ORM/LoadBasicParkData.php
 @@ -0,0 +1,53 @@
@@ -129,11 +129,11 @@ index 0000000..eff6cfb
 +
 +use AppBundle\Entity\Dinosaur;
 +use AppBundle\Entity\Enclosure;
-+use Doctrine\Bundle\FixturesBundle\Fixture;
++use Doctrine\Common\DataFixtures\AbstractFixture;
 +use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 +use Doctrine\Common\Persistence\ObjectManager;
 +
-+class LoadBasicParkData extends Fixture implements OrderedFixtureInterface
++class LoadBasicParkData extends AbstractFixture implements OrderedFixtureInterface
 +{
 +    public function load(ObjectManager $manager)
 +    {
@@ -178,7 +178,7 @@ index 0000000..eff6cfb
 +}
 diff --git a/src/AppBundle/DataFixtures/ORM/LoadSecurityData.php b/src/AppBundle/DataFixtures/ORM/LoadSecurityData.php
 new file mode 100644
-index 0000000..47168a3
+index 0000000..f02342e
 --- /dev/null
 +++ b/src/AppBundle/DataFixtures/ORM/LoadSecurityData.php
 @@ -0,0 +1,40 @@
@@ -188,11 +188,11 @@ index 0000000..47168a3
 +
 +use AppBundle\Entity\Enclosure;
 +use AppBundle\Entity\Security;
-+use Doctrine\Bundle\FixturesBundle\Fixture;
++use Doctrine\Common\DataFixtures\AbstractFixture;
 +use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 +use Doctrine\Common\Persistence\ObjectManager;
 +
-+class LoadSecurityData extends Fixture implements OrderedFixtureInterface
++class LoadSecurityData extends AbstractFixture implements OrderedFixtureInterface
 +{
 +    public function load(ObjectManager $manager)
 +    {
