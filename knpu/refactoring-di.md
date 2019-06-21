@@ -11,7 +11,7 @@ class called `DinosaurLengthDeterminator`. That's a fun name.
 Copy `getLengthFromSpecification()`, remove it, and paste it here. Make the method
 `public` and re-type `Dinosaur` to get the `use` statement.
 
-[[[ code('b75cdac2bd') ]]]
+[[[ code('424449ab9e') ]]]
 
 We *already* have a bunch of tests in `DinosaurFactoryTest` that make sure each
 specification string gives us the right length. In `tests`, create that same
@@ -53,13 +53,13 @@ Then, for a large dinosaur, it should be between `Dinosaur::LARGE` and `DINOSAUR
 For a small dinosaur, the range is 0 to `Dinosaur::LARGE - 1`. Copy the large dino
 range and use that for the last one too,
 
-[[[ code('18b6a76864') ]]]
+[[[ code('33d7b52132') ]]]
 
 We can *also* move the huge dinosaur tests here. Copy them, move back, and paste!
 This time, the range should be `Dinosaur::HUGE` to 100. Copy that and use it for
 all of them.
 
-[[[ code('3b81da6187') ]]]
+[[[ code('48cddcde66') ]]]
 
 And *finally*, hook this all up with `@dataProvider getSpecLengthTests()`. I'll
 even fix my typo!
