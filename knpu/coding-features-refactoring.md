@@ -69,7 +69,7 @@ Oh, but we need to define what *huge* means. Back in `Dinosaur`, add `const HUGE
 And management decided to make the large dinosaurs a bit smaller - set `LARGE`
 to 10.
 
-[[[ code('80f3141a2e') ]]]
+[[[ code('ceccf19d73') ]]]
 
 Use the constant in the test and compare it with `$dinosaur->getLength()`.
 
