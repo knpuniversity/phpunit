@@ -65,7 +65,7 @@ Then, check to make sure it's *huge* with `$this->assertGreaterThanOrEqual()`.
 
 [[[ code('9d41e96c00') ]]]
 
-Oh, but we need to define what *huge* means. Back in `Dinosaur`, add `const HUGE = 30`.
+Oh, but we need to define what *huge* means. Back in `Dinosaur`, add `const HUGE = 20`.
 And management decided to make the large dinosaurs a bit smaller - set `LARGE`
 to 10.
 
