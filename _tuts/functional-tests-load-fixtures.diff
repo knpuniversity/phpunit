@@ -223,7 +223,7 @@ index 0000000..f02342e
 +    }
 +}
 diff --git a/src/AppBundle/Entity/Dinosaur.php b/src/AppBundle/Entity/Dinosaur.php
-index b1b2f41..b9ac69e 100644
+index bbe36aa..ea11724 100644
 --- a/src/AppBundle/Entity/Dinosaur.php
 +++ b/src/AppBundle/Entity/Dinosaur.php
 @@ -78,4 +78,9 @@ class Dinosaur
