@@ -66,6 +66,11 @@ fixture classes you want to load: `LoadBasicParkData::class` and `LoadSecurityDa
 
 [[[ code('301b4e4268') ]]]
 
+***TIP
+Since LiipFunctionalTestBundle v3.0 the `loadFixtures()` method is no longer supported.
+You should use [LiipTestFixturesBundle](https://github.com/liip/LiipTestFixturesBundle) instead
+***
+
 If you're going to use the same set of fixtures for all your test methods, then
 moving this to `setUp()` is a great choice.
 
