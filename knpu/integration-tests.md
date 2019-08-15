@@ -56,10 +56,11 @@ This is not *that* crazy: `KernelTestCase` itself extends `TestCase`: so we have
 all the normal methods. But it *also* has a few new methods to help us boot Symfony's
 container. And *that* will give us access to our *real* services.
 
-Add the test method: `public function testItBuildsEnclosureWithTheDefaultSpecification()`.
-Hmm, that's a big name!
+Add the test method: `public function testItBuildsEnclosureWithDefaultSpecifications()`:
 
 [[[ code('ac78eceaf6') ]]]
+
+Hmm, that's a big name!
 
 ## Booting & Fetching the Container
 
@@ -83,7 +84,7 @@ But before we do *anything* else... there's a surprise! Find your terminal and r
 phpunit with `--filter`. Copy the method's name and paste it:
 
 ```terminal-silent
-./vendor/bin/phpunit --filter testItBuildsEnclosureWithTheDefaultSpecification
+./vendor/bin/phpunit --filter testItBuildsEnclosureWithDefaultSpecifications
 ```
 
 ## Fetching Private Services
@@ -125,7 +126,7 @@ Try it! Back in the test, inside `get()`, add `test.` and *then* the class name.
 Move over and try the test again!
 
 ```terminal-silent
-./vendor/bin/phpunit --filter testItBuildsEnclosureWithTheDefaultSpecification
+./vendor/bin/phpunit --filter testItBuildsEnclosureWithDefaultSpecifications
 ```
 
 Ha! It works! It shows "Risky" because we don't have any assertions. But it did
@@ -164,13 +165,13 @@ thanks to the default arguments in `buildEnclosure()` - there should be 3.
 Ok team! We're done! Try the test!
 
 ```terminal-silent
-./vendor/bin/phpunit --filter testItBuildsEnclosureWithTheDefaultSpecification
+./vendor/bin/phpunit --filter testItBuildsEnclosureWithDefaultSpecifications
 ```
 
 It works! We're geniuses! Nothing could ever go wrong! Run the test again:
 
 ```terminal-silent
-./vendor/bin/phpunit --filter testItBuildsEnclosureWithTheDefaultSpecification
+./vendor/bin/phpunit --filter testItBuildsEnclosureWithDefaultSpecifications
 ```
 
 It fails! Suddenly there are *2* security systems in the database! And each time
