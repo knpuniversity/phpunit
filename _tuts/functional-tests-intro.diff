@@ -42,11 +42,11 @@ index e667fcc..91e41ad 100644
          "sensio/generator-bundle": "^3.0",
          "symfony/phpunit-bridge": "^3.0"
 diff --git a/composer.lock b/composer.lock
-index fe3731d..c67408a 100644
+index 8690426..462718c 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,20 +4,20 @@
-         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
 -    "content-hash": "1ccf91976f47a4108370ca1ed0f6db64",
@@ -189,37 +189,7 @@ index fe3731d..c67408a 100644
          },
          {
              "name": "doctrine/doctrine-cache-bundle",
-@@ -766,16 +767,16 @@
-         },
-         {
-             "name": "doctrine/orm",
--            "version": "v2.5.12",
-+            "version": "v2.5.13",
-             "source": {
-                 "type": "git",
-                 "url": "https://github.com/doctrine/doctrine2.git",
--                "reference": "984535cadc609e9eef8c89414aa3568ee97aa79f"
-+                "reference": "93103f44a3e36e7b48165b6e6b736833f33b18ef"
-             },
-             "dist": {
-                 "type": "zip",
--                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/984535cadc609e9eef8c89414aa3568ee97aa79f",
--                "reference": "984535cadc609e9eef8c89414aa3568ee97aa79f",
-+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/93103f44a3e36e7b48165b6e6b736833f33b18ef",
-+                "reference": "93103f44a3e36e7b48165b6e6b736833f33b18ef",
-                 "shasum": ""
-             },
-             "require": {
-@@ -838,7 +839,7 @@
-                 "database",
-                 "orm"
-             ],
--            "time": "2017-10-23T18:21:04+00:00"
-+            "time": "2017-11-27T23:25:55+00:00"
-         },
-         {
-             "name": "fig/link-util",
-@@ -1583,16 +1584,16 @@
+@@ -1589,16 +1590,16 @@
          },
          {
              "name": "symfony/monolog-bundle",
@@ -240,7 +210,7 @@ index fe3731d..c67408a 100644
                  "shasum": ""
              },
              "require": {
-@@ -1604,8 +1605,8 @@
+@@ -1610,8 +1611,8 @@
                  "symfony/monolog-bridge": "~2.7|~3.0|~4.0"
              },
              "require-dev": {
@@ -250,7 +220,7 @@ index fe3731d..c67408a 100644
                  "symfony/yaml": "~2.3|~3.0|~4.0"
              },
              "type": "symfony-bundle",
-@@ -1617,7 +1618,10 @@
+@@ -1623,7 +1624,10 @@
              "autoload": {
                  "psr-4": {
                      "Symfony\\Bundle\\MonologBundle\\": ""
@@ -262,7 +232,7 @@ index fe3731d..c67408a 100644
              },
              "notification-url": "https://packagist.org/downloads/",
              "license": [
-@@ -1639,7 +1643,7 @@
+@@ -1645,7 +1649,7 @@
                  "log",
                  "logging"
              ],
@@ -271,7 +241,7 @@ index fe3731d..c67408a 100644
          },
          {
              "name": "symfony/polyfill-apcu",
-@@ -2042,16 +2046,16 @@
+@@ -2048,16 +2052,16 @@
          },
          {
              "name": "symfony/symfony",
@@ -292,7 +262,7 @@ index fe3731d..c67408a 100644
                  "shasum": ""
              },
              "require": {
-@@ -2074,7 +2078,7 @@
+@@ -2080,7 +2084,7 @@
              },
              "conflict": {
                  "phpdocumentor/reflection-docblock": "<3.0||>=3.2.0,<3.2.2",
@@ -301,7 +271,7 @@ index fe3731d..c67408a 100644
                  "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
              },
              "provide": {
-@@ -2136,6 +2140,7 @@
+@@ -2142,6 +2146,7 @@
              },
              "require-dev": {
                  "cache/integration-tests": "dev-master",
@@ -309,7 +279,7 @@ index fe3731d..c67408a 100644
                  "doctrine/cache": "~1.6",
                  "doctrine/data-fixtures": "1.0.*",
                  "doctrine/dbal": "~2.4",
-@@ -2191,7 +2196,7 @@
+@@ -2197,7 +2202,7 @@
              "keywords": [
                  "framework"
              ],
@@ -318,7 +288,7 @@ index fe3731d..c67408a 100644
          },
          {
              "name": "twig/twig",
-@@ -2318,6 +2323,84 @@
+@@ -2324,6 +2329,84 @@
              ],
              "time": "2017-11-27T18:48:06+00:00"
          },
@@ -403,7 +373,7 @@ index fe3731d..c67408a 100644
          {
              "name": "myclabs/deep-copy",
              "version": "1.7.0",
-@@ -2521,29 +2604,35 @@
+@@ -2527,29 +2610,35 @@
          },
          {
              "name": "phpdocumentor/reflection-docblock",
@@ -446,7 +416,7 @@ index fe3731d..c67408a 100644
              "autoload": {
                  "psr-4": {
                      "phpDocumentor\\Reflection\\": [
-@@ -2562,7 +2651,7 @@
+@@ -2568,7 +2657,7 @@
                  }
              ],
              "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
@@ -455,7 +425,7 @@ index fe3731d..c67408a 100644
          },
          {
              "name": "phpdocumentor/type-resolver",
-@@ -2613,16 +2702,16 @@
+@@ -2619,16 +2708,16 @@
          },
          {
              "name": "phpspec/prophecy",
@@ -476,7 +446,7 @@ index fe3731d..c67408a 100644
                  "shasum": ""
              },
              "require": {
-@@ -2634,7 +2723,7 @@
+@@ -2640,7 +2729,7 @@
              },
              "require-dev": {
                  "phpspec/phpspec": "^2.5|^3.2",
@@ -485,7 +455,7 @@ index fe3731d..c67408a 100644
              },
              "type": "library",
              "extra": {
-@@ -2672,20 +2761,20 @@
+@@ -2678,20 +2767,20 @@
                  "spy",
                  "stub"
              ],
@@ -511,7 +481,7 @@ index fe3731d..c67408a 100644
                  "shasum": ""
              },
              "require": {
-@@ -2694,7 +2783,7 @@
+@@ -2700,7 +2789,7 @@
                  "php": "^7.0",
                  "phpunit/php-file-iterator": "^1.4.2",
                  "phpunit/php-text-template": "^1.2.1",
@@ -520,7 +490,7 @@ index fe3731d..c67408a 100644
                  "sebastian/code-unit-reverse-lookup": "^1.0.1",
                  "sebastian/environment": "^3.0",
                  "sebastian/version": "^2.0.1",
-@@ -2736,20 +2825,20 @@
+@@ -2742,20 +2831,20 @@
                  "testing",
                  "xunit"
              ],
@@ -546,7 +516,7 @@ index fe3731d..c67408a 100644
                  "shasum": ""
              },
              "require": {
-@@ -2783,7 +2872,7 @@
+@@ -2789,7 +2878,7 @@
                  "filesystem",
                  "iterator"
              ],
@@ -555,7 +525,7 @@ index fe3731d..c67408a 100644
          },
          {
              "name": "phpunit/php-text-template",
-@@ -2877,16 +2966,16 @@
+@@ -2883,16 +2972,16 @@
          },
          {
              "name": "phpunit/php-token-stream",
@@ -576,7 +546,7 @@ index fe3731d..c67408a 100644
                  "shasum": ""
              },
              "require": {
-@@ -2922,20 +3011,20 @@
+@@ -2928,20 +3017,20 @@
              "keywords": [
                  "tokenizer"
              ],
@@ -602,7 +572,7 @@ index fe3731d..c67408a 100644
                  "shasum": ""
              },
              "require": {
-@@ -2949,12 +3038,12 @@
+@@ -2955,12 +3044,12 @@
                  "phar-io/version": "^1.0",
                  "php": "^7.0",
                  "phpspec/prophecy": "^1.7",
@@ -619,7 +589,7 @@ index fe3731d..c67408a 100644
                  "sebastian/diff": "^2.0",
                  "sebastian/environment": "^3.1",
                  "sebastian/exporter": "^3.1",
-@@ -2980,7 +3069,7 @@
+@@ -2986,7 +3075,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -628,7 +598,7 @@ index fe3731d..c67408a 100644
                  }
              },
              "autoload": {
-@@ -3006,20 +3095,20 @@
+@@ -3012,20 +3101,20 @@
                  "testing",
                  "xunit"
              ],
@@ -654,7 +624,7 @@ index fe3731d..c67408a 100644
                  "shasum": ""
              },
              "require": {
-@@ -3032,7 +3121,7 @@
+@@ -3038,7 +3127,7 @@
                  "phpunit/phpunit": "<6.0"
              },
              "require-dev": {
@@ -663,7 +633,7 @@ index fe3731d..c67408a 100644
              },
              "suggest": {
                  "ext-soap": "*"
-@@ -3040,7 +3129,7 @@
+@@ -3046,7 +3135,7 @@
              "type": "library",
              "extra": {
                  "branch-alias": {
@@ -672,7 +642,7 @@ index fe3731d..c67408a 100644
                  }
              },
              "autoload": {
-@@ -3055,7 +3144,7 @@
+@@ -3061,7 +3150,7 @@
              "authors": [
                  {
                      "name": "Sebastian Bergmann",
@@ -681,7 +651,7 @@ index fe3731d..c67408a 100644
                      "role": "lead"
                  }
              ],
-@@ -3065,7 +3154,7 @@
+@@ -3071,7 +3160,7 @@
                  "mock",
                  "xunit"
              ],
@@ -690,7 +660,7 @@ index fe3731d..c67408a 100644
          },
          {
              "name": "sebastian/code-unit-reverse-lookup",
-@@ -3114,30 +3203,30 @@
+@@ -3120,30 +3209,30 @@
          },
          {
              "name": "sebastian/comparator",
@@ -728,7 +698,7 @@ index fe3731d..c67408a 100644
                  }
              },
              "autoload": {
-@@ -3168,13 +3257,13 @@
+@@ -3174,13 +3263,13 @@
                  }
              ],
              "description": "Provides the functionality to compare PHP values for equality",
@@ -744,45 +714,6 @@ index fe3731d..c67408a 100644
          },
          {
              "name": "sebastian/diff",
-@@ -3682,16 +3771,16 @@
-         },
-         {
-             "name": "symfony/phpunit-bridge",
--            "version": "v3.3.10",
-+            "version": "v3.4.0",
-             "source": {
-                 "type": "git",
-                 "url": "https://github.com/symfony/phpunit-bridge.git",
--                "reference": "6e40d1c8bc4037edf3852c0b29fdd2923c4e2133"
-+                "reference": "292c1a79c5c32360c62bbe67022a38c6535094d5"
-             },
-             "dist": {
-                 "type": "zip",
--                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/6e40d1c8bc4037edf3852c0b29fdd2923c4e2133",
--                "reference": "6e40d1c8bc4037edf3852c0b29fdd2923c4e2133",
-+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/292c1a79c5c32360c62bbe67022a38c6535094d5",
-+                "reference": "292c1a79c5c32360c62bbe67022a38c6535094d5",
-                 "shasum": ""
-             },
-             "require": {
-@@ -3710,7 +3799,7 @@
-             "type": "symfony-bridge",
-             "extra": {
-                 "branch-alias": {
--                    "dev-master": "3.3-dev"
-+                    "dev-master": "3.4-dev"
-                 }
-             },
-             "autoload": {
-@@ -3740,7 +3829,7 @@
-             ],
-             "description": "Symfony PHPUnit Bridge",
-             "homepage": "https://symfony.com",
--            "time": "2017-10-02T06:54:00+00:00"
-+            "time": "2017-11-22T11:41:29+00:00"
-         },
-         {
-             "name": "theseer/tokenizer",
 diff --git a/tests/AppBundle/Controller/DefaultControllerTest.php b/tests/AppBundle/Controller/DefaultControllerTest.php
 new file mode 100644
 index 0000000..e6b4502

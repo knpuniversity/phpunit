@@ -41,11 +41,11 @@ index 91e41ad..5ff6731 100644
          "phpunit/phpunit": "^6.3",
          "sensio/generator-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index c67408a..fa25a2c 100644
+index 462718c..9e4fa35 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
-         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
 -    "content-hash": "14f1e5c9ec256c9352d5ac0e71ffef9d",
@@ -53,7 +53,7 @@ index c67408a..fa25a2c 100644
      "packages": [
          {
              "name": "composer/ca-bundle",
-@@ -2323,6 +2323,63 @@
+@@ -2329,6 +2329,63 @@
              ],
              "time": "2017-11-27T18:48:06+00:00"
          },
