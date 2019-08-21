@@ -11,19 +11,3 @@ index 7679a47..7e5a4d0 100644
 +    dbal:
 +        url: 'sqlite:///%kernel.project_dir%/var/data/test.sqlite'
 +
-diff --git a/src/AppBundle/Service/EnclosureBuilderService.php b/src/AppBundle/Service/EnclosureBuilderService.php
-index b086ca8..87b9616 100644
---- a/src/AppBundle/Service/EnclosureBuilderService.php
-+++ b/src/AppBundle/Service/EnclosureBuilderService.php
-@@ -61,9 +61,10 @@ class EnclosureBuilderService
-     {
-         $lengths = ['small', 'large', 'huge'];
-         $diets = ['herbivore', 'carnivorous'];
-+        // We should not mix carnivorous vs herbivore!
-+        $diet = $diets[array_rand($diets)];
-         for ($i = 0; $i < $numberOfDinosaurs; $i++) {
-             $length = $lengths[array_rand($lengths)];
--            $diet = $diets[array_rand($diets)];
-             $specification = "{$length} {$diet} dinosaur";
-             $dinosaur = $this->dinosaurFactory->growFromSpecification($specification);
- 

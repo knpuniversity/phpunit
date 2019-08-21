@@ -1,18 +1,16 @@
 diff --git a/src/AppBundle/Service/EnclosureBuilderService.php b/src/AppBundle/Service/EnclosureBuilderService.php
-index 88df96d..17b0e23 100644
+index b6a5091..a59be4a 100644
 --- a/src/AppBundle/Service/EnclosureBuilderService.php
 +++ b/src/AppBundle/Service/EnclosureBuilderService.php
-@@ -57,11 +57,13 @@ class EnclosureBuilderService
-     {
-         $lengths = ['small', 'large', 'huge'];
-         $diets = ['herbivore', 'carnivorous'];
+@@ -61,10 +61,12 @@ class EnclosureBuilderService
+         // so use the same diet for every dinosaur.
+         $diet = $diets[array_rand($diets)];
+ 
 -        $length = $lengths[array_rand($lengths)];
--        $diet = $diets[array_rand($diets)];
 -        $specification = "{$length} {$diet} dinosaur";
 -        $dinosaur = $this->dinosaurFactory->growFromSpecification($specification);
 +        for ($i = 0; $i < $numberOfDinosaurs; $i++) {
 +            $length = $lengths[array_rand($lengths)];
-+            $diet = $diets[array_rand($diets)];
 +            $specification = "{$length} {$diet} dinosaur";
 +            $dinosaur = $this->dinosaurFactory->growFromSpecification($specification);
  

@@ -1,10 +1,10 @@
 diff --git a/src/AppBundle/Service/EnclosureBuilderService.php b/src/AppBundle/Service/EnclosureBuilderService.php
-index b086ca8..9ca624f 100644
+index cfae4e4..2bd2f87 100644
 --- a/src/AppBundle/Service/EnclosureBuilderService.php
 +++ b/src/AppBundle/Service/EnclosureBuilderService.php
-@@ -65,7 +65,7 @@ class EnclosureBuilderService
+@@ -68,7 +68,7 @@ class EnclosureBuilderService
+         for ($i = 0; $i < $numberOfDinosaurs; $i++) {
              $length = $lengths[array_rand($lengths)];
-             $diet = $diets[array_rand($diets)];
              $specification = "{$length} {$diet} dinosaur";
 -            $dinosaur = $this->dinosaurFactory->growFromSpecification($specification);
 +            $dinosaur = $this->dinosaurFactory->growFromSpecification([]);

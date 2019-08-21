@@ -14,10 +14,10 @@ index e848be7..8fc7fba 100644
  }
 diff --git a/src/AppBundle/Service/EnclosureBuilderService.php b/src/AppBundle/Service/EnclosureBuilderService.php
 new file mode 100644
-index 0000000..88df96d
+index 0000000..b6a5091
 --- /dev/null
 +++ b/src/AppBundle/Service/EnclosureBuilderService.php
-@@ -0,0 +1,67 @@
+@@ -0,0 +1,70 @@
 +<?php
 +
 +namespace AppBundle\Service;
@@ -77,8 +77,11 @@ index 0000000..88df96d
 +    {
 +        $lengths = ['small', 'large', 'huge'];
 +        $diets = ['herbivore', 'carnivorous'];
-+        $length = $lengths[array_rand($lengths)];
++        // We should not mix herbivore and carnivorous together,
++        // so use the same diet for every dinosaur.
 +        $diet = $diets[array_rand($diets)];
++
++        $length = $lengths[array_rand($lengths)];
 +        $specification = "{$length} {$diet} dinosaur";
 +        $dinosaur = $this->dinosaurFactory->growFromSpecification($specification);
 +
