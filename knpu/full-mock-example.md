@@ -13,7 +13,7 @@ directory. This has just one public function: you pass that number of security s
 and the number of dinosaurs, and *it* takes care of creating those security systems,
 creating the dinosaurs and putting everything together inside a new `Enclosure`.
 
-[[[ code('343ba68dda') ]]]
+[[[ code('2505d8fa36') ]]]
 
 For this... we're going to cheat and *not* do TDD because... well... I *just* gave
 you the code. So let's add the test: in the `Service` directory, create a new
@@ -118,7 +118,7 @@ That's cool! Uncomment the "assert" in the test. Now, go into the service and fi
 my bug! Add a `for` loop where `$i = 0; $i < $numberOfDinosaurs; $i++`. Move *all*
 that dino code inside.
 
-[[[ code('6758ff22de') ]]]
+[[[ code('aabfeeaf56') ]]]
 
 Move back to your terminal and, test!
 
