@@ -57,8 +57,11 @@ class EnclosureBuilderService
     {
         $lengths = ['small', 'large', 'huge'];
         $diets = ['herbivore', 'carnivorous'];
-        $length = $lengths[array_rand($lengths)];
+        // We should not mix herbivore and carnivorous together,
+        // so use the same diet for every dinosaur.
         $diet = $diets[array_rand($diets)];
+
+        $length = $lengths[array_rand($lengths)];
         $specification = "{$length} {$diet} dinosaur";
         $dinosaur = $this->dinosaurFactory->growFromSpecification($specification);
 
