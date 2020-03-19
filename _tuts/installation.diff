@@ -11,7 +11,7 @@ index 1e41d2d..a9ec1ed 100644
          "symfony/phpunit-bridge": "^3.0"
      },
 diff --git a/composer.lock b/composer.lock
-index f45562c..942b07f 100644
+index be31a6b..f61aaf5 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -23,7 +23,7 @@ index f45562c..942b07f 100644
      "packages": [
          {
              "name": "composer/ca-bundle",
-@@ -2267,6 +2267,1314 @@
+@@ -2614,6 +2614,1314 @@
          }
      ],
      "packages-dev": [
@@ -1338,7 +1338,7 @@ index f45562c..942b07f 100644
          {
              "name": "sensio/generator-bundle",
              "version": "v3.1.6",
-@@ -2385,6 +3693,96 @@
+@@ -2732,6 +4040,96 @@
              "description": "Symfony PHPUnit Bridge",
              "homepage": "https://symfony.com",
              "time": "2019-07-05T06:33:19+00:00"

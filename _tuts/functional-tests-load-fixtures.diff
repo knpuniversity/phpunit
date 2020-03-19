@@ -41,7 +41,7 @@ index 91e41ad..5ff6731 100644
          "phpunit/phpunit": "^6.3",
          "sensio/generator-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 462718c..9e4fa35 100644
+index 0d2140a..4294331 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -53,9 +53,9 @@ index 462718c..9e4fa35 100644
      "packages": [
          {
              "name": "composer/ca-bundle",
-@@ -2329,6 +2329,63 @@
+@@ -2679,6 +2679,63 @@
              ],
-             "time": "2017-11-27T18:48:06+00:00"
+             "time": "2020-01-17T11:11:28+00:00"
          },
 +        {
 +            "name": "doctrine/doctrine-fixtures-bundle",

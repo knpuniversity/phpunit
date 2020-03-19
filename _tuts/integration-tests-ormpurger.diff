@@ -11,7 +11,7 @@ index a9ec1ed..e667fcc 100644
          "sensio/generator-bundle": "^3.0",
          "symfony/phpunit-bridge": "^3.0"
 diff --git a/composer.lock b/composer.lock
-index 942b07f..8690426 100644
+index f61aaf5..2e9800f 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -23,7 +23,7 @@ index 942b07f..8690426 100644
      "packages": [
          {
              "name": "composer/ca-bundle",
-@@ -2267,6 +2267,63 @@
+@@ -2614,6 +2614,63 @@
          }
      ],
      "packages-dev": [
