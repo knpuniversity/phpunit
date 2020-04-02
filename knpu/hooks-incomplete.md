@@ -26,7 +26,7 @@ should be *completely* independent of each other. You never want one test to rel
 on something a different test set up first. Why? Because later, we'll learn how to
 execute just *one* test at a time - which is *really* useful for debugging.
 
-## Other Hooks: tearDown, setUpAfterClass, etf
+## Other Hooks: tearDown, setUpBeforeClass, etc
 
 There are a few other *magic* methods like this. The most common is `tearDown()`,
 which is the opposite of setUp. It's still called once per test, but *after*
