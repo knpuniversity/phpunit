@@ -83,7 +83,7 @@ be an array like last time, but now with only one item inside. Test for `'huge d
 then also `huge dino`, just the word `huge` and, of course, `OMG` and... the scream
 Emoji!
 
-[[[ code('7f144e3956') ]]]
+[[[ code('6be15f8985') ]]]
 
 Back on the test method, connect it to the provider: `@dataProvider getHugeDinosaurSpecTests`.
 
@@ -137,7 +137,7 @@ have a `tutorial/` directory with a `DinosaurFactory.php` file inside. Copy the
 `private function` from that file, find *our* `DinosaurFactory`, and paste at
 the bottom.
 
-[[[ code('172d42eac9') ]]]
+[[[ code('379ab4ed1a') ]]]
 
 This is still a bit complex, but it removes the duplication and makes the length
 calculation more systematic. Copy the method name, scroll up, delete *all* that
