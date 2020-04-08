@@ -20,8 +20,8 @@ Let's jump in! `EnclosureBuilderService` already has a unit test. But since it t
 to the database, if we *really* want to make sure it works, we need a test where it...
 *actually* talks to the database!
 
-First, we need to finish our entities. Find ``Security`` and copy the ``id`` field.
-Open ``Dinosaur`` and paste this in. Do the same for ``Enclosure``. We haven't needed
+First, we need to finish our entities. Find `Security` and copy the `id` field.
+Open `Dinosaur` and paste this in. Do the same for `Enclosure`. We haven't needed
 these yet because we haven't touched the database at all. 
 
 [[[ code('4d9187422e') ]]]
