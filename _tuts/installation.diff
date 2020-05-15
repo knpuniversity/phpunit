@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 1e41d2d..a9ec1ed 100644
+index 2363dad..aeaa944 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -33,6 +33,7 @@
@@ -11,19 +11,19 @@ index 1e41d2d..a9ec1ed 100644
          "symfony/phpunit-bridge": "^3.0"
      },
 diff --git a/composer.lock b/composer.lock
-index be31a6b..f61aaf5 100644
+index 3cdfdd4..a8cbaa6 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "0035df52a90a909a0ae9750a5f00f652",
-+    "content-hash": "29b25e4972772a1e605fedc081e76657",
+-    "content-hash": "524bd0cfe08bfa8e4c3e1747c2eb1244",
++    "content-hash": "b8adaeb65ff4ca1b3b56ddc6c0de1638",
      "packages": [
          {
              "name": "composer/ca-bundle",
-@@ -2614,6 +2614,1314 @@
+@@ -2630,6 +2630,1315 @@
          }
      ],
      "packages-dev": [
@@ -774,6 +774,7 @@ index be31a6b..f61aaf5 100644
 +                "mock",
 +                "xunit"
 +            ],
++            "abandoned": true,
 +            "time": "2017-08-03T14:08:16+00:00"
 +        },
 +        {
@@ -1338,7 +1339,15 @@ index be31a6b..f61aaf5 100644
          {
              "name": "sensio/generator-bundle",
              "version": "v3.1.6",
-@@ -2732,6 +4040,96 @@
+@@ -2682,6 +3991,7 @@
+                 }
+             ],
+             "description": "This bundle generates code for you",
++            "abandoned": "symfony/maker-bundle",
+             "time": "2017-07-18T07:57:44+00:00"
+         },
+         {
+@@ -2748,6 +4058,96 @@
              "description": "Symfony PHPUnit Bridge",
              "homepage": "https://symfony.com",
              "time": "2019-07-05T06:33:19+00:00"

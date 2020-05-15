@@ -29,7 +29,7 @@ index d73f497..f2b3b3a 100644
 +liip_functional_test:
 +    cache_sqlite_db: true
 diff --git a/composer.json b/composer.json
-index 91e41ad..5ff6731 100644
+index f57d97d..657fef0 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -34,6 +34,7 @@
@@ -41,21 +41,21 @@ index 91e41ad..5ff6731 100644
          "phpunit/phpunit": "^6.3",
          "sensio/generator-bundle": "^3.0",
 diff --git a/composer.lock b/composer.lock
-index 0d2140a..4294331 100644
+index 98bdfac..3c00a92 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "14f1e5c9ec256c9352d5ac0e71ffef9d",
-+    "content-hash": "086759ffc6f19575a091f59a016454d2",
+-    "content-hash": "9cb1ef857e64c54039f98ef5dff2779a",
++    "content-hash": "c425b61a2e81e3c453cc2e466ece5a1b",
      "packages": [
          {
              "name": "composer/ca-bundle",
-@@ -2679,6 +2679,63 @@
+@@ -2693,6 +2693,63 @@
              ],
-             "time": "2020-01-17T11:11:28+00:00"
+             "time": "2019-10-24T04:52:28+00:00"
          },
 +        {
 +            "name": "doctrine/doctrine-fixtures-bundle",
