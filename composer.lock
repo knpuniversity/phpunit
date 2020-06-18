@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "524bd0cfe08bfa8e4c3e1747c2eb1244",
+    "content-hash": "0a9104f4e3bbb78885830d14cf60e5e8",
     "packages": [
         {
             "name": "composer/ca-bundle",
@@ -2682,6 +2682,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
+            "abandoned": "symfony/maker-bundle",
             "time": "2017-07-18T07:57:44+00:00"
         },
         {
@@ -2756,7 +2757,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.0"
+        "php": "^7.0, <7.4"
     },
     "platform-dev": [],
     "platform-overrides": {
