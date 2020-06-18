@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index aeaa944..097bfa5 100644
+index 43434a2..438781a 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -33,6 +33,7 @@
@@ -11,15 +11,15 @@ index aeaa944..097bfa5 100644
          "sensio/generator-bundle": "^3.0",
          "symfony/phpunit-bridge": "^3.0"
 diff --git a/composer.lock b/composer.lock
-index a8cbaa6..e98fcb5 100644
+index 7cfc6d0..ca9da59 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "b8adaeb65ff4ca1b3b56ddc6c0de1638",
-+    "content-hash": "50882d490e30d418c416232be5951078",
+-    "content-hash": "e26862d0f10d70e1e961c5d6a58e9d64",
++    "content-hash": "2a9e51fbe3a3d4d7b09ccba75140eddb",
      "packages": [
          {
              "name": "composer/ca-bundle",

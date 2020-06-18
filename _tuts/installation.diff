@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 2363dad..aeaa944 100644
+index 2625cfc..43434a2 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -33,6 +33,7 @@
@@ -11,15 +11,15 @@ index 2363dad..aeaa944 100644
          "symfony/phpunit-bridge": "^3.0"
      },
 diff --git a/composer.lock b/composer.lock
-index 3cdfdd4..a8cbaa6 100644
+index 4728c72..7cfc6d0 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "524bd0cfe08bfa8e4c3e1747c2eb1244",
-+    "content-hash": "b8adaeb65ff4ca1b3b56ddc6c0de1638",
+-    "content-hash": "0a9104f4e3bbb78885830d14cf60e5e8",
++    "content-hash": "e26862d0f10d70e1e961c5d6a58e9d64",
      "packages": [
          {
              "name": "composer/ca-bundle",
@@ -1339,15 +1339,7 @@ index 3cdfdd4..a8cbaa6 100644
          {
              "name": "sensio/generator-bundle",
              "version": "v3.1.6",
-@@ -2682,6 +3991,7 @@
-                 }
-             ],
-             "description": "This bundle generates code for you",
-+            "abandoned": "symfony/maker-bundle",
-             "time": "2017-07-18T07:57:44+00:00"
-         },
-         {
-@@ -2748,6 +4058,96 @@
+@@ -2749,6 +4058,96 @@
              "description": "Symfony PHPUnit Bridge",
              "homepage": "https://symfony.com",
              "time": "2019-07-05T06:33:19+00:00"
