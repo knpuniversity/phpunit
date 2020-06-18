@@ -5,6 +5,9 @@ for the [PHPUnit: Testing with a Bite](https://knpuniversity.com/screencast/phpu
 
 ## Setup
 
+> **NOTE**: Because this is an older tutorial, the code only
+> works on PHP 7.3 and lower.
+
 If you've just downloaded the code, congratulations!
 
 To get it working, follow these steps:
