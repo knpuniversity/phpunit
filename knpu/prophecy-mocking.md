@@ -7,6 +7,22 @@ but each has its own *feel*.
 I really like Prophecy, *and* it comes with PHPUnit automatically! So let's redo
 the `EnclosureBuilderTest` with Prophecy to see how it feels.
 
+***TIP
+If you installed PHPUnit by installing `symfony/phpunit-bridge`, then you need to
+add one line to your `phpunit.xml.dist` file to tell the bridge that you want prophecy:
+
+```
+<!-- phpunit.xml.dist -->
+<!-- ... -->
+
+    <php>
+        <!-- ... -->
+        <!-- tells phpunit-bridge that you do *not* want to remove prophecy -->
+        <env name="SYMFONY_PHPUNIT_REMOVE" value="" />
+    </php>
+```
+***
+
 Create a new class called `EnclosureBuilderServiceProphecyTest`. It will extend the
 normal `TestCase` and we can give it the same method: `testItBuildsAndPersistsEnclosure()`.
 
