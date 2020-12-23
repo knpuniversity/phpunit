@@ -83,9 +83,18 @@ a long name!
 
 [[[ code('8390ae3548') ]]]
 
-Add the Velociraptor *first* and then remove `expectException`. Instead, add an
+Add the Velociraptor *first* and then remove `expectException()`. Instead, add an
 annotation: `@expectedException` followed by the full class. PhpStorm puts the short
-name... so go copy the use statement and put it down here. Try it!
+name... so go copy the use statement and put it down here.
+
+***TIP
+Actually, the `@expectedException`, `@expectedExceptionCode`, `@expectedExceptionMessage`,
+and `@expectedExceptionMessageRegExp` annotations are deprecated and will be removed
+in PHPUnit 9. Continue using `expectException()`, `expectExceptionCode()`, `expectExceptionMessage()`,
+and `expectExceptionMessageRegExp()` methods accordingly in your PHP code.
+***
+
+Try it!
 
 [[[ code('afc9ac3897') ]]]
 
