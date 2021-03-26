@@ -6,9 +6,16 @@ help with this, I want to add an "Alarm" button on the homepage next to any encl
 that do *not* have active security.
 
 Because this sounds pretty important, let's write the test first. Add
-`public function testThatThereIsAnAlarmButtonWithoutSecurity()`. Copy the fixture
-and request code from before and paste it here. But, at the end of `loadFixtures()`,
-add `getReferenceRepository()` and assign this to a new `$fixtures` variable.
+`public function testThatThereIsAnAlarmButtonWithoutSecurity()`:
+
+[[[ code('6be75e162c') ]]]
+
+Copy the fixture and request code from before and paste it here:
+
+[[[ code('12c1b194c2') ]]]
+
+But, at the end of `loadFixtures()`, add `getReferenceRepository()` and assign this
+to a new `$fixtures` variable:
 
 [[[ code('5416d13f6d') ]]]
 
@@ -32,13 +39,16 @@ it will be *really* easy to find its `tr` element and look for the alarm button.
 The reference system gives us that power!
 
 Yep, we can fetch the exact `Enclosure` object by saying
-`$enclosure = $fixtures->getReference('carnivorous-enclosure')`. Next, create a
-`$selector` variable set to `sprintf('#enclosure-%s .button-alarm')` and `$enclosure->getId()`.
-We'll expect the alarm button to have this class.
+`$enclosure = $fixtures->getReference('carnivorous-enclosure')`:
+
+[[[ code('3cfed406ba') ]]]
+
+Next, create a `$selector` variable set to `sprintf('#enclosure-%s .button-alarm')`
+and `$enclosure->getId()`. We'll expect the alarm button to have this class:
 
 [[[ code('3392c0e01a') ]]]
 
-Finish the test! `$this->greaterThan(0, $crawler->filter($selector)->count())`.
+Finish the test! `$this->greaterThan(0, $crawler->filter($selector)->count())`:
 
 [[[ code('33c392920f') ]]]
 
@@ -54,19 +64,19 @@ Awesome!
 ## Adding the Alarm Button
 
 So let's code! In `index.html.twig`, add one more `<td>`: `if enclosure.isSecurityActive()`
-with `else` and `endif`.
+with `else` and `endif`:
 
-[[[ code('071ceac244') ]]]
+[[[ code('dd1105605d') ]]]
 
 If security *is* active, we rock! Add a cute lock icon and say "Security active".
 Yep, just sit back and enjoy some Jolt soda: nobody is getting eaten today!
 
-[[[ code('31121dbb11') ]]]
+[[[ code('3d36d0a6ed') ]]]
 
 But if security is *not* active, ah crap! Add the button with the `button-alarm`
-class that the test is looking for. And say "Sound alarm!!!".
+class that the test is looking for. And say "Sound alarm!!!":
 
-[[[ code('673f00bb87') ]]]
+[[[ code('3cf32dd879') ]]]
 
 That should be it! Run the test:
 
@@ -82,6 +92,15 @@ But... what if it *didn't* pass? Well... the errors wouldn't be very helpful: it
 would basically just say that 0 is not greater than 0. When things fail, the trick
 is to go *above* the failure and `dump($client->getResponse()->getContent())`. If
 you're using Flex, make sure to install the `var-dumper` package.
+
+***TIP
+To install the `symfony/var-dumper` package, run:
+```terminal
+composer require --dev var-dumper
+```
+
+The `--dev` option tells Composer to install it as a dev dependency.
+***
 
 Now when you run the test, it will *at least* print out the HTML body. By the way,
 with a little bit of clever coding, you can hook into the `onNotSuccessfulTest` method
