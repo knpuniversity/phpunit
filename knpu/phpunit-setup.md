@@ -40,7 +40,7 @@ The de facto standard tool for testing in PHP is PHPUnit. Open a new terminal ta
 Install it with:
 
 ```terminal
-composer require --dev phpunit/phpunit
+composer require --dev "phpunit/phpunit:^6.5"
 ```
 
 This will obviously download the PHPUnit library into your `vendor/` directory.
