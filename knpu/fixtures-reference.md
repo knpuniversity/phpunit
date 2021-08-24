@@ -94,10 +94,7 @@ is to go *above* the failure and `dump($client->getResponse()->getContent())`. I
 you're using Flex, make sure to install the `var-dumper` package.
 
 ***TIP
-To install the `symfony/var-dumper` package, run:
-```terminal
-composer require --dev var-dumper
-```
+To install the `symfony/var-dumper` package, run: `composer require --dev var-dumper`
 
 The `--dev` option tells Composer to install it as a dev dependency.
 ***
