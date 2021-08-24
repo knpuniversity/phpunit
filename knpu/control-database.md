@@ -104,7 +104,7 @@ control. Another option is to use Doctrine's DataFixtures library.
 First, install it:
 
 ```terminal
-composer require doctrine/data-fixtures --dev
+composer require "doctrine/data-fixtures:^1.3" --dev
 ```
 
 When this finishes, we can delete all the logic in `truncateEntities()`... because
