@@ -25,7 +25,7 @@ composer require --dev "liip/functional-test-bundle:^1.9"
 ```
 
 ***TIP
-If you are using PHPUnit 7+ or Symfony 4+, you need to require newer version of this bundle. 
+If you are using PHPUnit 7+ or Symfony 4+, you need to require a newer version of this bundle. 
 To install it, run the next command without the specific version constraint:
 ```terminal
 composer require --dev liip/functional-test-bundle
